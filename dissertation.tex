@@ -1,0 +1,96 @@
+\documentclass[pdftex,final]{pittetd}
+%final, makes pittetd's warnings (about things that might go against the Format Guidelines) into error messages. 
+%Option 'sectionletters' numbers the chapters with Roman numerals (I, II, etc.), sections with 
+%letters (A, B), subsections with numbers (1, 2), and subsubsections with lowercase letters (a, b). 
+%The four levels of the enumerate environment receive the same treatment. Within the
+%text, however, cross references (\ref} produce `the whole thing,' something like I.A.1 
+%instead of only 1.
+
+% Packages included in PittETD Template
+% auto use this package and check for patches
+\usewithpatch{graphicx} 
+% manually use these packages
+\usepackage{amsmath}
+% manually check for patches
+\patch{amsmath}
+%\patch{amsthm}
+
+% Jenna's commonly used packages
+\usepackage{amssymb}
+\usepackage{amsmath}
+%\usepackage{amsthm}
+\usepackage{graphics} % for improved inclusion of graphics
+%\usepackage{wrapfig} % to include figure with text wrapping around it
+%\usepackage{subcaption}
+%\usepackage[margin=10pt,font=small,labelfont=bf]{caption}
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{algpseudocode}
+
+% Bibliography
+\bibliographystyle{apalike}
+
+\title[Global Volume Registration for Motion Correction in rs-fMRIs]{Global Volume Registration for Multiple Motion Types in Resting-State Functional Magnetic Resonance Images}
+% The optional argument is the 
+% version of the title that will appear in Acrobat Reader's Document Info dialog box.
+\author{Jenna Marie Schabdach}
+\degree{B. S. Electrical Engineering, Drexel University, 2016\\M. S. Electrical Engineering, Drexel University, 2016\\M. S. Biomedical Informatics, University of Pittsburgh, 2018}
+
+%\date{July 20th 1967}%             This date is the date of the thesis defense. Default is \today
+% pittetd will use the current year unless otherwise indicated. So this command is not necessary.
+\keywords{\LaTeX, pittetd, theses, format}% This list appears in the field 'Keywords' of Acrobat Reader's Document Info
+%                                   dialog box, and also, optionally, after the abstract.
+\subject{Schabdach Biomedical Informatics Dissertation}%              This fills in the 'Subject' field in Acrobat Reader's Document Info dialog box.
+\school{Department of Biomedical Informatics}%    The name of the school will be preceeded by 'the' unless otherwise specified, as in:
+%\school[certain]{department}
+
+\begin{document}
+
+\year{2019}  
+%\chapterfloats%                    Un-comment this to get figures and tables numbered within chapters.
+\maketitle
+%
+% For the committee membership page, you have to provide the names and affiliations of the members. The first one will 
+% be treated by pittetd as the committee chair (thesis/dissertation advisor).
+\committeemember{Dr. Ashok Panigrahy, Department of Biomedical Informatics}
+%\coadvisor{Second advisor, Dept. Aff.}%         This is used if there are two advisors.
+\committeemember{Second member's name, Dept.\ Aff.}
+\committeemember{Third member's name, Dept.\ Aff.}
+% etc., as many as needed. For master's theses, the committee may be omitted, naming only the advisor.
+\school{School of Medicine}
+\makecommittee
+%\copyrightpage                     Uncomment this to get a copyright page.
+\begin{abstract}
+INSERT ABSTRACT HERE
+\end{abstract}
+% If you say \begin{abstract}[Keywords:] instead of the simple \begin{abstract}, a list of the keywords is appended.
+% The list comes from the \keywords command above.
+% The starred version \begin{abstract*} typesets the word `ABSTRACT' on the top of the page
+\tableofcontents
+%\listoftables                      Pittetd will complain if you tell it to create a list of tables when there are no
+%                                   tables (as in this sample file). Uncomment this command if you have tables.
+%\listoffigures                     Obvious analogous for figures.
+%\preface
+% This is the text of the preface, with acknowledgments, dedication, etc. It is optional, and you create, as shown, by 
+% just saying \preface and starting the preface's actual text. Note that 'foreword' is no longer acceptable as title
+% for this preliminary.
+%
+%Conventions, such as notation (nomenclature) and abbreviations, don't receive their own preliminary page. They can be included as an appendix, or as part of the introduction.
+
+
+% Add in chapters here
+\include{1/introduction}
+\include{2/background}
+
+\include{8/conclusion}
+
+
+%
+%\appendix                          After this command, chapters will be formatted as appendices. For example:
+%\chapter{Raw data}
+%
+\safebibliography{sources}          
+%\safebibliography is used the same way as \bibliography, but gives pittetd
+%                                   a greater chance to succeed in formatting the bibliography when non-standard
+%                                   BibTeX styles are used.
+\end{document}

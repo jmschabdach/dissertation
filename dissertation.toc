@@ -1,0 +1,9 @@
+\contentsline {chapter}{{\bfseries \numberline {1.0}INTRODUCTION}}{1}{chapter.1}
+\contentsline {chapter}{{\bfseries \numberline {2.0}BACKGROUND}}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}RESTING-STATE NETWORKS}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}MEASURING THE EFFECTS OF MOTION}{4}{section.2.2}
+\contentsline {section}{\numberline {2.3}MOTION PREVENTION}{5}{section.2.3}
+\contentsline {section}{\numberline {2.4}MOTION CORRECTION}{5}{section.2.4}
+\contentsline {section}{\numberline {2.5}VOLUME REGISTRATION}{5}{section.2.5}
+\contentsline {chapter}{{\bfseries \numberline {3.0}CONCLUSIONS}}{6}{chapter.3}
+\contentsline {chapter}{{\bfseries \bibname }}{7}{section*.1}

@@ -1,0 +1,73 @@
+\begin{thebibliography}{}
+
+\bibitem[Assaf et~al., 2010]{Assaf2010}
+Assaf, M., Jagannathan, K., Calhoun, V.~D., Miller, L., Stevens, M.~C., Sahl,
+  R., O'Boyle, J.~G., Schultz, R.~T., and Pearlson, G.~D. (2010).
+\newblock {Abnormal functional connectivity of default mode sub-networks in
+  autism spectrum disorder patients}.
+\newblock {\em NeuroImage}, 53(1):247--256.
+
+\bibitem[Dosenbach et~al., 2017]{Dosenbach2017}
+Dosenbach, N.~U., Koller, J.~M., Earl, E.~A., Miranda-Dominguez, O., Klein,
+  R.~L., Van, A.~N., Snyder, A.~Z., Nagel, B.~J., Nigg, J.~T., Nguyen, A.~L.,
+  Wesevich, V., Greene, D.~J., and Fair, D.~A. (2017).
+\newblock {Real-time motion analytics during brain MRI improve data quality and
+  reduce costs}.
+\newblock {\em NeuroImage}, 161(January):80--93.
+
+\bibitem[Greicius et~al., 2003]{Greicius2003}
+Greicius, M.~D., Krasnow, B., Reiss, A.~L., and Menon, V. (2003).
+\newblock {Functional connectivity in the resting brain: A network analysis of
+  the default mode hypothesis}.
+\newblock {\em Proceedings of the National Academy of Sciences of the United
+  States of America}, 100(1):253--258.
+
+\bibitem[Jenkinson et~al., 2002]{Jenkinson2002}
+Jenkinson, M., Bannister, P., Brady, M., and Smith, S. (2002).
+\newblock {Improved Optimization for the Robust and Accurate Linear
+  Registration and Motion Correction of Brain Images}.
+\newblock {\em NeuroImage}, 17:825--841.
+
+\bibitem[Liao et~al., 2016]{Liao2016}
+Liao, R., Turk, E.~A., Zhang, M., Luo, J., {Ellen Grant}, P., Adalsteinsson,
+  E., and Golland, P. (2016).
+\newblock {Temporal registration in in-utero volumetric MRI time series}.
+\newblock {\em Lecture Notes in Computer Science (including subseries Lecture
+  Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)}, 9902
+  LNCS:54--62.
+
+\bibitem[Power et~al., 2012]{Power2012}
+Power, J.~D., Barnes, K.~A., Synder, A.~Z., Schlagger, B.~L., and Petersen,
+  S.~E. (2012).
+\newblock {Spurious but systematic correlations in functional connectivity MRI
+  networks arise from subject motion}.
+\newblock {\em NeuroImage}, 59(3):2142--2154.
+
+\bibitem[Power et~al., 2014]{Power2014}
+Power, J.~D., Mitra, A., Laumann, T.~O., Snyder, A.~Z., Schlaggar, B.~L., and
+  Petersen, S.~E. (2014).
+\newblock {Methods to detect, characterize, and remove motion artifact in
+  resting state fMRI}.
+\newblock {\em NeuroImage}, 84:320--341.
+
+\bibitem[Raichle et~al., 2001]{Raichle2001}
+Raichle, M.~E., MacLeod, A.~M., Snyder, A.~Z., Powers, W.~J., Gusnard, D.~A.,
+  and Shulman, G.~L. (2001).
+\newblock {A default mode of brain function}.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  98(2):676--682.
+
+\bibitem[Yan et~al., 2013]{Yan2013a}
+Yan, C.-G., Craddock, R.~C., He, Y., and Milham, M.~P. (2013).
+\newblock {Addressing head motion dependencies for small-world topologies in
+  functional connectomics}.
+\newblock {\em Frontiers in Human Neuroscience}, 7(December):1--19.
+
+\bibitem[Zang et~al., 2007]{Zang2007}
+Zang, Y.~F., Yong, H., Chao-Zhe, Z., Qing-Jiu, C., Man-Qiu, S., Meng, L.,
+  Li-Xia, T., Tian-Zi, J., and Yu-Feng, W. (2007).
+\newblock {Altered baseline brain activity in children with ADHD revealed by
+  resting-state functional MRI}.
+\newblock {\em Brain and Development}, 29(2):83--91.
+
+\end{thebibliography}

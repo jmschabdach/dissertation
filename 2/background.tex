@@ -1,0 +1,59 @@
+\chapter{Background}
+The topics treated in this chapter can be somewhat obscure. For humanitarian considerations, the chapter will be subdivided.
+
+\section{RESTING-STATE NETWORKS}
+
+The idea of a neuronal network which operated when a person is at rest was proposed in 2001, and then confirmed in 2003 \cite{Raichle2001} \cite{Greicius2003}. Resting-state networks are recorded using resting-state functional magnetic resonance images (rs-fMRIs). rs-fMRIs are sequences of image volumes acquired over a period of a few minutes while the patient is in a task-free state. The image volumes themselves have relatively low spatial resolution when compared to structural MRIs, but their temporal resolution is significantly higher as a new volume is acquired every two to three seconds. Each volume records the blood oxygen level dependent (BOLD) signals within the brain at that point in time. 
+
+The BOLD signals in rs-fMRI image sequences are analyzed using a process called functional connectivity analysis. Functional connectivity analysis identifies patterns and networks of brain activity. Because the patient is not performing a specific task during a rs-fMRI acquisition, these resting-state networks have the potential to reveal valuable information about a patient's neurodevelopmental status. Some functional connectivity analysis studies have lead to the discoveries of links between specific disruptions in these naturally occurring networks and neurodevelopmental diseases such as autism and attention deficit hyperactivity disorder \cite{Assaf2010} \cite{Zang2007}. With further refinements of both acquisition techniques and characterization of these functional networks, clinicians may be able to use rs-fMRI in early detection protocols to evaluate the neurodevelopmental status of infants and neonates, and in personalized care by identifying patients who may benefit from certain therapies or neuroprotective interventions.
+
+\section{MEASURING THE EFFECTS OF MOTION}
+
+Due to their low spatial and high temporal resolutions, rs-fMRIs are highly susceptible to motion. Even the smallest movement can alter the position of the patient enough to cause the voxels to record signals from different brain regions and tissue types. Even if the movement does not significantly change the recorded position of the subject, it impacts the established spin gradients, which introduces artifacts into the image sequence. Movements cause the orientation of existing spin gradients to change, and the gradients require time to realign to the magnetic field. This recovery time often results in a decrease in the global signal in frames obtained over the following 8-10 seconds, which can affect the functional connectivity analysis \cite{Power2014}.
+
+The effects of motion on rs-fMRIs can be clearly divided into two categories: the effect on patient position and the effect on the recorded BOLD signal.
+
+The effect of motion on patient position is measured in terms of the difference in position between temporally neighboring image volumes. The difference in position is determined using metrics calculated by performing rigid volume registration on the two volumes. 
+In rigid volume registration, one volume is chosen as the reference volume and the other is considered the moving volume. The reference volume remains stationary while the moving volume is translated and rotated in three-dimensional space on top of it. The registration is considered successfully complete when the position of the patient in the moving volume matches the position in the reference volume. The three translation and three rotation parameters used to achieve this alignment are used to calculate the positional change between the image volumes, which is often called the framewise displacement (FD). 
+
+Several researchers have proposed different methods for calculating the FD. Power et al., Jenkinson et al., and Dosenbach et al. each propose a slightly different method for calculating the FD \cite{Power2012} \cite{Jenkinson2002} \cite{Dosenbach2017}. All three FD calculations produce correlated metrics: the FD metric proposed by Power et al. produces measurements approximately twice as large as the metric proposed by Jenkinson et al., and Dosenbach et al. reported a high correlation between their FD and Power’s FD \cite{Yan2013a} \cite{Dosenbach2017}.
+
+Signal change 
+Even the smallest movement can impact the recorded BOLD signal for the following eight to ten seconds [CITE].
+
+
+An rs-fMRI must (contain only low amounts of motion) for functional connectivity analysis to be successful. There is some debate a
+
+\section{MOTION PREVENTION}
+
+Sedation can be used for some medical image acquisitions, but it is not appropriate for all patient populations or imaging modalities. 
+
+\section{MOTION CORRECTION}
+
+\section{VOLUME REGISTRATION}
+
+Liao et al. suggested that a rs-fMRI sequence could be viewed as a hidden Markov model, and reflected this idea in their suggested registration framework \cite{Liao2016}. Their framework uses the transformation of the previous volume to the reference volume as the initial transformation for the current volume and the reference volume. 
+
+
+
+%\section{MAGNETIC RESONANCE IMAGING}
+%
+%Magnetic resonance imaging is a technique used in medicine to obtain in vivo images of different organ systems. The patient is placed in a static magnetic field and electromagnetic pulses are used to briefly induce a secondary magnetic field.
+%
+%One type of MRI is resting state functional MRI (rs-fMRI). rs-fMRI is 
+%
+%
+%\section{THE CHALLENGE OF MOTION}%            Remember to capitalize the sections (otherwise, the bookmark will be lowercase)
+%
+%Patient movement is a challenge across all modalities of medical imaging, but rs-fMRI is particularly sensitive to it. Various preventative, 
+%
+%An rs-fMRI is considered usable if it contains at least 5 minutes of low motion data.
+%
+%\subsection{•}
+%
+%
+%
+%\subsection{First subsection of the section}
+%This is well-known topic, and we shall discuss it no more.
+%\subsection{Second subsection of the section}
+%This is a very complicated topic and we shall discuss it in our next paper.\textsl{•}
