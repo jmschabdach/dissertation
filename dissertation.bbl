@@ -57,6 +57,18 @@ Raichle, M.~E., MacLeod, A.~M., Snyder, A.~Z., Powers, W.~J., Gusnard, D.~A.,
 \newblock {\em Proceedings of the National Academy of Sciences},
   98(2):676--682.
 
+\bibitem[Smyser and Neil, 2015]{Smyser2015}
+Smyser, C.~D. and Neil, J.~J. (2015).
+\newblock {Use of resting state functional MRI to study brain development and
+  injury in neonates}.
+\newblock {\em Seminars in Perinatology}, 39(2):130--140.
+
+\bibitem[van Dijk et~al., 2012]{VanDijk2012}
+van Dijk, K.~R., Sabuncu, M.~R., and Buckner, R.~L. (2012).
+\newblock {The influence of head motion on intrinsic functional connectivity
+  MRI}.
+\newblock {\em NeuroImage}, 59(1):431--438.
+
 \bibitem[Yan et~al., 2013]{Yan2013a}
 Yan, C.-G., Craddock, R.~C., He, Y., and Milham, M.~P. (2013).
 \newblock {Addressing head motion dependencies for small-world topologies in
