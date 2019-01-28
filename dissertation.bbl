@@ -1,11 +1,31 @@
 \begin{thebibliography}{}
 
+\bibitem[FDA, 2016]{FDA2016}
+ (2016).
+\newblock {Drug Safety and Availability - FDA Drug Safety Communication: FDA
+  review results in new warnings about using general anesthetics and sedation
+  drugs in young children and pregnant women}.
+\newblock Technical report.
+
 \bibitem[Assaf et~al., 2010]{Assaf2010}
 Assaf, M., Jagannathan, K., Calhoun, V.~D., Miller, L., Stevens, M.~C., Sahl,
   R., O'Boyle, J.~G., Schultz, R.~T., and Pearlson, G.~D. (2010).
 \newblock {Abnormal functional connectivity of default mode sub-networks in
   autism spectrum disorder patients}.
 \newblock {\em NeuroImage}, 53(1):247--256.
+
+\bibitem[Cot{\'{e}} and Wilson, 2016]{Cote2016}
+Cot{\'{e}}, C.~J. and Wilson, S. (2016).
+\newblock {Guidelines for Monitoring and Management of Pediatric Patients
+  Before, During, and After Sedation for Diagnostic and Therapeutic Procedures:
+  Update 2016}.
+\newblock {\em Pediatrics}.
+
+\bibitem[Dewey et~al., 2007]{Dewey2007}
+Dewey, M., Schink, T., and Dewey, C.~F. (2007).
+\newblock {Claustrophobia during magnetic resonance imaging: Cohort study in
+  over 55,000 patients}.
+\newblock {\em Journal of Magnetic Resonance Imaging}, 26(5):1322--1327.
 
 \bibitem[Dosenbach et~al., 2017]{Dosenbach2017}
 Dosenbach, N.~U., Koller, J.~M., Earl, E.~A., Miranda-Dominguez, O., Klein,
@@ -36,6 +56,17 @@ Liao, R., Turk, E.~A., Zhang, M., Luo, J., {Ellen Grant}, P., Adalsteinsson,
   Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)}, 9902
   LNCS:54--62.
 
+\bibitem[Malviya et~al., 2000]{Malviya2000}
+Malviya, S., Voepel-Lewis, T., Prochaska, G., and Tait, A.~R. (2000).
+\newblock {Prolonged Recovery and Delayed Side Effects of Sedation for
+  Diagnostic Imaging Studies in Children}.
+\newblock {\em Pediatrics}, 105(3).
+
+\bibitem[Murphy and Brunberg, 1997]{Murphy1997}
+Murphy, K.~J. and Brunberg, J.~A. (1997).
+\newblock {Adult claustrophobia, anxiety and sedation in MRI}.
+\newblock {\em Magnetic Resonance Imaging}, 15(1):51--54.
+
 \bibitem[Power et~al., 2012]{Power2012}
 Power, J.~D., Barnes, K.~A., Synder, A.~Z., Schlagger, B.~L., and Petersen,
   S.~E. (2012).
@@ -56,12 +87,6 @@ Raichle, M.~E., MacLeod, A.~M., Snyder, A.~Z., Powers, W.~J., Gusnard, D.~A.,
 \newblock {A default mode of brain function}.
 \newblock {\em Proceedings of the National Academy of Sciences},
   98(2):676--682.
-
-\bibitem[Smyser and Neil, 2015]{Smyser2015}
-Smyser, C.~D. and Neil, J.~J. (2015).
-\newblock {Use of resting state functional MRI to study brain development and
-  injury in neonates}.
-\newblock {\em Seminars in Perinatology}, 39(2):130--140.
 
 \bibitem[van Dijk et~al., 2012]{VanDijk2012}
 van Dijk, K.~R., Sabuncu, M.~R., and Buckner, R.~L. (2012).

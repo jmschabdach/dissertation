@@ -18,9 +18,9 @@ In rigid volume registration, one volume is chosen as the reference volume and t
 
 Several researchers have proposed different methods for calculating the FD. Power et al., Jenkinson et al., and Dosenbach et al. each propose a slightly different method for calculating the FD \cite{Power2012} \cite{Jenkinson2002} \cite{Dosenbach2017}. All three FD calculations produce correlated metrics: the FD metric proposed by Power et al. produces measurements approximately twice as large as the metric proposed by Jenkinson et al., and Dosenbach et al. reported a high correlation between their FD and Power’s FD \cite{Yan2013a} \cite{Dosenbach2017}. 
 
-The effects of motion on the BOLD signal are a little more difficult to measure. They occur because motion disrupts the magnetic spin gradients present in the patient during the scan. The spin gradients need time to recover to the correct magnetic field orientation, and up to eight to ten seconds may pass before the recovery is complete \cite{Power2014}. While the spin gradients are reorienting, the recorded BOLD signal may vary between temporally neighboring volumes. These changes can be measured using the temporal derivative of the variance in the BOLD signal intensity (DVARS) between the  frames \cite{Power2012} \cite{Smyser2015}.
+The effects of motion on the BOLD signal are a little more difficult to measure. They occur because motion disrupts the magnetic spin gradients present in the patient during the scan. The spin gradients need time to recover to the correct magnetic field orientation, and up to eight to ten seconds may pass before the recovery is complete \cite{Power2014}. While the spin gradients are reorienting, the recorded BOLD signal may vary between temporally neighboring volumes. These changes can be measured using the temporal derivative of the variance in the BOLD signal intensity (DVARS) between the  frames \cite{Power2012}.
 
-Even though the effects of motion on the patient position and the recorded signal can be measured, we still need criteria to determine whether an image containing motion can be used. Patients move slightly due to breathing and cardiac function, and the BOLD signal naturally fluctuates over time. Some motion is expected; however, we need to know how much motion can be present in the image before it is considered to be corrupted by it. Power et al. established thresholds for FD and DVARS to determine the usability of a pair of images
+Even though the effects of motion on the patient position and the recorded signal can be measured, we still need criteria to determine whether an image containing motion can be used. Patients move slightly due to breathing and cardiac function, and the BOLD signal naturally fluctuates over time. Some motion is expected; however, we need to know how much motion can be present in the image before it is considered to be corrupted by it. Power et al. established thresholds for FD and DVARS to determine the usability of a pair of images:
 \begin{itemize}
 \item FD less than or equal to 0.2 mm from previous volume, and
 \item DVARS less than or equal to 25 units on a normalized scale of [0, 1000] signal units \cite{Power2014}
@@ -30,9 +30,44 @@ Image volumes that meet these criteria are considered to be low-motion. van Dijk
 
 \section{MOTION PREVENTION}
 
-Sedation can be used for some medical image acquisitions, but it is not appropriate for all patient populations or imaging modalities. 
+Various techniques and protocols have been developed to prevent patients from moving during the image acquisition process. Not all of these techniques are suitable for all patient populations, and some techniques have been designed specifically for certain populations populations.
 
-%Efforts have been made to develop proactive methods for mitigating the effects of motion in rs-fMRI. There are clinical protocols that can be used to try to prevent motion from occurring during acquisition, but these protocols are either not effective, not safe, or not compatible with rs-fMRI. Sedation, for example, requires additional hospital personnel to observe the patient and prevent adverse effects, may require the patient to remain in the hospital for some time after the scan, and is not compatible with all imaging modalities or patient populations [Coté and Wilson (2016); Gale et al. (2013)]. Education techniques can be used with pediatric and adult patients to help the patients learn what to expect during a scan, though it does not prevent the patient from moving during the scan itself [Alexander (2012); Barnea-Goraly et al. (2014)]. Playing videos or audio, or allowing the patient to use a virtual reality setup during the scan can help reduce anxiety in pediatric and adult patients, though the motion reduction techniques of these distraction tactics are questionable [Harned and Strain (2001); Khan et al. (2007); Garcia-Palacios et al. (2007)]. For scans of neonatal and pediatric patients, parental involvement can help calm the patient, but parental distress can further upset an anxious patient and complicate the scanning process [Alexander (2012)]. 
+\subsection{Sedation}
+
+Sedation can be used to help a patient tolerate an MRI scan. Murphy and Brunberg retrospectively analyzed seven weeks of data from the MR department and found that 14.2\% of their adult patients some form of sedation \cite{Murphy1997}. In a study about claustrophobia and MR acquisitions, ELEPHANTS report that out of 55,734 patients who underwent MRI scans, a total of 1,004 patients experienced claustrophobia and 610 of these patients required intravenous sedation before their scans \cite{Dewey2007}. Even though sedation allowed the patients mentioned in this paragraph to undergo an MRI scan, the authors of both studies note that sedation can result in adverse events and advise the reader to avoid patient sedation if possible.
+
+
+Sedation can be used with pediatric patients, though the risks are more significant than with adult patients. Studies have shown that sedation for pediatric imaging can lead to hypoxemia and inappropriate sedation levels during image acquisition \cite{Malviya2000}. Some pediatric patients can also expect ``motor imbalance and gastrointestinal effects,'' as well as agitation and restless for a period of hours after waking from sedation.
+
+A report from the American Academy of Pediatrics and the American Academy of Pediatric Dentistry outlines the minimum set of criteria needed for a pediatric patient to be sedated for a procedure \cite{Cote2016}:
+\begin{itemize}
+\item The patient must be a suitable candidate for sedation based on their medical history and medical needs.
+\item At least one responsible person must be with the patient at the medical factility, though the report recommends that two adults are present for patients who use car seats to travel to and from the facility. This practice ensures that one adult can monitor the patient after the procedure while the other adult drives.
+\item The clinician administering the sedation must have immediate access to emergency facilities, personnel, and equipment and should monitor the patient for adverse events including respiratory events, seizures, vomiting, and allergic reactions.
+\item There must be a clear protocol outlined for immediate access to these emergency services.
+\item Emergency equipment and drugs appropriate for the patient's size and age must be immediately available in case the patient needs to be resuscitated.
+\item Informed consent must be obtained prior to the procedure.
+\item Instructions for what to expect and how to transport the patient home safely must be provided to the patient's responsible adult.
+\item The patient may be held at the facility for prolonged monitoring after the procedure.
+\item The patient's food and drink intake prior to the procedure should be taken into account to minimize the risk of pulmonary aspiration.
+\item The patient's health status must be evaluated and verified by the sedation team prior to the procedure.
+\item The information about the procedure must be correctly documented.
+\item The facility should have a dedicated recovery area, and the status of the patient should be recorded when he is discharged. The patient should not be discharged if his level of consciousness and oxygen saturation do not meet recognized guidelines.
+\end{itemize}
+\noindent This report clearly states that the levels of monitoring suggested within should serve as minimum levels of involvement: clinicians should increase patient monitoring as needed for complex cases.
+
+Sedation in neonatal and infant populations is not recommended. The  U.~S.~Food and Drug Administration (FDA) issued a warning in late 2016 about repeated use of sedation or general anesthesia in patients under three years of age or in pregnant women in their third trimester \cite{FDA2016}. The warning states that while a single, relatively short exposure to sedative and anesthetic drugs is unlikely to impact the patient, the effects of prolonged exposure to these drugs are still being studied. Studies of sedative and anesthetic drugs in multiple animal models have shown that these drugs can lead to loss of nerve cells in the brain when the animals undergo prolonged, repeated exposure to them during period of brain development. More data is needed to determine if this effect translates to humans.
+
+\subsection{Education}
+
+\subsection{Distraction}
+
+\subsection{Sleep Methods for Neonates}
+
+%In pediatrics especially, sedation requires additional hospital personnel to observe the patient and prevent adverse effects, and it may require the patient to remain in the hospital for some time after the scan to ensure the patient does not experience any adverse events.
+
+%Efforts have been made to develop proactive methods for mitigating the effects of motion in rs-fMRI. There are clinical protocols that can be used to try to prevent motion from occurring during acquisition, but these protocols are either not effective, not safe, or not compatible with rs-fMRI. Sedation, for example, r
+%, and is not compatible with all imaging modalities or patient populations [Coté and Wilson (2016); Gale et al. (2013)]. Education techniques can be used with pediatric and adult patients to help the patients learn what to expect during a scan, though it does not prevent the patient from moving during the scan itself [Alexander (2012); Barnea-Goraly et al. (2014)]. Playing videos or audio, or allowing the patient to use a virtual reality setup during the scan can help reduce anxiety in pediatric and adult patients, though the motion reduction techniques of these distraction tactics are questionable [Harned and Strain (2001); Khan et al. (2007); Garcia-Palacios et al. (2007)]. For scans of neonatal and pediatric patients, parental involvement can help calm the patient, but parental distress can further upset an anxious patient and complicate the scanning process [Alexander (2012)]. 
 
 %A few researchers have explored the area of prospective motion correction during the image acquisition. 
 
