@@ -91,26 +91,43 @@ These protocols are generally successful: when performed correctly, the neonatal
 
 % application of rs-fMRI to evaluate neonates neurodevelopmental status of infants and neonates, and in personalized care by identifying patients who may benefit from certain therapies or neuroprotective interventions \cite{Smyser2015}.
 
-\section{MOTION CORRECTION}
+\section{PROSPECTIVE MOTION CORRECTION}
 
 Since motion cannot be completely eliminated from rs-fMRI scans, different approaches have developed for correcting for the effects of motion after the scan. These approaches can be divided into two groups: those that monitor the patient's motion during the scan and those that work solely on the acquired sequences.
 
-\subsection{Proactive Motion Monitoring}
+\subsection{Optical Motion Correction}
 
-%Efforts have been made to develop proactive methods for mitigating the effects of motion in rs-fMRI. There are clinical protocols that can be used to try to prevent motion from occurring during acquisition, but these protocols are either not effective, not safe, or not compatible with rs-fMRI. 
-% 
+Several groups have developed methods for actively recording the patient's position during an MRI scan. These methods usually involve a combination of markers placed on the patient and one or more MR compatible optical cameras placed the scanner bore. Throughout the scan, the optical cameras record the position of the markers on the patient. Changes in the patient position are used to update the MR parameters in real-time, resulting in less motion corruption in the acquired sequences.
 
-%A few researchers have explored the area of prospective motion correction during the image acquisition. 
+The first report of successful prospective motion correction using optical cameras and markers was by Zaitsev et al. in 2006 \cite{Zaitsev2006}. Their dual camera system was located outside of the MRI scanner and focused on the patient inside the system. Four reflective markers were attached to a modified mouthpiece originally designed for patient immobilization. Changes in the translation and rotation of the patient were recorded and processed during the exam. The processed changes were sent in real-time to the MRI scanner which used them to update the gradient orientations and RF frequences and phases at every time point during the acquisition process.
 
-%Dosenbach et al. have developed a tool to evaluate motion in rs-fMRI sequences as they are acquired [Dosenbach et al. (2017)]. It registers each frame to the initial frame of the rs-fMRI sequence immediately after the new frame is recorded. The parameters produced by this registration are used to calculate the framewise displacement between pairs of frames, which is then compared to a set of displacement thresholds associated with the scan quality. The number of frames that meet each threshold is used to determine how many more frames are needed to obtain five minutes of low-motion frames. This method for assessing the quality of a scan in real time is useful for ensuring images are acquired with a sufficient number of low-motion frames. It can also aid the technologists in determining whether to prematurely terminate a scan, which may be desirable if the amount of time needed to obtain enough low-motion frames is greater than the amount of time remaining for the patient in the scanner. However, this method cannot be used to recover motion-corrupted data in existing repositories.
+Aksoy et al. simplify this approach by using a single in-bore optical camera and replacing the 3D markers with a small 2D chessboard grid \cite{Aksoy2008}. Properties intrinsic to the camera as well as information about the camera's placement within the MRI scanner were recorded prior as part of a calibration process. During the scan, patient movements recorded using the optical camera were used to calculate the relationship between the patient's position at the current time point in the physical space and the patient's position at the initial time point in the MR space. The transformation needed to translate between these two positions was calculated on a laptop and passed to the MRI scanner to correct for motion in real-time.
 
-\subsection{Post-acquisition Motion Mitigation (?)}
+% Need one more optical example...
+
+% Limitation: MR safe equipment
+% Limitation: measurements must be made  
+% Limitation: only rigid body motion. 
+The methods discussed above have a few limitations due to the optical camera setups. For precise real-time motion correction, the camera or cameras must be carefully placed so that the position of the marker on the patient can be recorded. They must have a clear line of sight, which means they will be in the same room as the MRI scanner. The cameras and markers must be MR compatible, but the positions of the cameras and markers in physical space relative to the MRI scanner must be known. The changes in position that are recorded and used to adapt the scan parameters will only be true for rigid body motion of the body part to which the markers are attached: any distortion of soft tissue may not be accurately accounted for during the motion correction. 
+
+\subsection{Within Sequence Motion Monitoring}
+
+Dosenbach et al. have developed a tool to evaluate motion in rs-fMRI sequences as they are acquired ]\cite{Dosenbach2017}. It registers each frame to the initial frame of the rs-fMRI sequence immediately after the new frame is recorded. The parameters produced by this registration are used to calculate the framewise displacement between pairs of frames, which is then compared to a set of displacement thresholds associated with the scan quality. The number of frames that meet each threshold is used to determine how many more frames are needed to obtain five minutes of low-motion frames. This method for assessing the quality of a scan in real time is useful for ensuring images are acquired with a sufficient number of low-motion frames. It can also aid the technologists in determining whether to prematurely terminate a scan, which may be desirable if the amount of time needed to obtain enough low-motion frames is greater than the amount of time remaining for the patient in the scanner. 
+
+
+
+However, this method cannot be used to recover motion-corrupted data in existing repositories.
+
+
+\section{POST-ACQUISITION MOTION CORRECTION}
 
 %Due to the inconsistency in the success of clinical protocols in preventing subject motion, the primary focus of motion mitigation research is development of post-acquisition techniques. The most commonly used techniques include global volume registration, denoising, and filtering.
 
 %After the sequence undergoes global rigid volume registration and the motion estimates are calculated, denoising and filtering techniques are often applied. Denoising techniques consist of regressions of various confound variables. Regression of the global signal (global signal regression, GSR) corrects for variance between temporal signals within a voxel and for the mean BOLD signal across all voxels [Power et al. (2014); Satterthwaite et al. (2013); Yan et al. (2013a); Yan et al. (2013b)]. GSR has been shown to reduce spuriously increased long-distance correlations in functional connectivity studies, but may inadvertently weaken shorter-distance connections [Jo et al. (2013); Power et al. (2014); Satterthwaite et al. (2012)]. Other regression parameters that have been investigated include the six realignment parameters and their first-order derivatives [Power et al. (2012); Satterthwaite et al. (2012); van Dijk et al. (2012)], realignment parameters from surrounding timpoints [Patriat et al. (2017); Power et al. (2014); Satterthwaite et al. (2013); Yan et al. (2013b)],signals from white matter or cerebral spinal fluid [Power et al. (2014); Satterthwaite et al. (2013); Yan et al. (2013b); Jo et al. (2010)], and components identified using principal or independent component analysis [Pruim et al. (2015); Salimi-Khorshidi et al. (2014); Behzadi et al. (2007)]. Regression of each of these sets of parameters has been shown to reduce the effects of motion in the sequence but not remove them entirely [Power et al. (2015); Parkes et al. (2017)]. 
 
 %Filtering, which is also referred to as censoring, involves the identification and removal or interpolation of frames containing high quantities of motion. Two popular techniques are scrubbing and spike regression. Power et al.’s scrubbing technique removes frames with more than 0.2 mm of FD [Power et al. (2012)]. Spike regression identifies frames with large FD and replaces them with interpolated volumes [Satterthwaite et al. (2013)]. Unfortunately, these filtering techniques ultimately result in the loss of data as frames are removed from the sequence. A third technique called despiking detects signal spikes at the voxel level and interpolates over the spikes [Jo et al. (2013); Patel et al. (2014)]. Despiking does not remove frames, but could accidentally remove valuable signals. 
+
+
 
 \section{VOLUME REGISTRATION}
 
@@ -122,20 +139,9 @@ Liao et al. suggested that a rs-fMRI sequence could be viewed as a hidden Markov
 %
 %Magnetic resonance imaging is a technique used in medicine to obtain in vivo images of different organ systems. The patient is placed in a static magnetic field and electromagnetic pulses are used to briefly induce a secondary magnetic field.
 %
-%One type of MRI is resting state functional MRI (rs-fMRI). rs-fMRI is 
-%
-%
-%\section{THE CHALLENGE OF MOTION}%            Remember to capitalize the sections (otherwise, the bookmark will be lowercase)
 %
 %Patient movement is a challenge across all modalities of medical imaging, but rs-fMRI is particularly sensitive to it. Various preventative, 
 %
 %An rs-fMRI is considered usable if it contains at least 5 minutes of low motion data.
 %
-%\subsection{•}
-%
-%
-%
-%\subsection{First subsection of the section}
-%This is well-known topic, and we shall discuss it no more.
-%\subsection{Second subsection of the section}
 %This is a very complicated topic and we shall discuss it in our next paper.\textsl{•}

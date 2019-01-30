@@ -7,6 +7,13 @@
   drugs in young children and pregnant women}.
 \newblock Technical report.
 
+\bibitem[Aksoy et~al., 2008]{Aksoy2008}
+Aksoy, M., Newbould, R., Straka, M., Holdsworth, S.~J., Skare, S.~T., Santos,
+  J.~M., and Bammer, R. (2008).
+\newblock {A Real Time Optical Motion Correction System Using a Single Camera
+  and 2D Marker}.
+\newblock {\em Proceedings of the 16th Scientific Meeting of ISMRM}, 16:3120.
+
 \bibitem[Alexander, 2012]{Alexander2012}
 Alexander, M. (2012).
 \newblock {Managing Patient Stress in Pediatric Radiology}.
@@ -166,6 +173,13 @@ Yan, C.-G., Craddock, R.~C., He, Y., and Milham, M.~P. (2013).
 \newblock {Addressing head motion dependencies for small-world topologies in
   functional connectomics}.
 \newblock {\em Frontiers in Human Neuroscience}, 7(December):1--19.
+
+\bibitem[Zaitsev et~al., 2006]{Zaitsev2006}
+Zaitsev, M., Dold, C., Sakas, G., Hennig, J., and Speck, O. (2006).
+\newblock {Magnetic resonance imaging of freely moving objects: prospective
+  real-time motion correction using an external optical motion tracking
+  system}.
+\newblock {\em NeuroImage}, 31(3):1038--1050.
 
 \bibitem[Zang et~al., 2007]{Zang2007}
 Zang, Y.~F., Yong, H., Chao-Zhe, Z., Qing-Jiu, C., Man-Qiu, S., Meng, L.,
