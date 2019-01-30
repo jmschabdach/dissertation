@@ -20,7 +20,7 @@ Several researchers have proposed different methods for calculating the FD. Powe
 
 The effects of motion on the BOLD signal are a little more difficult to measure. They occur because motion disrupts the magnetic spin gradients present in the patient during the scan. The spin gradients need time to recover to the correct magnetic field orientation, and up to eight to ten seconds may pass before the recovery is complete \cite{Power2014}. While the spin gradients are reorienting, the recorded BOLD signal may vary between temporally neighboring volumes. These changes can be measured using the temporal derivative of the variance in the BOLD signal intensity (DVARS) between the  frames \cite{Power2012}.
 
-Even though the effects of motion on the patient position and the recorded signal can be measured, we still need criteria to determine whether an image containing motion can be used. Patients move slightly due to breathing and cardiac function, and the BOLD signal naturally fluctuates over time. Some motion is expected; however, we need to know how much motion can be present in the image before it is considered to be corrupted by it. Power et al. established thresholds for FD and DVARS to determine the usability of a pair of images:
+Even though the effects of motion on the patient position and the recorded signal can be measured, we still need gold standard criteria to determine whether an image containing motion can be used. Patients move slightly due to breathing and cardiac function, and the BOLD signal naturally fluctuates over time. Some motion is expected; however, we need to know how much motion can be present in the image before it is considered to be corrupted by it. Power et al. established thresholds for FD and DVARS to determine the usability of a pair of images:
 \begin{itemize}
 \item FD less than or equal to 0.2 mm from previous volume, and
 \item DVARS less than or equal to 25 units on a normalized scale of [0, 1000] signal units \cite{Power2014}
@@ -54,20 +54,42 @@ A report from the American Academy of Pediatrics and the American Academy of Ped
 \item The information about the procedure must be correctly documented.
 \item The facility should have a dedicated recovery area, and the status of the patient should be recorded when he is discharged. The patient should not be discharged if his level of consciousness and oxygen saturation do not meet recognized guidelines.
 \end{itemize}
-\noindent This report clearly states that the levels of monitoring suggested within should serve as minimum levels of involvement: clinicians should increase patient monitoring as needed for complex cases.
+\noindent This report clearly states that the levels of monitoring suggested within should serve as minimum levels of involvement: clinicians should increase patient monitoring as needed for complex cases. Rutman has a similar and detailed perspective on patient monitoring during and after sedation, suggesting that two independent medical personnel should be present during the scan and one should be present until the patient is discharged \cite{Rutman2009}. Rutman also notes that all sedation and monitoring equipment must be MR compatible, which is a simple but important safety constraint. This constraint may make sedation less advisable if the appropriate equipment is not available.
 
 Sedation in neonatal and infant populations is not recommended. The  U.~S.~Food and Drug Administration (FDA) issued a warning in late 2016 about repeated use of sedation or general anesthesia in patients under three years of age or in pregnant women in their third trimester \cite{FDA2016}. The warning states that while a single, relatively short exposure to sedative and anesthetic drugs is unlikely to impact the patient, the effects of prolonged exposure to these drugs are still being studied. Studies of sedative and anesthetic drugs in multiple animal models have shown that these drugs can lead to loss of nerve cells in the brain when the animals undergo prolonged, repeated exposure to them during period of brain development. More data is needed to determine if this effect translates to humans.
 
-\subsection{Education}
+\subsection{Education, Distraction, and Behavioral Techniques}
 
-\subsection{Distraction}
+Educational material can be used to help the patient understand what to expect during an MRI scan as well as to teach the patient different behavioral coping strategies. The education materials can be used either before arrival at the imaging facility or upon arriving at the imaging facility. 
+
+% Adult patients
+Most of the formal literature focuses on educational, distraction, and behavioral techniques to use during pediatric MRI scans. Many of the following approaches could be adapted for use with adults.
+
+% Pediatric patients
+In a review of the available literature, Alexander found several commonly used techniques to educate, comfort, and distract pediatric patients during radiology procedures. Tools such as educational coloring books and short videos can expose patients to the types of equipment they can expect to see using a familiar, engaging medium. Pediatric patients can learn coping strategies to employ during the scan such as breathing techniques, imagery, and positive statements. Alexander notes that allowing a pediatric patient to choose a behavioral coping strategy gives the patient a sense of control and may encourage the patient to cooperate during the MRI acquisition \cite{Alexander2012}.
+
+Mock scanners and MRI simulators can also help the patient feel more comfortable during the scan. Barnea-Goraly et al. showed that both a commerical MRI simulator and a low-tech mock scanner desensitized pediatric patients between four and ten years of age to the MRI scanner with the results that 92.3\% of the acquired images could be used in high-resolution anatomical studies \cite{Barnea-Goraly2014}. 
+
+% distraction
+During the MRI acquisition, headphones with music or stories and MR compatible video goggles can distract patients \cite{Alexander2012} \cite{Barnea-Goraly2014} \cite{Harned2001}. Garcia-Palacios et al. performed a case study comparing the efficacy of music and immersive virtual reality tools as distractions during a mock scan \cite{Garcia-Palacios2007}. They suggest that immersive virtual reality may help decrease patient anxiety during a scan more effectively than music alone. %As current virtual reality technology improves, it may join headphones and MR compatible video goggles as an available distraction method.
+
+Another source of distraction for pediatric patients could be the patient's parent or parents. Having a parent involved with the scanning process may calm the patient and encourage him to cooperate; however, patients can become distressed if their parent is distressed \cite{Alexander2012}. 
+
+% Neonates
+
+
+%Education techniques can be used with pediatric and adult patients to help the patients learn what to expect during a scan, though it does not prevent the patient from moving during the scan itself [Alexander (2012); Barnea-Goraly et al. (2014)].
+
+%Playing videos or audio, or allowing the patient to use a virtual reality setup during the scan can help reduce anxiety in pediatric and adult patients, though the motion reduction techniques of these distraction tactics are questionable [Harned and Strain (2001); Khan et al. (2007); Garcia-Palacios et al. (2007)].
+
+%For scans of neonatal and pediatric patients, parental involvement can help calm the patient, but parental distress can further upset an anxious patient and complicate the scanning process [Alexander (2012)]. 
 
 \subsection{Sleep Methods for Neonates}
 
 %In pediatrics especially, sedation requires additional hospital personnel to observe the patient and prevent adverse effects, and it may require the patient to remain in the hospital for some time after the scan to ensure the patient does not experience any adverse events.
 
-%Efforts have been made to develop proactive methods for mitigating the effects of motion in rs-fMRI. There are clinical protocols that can be used to try to prevent motion from occurring during acquisition, but these protocols are either not effective, not safe, or not compatible with rs-fMRI. Sedation, for example, r
-%, and is not compatible with all imaging modalities or patient populations [Coté and Wilson (2016); Gale et al. (2013)]. Education techniques can be used with pediatric and adult patients to help the patients learn what to expect during a scan, though it does not prevent the patient from moving during the scan itself [Alexander (2012); Barnea-Goraly et al. (2014)]. Playing videos or audio, or allowing the patient to use a virtual reality setup during the scan can help reduce anxiety in pediatric and adult patients, though the motion reduction techniques of these distraction tactics are questionable [Harned and Strain (2001); Khan et al. (2007); Garcia-Palacios et al. (2007)]. For scans of neonatal and pediatric patients, parental involvement can help calm the patient, but parental distress can further upset an anxious patient and complicate the scanning process [Alexander (2012)]. 
+%Efforts have been made to develop proactive methods for mitigating the effects of motion in rs-fMRI. There are clinical protocols that can be used to try to prevent motion from occurring during acquisition, but these protocols are either not effective, not safe, or not compatible with rs-fMRI. 
+% 
 
 %A few researchers have explored the area of prospective motion correction during the image acquisition. 
 

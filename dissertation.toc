@@ -4,10 +4,9 @@
 \contentsline {section}{\numberline {2.2}MEASURING THE EFFECTS OF MOTION}{4}{section.2.2}
 \contentsline {section}{\numberline {2.3}MOTION PREVENTION}{6}{section.2.3}
 \contentsline {subsection}{\numberline {2.3.1}Sedation}{6}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Education}{8}{subsection.2.3.2}
-\contentsline {subsection}{\numberline {2.3.3}Distraction}{8}{subsection.2.3.3}
-\contentsline {subsection}{\numberline {2.3.4}Sleep Methods for Neonates}{8}{subsection.2.3.4}
-\contentsline {section}{\numberline {2.4}MOTION CORRECTION}{8}{section.2.4}
-\contentsline {section}{\numberline {2.5}VOLUME REGISTRATION}{8}{section.2.5}
-\contentsline {chapter}{{\bfseries \numberline {3.0}CONCLUSIONS}}{9}{chapter.3}
-\contentsline {chapter}{{\bfseries \bibname }}{10}{section*.1}
+\contentsline {subsection}{\numberline {2.3.2}Education, Distraction, and Behavioral Techniques}{8}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Sleep Methods for Neonates}{9}{subsection.2.3.3}
+\contentsline {section}{\numberline {2.4}MOTION CORRECTION}{9}{section.2.4}
+\contentsline {section}{\numberline {2.5}VOLUME REGISTRATION}{9}{section.2.5}
+\contentsline {chapter}{{\bfseries \numberline {3.0}CONCLUSIONS}}{10}{chapter.3}
+\contentsline {chapter}{{\bfseries \bibname }}{11}{section*.1}
