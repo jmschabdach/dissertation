@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  29 JAN 2019 19:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  30 JAN 2019 10:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -432,51 +432,51 @@ Overfull \hbox (48.3216pt too wide) in paragraph at lines 74--75
 \OT1/cmr/m/n/12 gog-gles can dis-tract pa-tients [[]] [[]] [[]].
  []
 
-[8]) [9]
+[8] [9]) [10] [11]
 \openout2 = `8/conclusion.aux'.
 
  (./8/conclusion.tex
 Chapter 3
-) [10
+) [12
 
 
 
 ]
 BIBLIOGRAPHY
-(./dissertation.bbl [11
+(./dissertation.bbl [13
 
 
-] [12])
+] [14])
 \openout3 = `dissertation.etd'.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 96.
- [13]
+ [15]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 96.
  (./dissertation.aux (./1/introduction.aux)
 (./2/background.aux) (./8/conclusion.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 96.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 96.
 Package rerunfilecheck Info: File `dissertation.out' has not changed.
-(rerunfilecheck)             Checksum: FF5400D4E27DE80CAF57C0E993F9C6C7;985.
+(rerunfilecheck)             Checksum: B7F608283528FCE5AF6E3D826EAF1F4B;1168.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 96.
  ) 
 Here is how much of TeX's memory you used:
- 6774 strings out of 492982
- 96485 string characters out of 6134895
- 190267 words of memory out of 5000000
- 10183 multiletter control sequences out of 15000+600000
+ 6790 strings out of 492982
+ 96696 string characters out of 6134895
+ 190525 words of memory out of 5000000
+ 10190 multiletter control sequences out of 15000+600000
  9545 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,5n,30p,1609b,413s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,6n,30p,1609b,413s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on dissertation.pdf (17 pages, 106974 bytes).
+Output written on dissertation.pdf (19 pages, 112980 bytes).
 PDF statistics:
- 240 PDF objects out of 1000 (max. 8388607)
- 213 compressed objects within 3 object streams
- 55 named destinations out of 1000 (max. 500000)
- 129 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 270 PDF objects out of 1000 (max. 8388607)
+ 241 compressed objects within 3 object streams
+ 64 named destinations out of 1000 (max. 500000)
+ 145 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -9,45 +9,45 @@ Database file #1: sources.bib
 Warning--to sort, need author or key in FDA2016
 Warning--empty author in FDA2016
 Warning--empty institution in FDA2016
-You've used 21 entries,
+You've used 26 entries,
             1935 wiz_defined-function locations,
-            623 strings with 9087 characters,
-and the built_in function-call counts, 10030 in all, are:
-= -- 952
-> -- 578
-< -- 6
-+ -- 208
-- -- 208
-* -- 970
-:= -- 1766
-add.period$ -- 63
-call.type$ -- 21
-change.case$ -- 210
-chr.to.int$ -- 21
-cite$ -- 25
-duplicate$ -- 298
-empty$ -- 598
-format.name$ -- 234
-if$ -- 1881
+            660 strings with 10390 characters,
+and the built_in function-call counts, 12472 in all, are:
+= -- 1183
+> -- 723
+< -- 7
++ -- 260
+- -- 260
+* -- 1209
+:= -- 2198
+add.period$ -- 78
+call.type$ -- 26
+change.case$ -- 261
+chr.to.int$ -- 26
+cite$ -- 30
+duplicate$ -- 368
+empty$ -- 743
+format.name$ -- 293
+if$ -- 2338
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 20
-newline$ -- 108
-num.names$ -- 60
-pop$ -- 169
+missing$ -- 25
+newline$ -- 133
+num.names$ -- 75
+pop$ -- 209
 preamble$ -- 1
-purify$ -- 209
+purify$ -- 260
 quote$ -- 0
-skip$ -- 226
+skip$ -- 277
 stack$ -- 0
-substring$ -- 689
-swap$ -- 29
+substring$ -- 861
+swap$ -- 34
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 126
+type$ -- 156
 warning$ -- 3
-while$ -- 77
+while$ -- 96
 width$ -- 0
-write$ -- 272
+write$ -- 337
 (There were 3 warnings)

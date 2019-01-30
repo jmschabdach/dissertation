@@ -71,22 +71,31 @@ In a review of the available literature, Alexander found several commonly used t
 Mock scanners and MRI simulators can also help the patient feel more comfortable during the scan. Barnea-Goraly et al. showed that both a commerical MRI simulator and a low-tech mock scanner desensitized pediatric patients between four and ten years of age to the MRI scanner with the results that 92.3\% of the acquired images could be used in high-resolution anatomical studies \cite{Barnea-Goraly2014}. 
 
 % distraction
-During the MRI acquisition, headphones with music or stories and MR compatible video goggles can distract patients \cite{Alexander2012} \cite{Barnea-Goraly2014} \cite{Harned2001}. Garcia-Palacios et al. performed a case study comparing the efficacy of music and immersive virtual reality tools as distractions during a mock scan \cite{Garcia-Palacios2007}. They suggest that immersive virtual reality may help decrease patient anxiety during a scan more effectively than music alone. %As current virtual reality technology improves, it may join headphones and MR compatible video goggles as an available distraction method.
+During the MRI acquisition, headphones with music or stories and MR compatible video goggles can distract patients \cite{Alexander2012} \cite{Barnea-Goraly2014} \cite{Harned2001}. Khan et al. found that a relatively simple moving light show can be helpful in distracting younger patients \cite{Khan2007}. Garcia-Palacios et al. performed a case study comparing the efficacy of music and immersive virtual reality tools as distractions during a mock scan \cite{Garcia-Palacios2007}. They suggest that immersive virtual reality may help decrease patient anxiety during a scan more effectively than music alone. %As current virtual reality technology improves, it may join headphones and MR compatible video goggles as an available distraction method.
 
-Another source of distraction for pediatric patients could be the patient's parent or parents. Having a parent involved with the scanning process may calm the patient and encourage him to cooperate; however, patients can become distressed if their parent is distressed \cite{Alexander2012}. 
+Another source of distraction for pediatric patients could be the patient's parent or parents. Having a parent involved with the scanning process may calm the patient and encourage him to cooperate; however, parental distress can further upset an anxious patient and complicate the scanning process \cite{Alexander2012}. 
 
-% Neonates
+These techniques for educating the patient and helping the patient cope with the anxiety that can come with an MRI scan all depend on the ability of the patient to understand instructions and communicate with the scan team. Due to the gap in communication abilities, these techniques are not useful for young patients such as neonates, infants, and toddlers. Other patient populations, such as those with developmental delays and neurobehavioral disorders, may also have difficulty adhering to these protocols. Even in patients with developed and intact communication skills, the techniques outlined here do not actively prevent the patient from moving during the scan: they only help the patient feel more comfortable with the MRI environment.
 
+\subsection{Feed and Sleep Protocols}
 
-%Education techniques can be used with pediatric and adult patients to help the patients learn what to expect during a scan, though it does not prevent the patient from moving during the scan itself [Alexander (2012); Barnea-Goraly et al. (2014)].
+Neither sedation nor educational and behavioral techniques are appropriate to use with neonatal patients, but rs-fMRIs in neonates and infants are invaluable  in studying early brain development and neurological diseases \cite{Smyser2015}. A set of protocols have been developed specifically for scanning neonates without sedation. These protocols are referred to as ``feed and sleep'' or ``feed and bundle'' protocols.
 
-%Playing videos or audio, or allowing the patient to use a virtual reality setup during the scan can help reduce anxiety in pediatric and adult patients, though the motion reduction techniques of these distraction tactics are questionable [Harned and Strain (2001); Khan et al. (2007); Garcia-Palacios et al. (2007)].
+Windram et al. describe a protocol in which the infant is deprived of food for four hours prior to the scan \cite{Windram2011}. At the scanning facility, the patient is fed by his mother, swaddled, and placed in a vacuum-bag immobilizer for the duration of the scan. 
 
-%For scans of neonatal and pediatric patients, parental involvement can help calm the patient, but parental distress can further upset an anxious patient and complicate the scanning process [Alexander (2012)]. 
+Rather than deprive the patient of food prior to the scan, Gale et al.'s protocol recommends timing the scan so that the patient is fed after arrival on site and less than 45 minutes before the scan \cite{Gale2013}. The patient's ears are protected from the noise of the MR scanner by a layer of dental putty, followed by headphones, and held in place by a hat. The patient is the swaddled and placed in the scanner once he is asleep. Additional foam padding is used to cushion the patient's head and provides extra noise protection.
 
-\subsection{Sleep Methods for Neonates}
+Mathur et al. describe a protocol similar to the previous two: the patient's feeding schedule is adjusted so that he feeds 30-45 minutes before the scan time, and he is swaddled, given ear protection, and placed in a vacuum-bag immobilizer \cite{Mathur2008}.
 
-%In pediatrics especially, sedation requires additional hospital personnel to observe the patient and prevent adverse effects, and it may require the patient to remain in the hospital for some time after the scan to ensure the patient does not experience any adverse events.
+These protocols are generally successful: when performed correctly, the neonatal patient usually sleeps for the duration of the MRI scan. However, the patient may shift slightly while asleep or may wake up and move mid-scan.
+
+% application of rs-fMRI to evaluate neonates neurodevelopmental status of infants and neonates, and in personalized care by identifying patients who may benefit from certain therapies or neuroprotective interventions \cite{Smyser2015}.
+
+\section{MOTION CORRECTION}
+
+Since motion cannot be completely eliminated from rs-fMRI scans, different approaches have developed for correcting for the effects of motion after the scan. These approaches can be divided into two groups: those that monitor the patient's motion during the scan and those that work solely on the acquired sequences.
+
+\subsection{Proactive Motion Monitoring}
 
 %Efforts have been made to develop proactive methods for mitigating the effects of motion in rs-fMRI. There are clinical protocols that can be used to try to prevent motion from occurring during acquisition, but these protocols are either not effective, not safe, or not compatible with rs-fMRI. 
 % 
@@ -95,7 +104,7 @@ Another source of distraction for pediatric patients could be the patient's pare
 
 %Dosenbach et al. have developed a tool to evaluate motion in rs-fMRI sequences as they are acquired [Dosenbach et al. (2017)]. It registers each frame to the initial frame of the rs-fMRI sequence immediately after the new frame is recorded. The parameters produced by this registration are used to calculate the framewise displacement between pairs of frames, which is then compared to a set of displacement thresholds associated with the scan quality. The number of frames that meet each threshold is used to determine how many more frames are needed to obtain five minutes of low-motion frames. This method for assessing the quality of a scan in real time is useful for ensuring images are acquired with a sufficient number of low-motion frames. It can also aid the technologists in determining whether to prematurely terminate a scan, which may be desirable if the amount of time needed to obtain enough low-motion frames is greater than the amount of time remaining for the patient in the scanner. However, this method cannot be used to recover motion-corrupted data in existing repositories.
 
-\section{MOTION CORRECTION}
+\subsection{Post-acquisition Motion Mitigation (?)}
 
 %Due to the inconsistency in the success of clinical protocols in preventing subject motion, the primary focus of motion mitigation research is development of post-acquisition techniques. The most commonly used techniques include global volume registration, denoising, and filtering.
 
