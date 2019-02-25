@@ -57,6 +57,12 @@ Dosenbach, N.~U., Koller, J.~M., Earl, E.~A., Miranda-Dominguez, O., Klein,
   reduce costs}.
 \newblock {\em NeuroImage}, 161(January):80--93.
 
+\bibitem[Forman et~al., 2011]{Forman2011}
+Forman, C., Aksoy, M., Hornegger, J., and Bammer, R. (2011).
+\newblock {Self-encoded marker for optical prospective head motion correction
+  in MRI}.
+\newblock {\em Medical Image Analysis}, 15(5):708--719.
+
 \bibitem[Gale et~al., 2013]{Gale2013}
 Gale, C., Jeffries, S., Logan, K.~M., Chappell, K.~E., Uthaya, S.~N., and Modi,
   N. (2013).
@@ -173,6 +179,11 @@ Yan, C.-G., Craddock, R.~C., He, Y., and Milham, M.~P. (2013).
 \newblock {Addressing head motion dependencies for small-world topologies in
   functional connectomics}.
 \newblock {\em Frontiers in Human Neuroscience}, 7(December):1--19.
+
+\bibitem[Zaitsev et~al., 2017]{Zaitsev2017}
+Zaitsev, M., Burak, A., LeVan, P., and Knowles, B.~R. (2017).
+\newblock {Prospective Motion Correction in Functional MRI}.
+\newblock pages 33--42.
 
 \bibitem[Zaitsev et~al., 2006]{Zaitsev2006}
 Zaitsev, M., Dold, C., Sakas, G., Hennig, J., and Speck, O. (2006).

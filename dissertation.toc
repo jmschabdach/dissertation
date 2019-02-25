@@ -7,7 +7,8 @@
 \contentsline {subsection}{\numberline {1.3.3}Feed and Sleep Protocols}{7}{subsection.1.3.3}
 \contentsline {section}{\numberline {1.4}PROSPECTIVE MOTION CORRECTION}{8}{section.1.4}
 \contentsline {subsection}{\numberline {1.4.1}Optical Motion Correction}{8}{subsection.1.4.1}
-\contentsline {subsection}{\numberline {1.4.2}Within Sequence Motion Monitoring}{9}{subsection.1.4.2}
-\contentsline {section}{\numberline {1.5}POST-ACQUISITION MOTION CORRECTION}{10}{section.1.5}
-\contentsline {section}{\numberline {1.6}VOLUME REGISTRATION}{10}{section.1.6}
-\contentsline {chapter}{{\bfseries \bibname }}{11}{section*.1}
+\contentsline {subsection}{\numberline {1.4.2}Navigator-based Motion Correction}{10}{subsection.1.4.2}
+\contentsline {subsection}{\numberline {1.4.3}General Limitations of Prospective Motion Correction}{11}{subsection.1.4.3}
+\contentsline {section}{\numberline {1.5}POST-ACQUISITION MOTION CORRECTION}{11}{section.1.5}
+\contentsline {section}{\numberline {1.6}VOLUME REGISTRATION}{11}{section.1.6}
+\contentsline {chapter}{{\bfseries \bibname }}{12}{section*.1}
