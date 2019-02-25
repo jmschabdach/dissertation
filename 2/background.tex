@@ -111,7 +111,7 @@ The camera used to record the position of the chessboard is mounted on the head 
 % Limitation: only rigid body motion. 
 The methods discussed above have a few limitations due to the optical camera setups. For precise real-time motion correction, the camera or cameras must be carefully placed so that the position of the marker on the patient can be recorded. They must have a clear line of sight, which means they will be in the same room as the MRI scanner, if not within the scanner bore. The cameras and markers must be MR compatible, and the positions of the cameras and markers in physical space relative to the visual markers on the patient must be known. These positions are key for the calculations used to measure the motions. Even if the motion measurements are accurate, the changes in position that are recorded and used to adapt the scan parameters will only be true for rigid body motion of the body part to which the markers are attached: any distortion of soft tissue will not be accurately accounted for during the motion correction. 
 
-\subsection{Navigator-based Motion Correction}
+\subsection{Within-Image Motion Correction}
 
 Dosenbach et al. have developed a tool to evaluate motion in rs-fMRI sequences as they are acquired \cite{Dosenbach2017}. It registers each frame to the initial frame of the rs-fMRI sequence immediately after the new frame is recorded. The parameters produced by this registration are used to calculate the framewise displacement between pairs of frames, which is then compared to a set of displacement thresholds associated with the scan quality. The number of frames that meet each threshold is used to determine how many more frames are needed to obtain five minutes of low-motion frames. This method for assessing the quality of a scan in real time is useful for ensuring images are acquired with a sufficient number of low-motion frames. It can also aid the technologists in determining whether to prematurely terminate a scan, which may be desirable if the amount of time needed to obtain enough low-motion frames is greater than the amount of time remaining for the patient in the scanner. 
 
@@ -120,36 +120,32 @@ Dosenbach et al. have developed a tool to evaluate motion in rs-fMRI sequences a
 
 Prospective motion correction actively changes the image as it is acquired. In order to view a scan not impacted by prospective motion correction, the patient must undergo a second scan. It may be wise to build the second image acquisition into the same scan period as the prospectively motion corrected scan: unsuccessful prospective motion correction has the potential to drastically corrupt the acquired scan \cite{Zaitsev2017}.
 
+MacClaren et al. note that while prospective motion correction reduces imhomogeneities in the $B_0$ field, the $B_0$ field will change when the patient moves \cite{MacClaren2013}.
+
 Both types of prospective motion correction introduce a delay into the scanning process. The delay is due to the additional processing of some metrics to determine the patient's position, the transmission of these metrics to the MR scanner, and the adjustments the scanner makes to its next set of measurements.
 
 Though prospective motion correction has great power for managing motion during a scan, it cannot be used to recover motion-corrupted data in existing repositories.
 
 
-\section{POST-ACQUISITION MOTION CORRECTION}
+\section{RETROSPECTIVE MOTION CORRECTION}
 
-%Due to the inconsistency in the success of clinical protocols in preventing subject motion, the primary focus of motion mitigation research is development of post-acquisition techniques. The most commonly used techniques include global volume registration, denoising, and filtering.
+Many groups have put significant effort into developing techniques for motion correction after the scan is acquired. Here, we discuss several commonly techniques including global volume registration, denoising, and filtering.
 
-%After the sequence undergoes global rigid volume registration and the motion estimates are calculated, denoising and filtering techniques are often applied. Denoising techniques consist of regressions of various confound variables. Regression of the global signal (global signal regression, GSR) corrects for variance between temporal signals within a voxel and for the mean BOLD signal across all voxels [Power et al. (2014); Satterthwaite et al. (2013); Yan et al. (2013a); Yan et al. (2013b)]. GSR has been shown to reduce spuriously increased long-distance correlations in functional connectivity studies, but may inadvertently weaken shorter-distance connections [Jo et al. (2013); Power et al. (2014); Satterthwaite et al. (2012)]. Other regression parameters that have been investigated include the six realignment parameters and their first-order derivatives [Power et al. (2012); Satterthwaite et al. (2012); van Dijk et al. (2012)], realignment parameters from surrounding timpoints [Patriat et al. (2017); Power et al. (2014); Satterthwaite et al. (2013); Yan et al. (2013b)],signals from white matter or cerebral spinal fluid [Power et al. (2014); Satterthwaite et al. (2013); Yan et al. (2013b); Jo et al. (2010)], and components identified using principal or independent component analysis [Pruim et al. (2015); Salimi-Khorshidi et al. (2014); Behzadi et al. (2007)]. Regression of each of these sets of parameters has been shown to reduce the effects of motion in the sequence but not remove them entirely [Power et al. (2015); Parkes et al. (2017)]. 
+\subsection{Global Volume Registration}
 
-%Filtering, which is also referred to as censoring, involves the identification and removal or interpolation of frames containing high quantities of motion. Two popular techniques are scrubbing and spike regression. Power et al.’s scrubbing technique removes frames with more than 0.2 mm of FD [Power et al. (2012)]. Spike regression identifies frames with large FD and replaces them with interpolated volumes [Satterthwaite et al. (2013)]. Unfortunately, these filtering techniques ultimately result in the loss of data as frames are removed from the sequence. A third technique called despiking detects signal spikes at the voxel level and interpolates over the spikes [Jo et al. (2013); Patel et al. (2014)]. Despiking does not remove frames, but could accidentally remove valuable signals. 
 
 
 % A number of post-acquisition methods have been developed specifically to correct for distortions due to the impact of motion on the magnetic field. The usability of these dynamic distortion correction methods has been studied in a few specific cases, but their generalizability has yet to be confirmed in a broader range of fMRI studies \cite{Zaitsev2017}.
 
+\subsection{Denoising}
 
-\section{VOLUME REGISTRATION}
+%After the sequence undergoes global rigid volume registration and the motion estimates are calculated, denoising and filtering techniques are often applied. Denoising techniques consist of regressions of various confound variables. Regression of the global signal (global signal regression, GSR) corrects for variance between temporal signals within a voxel and for the mean BOLD signal across all voxels [Power et al. (2014); Satterthwaite et al. (2013); Yan et al. (2013a); Yan et al. (2013b)]. GSR has been shown to reduce spuriously increased long-distance correlations in functional connectivity studies, but may inadvertently weaken shorter-distance connections [Jo et al. (2013); Power et al. (2014); Satterthwaite et al. (2012)]. Other regression parameters that have been investigated include the six realignment parameters and their first-order derivatives [Power et al. (2012); Satterthwaite et al. (2012); van Dijk et al. (2012)], realignment parameters from surrounding timpoints [Patriat et al. (2017); Power et al. (2014); Satterthwaite et al. (2013); Yan et al. (2013b)],signals from white matter or cerebral spinal fluid [Power et al. (2014); Satterthwaite et al. (2013); Yan et al. (2013b); Jo et al. (2010)], and components identified using principal or independent component analysis [Pruim et al. (2015); Salimi-Khorshidi et al. (2014); Behzadi et al. (2007)]. Regression of each of these sets of parameters has been shown to reduce the effects of motion in the sequence but not remove them entirely [Power et al. (2015); Parkes et al. (2017)]. 
+
+
+\subsection{Filtering}
+
+%Filtering, which is also referred to as censoring, involves the identification and removal or interpolation of frames containing high quantities of motion. Two popular techniques are scrubbing and spike regression. Power et al.’s scrubbing technique removes frames with more than 0.2 mm of FD [Power et al. (2012)]. Spike regression identifies frames with large FD and replaces them with interpolated volumes [Satterthwaite et al. (2013)]. Unfortunately, these filtering techniques ultimately result in the loss of data as frames are removed from the sequence. A third technique called despiking detects signal spikes at the voxel level and interpolates over the spikes [Jo et al. (2013); Patel et al. (2014)]. Despiking does not remove frames, but could accidentally remove valuable signals. 
+
+\section{VARIANTS OF GLOBAL VOLUME REGISTRATION}
 
 Liao et al. suggested that a rs-fMRI sequence could be viewed as a hidden Markov model, and reflected this idea in their suggested registration framework \cite{Liao2016}. Their framework uses the transformation of the previous volume to the reference volume as the initial transformation for the current volume and the reference volume. 
-
-
-
-%\section{MAGNETIC RESONANCE IMAGING}
-%
-%Magnetic resonance imaging is a technique used in medicine to obtain in vivo images of different organ systems. The patient is placed in a static magnetic field and electromagnetic pulses are used to briefly induce a secondary magnetic field.
-%
-%
-%Patient movement is a challenge across all modalities of medical imaging, but rs-fMRI is particularly sensitive to it. Various preventative, 
-%
-%An rs-fMRI is considered usable if it contains at least 5 minutes of low motion data.
-%
-%This is a very complicated topic and we shall discuss it in our next paper.\textsl{•}

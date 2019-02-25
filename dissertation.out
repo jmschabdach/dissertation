@@ -2,17 +2,21 @@
 \BOOKMARK [0][]{prelim.1}{COMMITTEE MEMBERSHIP PAGE}{}
 \BOOKMARK [0][]{prelim.2}{ABSTRACT}{}
 \BOOKMARK [0][]{prelim.4}{TABLE OF CONTENTS}{}
-\BOOKMARK [0][]{chapter.1}{1.0 BACKGROUND}{}% 1
-\BOOKMARK [1][]{section.1.1}{1.1 RESTING-STATE NETWORKS}{chapter.1}% 2
-\BOOKMARK [1][]{section.1.2}{1.2 MEASURING THE EFFECTS OF MOTION}{chapter.1}% 3
-\BOOKMARK [1][]{section.1.3}{1.3 MOTION PREVENTION}{chapter.1}% 4
-\BOOKMARK [2][]{subsection.1.3.1}{1.3.1 Sedation}{section.1.3}% 5
-\BOOKMARK [2][]{subsection.1.3.2}{1.3.2 Education, Distraction, and Behavioral Techniques}{section.1.3}% 6
-\BOOKMARK [2][]{subsection.1.3.3}{1.3.3 Feed and Sleep Protocols}{section.1.3}% 7
-\BOOKMARK [1][]{section.1.4}{1.4 PROSPECTIVE MOTION CORRECTION}{chapter.1}% 8
-\BOOKMARK [2][]{subsection.1.4.1}{1.4.1 Optical Motion Correction}{section.1.4}% 9
-\BOOKMARK [2][]{subsection.1.4.2}{1.4.2 Navigator-based Motion Correction}{section.1.4}% 10
-\BOOKMARK [2][]{subsection.1.4.3}{1.4.3 General Limitations of Prospective Motion Correction}{section.1.4}% 11
-\BOOKMARK [1][]{section.1.5}{1.5 POST-ACQUISITION MOTION CORRECTION}{chapter.1}% 12
-\BOOKMARK [1][]{section.1.6}{1.6 VOLUME REGISTRATION}{chapter.1}% 13
-\BOOKMARK [0][]{section*.1}{BIBLIOGRAPHY}{}% 14
+\BOOKMARK [0][]{chapter.1}{1.0 INTRODUCTION}{}% 1
+\BOOKMARK [0][]{chapter.2}{2.0 BACKGROUND}{}% 2
+\BOOKMARK [1][]{section.2.1}{2.1 RESTING-STATE NETWORKS}{chapter.2}% 3
+\BOOKMARK [1][]{section.2.2}{2.2 MEASURING THE EFFECTS OF MOTION}{chapter.2}% 4
+\BOOKMARK [1][]{section.2.3}{2.3 MOTION PREVENTION}{chapter.2}% 5
+\BOOKMARK [2][]{subsection.2.3.1}{2.3.1 Sedation}{section.2.3}% 6
+\BOOKMARK [2][]{subsection.2.3.2}{2.3.2 Education, Distraction, and Behavioral Techniques}{section.2.3}% 7
+\BOOKMARK [2][]{subsection.2.3.3}{2.3.3 Feed and Sleep Protocols}{section.2.3}% 8
+\BOOKMARK [1][]{section.2.4}{2.4 PROSPECTIVE MOTION CORRECTION}{chapter.2}% 9
+\BOOKMARK [2][]{subsection.2.4.1}{2.4.1 Optical Motion Correction}{section.2.4}% 10
+\BOOKMARK [2][]{subsection.2.4.2}{2.4.2 Within-Image Motion Correction}{section.2.4}% 11
+\BOOKMARK [2][]{subsection.2.4.3}{2.4.3 General Limitations of Prospective Motion Correction}{section.2.4}% 12
+\BOOKMARK [1][]{section.2.5}{2.5 RETROSPECTIVE MOTION CORRECTION}{chapter.2}% 13
+\BOOKMARK [2][]{subsection.2.5.1}{2.5.1 Global Volume Registration}{section.2.5}% 14
+\BOOKMARK [2][]{subsection.2.5.2}{2.5.2 Denoising}{section.2.5}% 15
+\BOOKMARK [2][]{subsection.2.5.3}{2.5.3 Filtering}{section.2.5}% 16
+\BOOKMARK [1][]{section.2.6}{2.6 VARIANTS OF GLOBAL VOLUME REGISTRATION}{chapter.2}% 17
+\BOOKMARK [0][]{section*.1}{BIBLIOGRAPHY}{}% 18

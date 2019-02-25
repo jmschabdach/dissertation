@@ -2,15 +2,17 @@ This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: dissertation.aux
 The style file: apalike.bst
+A level-1 auxiliary file: 1/introduction.aux
 A level-1 auxiliary file: 2/background.aux
 Database file #1: sources.bib
+Warning--I didn't find a database entry for "MacClaren2013"
 Warning--to sort, need author or key in FDA2016
 Warning--empty author in FDA2016
 Warning--empty institution in FDA2016
 Warning--empty journal in Zaitsev2017
 You've used 30 entries,
             1935 wiz_defined-function locations,
-            684 strings with 11258 characters,
+            687 strings with 11302 characters,
 and the built_in function-call counts, 14461 in all, are:
 = -- 1372
 > -- 835
@@ -49,4 +51,4 @@ warning$ -- 4
 while$ -- 112
 width$ -- 0
 write$ -- 388
-(There were 4 warnings)
+(There were 5 warnings)
