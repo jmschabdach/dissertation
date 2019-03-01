@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  1 MAR 2019 15:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  1 MAR 2019 15:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -441,7 +441,7 @@ Overfull \hbox (97.43358pt too wide) in paragraph at lines 154--155
 istance con-nec-tions [[]][[]]
  []
 
-[15]
+
 Overfull \hbox (15.70665pt too wide) in paragraph at lines 156--157
 \OT1/cmr/m/n/12 [[]], re-align-ment pa-ram-e-ters from sur-round-ing tim-points
  [[]]
@@ -450,7 +450,7 @@ Overfull \hbox (15.70665pt too wide) in paragraph at lines 156--157
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
-) [16]
+[15]) [16]
 BIBLIOGRAPHY
 (./dissertation.bbl [17
 
@@ -486,10 +486,10 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmti12.pfb>
-Output written on dissertation.pdf (25 pages, 149131 bytes).
+Output written on dissertation.pdf (25 pages, 147782 bytes).
 PDF statistics:
- 392 PDF objects out of 1000 (max. 8388607)
- 354 compressed objects within 4 object streams
+ 385 PDF objects out of 1000 (max. 8388607)
+ 347 compressed objects within 4 object streams
  93 named destinations out of 1000 (max. 500000)
  177 words of extra memory for PDF output out of 10000 (max. 10000000)
 
