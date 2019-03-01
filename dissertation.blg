@@ -5,50 +5,49 @@ The style file: apalike.bst
 A level-1 auxiliary file: 1/introduction.aux
 A level-1 auxiliary file: 2/background.aux
 Database file #1: sources.bib
-Warning--I didn't find a database entry for "MacClaren2013"
 Warning--to sort, need author or key in FDA2016
 Warning--empty author in FDA2016
 Warning--empty institution in FDA2016
 Warning--empty journal in Zaitsev2017
-You've used 30 entries,
+You've used 45 entries,
             1935 wiz_defined-function locations,
-            687 strings with 11302 characters,
-and the built_in function-call counts, 14461 in all, are:
-= -- 1372
-> -- 835
+            776 strings with 15100 characters,
+and the built_in function-call counts, 22052 in all, are:
+= -- 2081
+> -- 1330
 < -- 8
-+ -- 300
-- -- 300
-* -- 1395
-:= -- 2542
-add.period$ -- 90
-call.type$ -- 30
-change.case$ -- 301
-chr.to.int$ -- 30
-cite$ -- 35
-duplicate$ -- 431
-empty$ -- 863
-format.name$ -- 337
-if$ -- 2719
-int.to.chr$ -- 1
++ -- 481
+- -- 480
+* -- 2142
+:= -- 3900
+add.period$ -- 135
+call.type$ -- 45
+change.case$ -- 466
+chr.to.int$ -- 44
+cite$ -- 50
+duplicate$ -- 639
+empty$ -- 1284
+format.name$ -- 532
+if$ -- 4123
+int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 29
-newline$ -- 153
-num.names$ -- 87
-pop$ -- 245
+missing$ -- 44
+newline$ -- 228
+num.names$ -- 132
+pop$ -- 382
 preamble$ -- 1
-purify$ -- 300
+purify$ -- 465
 quote$ -- 0
-skip$ -- 326
+skip$ -- 476
 stack$ -- 0
-substring$ -- 1001
-swap$ -- 44
+substring$ -- 1497
+swap$ -- 59
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 180
+type$ -- 270
 warning$ -- 4
-while$ -- 112
+while$ -- 168
 width$ -- 0
-write$ -- 388
-(There were 5 warnings)
+write$ -- 582
+(There were 4 warnings)
