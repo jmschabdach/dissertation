@@ -4,6 +4,8 @@ The top-level auxiliary file: dissertation.aux
 The style file: apalike.bst
 A level-1 auxiliary file: 1/introduction.aux
 A level-1 auxiliary file: 2/background.aux
+A level-1 auxiliary file: data.aux
+A level-1 auxiliary file: experiments.aux
 Database file #1: sources.bib
 Warning--to sort, need author or key in FDA2016
 Warning--empty author in FDA2016
@@ -11,7 +13,7 @@ Warning--empty institution in FDA2016
 Warning--empty journal in Zaitsev2017
 You've used 45 entries,
             1935 wiz_defined-function locations,
-            776 strings with 15100 characters,
+            778 strings with 15123 characters,
 and the built_in function-call counts, 22052 in all, are:
 = -- 2081
 > -- 1330

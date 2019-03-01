@@ -13,6 +13,18 @@
 \contentsline {section}{\numberline {2.5}RETROSPECTIVE MOTION CORRECTION}{13}{section.2.5}
 \contentsline {subsection}{\numberline {2.5.1}Global Volume Registration}{13}{subsection.2.5.1}
 \contentsline {subsection}{\numberline {2.5.2}Denoising}{15}{subsection.2.5.2}
-\contentsline {subsection}{\numberline {2.5.3}Filtering}{15}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.3}Filtering}{16}{subsection.2.5.3}
 \contentsline {subsection}{\numberline {2.5.4}Spin History Distortion Correction}{16}{subsection.2.5.4}
-\contentsline {chapter}{{\bfseries \bibname }}{17}{section*.1}
+\contentsline {chapter}{{\bfseries \numberline {3.0}DATA}}{17}{chapter.3}
+\contentsline {section}{\numberline {3.1}Neonatal Subjects}{17}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Subject Population}{17}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Data Processing}{18}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Preadolescent Subjects}{18}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Subject Population}{18}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Data Processing}{18}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Fetal Subjects}{18}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Subject Population}{18}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Data Processing}{18}{subsection.3.3.2}
+\contentsline {chapter}{{\bfseries \numberline {4.0}EXPERIMENTS}}{19}{chapter.4}
+\contentsline {section}{\numberline {4.1}Tools}{19}{section.4.1}
+\contentsline {chapter}{{\bfseries \bibname }}{20}{section*.1}
