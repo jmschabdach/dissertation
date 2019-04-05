@@ -19,16 +19,18 @@
 \BOOKMARK [2][]{subsection.2.5.2}{2.5.2 Denoising}{section.2.5}% 15
 \BOOKMARK [2][]{subsection.2.5.3}{2.5.3 Filtering}{section.2.5}% 16
 \BOOKMARK [2][]{subsection.2.5.4}{2.5.4 Spin History Distortion Correction}{section.2.5}% 17
-\BOOKMARK [0][]{chapter.3}{3.0 DATA}{}% 18
-\BOOKMARK [1][]{section.3.1}{3.1 Neonatal Subjects}{chapter.3}% 19
-\BOOKMARK [2][]{subsection.3.1.1}{3.1.1 Subject Population}{section.3.1}% 20
-\BOOKMARK [2][]{subsection.3.1.2}{3.1.2 Data Processing}{section.3.1}% 21
-\BOOKMARK [1][]{section.3.2}{3.2 Preadolescent Subjects}{chapter.3}% 22
-\BOOKMARK [2][]{subsection.3.2.1}{3.2.1 Subject Population}{section.3.2}% 23
-\BOOKMARK [2][]{subsection.3.2.2}{3.2.2 Data Processing}{section.3.2}% 24
-\BOOKMARK [1][]{section.3.3}{3.3 Fetal Subjects}{chapter.3}% 25
-\BOOKMARK [2][]{subsection.3.3.1}{3.3.1 Subject Population}{section.3.3}% 26
-\BOOKMARK [2][]{subsection.3.3.2}{3.3.2 Data Processing}{section.3.3}% 27
-\BOOKMARK [0][]{chapter.4}{4.0 EXPERIMENTS}{}% 28
-\BOOKMARK [1][]{section.4.1}{4.1 Tools}{chapter.4}% 29
-\BOOKMARK [0][]{section*.1}{BIBLIOGRAPHY}{}% 30
+\BOOKMARK [0][]{chapter.3}{3.0 MATERIALS AND METHODS}{}% 18
+\BOOKMARK [1][]{section.3.1}{3.1 Data}{chapter.3}% 19
+\BOOKMARK [2][]{subsection.3.1.1}{3.1.1 Simulated Phantom Images}{section.3.1}% 20
+\BOOKMARK [2][]{subsection.3.1.2}{3.1.2 Neonatal Subject Population and Images}{section.3.1}% 21
+\BOOKMARK [2][]{subsection.3.1.3}{3.1.3 Preadolescent Subject Population and Images}{section.3.1}% 22
+\BOOKMARK [2][]{subsection.3.1.4}{3.1.4 Adult Subject Population and Images}{section.3.1}% 23
+\BOOKMARK [2][]{subsection.3.1.5}{3.1.5 Fetal Subject Population and Images}{section.3.1}% 24
+\BOOKMARK [1][]{section.3.2}{3.2 Experiments}{chapter.3}% 25
+\BOOKMARK [2][]{subsection.3.2.1}{3.2.1 Simulated Phantom}{section.3.2}% 26
+\BOOKMARK [2][]{subsection.3.2.2}{3.2.2 Feasibility Experiment: Neonatal Subjects}{section.3.2}% 27
+\BOOKMARK [2][]{subsection.3.2.3}{3.2.3 Motion Correction and Evaluation Experiments: Preadolescent and Adult Subjects}{section.3.2}% 28
+\BOOKMARK [2][]{subsection.3.2.4}{3.2.4 Fetal Motion: Fetal Brain and Liver}{section.3.2}% 29
+\BOOKMARK [0][]{chapter.4}{4.0 EXPERIMENTS}{}% 30
+\BOOKMARK [1][]{section.4.1}{4.1 Tools}{chapter.4}% 31
+\BOOKMARK [0][]{section*.1}{BIBLIOGRAPHY}{}% 32

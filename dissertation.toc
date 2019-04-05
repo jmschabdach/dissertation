@@ -15,16 +15,18 @@
 \contentsline {subsection}{\numberline {2.5.2}Denoising}{15}{subsection.2.5.2}
 \contentsline {subsection}{\numberline {2.5.3}Filtering}{16}{subsection.2.5.3}
 \contentsline {subsection}{\numberline {2.5.4}Spin History Distortion Correction}{16}{subsection.2.5.4}
-\contentsline {chapter}{{\bfseries \numberline {3.0}DATA}}{17}{chapter.3}
-\contentsline {section}{\numberline {3.1}Neonatal Subjects}{17}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Subject Population}{17}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Data Processing}{18}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}Preadolescent Subjects}{18}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Subject Population}{18}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Data Processing}{18}{subsection.3.2.2}
-\contentsline {section}{\numberline {3.3}Fetal Subjects}{18}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Subject Population}{18}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Data Processing}{18}{subsection.3.3.2}
-\contentsline {chapter}{{\bfseries \numberline {4.0}EXPERIMENTS}}{19}{chapter.4}
-\contentsline {section}{\numberline {4.1}Tools}{19}{section.4.1}
-\contentsline {chapter}{{\bfseries \bibname }}{20}{section*.1}
+\contentsline {chapter}{{\bfseries \numberline {3.0}MATERIALS AND METHODS}}{17}{chapter.3}
+\contentsline {section}{\numberline {3.1}Data}{17}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Simulated Phantom Images}{17}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Neonatal Subject Population and Images}{18}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Preadolescent Subject Population and Images}{18}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.4}Adult Subject Population and Images}{19}{subsection.3.1.4}
+\contentsline {subsection}{\numberline {3.1.5}Fetal Subject Population and Images}{19}{subsection.3.1.5}
+\contentsline {section}{\numberline {3.2}Experiments}{20}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Simulated Phantom}{20}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Feasibility Experiment: Neonatal Subjects}{20}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Motion Correction and Evaluation Experiments: Preadolescent and Adult Subjects}{21}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Fetal Motion: Fetal Brain and Liver}{22}{subsection.3.2.4}
+\contentsline {chapter}{{\bfseries \numberline {4.0}EXPERIMENTS}}{23}{chapter.4}
+\contentsline {section}{\numberline {4.1}Tools}{23}{section.4.1}
+\contentsline {chapter}{{\bfseries \bibname }}{24}{section*.1}
