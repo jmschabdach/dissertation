@@ -1,0 +1,38 @@
+\chapter{EXPERIMENTS}
+
+\section{Aim 1: DAG-based Image Registration}
+
+Pending paper: 
+
+\section{Aim 2: Detecting Population-Dependent Patterns of Motion}
+
+Machine learning techniques can be used to classify images as belonging to different groups, but many of these techniques use difficult to interpret ``black box'' logic. In some cases, examining the logic behind a classification reveals patterns in a dataset which a human missed but a computer detected. One example is a system trained to differentiate between pictures of red foxes and pictures of artic foxes. Its classification accuracy was XX\%, but further examination revealed that the system used the presence of snow in an image led the system to label that image as containing an artic fox. CITATION NEEDED
+
+To ensure that there are no confounding signals such as those in the previous example are present in our datasets, we first use unsupervised machine learning techniques to identify correlations between subject images and their demographic data. The techniques we will use are several types of clustering (agglomerative, k-means, and spectral) as well as principle component analysis (PCA) and regression. Features of the images before and after registration will be used as training data for each model and different demographic features will be used as the true classes. The demographic data for each subject includes the subject's age at the time of scan, gender, race, dominant hand, and scan site. (NOTE: THAT SENTENCE IS FOR MULTISITE STUDY DATA, NEED TO SPECIFY.)
+
+After identifying and , clinical, and behavioral outcome data. 
+
+Use pediatric, neonatal, and fetal images
+
+Proposed topic for a paper: different subject populations exhibit different patterns of motion according to age and clinical factors. 
+
+\section{Aim 3: Machine Learning for Optimal Motion Correction}
+
+Start with a classification module for identifying severity of motion between template volume, previous volume(s), and current volume. The classifications will be based either on the patterns identified in Aim 2, or on the positional and signal change differences between the volumes of interest.
+
+After the severity of the motion reflected in a volume is determined, 
+
+\section{Aim 4: Does Motion Correction Recover True Signal?}
+
+
+\section{Tools}
+
+Cite nipypy, ANTs, FSL, etc. here
+
+\section{Metrics and Analyses}
+
+Power et al. thresholds
+
+Correlation ratio matrix
+
+Dice coefficients?
