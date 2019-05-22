@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  14 MAY 2019 11:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  22 MAY 2019 12:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -287,8 +287,9 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \ALG@tmplength=\skip57
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
-) (./dissertation.aux (./1/introduction.aux) (./2/background.aux) (./4/data.aux
-) (./5/experiments.aux))
+) (./dissertation.aux (./1/introduction.aux) (./2/clinical_background.aux)
+(./3/technical_background.aux) (./4/aims.aux) (./5/data.aux)
+(./6/experiments.aux))
 \openout1 = `dissertation.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
@@ -404,36 +405,52 @@ Chapter 1
 
 
 ]) [2]
-\openout2 = `2/background.aux'.
+\openout2 = `2/clinical_background.aux'.
 
- (./2/background.tex
+ (./2/clinical_background.tex
 Chapter 2
 [3
 
 
 
 ]
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no ™ in font cmr12!
- [4]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 25.
- (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 25.
+Overfull \hbox (7.19443pt too wide) in paragraph at lines 22--23
+[]\OT1/cmr/m/n/12 Risk fac-tors: ge-netic syn-dromes, twins, ma-ter-nal ex-po-s
+ures (smok-ing dur-ing first trimester,
+ []
+
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [5]
-[6] [7]
-Overfull \hbox (48.3216pt too wide) in paragraph at lines 74--75
+ [4]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 50.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 50.
+) [5] [6]
+\openout2 = `3/technical_background.aux'.
+
+
+(./3/technical_background.tex
+Chapter 3
+[7
+
+
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8]
+[9] [10]
+Overfull \hbox (48.3216pt too wide) in paragraph at lines 66--67
 \OT1/cmr/m/n/12 gog-gles can dis-tract pa-tients [[]] [[]] [[]].
  []
 
-[8] [9] [10]
-Overfull \hbox (15.08pt too wide) in paragraph at lines 106--107
+[11] [12] [13]
+Overfull \hbox (15.08pt too wide) in paragraph at lines 98--99
 []\OT1/cmr/m/n/12 Forman et al. mod-i-fied the chess-board marker to im-prove i
 ts flex-i-bil-ity [[]].
  []
@@ -441,21 +458,21 @@ ts flex-i-bil-ity [[]].
 
 Underfull \vbox (badness 5652) has occurred while \output is active []
 
- [11]
+ [14]
 Underfull \vbox (badness 5652) has occurred while \output is active []
 
- [12]
-[13] [14]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [15]
-Overfull \hbox (97.43358pt too wide) in paragraph at lines 157--158
+Underfull \vbox (badness 4556) has occurred while \output is active []
+
+ [16]
+[17] [18]
+Overfull \hbox (97.43358pt too wide) in paragraph at lines 168--169
 \OT1/cmr/m/n/12 nec-tiv-ity stud-ies, but may in-ad-ver-tently weaken shorter-d
 istance con-nec-tions [[]][[]]
  []
 
 
-Overfull \hbox (15.70665pt too wide) in paragraph at lines 159--160
+Overfull \hbox (15.70665pt too wide) in paragraph at lines 170--171
 \OT1/cmr/m/n/12 [[]], re-align-ment pa-ram-e-ters from sur-round-ing tim-points
  [[]]
  []
@@ -463,60 +480,78 @@ Overfull \hbox (15.70665pt too wide) in paragraph at lines 159--160
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
-) [16] [17]
-\openout2 = `4/data.aux'.
 
- (./4/data.tex
-Chapter 3
-[18
+Underfull \vbox (badness 4647) has occurred while \output is active []
+
+ [19]
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+
+[20]) [21]
+\openout2 = `4/aims.aux'.
+
+ (./4/aims.tex
+Chapter 4
+[22
 
 
 
-] [19] [20] [21]
+]) [23] [24]
+\openout2 = `5/data.aux'.
+
+ (./5/data.tex
+Chapter 5
+[25
+
+
+
+] [26] [27] [28]
 Overfull \hbox (0.2909pt too wide) in paragraph at lines 63--63
 []\OT1/cmr/bx/n/12 Motion Cor-rec-tion and Eval-u-a-tion Ex-per-i-ments: Pread-
 o-les-cent and Adult
  []
 
-[22]) [23]
-\openout2 = `5/experiments.aux'.
+[29]) [30]
+\openout2 = `6/experiments.aux'.
 
- (./5/experiments.tex
-Chapter 4
-) [24
+ (./6/experiments.tex
+Chapter 6
+[31
 
 
 
-]
+]) [32] [33]
 BIBLIOGRAPHY
-(./dissertation.bbl [25
+(./dissertation.bbl [34
 
 
 ]
 Missing character: There is no â in font cmr12!
- [26] [27] [28])
+ [35] [36] [37])
 \openout3 = `dissertation.etd'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 103.
- [29]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 103.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 101.
+ [38]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 101.
  (./dissertation.aux
-(./1/introduction.aux) (./2/background.aux) (./4/data.aux) (./5/experiments.aux
-))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 103.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 103.
+(./1/introduction.aux) (./2/clinical_background.aux)
+(./3/technical_background.aux) (./4/aims.aux) (./5/data.aux)
+(./6/experiments.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 101.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 101.
 Package rerunfilecheck Info: File `dissertation.out' has not changed.
-(rerunfilecheck)             Checksum: E52520432A3BBB07AC52161467833631;2747.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 103.
+(rerunfilecheck)             Checksum: E24C23E931101821BB9D22B495FAA849;3932.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 101.
  ) 
 Here is how much of TeX's memory you used:
- 6888 strings out of 492982
- 98004 string characters out of 6134895
- 192087 words of memory out of 5000000
- 10228 multiletter control sequences out of 15000+600000
+ 6943 strings out of 492982
+ 98787 string characters out of 6134895
+ 194232 words of memory out of 5000000
+ 10244 multiletter control sequences out of 15000+600000
  9545 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,6n,30p,1413b,413s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,6n,30p,1423b,413s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texli
@@ -524,10 +559,10 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmti12.pfb>
-Output written on dissertation.pdf (34 pages, 164166 bytes).
+Output written on dissertation.pdf (43 pages, 180966 bytes).
 PDF statistics:
- 500 PDF objects out of 1000 (max. 8388607)
- 452 compressed objects within 5 object streams
- 116 named destinations out of 1000 (max. 500000)
- 289 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 617 PDF objects out of 1000 (max. 8388607)
+ 559 compressed objects within 6 object streams
+ 139 named destinations out of 1000 (max. 500000)
+ 401 words of extra memory for PDF output out of 10000 (max. 10000000)
 

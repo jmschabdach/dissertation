@@ -3,9 +3,11 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: dissertation.aux
 The style file: apalike.bst
 A level-1 auxiliary file: 1/introduction.aux
-A level-1 auxiliary file: 2/background.aux
-A level-1 auxiliary file: 4/data.aux
-A level-1 auxiliary file: 5/experiments.aux
+A level-1 auxiliary file: 2/clinical_background.aux
+A level-1 auxiliary file: 3/technical_background.aux
+A level-1 auxiliary file: 4/aims.aux
+A level-1 auxiliary file: 5/data.aux
+A level-1 auxiliary file: 6/experiments.aux
 Database file #1: sources.bib
 Warning--to sort, need author or key in FDA2016
 Warning--empty author in FDA2016
@@ -13,7 +15,7 @@ Warning--empty institution in FDA2016
 Warning--empty journal in Zaitsev2017
 You've used 45 entries,
             1935 wiz_defined-function locations,
-            778 strings with 15127 characters,
+            780 strings with 15172 characters,
 and the built_in function-call counts, 22052 in all, are:
 = -- 2081
 > -- 1330

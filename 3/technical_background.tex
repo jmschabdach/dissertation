@@ -1,32 +1,24 @@
 \chapter{MRI Acquisition and Image Cleaning Background}
-The topics treated in this chapter can be somewhat obscure. For humanitarian considerations, the chapter will be subdivided.
+This chapter covers the technical aspects of the work to be completed. These topics include current methods for managing motion in medical images, metrics for measuring motion, and machine learning techniques being used to 
 
-\section{RESTING-STATE NETWORKS}
+\section{SOURCES OF MOTION}
 
-The idea of a neuronal network which operated when a person is at rest was proposed in 2001, and then confirmed in 2003 \cite{Raichle2001} \cite{Greicius2003}. Resting-state networks are recorded using resting-state functional magnetic resonance images (rs-fMRIs). rs-fMRIs are sequences of image volumes acquired over a period of a few minutes while the patient is in a task-free state. The image volumes themselves have relatively low spatial resolution when compared to structural MRIs, but their temporal resolution is significantly higher as a new volume is acquired every two to three seconds. Each volume records the blood oxygen level dependent (BOLD) signals within the brain at that point in time. 
+During every MRI scan, the patient will undergo small movements due to regular bodily functions. Miniscule movements caused by cardiac activity may disrupt scans with high spatial resolution or with high sensitivity to the movement of blood molecules. Larger movements caused by respiration result in motion artifacts in images of the thoracic and abdominal cavities. 
 
-The BOLD signals in rs-fMRI image sequences are analyzed using a process called functional connectivity analysis. Functional connectivity analysis identifies patterns and networks of brain activity. Because the patient is not performing a specific task during a rs-fMRI acquisition, these resting-state networks have the potential to reveal valuable information about a patient's neurodevelopmental status. Some functional connectivity analysis studies have lead to the discoveries of links between specific disruptions in these naturally occurring networks and neurodevelopmental diseases such as autism and attention deficit hyperactivity disorder \cite{Assaf2010} \cite{Zang2007}. With further refinements of both acquisition techniques and characterization of these functional networks, clinicians may be able to use rs-fMRI in early detection protocols to evaluate the neurodevelopmental status of infants and neonates, and in personalized care by identifying patients who may benefit from certain therapies or neuroprotective interventions.
+Other motions seem more random. The patient may fidget in the scanner or shift his gaze when he becomes bored during a scan. If the patient falls asleep during a scan, there may be slight movement as the body relaxes. Certain MRI protocols are known to produce loud sounds: during one of these protocols, the patient may become surprised and jump in response to the unexpected sound. Clausterphobic patients may become agitated.
 
-\section{MEASURING THE EFFECTS OF MOTION}
+\section{EFFECTS OF MOTION}
 
-Due to their low spatial and high temporal resolutions, rs-fMRIs are highly susceptible to motion. Even the smallest movement can alter the position of the patient enough to cause the voxels to record signals from different brain regions and tissue types. Even if the movement does not significantly change the recorded position of the subject, it impacts the established spin gradients, which introduces artifacts into the image sequence. Movements cause the orientation of existing spin gradients to change, and the gradients require time to realign to the magnetic field. This recovery time often results in a decrease in the global signal in frames obtained over the following 8-10 seconds, which can affect the functional connectivity analysis \cite{Power2014}.
+Due to their low spatial and high temporal resolutions, rs-fMRIs are highly susceptible to all types of motion outlined in the previous section. Even the smallest movement can alter the position of the patient enough to cause the voxels to record signals from different brain regions and tissue types. Even if the movement does not significantly change the recorded position of the subject, it impacts the established spin gradients, which introduces artifacts into the image sequence. Movements cause the orientation of existing spin gradients to change, and the gradients require time to realign to the magnetic field. This recovery time often results in a decrease in the global signal in frames obtained over the following 8-10 seconds, which can affect the functional connectivity analysis \cite{Power2014}.
 
 The effects of motion on rs-fMRIs can be clearly divided into two categories: the effect on patient position and the effect on the recorded BOLD signal.
 
 The effect of motion on patient position is measured in terms of the difference in position between temporally neighboring image volumes. The difference in position is determined using metrics calculated by performing rigid volume registration on the two volumes. 
-In rigid volume registration, one volume is chosen as the reference volume and the other is considered the moving volume. The reference volume remains stationary while the moving volume is translated and rotated in three-dimensional space on top of it. The registration is considered successfully complete when the position of the patient in the moving volume matches the position in the reference volume. The three translation and three rotation parameters used to achieve this alignment are used to calculate the positional change between the image volumes, which is often called the framewise displacement (FD). 
+In rigid volume registration, one volume is chosen as the reference volume and the other is considered the moving volume. The reference volume remains stationary while the moving volume is translated and rotated in three-dimensional space on top of it. The registration is considered successfully complete when the position of the patient in the moving volume matches the position in the reference volume. The three translation and three rotation parameters used to achieve this alignment are used to calculate the positional change between the image volumes, which is often called the framewise displacement (FD).  
 
-Several researchers have proposed different methods for calculating the FD. Power et al., Jenkinson et al., and Dosenbach et al. each propose a slightly different method for calculating the FD \cite{Power2012} \cite{Jenkinson2002} \cite{Dosenbach2017}. All three FD calculations produce correlated metrics: the FD metric proposed by Power et al. produces measurements approximately twice as large as the metric proposed by Jenkinson et al., and Dosenbach et al. reported a high correlation between their FD and Power’s FD \cite{Yan2013a} \cite{Dosenbach2017}. 
+The effects of motion on the BOLD signal are more difficult to measure. They occur because motion disrupts the magnetic spin gradients present in the patient during the scan. The spin gradients need time to recover to the correct magnetic field orientation, and up to eight to ten seconds may pass before the recovery is complete \cite{Power2014}. While the spin gradients are reorienting, the recorded BOLD signal may vary between temporally neighboring volumes. 
 
-The effects of motion on the BOLD signal are a little more difficult to measure. They occur because motion disrupts the magnetic spin gradients present in the patient during the scan. The spin gradients need time to recover to the correct magnetic field orientation, and up to eight to ten seconds may pass before the recovery is complete \cite{Power2014}. While the spin gradients are reorienting, the recorded BOLD signal may vary between temporally neighboring volumes. These changes can be measured using the temporal derivative of the variance in the BOLD signal intensity (DVARS) between the  frames \cite{Power2012}.
-
-Even though the effects of motion on the patient position and the recorded signal can be measured, we still need gold standard criteria to determine whether an image containing motion can be used. Patients move slightly due to breathing and cardiac function, and the BOLD signal naturally fluctuates over time. Some motion is expected; however, we need to know how much motion can be present in the image before it is considered to be corrupted by it. Power et al. established thresholds for FD and DVARS to determine the usability of a pair of images:
-\begin{itemize}
-\item FD less than or equal to 0.2 mm from previous volume, and
-\item DVARS less than or equal to 25 units on a normalized scale of [0, 1000] signal units \cite{Power2014}
-\end{itemize}
-
-Image volumes that meet these criteria are considered to be low-motion. van Dijk et al. established that approximately five minutes of low-motion data is sufficient for use in functional connectivity analysis \cite{VanDijk2012}. Unfortunately, it is often difficult to obtain enough low-motion data from patients to use in these analyses.
+Metrics used for calculating the FD and the changes in BOLD signal will be discussed more thoroughly later in this chapter.
 
 \section{MOTION PREVENTION}
 
@@ -111,8 +103,27 @@ Several companies have developed commercial products for prospective motion corr
 % Limitation: measurements must be made  
 % Limitation: only rigid body motion. 
 The methods discussed above have a few limitations due to the optical camera setups. For precise real-time motion correction, the camera or cameras must be carefully placed so that the position of the marker on the patient can be recorded. They must have a clear line of sight, which means they will be in the same room as the MRI scanner, if not within the scanner bore. The cameras and markers must be MR compatible, and the positions of the cameras and markers in physical space relative to the visual markers on the patient must be known. These positions are key for the calculations used to measure the motions. Even if the motion measurements are accurate, the changes in position that are recorded and used to adapt the scan parameters will only be true for rigid body motion of the body part to which the markers are attached: any distortion of soft tissue will not be accurately accounted for during the motion correction. 
+% To incorporate
+% Limitation: optical trackers must have clean line of sight to subject 
+% Limitation: systems using markers attached to patient suffer from imperfect attachment of the marker to the subject, where the marker slips or moves during the scan independently from the subject, 
+% Look up Oliver Speck?
 
-\subsection{Within-Image Motion Correction}
+\subsection{External Sensors}
+
+Signal based tracking: wired NMR field probes, wireless inductivity coupled markers, off-resonance markers; require sequence modification and possibly longer scan time?
+
+
+Tracking respiration with respiratory bellows -> use gating to acquire image during ``expected state'', bin data according to when it was recorded during the breathing cycle
+
+Cardiac: pulse oximeter (delay relative to central pulse) 
+ECG: less reliable at high field strengths (Frauenrath et al JMRI 2012; 36: 364-72
+Acoustic cardiac triggering: Frauenrath et al, Investigative Radiology 2009, Frauenrath et al J Cardiovascular MR 2010
+
+Additional sensors complicate the scan setup
+
+Detection using RF coils? Changes conductivity and RF power (Buikman et al MRI 1988)
+
+\subsection{Intra-Image Motion Correction}
 
 Dosenbach et al. have developed a tool to evaluate motion in rs-fMRI sequences as they are acquired \cite{Dosenbach2017}. It registers each frame to the initial frame of the rs-fMRI sequence immediately after the new frame is recorded. The parameters produced by this registration are used to calculate the framewise displacement between pairs of frames, which is then compared to a set of displacement thresholds associated with the scan quality. The number of frames that meet each threshold is used to determine how many more frames are needed to obtain five minutes of low-motion frames. This method for assessing the quality of a scan in real time is useful for ensuring images are acquired with a sufficient number of low-motion frames. It can also aid the technologists in determining whether to prematurely terminate a scan, which may be desirable if the amount of time needed to obtain enough low-motion frames is greater than the amount of time remaining for the patient in the scanner. 
 
@@ -166,3 +177,17 @@ Filtering, which is also referred to as censoring, involves the identification a
 \subsection{Spin History Distortion Correction}
 
 A number of post-acquisition methods have been developed specifically to correct for distortions due to the impact of motion on the magnetic field. The usability of these dynamic distortion correction methods has been studied in a few specific cases, but their generalizability has yet to be confirmed in a broader range of fMRI studies \cite{Zaitsev2017}.
+
+\section{MEASURING MOTION}
+
+Several researchers have proposed different methods for calculating the FD. Power et al., Jenkinson et al., and Dosenbach et al. each propose a slightly different method for calculating the FD \cite{Power2012} \cite{Jenkinson2002} \cite{Dosenbach2017}. All three FD calculations produce correlated metrics: the FD metric proposed by Power et al. produces measurements approximately twice as large as the metric proposed by Jenkinson et al., and Dosenbach et al. reported a high correlation between their FD and Power’s FD \cite{Yan2013a} \cite{Dosenbach2017}.
+
+These changes can be measured using the temporal derivative of the variance in the BOLD signal intensity (DVARS) between the  frames \cite{Power2012}.
+
+Even though the effects of motion on the patient position and the recorded signal can be measured, we still need gold standard criteria to determine whether an image containing motion can be used. Patients move slightly due to breathing and cardiac function, and the BOLD signal naturally fluctuates over time. Some motion is expected; however, we need to know how much motion can be present in the image before it is considered to be corrupted by it. Power et al. established thresholds for FD and DVARS to determine the usability of a pair of images:
+\begin{itemize}
+\item FD less than or equal to 0.2 mm from previous volume, and
+\item DVARS less than or equal to 25 units on a normalized scale of [0, 1000] signal units \cite{Power2014}
+\end{itemize}
+
+Image volumes that meet these criteria are considered to be low-motion. van Dijk et al. established that approximately five minutes of low-motion data is sufficient for use in functional connectivity analysis \cite{VanDijk2012}. Unfortunately, it is often difficult to obtain enough low-motion data from patients to use in these analyses.

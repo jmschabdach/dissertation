@@ -30,7 +30,7 @@
 % Bibliography
 \bibliographystyle{apalike}
 
-\title[Global Volume Registration for Motion Correction in rs-fMRIs]{Global Volume Registration for Multiple Motion Types in Resting-State Functional Magnetic Resonance Images}
+\title[Exploring and Correcting Motion in Resting-State Functional Magnetic Resonance Images of Congenital Heart Disease Patients]{Exploring and Correcting Motion in Resting-State Functional Magnetic Resonance Images of Congenital Heart Disease Patients}
 % The optional argument is the 
 % version of the title that will appear in Acrobat Reader's Document Info dialog box.
 \author{Jenna Marie Schabdach}
@@ -52,11 +52,12 @@
 %
 % For the committee membership page, you have to provide the names and affiliations of the members. The first one will 
 % be treated by pittetd as the committee chair (thesis/dissertation advisor).
-\committeemember{Dr. Ashok Panigrahy, Department of Biomedical Informatics}
-%\coadvisor{Second advisor, Dept. Aff.}%         This is used if there are two advisors.
 \committeemember{Dr. Douglas Landsittal, Department of Biomedical Informatics}
-\committeemember{Dr. Jenna Gaessar, Dept.\ Aff.}
+%\coadvisor{Second advisor, Dept. Aff.}%         This is used if there are two advisors.
+\committeemember{Dr. Ashok Panigrahy, Department of Biomedical Informatics}
 \committeemember{Dr. Gregory Cooper, Department of Biomedical Informatics}
+\committeemember{Dr. Rafael Ceschin, Department of Pediatric Radiology, Children's Hospital of Pittsburgh of UPMC}
+
 % etc., as many as needed. For master's theses, the committee may be omitted, naming only the advisor.
 \school{School of Medicine}
 \makecommittee
@@ -68,9 +69,9 @@ INSERT ABSTRACT HERE
 % The list comes from the \keywords command above.
 % The starred version \begin{abstract*} typesets the word `ABSTRACT' on the top of the page
 \tableofcontents
-%\listoftables                      Pittetd will complain if you tell it to create a list of tables when there are no
+%\listoftables                      % Pittetd will complain if you tell it to create a list of tables when there are no
 %                                   tables (as in this sample file). Uncomment this command if you have tables.
-%\listoffigures                     Obvious analogous for figures.
+%\listoffigures                     % Obvious analogous for figures.
 %\preface
 % This is the text of the preface, with acknowledgments, dedication, etc. It is optional, and you create, as shown, by 
 % just saying \preface and starting the preface's actual text. Note that 'foreword' is no longer acceptable as title
@@ -81,15 +82,14 @@ INSERT ABSTRACT HERE
 
 % Add in chapters here
 \include{1/introduction}
-\include{2/background}
-\include{4/data}
-\include{5/experiments}
-%\include{3/ml}
-%\include{4/methods}
-%\include{5/data}
-%\include{6/results}
-%\include{7/discussion}
-%\include{8/conclusion}
+\include{2/clinical_background}
+\include{3/technical_background}
+\include{4/aims}
+\include{5/data}
+\include{6/experiments}
+%\include{7/results}
+%\include{8/discussion}
+%\include{9/conclusion}
 
 
 %
@@ -97,7 +97,5 @@ INSERT ABSTRACT HERE
 %\chapter{Raw data}
 %
 \safebibliography{sources}          
-%\safebibliography is used the same way as \bibliography, but gives pittetd
-%                                   a greater chance to succeed in formatting the bibliography when non-standard
-%                                   BibTeX styles are used.
+%\safebibliography is used the same way as \bibliography, but gives pittetd a greater chance to succeed in formatting the bibliography when non-standard BibTeX styles are used.
 \end{document}
