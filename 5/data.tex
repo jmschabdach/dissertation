@@ -1,13 +1,62 @@
-\chapter{MATERIALS AND METHODS}
+\chapter{DATA}
 
-The data used to test the hypothesis and aims introduced in the previous chapter are drawn from three subject populations: neonatal subjects, preadolescent subjects, and fetal subjects.
+The data used to test the hypothesis and aims introduced in the previous chapter are drawn from several subject populations. Because motion causes problems in MR images across all stages of life, we used images from cohorts of healthy and CHD fetal, neonatal, preadolescent, and adult subjects gathered in as part of ongoing studies. Data from these studies was obtained through studies approved by the IRB at the Children's Hospital of Pittsburgh of UPMC and the University of Pittsburgh. The data is stored and accessed in compliance with all HIPPA policies.
+
+We use data from a simulated phantom as well as healthy adult human phantoms. The healthy adult human phantom data collection was also approved by the IRB at the Children's Hospital of Pittsburgh of UPMC and the University of Pittsburgh and is stored and accessed in compliance with all HIPPA policies.
+
+The final data set we use is from the Alzheimer's Disease Neuroimaging Initiative (ADNI) database (adni.loni.usc.edu). The ADNI was launched in 2003 as a public-private partnership, led by Principal Investigator Michael W. Weiner, MD. The primary goal of ADNI has been to test whether serial magnetic resonance imaging (MRI), positron emission tomography (PET), other biological markers, and clinical and neuropsychological assessment can be combined to measure the progression of mild cognitive impairment (MCI) and early Alzheimer's disease (AD). For up-to-date information, see www.adni-info.org.
+
+\section{Neonatal Subject Population and Images}
+
+Neonatal subjects are recruited as part of a prospective observational study. The subjects were scanned using a 3T Skyra (Siemans AG, Erlangen, Germany). They were unsedated during the scans and a ``feed and bundle'' protocol was used to prevent motion during the scans \cite{Windram2011}. The newborns were positioned in the coil to minimize head tilting. Newborns were fitted with earplugs (Quiet Earplugs; Sperian Hearing Protection, San Diego, CA) and neonatal ear muffs (MiniMuffs; Natus, San Carlos, CA). An MR-compatible vital signs monitoring system (Veris, MEDRAD, Inc. Indianola, PA) was used to monitor neonatal vital signs. All scans were performed using a multi-channel head coil. The parameters for the resting-state BOLD MR scans were FOV=240 mm and TE/TR=32/2020 ms with interplane resolution of 4x4 mm, slice thickness of 4 mm, and 4 mm space between slices. The acquired images contained 150 volumes where each volume consisted of 64x64x32 voxels$^3$.
+
+\section{Preadolescent Subject Population and Images}
+
+As part of a multicenter study of CHD in preadolescents, we collected rs-fMRIs from nine sites throughout the United States. These images were of patients in the age range of XX to XX years who either had CHD or were healthy with no neurocognitive impairments. In addition to the MRI scans, subjects who participated in this study were asked to participate in other testing (GET DETAILS FROM NANCY).
+
+\begin{itemize}
+\item How were the images gathered?
+\item How were the patients recruited?
+\item What are the imaging protocol details?
+\item What other information was collected?
+\end{itemize}
 
 
-Because motion causes problems in MR images across all stages of life, we will perform our experiments on images from several different populations. All data was obtained through studies approved by the IRB at the Children's Hospital of Pittsburgh of UPMC and the University of Pittsburgh. The data is stored and accessed in compliance with all HIPPA policies.
+\section{Adult Subject Population and Images}
 
-\section{Data}
+As the prognosis for patients with CHD improves, their life expectancy also increases. The aging CHD population presents new questions about the connection between CHD and neurocognitive challenges associated with aging. As patients age, there is an expectation that their images will contain less motion for a time. If a patient begins to show signs of cognitive impairment due to aging, it can be expected that their images will begin to contain more motion as their neurocognitive state deteriorates. 
 
-\subsection{Simulated Phantom Images}
+We include a cohort of adult subjects over a wide range of ages in our study. The purpose of using images from this cohort is to demonstrate the generalizability of the DAG-based framework to adult patients as well as its use in different clinical populations. This cohort is being studied as part of an ongoing, prospective study of CHD and neurodevelopment. The data collected for these subject includes rs-fMRIs, behavioral, and clinical data from XX healthy and XX CHD adult subjects. 
+
+\begin{itemize}
+\item How were the images gathered?
+\item How were the patients recruited?
+\item What are the imaging protocol details?
+\item What other information was collected?
+\end{itemize}
+
+%The second adult cohort comes from the Alzheimer's Disease Neuroimaging Initiative (ADNI) dataset. The ADNI study has been working since 2004 to further Alzheimer's research by gathering, analyzing, and sharing clinical, imaging, genetic, and biochemical biomarkers from the elderly population. The group gathers data from 63 sites in the United States and Canada. During the second phase of the study, sites who have a Philips MRI system gathered resting-state fMRIs from their subjects. This data is freely available to academic researchers through the LONI Image and Data Archive.
+
+\section{Fetal Subject Population and Images}
+
+Fetal subjects have different constraints on their physical environment than neonates, preadolescents, and adults. As a result, they exhibit unique patterns of motion. The previous subject cohorts discussed in this chapter have the following commonalities: the subject experiences the full effects of gravity, the subject is lying on his back in an MRI scanner, and the subject's head motion is limited by the head coil within the MRI. Any motion in these images is a direct result of the subject himself moving, whether passively (cardiac motion and breathing) or actively (fidgeting or looking around).
+
+A fetal subject is scanned in vivo. He is suspended in amniotic fluid within his mother. The amniotic fluid has buoyancy that reduces the effects of gravity and allows a fetal subject significant freedom of movement. The fetus can rotate, shift, and flip in ways that can only be accomplished when floating in a body of water. The properties of the uterus constrain the physical space in which a motion could occur, but not as much as the head coil and gravity do to the other patient cohorts. A fetus is not guaranteed to be in any specific position at the start of the scan: the scan begins when the mother is ready, not when the fetus achieves a certain pose. 
+
+The fetal subjects underwent fetal echocardiography scans in a cardiac clinic to determine whether they were healthy or had a form of CHD. They were then scanned on an MRI scanner. Images of the fetal brain and the placenta were acquired for each subject. 
+
+We are interested in both the fetal brain and placental images for our work because of the relationship between placenta and brain development. However, these organs have very different physical properties. The fetal brain is a rigid structure floating and moving within the amneotic fluid. It undergoes translation and rotation as a single unit due to passive and active maternal and fetal motions. The placenta, on the other hand, is anchored in place on the uterine wall. It may undergo small translations or rotations due to maternal motion, but it will respond differently to fetal motion. Fetal motions cause nonlinear deformations of the pliable placenta that can only be adequately accounted for using nonlinear registration algorithms. Nonlinear registrations have the potential to deform brain images into physically impossible shapes, so the fetal brain and placenta were manually segmented in their respective images so that each organ could undergo independent motion correction. 
+
+The segmenters were one of a group of four researchers. While one researcher trained the other three group members, the interrater agreement between them is still being determined.
+
+\begin{itemize}
+\item Fetal patients scanned between XX and XX weeks gestational age. 
+\item Imaging protocol details?
+\item What other information is collected about fetus and/or mom?
+\end{itemize}
+
+
+\section{Simulated Phantom Images}
 
 Every MRI scanner is different, so a stand-in model for an organ or tissue type is often used to calibrate an MRI scanner. The model is designed to have specific physical properties which mimic the physical properties of the organ or tissue. These properties can be accurately measured during the design process of this model so that the radiologist or researcher looking at images of the model can know the ground truth of the model. Because these models mimic true organs and tissues, they are called phantoms. 
 
@@ -15,55 +64,15 @@ We will generate a simulated phantom image using the rs-fMRI of a healthy adult 
 
 A copy of the base phantom sequence will be made and a subvolume in the same location of every volume will be selected. In the subvolume of each frame, a small amount of noise generated using a normal Gaussian distribution will be added to simulate changes in blood oxygen level-dependent signal over time. The noise will be generated from a normal Gaussian distribution will be added to each frame. This image sequence will be referred to as our BOLD phantom sequence.
 
-\subsection{Neonatal Subject Population and Images}
+\section{Human Phantom Images}
 
-Neonatal subjects are recruited as part of a prospective observational study. The subjects were scanned using a 3T Skyra (Siemans AG, Erlangen, Germany). They were unsedated during the scans and a ``feed and bundle'' protocol was used to prevent motion during the scans \cite{Windram2011}. The newborns were positioned in the coil to minimize head tilting. Newborns were fitted with earplugs (Quiet Earplugs; Sperian Hearing Protection, San Diego, CA) and neonatal ear muffs (MiniMuffs; Natus, San Carlos, CA). An MR-compatible vital signs monitoring system (Veris, MEDRAD, Inc. Indianola, PA) was used to monitor neonatal vital signs. All scans were performed using a multi-channel head coil. The parameters for the resting-state BOLD MR scans were FOV=240 mm and TE/TR=32/2020 ms with interplane resolution of 4x4 mm, slice thickness of 4 mm, and 4 mm space between slices. The acquired images contained 150 volumes where each volume consisted of 64x64x32 voxels$^3$.
+One of the major challenges in the medical imaging field is collecting a large enough set of data with a high enough quality to generate statistically significant results. As part of a multisite study, a set of FOUR healthy adult male subjects were scanned at NINE different sites within a period of TEN WEEKS.
 
-\subsection{Preadolescent Subject Population and Images}
+These subjects are considered human phantoms because of their health adult status, but they still may contain some motion. Their images are included in this study so that we can determine the consistency and effects of the motion correction pipeline on images of the same subject across time.
 
-As part of a multicenter study of CHD in preadolescents, we collected rs-fMRIs from nine sites throughout the United States. These images were of patients in the age range of XX to XX years who either had CHD or were healthy with no neurocognitive impairments. In addition to the MRI scans, subjects who participated in this study were asked to participate in other testing (GET DETAILS FROM NANCY).
+\begin{itemize}
+\item What machines were used?
+\item What were the scanning protocols?
+\item Are there any preliminary analyses/results on this data?
+\end{itemize}
 
-How were the images gathered? What are the protocol details?
-
-\subsection{Adult Subject Population and Images}
-
-The previous cohorts described in this chapter are from young populations, but motion does not only occur in images of young patients or in patients who have CHD. We include three adult cohorts from different clinical populations both to demonstrate the generalizability of the DAG-based framework to adult patients and to demonstrate its use in different clinical populations.
-
-As part of an ongoing, prospective study of CHD and neurodevelopment, we have collected rs-fMRIs, XX, and XX from XX healthy and XX CHD adult subjects. 
-
-The second adult cohort comes from the Alzheimer's Disease Neuroimaging Initiative (ADNI) dataset. 
-The ADNI study has been working since 2004 to further Alzheimer's research by gathering, analyzing, and sharing clinical, imaging, genetic, and biochemical biomarkers from the elderly population. The group gathers data from 63 sites in the United States and Canada. During the second phase of the study, sites who have a Philips MRI system gathered resting-state fMRIs from their subjects. This data is freely available to academic researchers through the LONI Image and Data Archive.
-
-The third adult cohort was collected at the University of Minnesota by the lab of Dr. Melissa Terpstra.
-
-\subsection{Fetal Subject Population and Images}
-
-While preadolescent, adult, and even neonatal subjects may exhibit similar patterns of motion, fetal subjects have different constraints on their physical environment and, as a result, exhibit unique patterns of motion. The previous subject cohorts discussed in this chapter have the following commonalities: the subject experiences the full effects of gravity, the subject is lying on his back in an MRI scanner, and the subject's head motion is limited by the head coil within the MRI. Any motion in these images is a direct result of the subject himself moving, whether passively (cardiac motion and breathing) or actively (fidgeting).
-
-A fetal subjects is scanned in vivo. He is suspended in amniotic fluid within his mother. The amniotic fluid has buoyancy that reduces the effects of gravity and allows a fetal subject significant freedom of movement. The fetus can rotate, shift, and flip in ways that can only be accomplished when floating in a body of water. The properties of the uterus constrain the physical space in which a motion could occur, but not as much as the head coil and gravity do to the other patient cohorts. A fetus is not guaranteed to be in any specific position at the start of the scan: the scan begins when the mother is ready, not when the fetus achieves a certain pose. 
-
-Fetal patients scanned between XX and XX weeks gestational age. Categorized into different groups. Fetal brain and placenta. Connection between brain and placenta in development. Differences between brain and placenta in terms of image registration: rigid body vs. nonlinear motion.
-
-
-\section{Experiments}
-
-\subsection{Simulated Phantom}
-
-The phantom experiments will be used to probe the volume registration technique. By applying the DAG-based and traditional registration techniques to the base phantom sequence, we will be able to evaluate the degrees of positional and signal change errors each technique may introduce into the registration process. After determining the baseline error, we will apply both registration techniques to the BOLD phantom sequence. The registered versions of the BOLD phantom sequence will be compared to each other and to the original BOLD phantom sequence to determine how well each registration retains the BOLD signal.
-
-
-\subsection{Feasibility Experiment: Neonatal Subjects}
-
-%For each subject in a cohort of 74 healthy neonatal subjects, at least one rs-fMRI was acquired. The images underwent motion correction using a pipeline developed by Power et al. \cite{Power2014}. The motion corrected image were compared to Power et al.'s thresholds of acceptability for their FD and DVARS metrics \cite{Power2014}. Of the 74 subjects in this cohort, 17 subjects had rs-fMRIs which did not meet Power et al.'s usability criteria. These high motion images were used in our study.
-
-Our set of neonatal subjects includes a cohort of 74 healthy neonates. Each subject in this cohort underwent an MRI scan, and the rs-fMRIs obtained during this process were compared to Power et al.'s positional and signal change usability thresholds. Of the 74 subjects, 17 of them had rs-fMRIs which did not meet the usability criteria. These high motion images were used to test the feasibility of the DAG-based volume registration framework. 
-
-These images were ideal for the feasibility study for two reasons. First, the neonates were healthy, which eliminates disease status as a confounding variable in the analysis of the registered images. Second, the neonates in this study were scanned using a feed and sleep protocol. Because the neonates were asleep during the scan, they generally did not move very much. The high-motion neonates are an obvious exception to this concept, but many of the high-motion images contained long periods where the subject was stationary. Evaluating the DAG-based framework on data with various patterns of motion and different periods of low and high motion allowed us to explore the effects of the DAG-based algorithm in different combinations of motion features. Third, these images were too corrupted by motion to be used in other analyses. Applying both the DAG-based framework and the traditional registration framework to these images provided the opportunity to compare the performances of both registration frameworks to each other in the context of the usability gold standard thresholds. 
-
-\subsection{Motion Correction and Evaluation Experiments: Preadolescent and Adult Subjects}
-
-The multicenter imaging study provides a unique opportunity to evaluate the efficacy of the DAG-based framework on a large subject cohort. The images from all sites first undergo both types of registration independently. The registered and original images are compared to the Power etl. al. usability thresholds. The results at this stage answer the question of whether or not the results of the feasibility study can generalize to a larger cohort of subjects from a different clinical population. Next, each pair of registered images will undergo a complete motion correction pipeline. We use the ICA pipeline outlined by XXX and implemented in XXX tool. The results at this stage of the experiment show how the DAG-based framework fits into an existing, comprehensive motion correction pipeline. 
-
-In addition to evaluating the effects of the DAG-based framework within the context of a motion correction pipeline, the registered preadolescent images are used to explore the relationship between motion and clinical outcomes. Unsupervised machine learning techniques such as agglomerative clustering and k-means clustering are applied to the data. The results of the clustering techniques elucidate whether there are patterns in motion specific to certain patient groups. These groups could include patients with similar clinical outcomes, patients from the same site, or potentially other clinical or demographic groups.
-
-\subsection{Fetal Motion: Fetal Brain and Liver}

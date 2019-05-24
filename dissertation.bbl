@@ -1,12 +1,5 @@
 \begin{thebibliography}{}
 
-\bibitem[FDA, 2016]{FDA2016}
- (2016).
-\newblock {Drug Safety and Availability - FDA Drug Safety Communication: FDA
-  review results in new warnings about using general anesthetics and sedation
-  drugs in young children and pregnant women}.
-\newblock Technical report.
-
 \bibitem[Aksoy et~al., 2008]{Aksoy2008}
 Aksoy, M., Newbould, R., Straka, M., Holdsworth, S.~J., Skare, S.~T., Santos,
   J.~M., and Bammer, R. (2008).
@@ -159,6 +152,19 @@ Mathur, A.~M., Neil, J.~J., McKinstry, R.~C., and Inder, T.~E. (2008).
   neonates}.
 \newblock {\em Pediatric Radiology}, 38(3):260--264.
 
+\bibitem[Mozaffarian et~al., 2016]{Mozaffarian2016}
+Mozaffarian, D., Benjamin, E.~J., Go, A.~S., Arnett, D.~K., Blaha, M.~J.,
+  Cushman, M., Das, S.~R., Ferranti, S.~D., Despr{\'{e}}s, J.-p., Fullerton,
+  H.~J., Howard, V.~J., Huffman, M.~D., Isasi, C.~R., Jim{\'{e}}nez, M.~C.,
+  Judd, S.~E., Kissela, B.~M., Lichtman, J.~H., Lisabeth, L.~D., Liu, S.,
+  Mackey, R.~H., Magid, D.~J., McGuire, D.~K., Mohler, E.~R., Moy, C.~S.,
+  Muntner, P., Mussolino, M.~E., Nasir, K., Neumar, R.~W., Nichol, G.,
+  Palaniappan, L., Pandey, D.~K., Reeves, M.~J., Rodriguez, C.~J., Rosamond,
+  W., Sorlie, P.~D., Stein, J., Towfighi, A., Turan, T.~N., Virani, S.~S., Woo,
+  D., Yeh, R.~W., and Turner, M.~B. (2016).
+\newblock {\em {Heart Disease and Stroke Statistics — 2016 Update A Report
+  From the American Heart Association}}.
+
 \bibitem[Murphy and Brunberg, 1997]{Murphy1997}
 Murphy, K.~J. and Brunberg, J.~A. (1997).
 \newblock {Adult claustrophobia, anxiety and sedation in MRI}.
@@ -251,6 +257,13 @@ Smyser, C.~D. and Neil, J.~J. (2015).
   injury in neonates}.
 \newblock {\em Seminars in Perinatology}, 39(2):130--140.
 
+\bibitem[Unknown, 2016]{FDA2016}
+Unknown (2016).
+\newblock {Drug Safety and Availability - FDA Drug Safety Communication: FDA
+  review results in new warnings about using general anesthetics and sedation
+  drugs in young children and pregnant women}.
+\newblock Technical report, United States Food and Drug Administration.
+
 \bibitem[van Dijk et~al., 2012]{VanDijk2012}
 van Dijk, K.~R., Sabuncu, M.~R., and Buckner, R.~L. (2012).
 \newblock {The influence of head motion on intrinsic functional connectivity
@@ -280,7 +293,7 @@ Yan, C.-G., Craddock, R.~C., He, Y., and Milham, M.~P. (2013b).
 \bibitem[Zaitsev et~al., 2017]{Zaitsev2017}
 Zaitsev, M., Burak, A., LeVan, P., and Knowles, B.~R. (2017).
 \newblock {Prospective Motion Correction in Functional MRI}.
-\newblock pages 33--42.
+\newblock {\em NeuroImage}, pages 33--42.
 
 \bibitem[Zaitsev et~al., 2006]{Zaitsev2006}
 Zaitsev, M., Dold, C., Sakas, G., Hennig, J., and Speck, O. (2006).

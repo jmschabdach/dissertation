@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  22 MAY 2019 12:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  24 MAY 2019 18:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -288,8 +288,7 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
 ) (./dissertation.aux (./1/introduction.aux) (./2/clinical_background.aux)
-(./3/technical_background.aux) (./4/aims.aux) (./5/data.aux)
-(./6/experiments.aux))
+(./3/technical_background.aux) (./5/data.aux))
 \openout1 = `dissertation.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
@@ -409,20 +408,33 @@ Chapter 1
 
  (./2/clinical_background.tex
 Chapter 2
+
+Overfull \hbox (74.7466pt too wide) in paragraph at lines 9--10
+[]\OT1/cmr/m/n/12 There are a num-ber of ge-netic and en-vi-ron-men-tal fac-tor
+s as-so-ci-ated with CHD [[]].
+ []
+
+<2/chd-defects-usa.png, id=217, 728.7225pt x 587.19376pt>
+File: 2/chd-defects-usa.png Graphic file (type png)
+<use 2/chd-defects-usa.png>
+Package pdftex.def Info: 2/chd-defects-usa.png  used on input line 13.
+(pdftex.def)             Requested size: 281.85585pt x 227.1141pt.
+
+Class pittetd Warning: The caption of Figure 1 is longer than one line on input
+ line 15.
+
 [3
 
 
 
-]
-Overfull \hbox (7.19443pt too wide) in paragraph at lines 22--23
-[]\OT1/cmr/m/n/12 Risk fac-tors: ge-netic syn-dromes, twins, ma-ter-nal ex-po-s
-ures (smok-ing dur-ing first trimester,
- []
+] [4pdfTeX warning (ext4): destination with the same identifier (name{figure.2.
+1}) has been already used, duplicate ignored
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4]
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.34 M
+      ortality: still processing information. Overall, the mortality for CHD...
+ <./2/chd-defects-usa.png>]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 50.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
@@ -430,7 +442,7 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 50.
-) [5] [6]
+ [5]) [6]
 \openout2 = `3/technical_background.aux'.
 
 
@@ -489,66 +501,56 @@ Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
 
 [20]) [21]
-\openout2 = `4/aims.aux'.
-
- (./4/aims.tex
-Chapter 4
-[22
-
-
-
-]) [23] [24]
 \openout2 = `5/data.aux'.
 
  (./5/data.tex
-Chapter 5
-[25
+Chapter 4
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [22
 
 
 
-] [26] [27] [28]
-Overfull \hbox (0.2909pt too wide) in paragraph at lines 63--63
-[]\OT1/cmr/bx/n/12 Motion Cor-rec-tion and Eval-u-a-tion Ex-per-i-ments: Pread-
-o-les-cent and Adult
- []
+]
+Underfull \vbox (badness 1292) has occurred while \output is active []
 
-[29]) [30]
-\openout2 = `6/experiments.aux'.
+ [23]
+[24]
+Underfull \vbox (badness 6380) has occurred while \output is active []
 
- (./6/experiments.tex
-Chapter 6
-[31
-
-
-
-]) [32] [33]
+ [25]
+[26]) [27]
 BIBLIOGRAPHY
-(./dissertation.bbl [34
+(./dissertation.bbl [28
 
 
 ]
 Missing character: There is no â in font cmr12!
- [35] [36] [37])
+ [29]
+Missing character: There is no â in font cmti12!
+Missing character: There is no € in font cmti12!
+Missing character: There is no ” in font cmti12!
+ [30] [31])
 \openout3 = `dissertation.etd'.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 101.
- [38]
+ [32]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 101.
  (./dissertation.aux
 (./1/introduction.aux) (./2/clinical_background.aux)
-(./3/technical_background.aux) (./4/aims.aux) (./5/data.aux)
-(./6/experiments.aux))
+(./3/technical_background.aux) (./5/data.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 101.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 101.
 Package rerunfilecheck Info: File `dissertation.out' has not changed.
-(rerunfilecheck)             Checksum: E24C23E931101821BB9D22B495FAA849;3932.
+(rerunfilecheck)             Checksum: D55178B08712C5C7962BB4EEEF7DF8B0;2706.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 101.
  ) 
 Here is how much of TeX's memory you used:
- 6943 strings out of 492982
- 98787 string characters out of 6134895
- 194232 words of memory out of 5000000
- 10244 multiletter control sequences out of 15000+600000
+ 6904 strings out of 492982
+ 98330 string characters out of 6134895
+ 192277 words of memory out of 5000000
+ 10237 multiletter control sequences out of 15000+600000
  9545 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  34i,6n,30p,1423b,413s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -559,10 +561,10 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmti12.pfb>
-Output written on dissertation.pdf (43 pages, 180966 bytes).
+Output written on dissertation.pdf (37 pages, 272221 bytes).
 PDF statistics:
- 617 PDF objects out of 1000 (max. 8388607)
- 559 compressed objects within 6 object streams
- 139 named destinations out of 1000 (max. 500000)
- 401 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 531 PDF objects out of 1000 (max. 8388607)
+ 477 compressed objects within 5 object streams
+ 121 named destinations out of 1000 (max. 500000)
+ 294 words of extra memory for PDF output out of 10000 (max. 10000000)
 

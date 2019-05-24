@@ -5,46 +5,32 @@
 \BOOKMARK [0][]{chapter.1}{1.0 INTRODUCTION}{}% 1
 \BOOKMARK [0][]{chapter.2}{2.0 NEURODEVELOPMENT, CONGENITAL HEART DISEASE, AND FUNCTIONAL CONNECTIVITY}{}% 2
 \BOOKMARK [1][]{section.2.1}{2.1 CONGENITAL HEART DEFECTS}{chapter.2}% 3
-\BOOKMARK [2][]{subsection.2.1.1}{2.1.1 From Heart Disease and Stroke Update 2016}{section.2.1}% 4
-\BOOKMARK [2][]{subsection.2.1.2}{2.1.2 From Long-Term Risk of Hemorrhagic Stroke in Young Patients with CHD}{section.2.1}% 5
-\BOOKMARK [1][]{section.2.2}{2.2 CHD AND NEURODEVELOPMENT}{chapter.2}% 6
-\BOOKMARK [1][]{section.2.3}{2.3 RESTING-STATE NETWORKS}{chapter.2}% 7
-\BOOKMARK [0][]{chapter.3}{3.0 MRI ACQUISITION AND IMAGE CLEANING BACKGROUND}{}% 8
-\BOOKMARK [1][]{section.3.1}{3.1 SOURCES OF MOTION}{chapter.3}% 9
-\BOOKMARK [1][]{section.3.2}{3.2 EFFECTS OF MOTION}{chapter.3}% 10
-\BOOKMARK [1][]{section.3.3}{3.3 MOTION PREVENTION}{chapter.3}% 11
-\BOOKMARK [2][]{subsection.3.3.1}{3.3.1 Sedation}{section.3.3}% 12
-\BOOKMARK [2][]{subsection.3.3.2}{3.3.2 Education, Distraction, and Behavioral Techniques}{section.3.3}% 13
-\BOOKMARK [2][]{subsection.3.3.3}{3.3.3 Feed and Sleep Protocols}{section.3.3}% 14
-\BOOKMARK [1][]{section.3.4}{3.4 PROSPECTIVE MOTION CORRECTION}{chapter.3}% 15
-\BOOKMARK [2][]{subsection.3.4.1}{3.4.1 Optical Motion Correction}{section.3.4}% 16
-\BOOKMARK [2][]{subsection.3.4.2}{3.4.2 External Sensors}{section.3.4}% 17
-\BOOKMARK [2][]{subsection.3.4.3}{3.4.3 Intra-Image Motion Correction}{section.3.4}% 18
-\BOOKMARK [2][]{subsection.3.4.4}{3.4.4 General Limitations of Prospective Motion Correction}{section.3.4}% 19
-\BOOKMARK [1][]{section.3.5}{3.5 RETROSPECTIVE MOTION CORRECTION}{chapter.3}% 20
-\BOOKMARK [2][]{subsection.3.5.1}{3.5.1 Global Volume Registration}{section.3.5}% 21
-\BOOKMARK [2][]{subsection.3.5.2}{3.5.2 Denoising}{section.3.5}% 22
-\BOOKMARK [2][]{subsection.3.5.3}{3.5.3 Filtering}{section.3.5}% 23
-\BOOKMARK [2][]{subsection.3.5.4}{3.5.4 Spin History Distortion Correction}{section.3.5}% 24
-\BOOKMARK [1][]{section.3.6}{3.6 MEASURING MOTION}{chapter.3}% 25
-\BOOKMARK [0][]{chapter.4}{4.0 AIMS}{}% 26
-\BOOKMARK [0][]{chapter.5}{5.0 MATERIALS AND METHODS}{}% 27
-\BOOKMARK [1][]{section.5.1}{5.1 Data}{chapter.5}% 28
-\BOOKMARK [2][]{subsection.5.1.1}{5.1.1 Simulated Phantom Images}{section.5.1}% 29
-\BOOKMARK [2][]{subsection.5.1.2}{5.1.2 Neonatal Subject Population and Images}{section.5.1}% 30
-\BOOKMARK [2][]{subsection.5.1.3}{5.1.3 Preadolescent Subject Population and Images}{section.5.1}% 31
-\BOOKMARK [2][]{subsection.5.1.4}{5.1.4 Adult Subject Population and Images}{section.5.1}% 32
-\BOOKMARK [2][]{subsection.5.1.5}{5.1.5 Fetal Subject Population and Images}{section.5.1}% 33
-\BOOKMARK [1][]{section.5.2}{5.2 Experiments}{chapter.5}% 34
-\BOOKMARK [2][]{subsection.5.2.1}{5.2.1 Simulated Phantom}{section.5.2}% 35
-\BOOKMARK [2][]{subsection.5.2.2}{5.2.2 Feasibility Experiment: Neonatal Subjects}{section.5.2}% 36
-\BOOKMARK [2][]{subsection.5.2.3}{5.2.3 Motion Correction and Evaluation Experiments: Preadolescent and Adult Subjects}{section.5.2}% 37
-\BOOKMARK [2][]{subsection.5.2.4}{5.2.4 Fetal Motion: Fetal Brain and Liver}{section.5.2}% 38
-\BOOKMARK [0][]{chapter.6}{6.0 EXPERIMENTS}{}% 39
-\BOOKMARK [1][]{section.6.1}{6.1 Aim 1: DAG-based Image Registration}{chapter.6}% 40
-\BOOKMARK [1][]{section.6.2}{6.2 Aim 2: Detecting Population-Dependent Patterns of Motion}{chapter.6}% 41
-\BOOKMARK [1][]{section.6.3}{6.3 Aim 3: Machine Learning for Optimal Motion Correction}{chapter.6}% 42
-\BOOKMARK [1][]{section.6.4}{6.4 Aim 4: Does Motion Correction Recover True Signal?}{chapter.6}% 43
-\BOOKMARK [1][]{section.6.5}{6.5 Tools}{chapter.6}% 44
-\BOOKMARK [1][]{section.6.6}{6.6 Metrics and Analyses}{chapter.6}% 45
-\BOOKMARK [0][]{section*.1}{BIBLIOGRAPHY}{}% 46
+\BOOKMARK [2][]{subsection.2.1.1}{2.1.1 From Long-Term Risk of Hemorrhagic Stroke in Young Patients with CHD}{section.2.1}% 4
+\BOOKMARK [1][]{section.2.2}{2.2 CHD AND NEURODEVELOPMENT}{chapter.2}% 5
+\BOOKMARK [1][]{section.2.3}{2.3 RESTING-STATE NETWORKS}{chapter.2}% 6
+\BOOKMARK [0][]{chapter.3}{3.0 MRI ACQUISITION AND IMAGE CLEANING BACKGROUND}{}% 7
+\BOOKMARK [1][]{section.3.1}{3.1 SOURCES OF MOTION}{chapter.3}% 8
+\BOOKMARK [1][]{section.3.2}{3.2 EFFECTS OF MOTION}{chapter.3}% 9
+\BOOKMARK [1][]{section.3.3}{3.3 MOTION PREVENTION}{chapter.3}% 10
+\BOOKMARK [2][]{subsection.3.3.1}{3.3.1 Sedation}{section.3.3}% 11
+\BOOKMARK [2][]{subsection.3.3.2}{3.3.2 Education, Distraction, and Behavioral Techniques}{section.3.3}% 12
+\BOOKMARK [2][]{subsection.3.3.3}{3.3.3 Feed and Sleep Protocols}{section.3.3}% 13
+\BOOKMARK [1][]{section.3.4}{3.4 PROSPECTIVE MOTION CORRECTION}{chapter.3}% 14
+\BOOKMARK [2][]{subsection.3.4.1}{3.4.1 Optical Motion Correction}{section.3.4}% 15
+\BOOKMARK [2][]{subsection.3.4.2}{3.4.2 External Sensors}{section.3.4}% 16
+\BOOKMARK [2][]{subsection.3.4.3}{3.4.3 Intra-Image Motion Correction}{section.3.4}% 17
+\BOOKMARK [2][]{subsection.3.4.4}{3.4.4 General Limitations of Prospective Motion Correction}{section.3.4}% 18
+\BOOKMARK [1][]{section.3.5}{3.5 RETROSPECTIVE MOTION CORRECTION}{chapter.3}% 19
+\BOOKMARK [2][]{subsection.3.5.1}{3.5.1 Global Volume Registration}{section.3.5}% 20
+\BOOKMARK [2][]{subsection.3.5.2}{3.5.2 Denoising}{section.3.5}% 21
+\BOOKMARK [2][]{subsection.3.5.3}{3.5.3 Filtering}{section.3.5}% 22
+\BOOKMARK [2][]{subsection.3.5.4}{3.5.4 Spin History Distortion Correction}{section.3.5}% 23
+\BOOKMARK [1][]{section.3.6}{3.6 MEASURING MOTION}{chapter.3}% 24
+\BOOKMARK [0][]{chapter.4}{4.0 DATA}{}% 25
+\BOOKMARK [1][]{section.4.1}{4.1 Neonatal Subject Population and Images}{chapter.4}% 26
+\BOOKMARK [1][]{section.4.2}{4.2 Preadolescent Subject Population and Images}{chapter.4}% 27
+\BOOKMARK [1][]{section.4.3}{4.3 Adult Subject Population and Images}{chapter.4}% 28
+\BOOKMARK [1][]{section.4.4}{4.4 Fetal Subject Population and Images}{chapter.4}% 29
+\BOOKMARK [1][]{section.4.5}{4.5 Simulated Phantom Images}{chapter.4}% 30
+\BOOKMARK [1][]{section.4.6}{4.6 Human Phantom Images}{chapter.4}% 31
+\BOOKMARK [0][]{section*.1}{BIBLIOGRAPHY}{}% 32

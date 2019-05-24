@@ -1,8 +1,7 @@
 \contentsline {chapter}{{\bfseries \numberline {1.0}INTRODUCTION}}{1}{chapter.1}
 \contentsline {chapter}{{\bfseries \numberline {2.0}NEURODEVELOPMENT, CONGENITAL HEART DISEASE, AND FUNCTIONAL CONNECTIVITY}}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}CONGENITAL HEART DEFECTS}{3}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}From Heart Disease and Stroke Update 2016}{3}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}From Long-Term Risk of Hemorrhagic Stroke in Young Patients with CHD}{4}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.1}From Long-Term Risk of Hemorrhagic Stroke in Young Patients with CHD}{5}{subsection.2.1.1}
 \contentsline {section}{\numberline {2.2}CHD AND NEURODEVELOPMENT}{5}{section.2.2}
 \contentsline {section}{\numberline {2.3}RESTING-STATE NETWORKS}{5}{section.2.3}
 \contentsline {chapter}{{\bfseries \numberline {3.0}MRI ACQUISITION AND IMAGE CLEANING BACKGROUND}}{7}{chapter.3}
@@ -23,24 +22,11 @@
 \contentsline {subsection}{\numberline {3.5.3}Filtering}{20}{subsection.3.5.3}
 \contentsline {subsection}{\numberline {3.5.4}Spin History Distortion Correction}{20}{subsection.3.5.4}
 \contentsline {section}{\numberline {3.6}MEASURING MOTION}{20}{section.3.6}
-\contentsline {chapter}{{\bfseries \numberline {4.0}AIMS}}{22}{chapter.4}
-\contentsline {chapter}{{\bfseries \numberline {5.0}MATERIALS AND METHODS}}{25}{chapter.5}
-\contentsline {section}{\numberline {5.1}Data}{25}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Simulated Phantom Images}{25}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Neonatal Subject Population and Images}{26}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}Preadolescent Subject Population and Images}{26}{subsection.5.1.3}
-\contentsline {subsection}{\numberline {5.1.4}Adult Subject Population and Images}{27}{subsection.5.1.4}
-\contentsline {subsection}{\numberline {5.1.5}Fetal Subject Population and Images}{27}{subsection.5.1.5}
-\contentsline {section}{\numberline {5.2}Experiments}{28}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Simulated Phantom}{28}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Feasibility Experiment: Neonatal Subjects}{28}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}Motion Correction and Evaluation Experiments: Preadolescent and Adult Subjects}{29}{subsection.5.2.3}
-\contentsline {subsection}{\numberline {5.2.4}Fetal Motion: Fetal Brain and Liver}{30}{subsection.5.2.4}
-\contentsline {chapter}{{\bfseries \numberline {6.0}EXPERIMENTS}}{31}{chapter.6}
-\contentsline {section}{\numberline {6.1}Aim 1: DAG-based Image Registration}{31}{section.6.1}
-\contentsline {section}{\numberline {6.2}Aim 2: Detecting Population-Dependent Patterns of Motion}{31}{section.6.2}
-\contentsline {section}{\numberline {6.3}Aim 3: Machine Learning for Optimal Motion Correction}{32}{section.6.3}
-\contentsline {section}{\numberline {6.4}Aim 4: Does Motion Correction Recover True Signal?}{32}{section.6.4}
-\contentsline {section}{\numberline {6.5}Tools}{32}{section.6.5}
-\contentsline {section}{\numberline {6.6}Metrics and Analyses}{32}{section.6.6}
-\contentsline {chapter}{{\bfseries \bibname }}{34}{section*.1}
+\contentsline {chapter}{{\bfseries \numberline {4.0}DATA}}{22}{chapter.4}
+\contentsline {section}{\numberline {4.1}Neonatal Subject Population and Images}{23}{section.4.1}
+\contentsline {section}{\numberline {4.2}Preadolescent Subject Population and Images}{23}{section.4.2}
+\contentsline {section}{\numberline {4.3}Adult Subject Population and Images}{24}{section.4.3}
+\contentsline {section}{\numberline {4.4}Fetal Subject Population and Images}{24}{section.4.4}
+\contentsline {section}{\numberline {4.5}Simulated Phantom Images}{26}{section.4.5}
+\contentsline {section}{\numberline {4.6}Human Phantom Images}{26}{section.4.6}
+\contentsline {chapter}{{\bfseries \bibname }}{28}{section*.1}

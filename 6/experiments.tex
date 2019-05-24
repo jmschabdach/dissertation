@@ -1,5 +1,29 @@
 \chapter{EXPERIMENTS}
 
+\section{Experiments}
+
+\subsection{Simulated Phantom}
+
+The phantom experiments will be used to probe the volume registration technique. By applying the DAG-based and traditional registration techniques to the base phantom sequence, we will be able to evaluate the degrees of positional and signal change errors each technique may introduce into the registration process. After determining the baseline error, we will apply both registration techniques to the BOLD phantom sequence. The registered versions of the BOLD phantom sequence will be compared to each other and to the original BOLD phantom sequence to determine how well each registration retains the BOLD signal.
+
+
+\subsection{Feasibility Experiment: Neonatal Subjects}
+
+%For each subject in a cohort of 74 healthy neonatal subjects, at least one rs-fMRI was acquired. The images underwent motion correction using a pipeline developed by Power et al. \cite{Power2014}. The motion corrected image were compared to Power et al.'s thresholds of acceptability for their FD and DVARS metrics \cite{Power2014}. Of the 74 subjects in this cohort, 17 subjects had rs-fMRIs which did not meet Power et al.'s usability criteria. These high motion images were used in our study.
+
+Our set of neonatal subjects includes a cohort of 74 healthy neonates. Each subject in this cohort underwent an MRI scan, and the rs-fMRIs obtained during this process were compared to Power et al.'s positional and signal change usability thresholds. Of the 74 subjects, 17 of them had rs-fMRIs which did not meet the usability criteria. These high motion images were used to test the feasibility of the DAG-based volume registration framework. 
+
+These images were ideal for the feasibility study for two reasons. First, the neonates were healthy, which eliminates disease status as a confounding variable in the analysis of the registered images. Second, the neonates in this study were scanned using a feed and sleep protocol. Because the neonates were asleep during the scan, they generally did not move very much. The high-motion neonates are an obvious exception to this concept, but many of the high-motion images contained long periods where the subject was stationary. Evaluating the DAG-based framework on data with various patterns of motion and different periods of low and high motion allowed us to explore the effects of the DAG-based algorithm in different combinations of motion features. Third, these images were too corrupted by motion to be used in other analyses. Applying both the DAG-based framework and the traditional registration framework to these images provided the opportunity to compare the performances of both registration frameworks to each other in the context of the usability gold standard thresholds. 
+
+\subsection{Motion Correction and Evaluation Experiments: Preadolescent and Adult Subjects}
+
+The multicenter imaging study provides a unique opportunity to evaluate the efficacy of the DAG-based framework on a large subject cohort. The images from all sites first undergo both types of registration independently. The registered and original images are compared to the Power etl. al. usability thresholds. The results at this stage answer the question of whether or not the results of the feasibility study can generalize to a larger cohort of subjects from a different clinical population. Next, each pair of registered images will undergo a complete motion correction pipeline. We use the ICA pipeline outlined by XXX and implemented in XXX tool. The results at this stage of the experiment show how the DAG-based framework fits into an existing, comprehensive motion correction pipeline. 
+
+In addition to evaluating the effects of the DAG-based framework within the context of a motion correction pipeline, the registered preadolescent images are used to explore the relationship between motion and clinical outcomes. Unsupervised machine learning techniques such as agglomerative clustering and k-means clustering are applied to the data. The results of the clustering techniques elucidate whether there are patterns in motion specific to certain patient groups. These groups could include patients with similar clinical outcomes, patients from the same site, or potentially other clinical or demographic groups.
+
+\subsection{Fetal Motion: Fetal Brain and Liver}
+
+
 \section{Aim 1: DAG-based Image Registration}
 
 Pending paper: 
