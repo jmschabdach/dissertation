@@ -1,32 +1,45 @@
 \contentsline {chapter}{{\bfseries \numberline {1.0}INTRODUCTION}}{1}{chapter.1}
-\contentsline {chapter}{{\bfseries \numberline {2.0}NEURODEVELOPMENT, CONGENITAL HEART DISEASE, AND FUNCTIONAL CONNECTIVITY}}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}CONGENITAL HEART DEFECTS}{3}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}From Long-Term Risk of Hemorrhagic Stroke in Young Patients with CHD}{5}{subsection.2.1.1}
-\contentsline {section}{\numberline {2.2}CHD AND NEURODEVELOPMENT}{5}{section.2.2}
-\contentsline {section}{\numberline {2.3}RESTING-STATE NETWORKS}{5}{section.2.3}
-\contentsline {chapter}{{\bfseries \numberline {3.0}MRI ACQUISITION AND IMAGE CLEANING BACKGROUND}}{7}{chapter.3}
-\contentsline {section}{\numberline {3.1}SOURCES OF MOTION}{7}{section.3.1}
-\contentsline {section}{\numberline {3.2}EFFECTS OF MOTION}{7}{section.3.2}
-\contentsline {section}{\numberline {3.3}MOTION PREVENTION}{9}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Sedation}{9}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Education, Distraction, and Behavioral Techniques}{11}{subsection.3.3.2}
-\contentsline {subsection}{\numberline {3.3.3}Feed and Sleep Protocols}{12}{subsection.3.3.3}
-\contentsline {section}{\numberline {3.4}PROSPECTIVE MOTION CORRECTION}{13}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Optical Motion Correction}{13}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}External Sensors}{16}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}Intra-Image Motion Correction}{16}{subsection.3.4.3}
-\contentsline {subsection}{\numberline {3.4.4}General Limitations of Prospective Motion Correction}{17}{subsection.3.4.4}
-\contentsline {section}{\numberline {3.5}RETROSPECTIVE MOTION CORRECTION}{17}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Global Volume Registration}{17}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}Denoising}{19}{subsection.3.5.2}
-\contentsline {subsection}{\numberline {3.5.3}Filtering}{20}{subsection.3.5.3}
-\contentsline {subsection}{\numberline {3.5.4}Spin History Distortion Correction}{20}{subsection.3.5.4}
-\contentsline {section}{\numberline {3.6}MEASURING MOTION}{20}{section.3.6}
-\contentsline {chapter}{{\bfseries \numberline {4.0}DATA}}{22}{chapter.4}
-\contentsline {section}{\numberline {4.1}Neonatal Subject Population and Images}{23}{section.4.1}
-\contentsline {section}{\numberline {4.2}Preadolescent Subject Population and Images}{23}{section.4.2}
-\contentsline {section}{\numberline {4.3}Adult Subject Population and Images}{24}{section.4.3}
-\contentsline {section}{\numberline {4.4}Fetal Subject Population and Images}{24}{section.4.4}
-\contentsline {section}{\numberline {4.5}Simulated Phantom Images}{26}{section.4.5}
-\contentsline {section}{\numberline {4.6}Human Phantom Images}{26}{section.4.6}
-\contentsline {chapter}{{\bfseries \bibname }}{28}{section*.1}
+\contentsline {chapter}{{\bfseries \numberline {2.0}NEURODEVELOPMENT, CONGENITAL HEART DISEASE, AND FUNCTIONAL CONNECTIVITY}}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}CONGENITAL HEART DEFECTS}{4}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}From Long-Term Risk of Hemorrhagic Stroke in Young Patients with CHD}{6}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}CHD AND NEURODEVELOPMENT}{6}{section.2.2}
+\contentsline {section}{\numberline {2.3}RESTING-STATE NETWORKS}{6}{section.2.3}
+\contentsline {chapter}{{\bfseries \numberline {3.0}MRI ACQUISITION AND IMAGE CLEANING BACKGROUND}}{8}{chapter.3}
+\contentsline {section}{\numberline {3.1}SOURCES OF MOTION}{8}{section.3.1}
+\contentsline {section}{\numberline {3.2}EFFECTS OF MOTION}{8}{section.3.2}
+\contentsline {section}{\numberline {3.3}MOTION PREVENTION}{10}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Sedation}{10}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Education, Distraction, and Behavioral Techniques}{12}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Feed and Sleep Protocols}{13}{subsection.3.3.3}
+\contentsline {section}{\numberline {3.4}PROSPECTIVE MOTION CORRECTION}{14}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Optical Motion Correction}{14}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}External Sensors}{17}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Intra-Image Motion Correction}{17}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.4}General Limitations of Prospective Motion Correction}{18}{subsection.3.4.4}
+\contentsline {section}{\numberline {3.5}RETROSPECTIVE MOTION CORRECTION}{18}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Global Volume Registration}{18}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Denoising}{20}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Filtering}{21}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.4}Spin History Distortion Correction}{21}{subsection.3.5.4}
+\contentsline {section}{\numberline {3.6}MEASURING MOTION}{21}{section.3.6}
+\contentsline {chapter}{{\bfseries \numberline {4.0}AIMS}}{23}{chapter.4}
+\contentsline {section}{\numberline {4.1}Volume Registration In A Motion Correction Pipeline}{23}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Simulated Phantom}{23}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Human Phantom}{24}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Clinical Images}{24}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}Detecting Population-Dependent Patterns of Motion}{25}{section.4.2}
+\contentsline {section}{\numberline {4.3}Evaluate Relationships Between Motion and Outcomes}{26}{section.4.3}
+\contentsline {section}{\numberline {4.4}Other potential areas I'm thinking about}{26}{section.4.4}
+\contentsline {chapter}{{\bfseries \numberline {5.0}DATA}}{28}{chapter.5}
+\contentsline {section}{\numberline {5.1}Neonatal Subject Population and Images}{29}{section.5.1}
+\contentsline {section}{\numberline {5.2}Preadolescent Subject Population and Images}{29}{section.5.2}
+\contentsline {section}{\numberline {5.3}Adult Subject Population and Images}{30}{section.5.3}
+\contentsline {section}{\numberline {5.4}Fetal Subject Population and Images}{30}{section.5.4}
+\contentsline {section}{\numberline {5.5}Simulated Phantom Images}{32}{section.5.5}
+\contentsline {section}{\numberline {5.6}Human Phantom Images}{32}{section.5.6}
+\contentsline {chapter}{{\bfseries \numberline {6.0}METHODS}}{34}{chapter.6}
+\contentsline {section}{\numberline {6.1}Volume Registration and Motion Correction}{34}{section.6.1}
+\contentsline {section}{\numberline {6.2}Pattern Detection}{34}{section.6.2}
+\contentsline {section}{\numberline {6.3}Tools}{34}{section.6.3}
+\contentsline {section}{\numberline {6.4}Metrics and Analyses}{34}{section.6.4}
+\contentsline {chapter}{{\bfseries \bibname }}{35}{section*.1}

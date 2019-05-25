@@ -1,19 +1,70 @@
 \chapter{AIMS}
 
-Resting-state functional magnetic resonance imaging (rs-fMRI) measures the blood oxygen level dependent signal in an organ or organ system. This property makes rs-fMRI an invaluable tool for evaluating a patient's neurodevelopmental status or examining functional networks in his brain. To gather enough data to fully evaluate these networks, a series of image volumes must be acquired over a period of several minutes. In a standard rs-fMRI, one new image volume is obtained approximately once every two to three seconds. To gather high quality data on such a short timescale, the rs-fMRI suffers from two major limitations: rs-fMR images have low physical resolution and are highly susceptible to motion. The first limitation can be addressed by obtaining an MR image with high physical resolution and registering the rs-fMRI to this structural image, but the second limitation requires the patient to remain as still as possible for the entire duration of the scan. This task is particularly difficult for populations of certain ages and populations who suffer from conditions that affect neurodevelopment. As a result, it is common for an image from a member of one of these populations to contain too much motion to be used in clinical or research applications.
+\section{Volume Registration In A Motion Correction Pipeline}
 
-Various clinical, behavioral, and technical protocols have been developed in an attempt to prevent patient motion from impacting the acquired rs-fMR image. Sedation can be used to immobilize a patient during a scan, but it requires additional personal to perform safely and it involves a great time commitment from the patient. Sedation is also not recommended for use in young children and fetal patients. Behavioral and educational techniques can be employed to prepare a patient for stressors he may experience during an rs-fMRI scan, but these approaches do not prevent the patient from moving out of boredom, discomfort, or distress. Several groups have developed techniques to compensate for motion as the image is acquired, but these techniques often require additional MR compatible equipment and can only be utilized during the scan. After a rs-fMR image is acquired, however, it is possible to reduce the positional effects of motion in the image sequence.
+All images in each data set and cohort first underwent both types of registration independently. The registered and original images are compared to the Power etl. al. usability thresholds. The results at this stage answer the question of whether or not the DAG-based registration technique is more effective than the traditional registration technique for reducing motion in the initial step of a motion correction pipeline.  Next, each pair of registered images will undergo a motion correction via the ICA pipeline outlined by XXXX and implemented as XXX tool. The results of this experiment show how the DAG-based framework fits into an existing, comprehensive motion correction pipeline. 
 
-Many methods have been developed to mitigate the effects of motion after the rs-fMRI is acquired. While different post-acquisition motion correction pipelines utilize different processing techniques, they generally begin with global volume registration. Global volume registration is the process used to align all volumes in a rs-fMRI sequence into the same physical space. Traditionally, all volumes in the sequence are registered directly to one volume. This approach can be effective in images where the subject remains relatively still throughout the duration of the scan, but is not as successful in images containing high quantities of patient movement.
+\subsection{Simulated Phantom}
 
-We have developed an alternative volume registration framework which takes into account the spatiotemporal relationships between sequential volumes in the rs-fMRI sequence and uses these relationships during the registration process. We have demonstrated the feasibility of this technique on a high-motion neonatal brain rs-fMRI data set and compared it to the traditional registration framework. We plan to use it to further the study of congenital heart disease (CHD) across the lifetime of the patient. We will use our registration framework to correct for motion and characterize motion in these healthy and CHD patients of different ages.
+The phantom experiments will be used to probe the volume registration technique. By applying the DAG-based and traditional registration techniques to the base phantom sequence, we will be able to evaluate the degrees of positional and signal change errors each technique may introduce into the registration process. After determining the baseline error, we will apply both registration techniques to the BOLD phantom sequence. The registered versions of the BOLD phantom sequence will be compared to each other and to the original BOLD phantom sequence to determine how well each registration retains the BOLD signal.
 
-Currently, our aims for this project are as follows:
+JENNA tie in idea about how to know if a signal processing technique is actually preserving or recovering the signal of interest, and about how the signal that is measured might not be the signal of interest. Does not necessarily belong here.
+
+\subsection{Human Phantom}
+
+The human phantom images from all sites will be used both as a set of true healthy control adults and as examples of low motion images of the same subjects taken at multiple sites.
+
+\subsection{Clinical Images}
+%For each subject in a cohort of 74 healthy neonatal subjects, at least one rs-fMRI was acquired. The images underwent motion correction using a pipeline developed by Power et al. \cite{Power2014}. The motion corrected image were compared to Power et al.'s thresholds of acceptability for their FD and DVARS metrics \cite{Power2014}. Of the 74 subjects in this cohort, 17 subjects had rs-fMRIs which did not meet Power et al.'s usability criteria. These high motion images were used in our study.
+
+\textbf{Neonatal Cohort.} Our set of neonatal subjects includes a cohort of 74 healthy neonates. Each subject in this cohort underwent an MRI scan, and the rs-fMRIs obtained during this process were compared to Power et al.'s positional and signal change usability thresholds. Of the 74 subjects, 17 of them had rs-fMRIs which did not meet the usability criteria. These high motion images were used to test the feasibility of the DAG-based volume registration framework. 
+
+These images were ideal for the feasibility study for two reasons. First, the neonates were healthy, which eliminates disease status as a confounding variable in the analysis of the registered images. Second, the neonates in this study were scanned using a feed and sleep protocol. Because the neonates were asleep during the scan, they generally did not move very much. The high-motion neonates are an obvious exception to this concept, but many of the high-motion images contained long periods where the subject was stationary. Evaluating the DAG-based framework on data with various patterns of motion and different periods of low and high motion allowed us to explore the effects of the DAG-based algorithm in different combinations of motion features. Third, these images were too corrupted by motion to be used in other analyses. Applying both the DAG-based framework and the traditional registration framework to these images provided the opportunity to compare the performances of both registration frameworks to each other in the context of the usability gold standard thresholds. 
+
+\textit{Note: paper submitted for puplication.}
+
+\textbf{Preadolescent Cohort.} The multicenter imaging study of preadolescent subjects provides a unique opportunity to evaluate the efficacy of the DAG-based framework on a large subject cohort containing variable amounts of motion. The outcome of this experiment will be used in the next experiment to determine if there are any site-specific or vendor-specific variables influencing patient motion.
+
+\textbf{Adult Cohorts.} The adult cohorts encompass many clinical outcomes...
+
+\textbf{Fetal Cohort.} As the fetal subjects have both neurological and placental images, their data will be used to examine the impact of volume registration on different organ types.
+
+
+\section{Detecting Population-Dependent Patterns of Motion} % in different populations to formally describe age-group or clinical status related motion patterns.
+
+Are there any patterns in motion that are similar
 \begin{itemize}
-\item \textbf{Aim 1.} Study the motion patterns in the different populations to formally describe age-group or clinical status related motion patterns.
-\item \textbf{Aim 2.} Develop a metric to comprehensively capture information describing these patterns.
-\item \textbf{Aim 3.} Employ machine learning techniques to (a) measure the impact of motion on image harmonization in multi-center studies, and (b) evaluate the relationship between motion and cognitive, clinical, and behavioral outcomes of CHD patients.
+\item within age groups?
+\item within clinical groups?
+\item within groups scanned at the same site?
+\item associated with a certain outcome?
 \end{itemize}
 
+Machine learning techniques can be used to classify images as belonging to different groups, but many of these techniques use difficult to interpret ``black box'' logic. In some cases, examining the logic behind a classification reveals patterns in a dataset which a human missed but a computer detected. One example is a system trained to differentiate between pictures of red foxes and pictures of artic foxes. Its classification accuracy was XX\%, but further examination revealed that the system used the presence of snow in an image led the system to label that image as containing an artic fox. CITATION NEEDED
 
-We have a large set of neurological rs-fMRIs for both healthy control and CHD neonatal, preadolescent, and adult subjects. We also have a set of neurological and placental rs-fMRIs for fetal patients. We will apply both the tradition and novel registration frameworks to all images in our different cohorts and evaluate the impact of each framework on each image after passing it through a complete motion correction pipeline. The original and registered images will be used to address the aims discussed in this chapter.
+WILL ALSO USE REGRESSION AND STATISTICAL TESTS
+
+To ensure that there are no confounding signals such as those in the previous example are present in our datasets, we first use unsupervised machine learning techniques to identify correlations between subject images and their demographic data. The techniques we will use are several types of clustering (agglomerative, k-means, and spectral) as well as principle component analysis (PCA) and regression. Features of the images before and after registration will be used as training data for each model and different demographic features will be used as the true classes. The demographic data for each subject includes the subject's age at the time of scan, gender, race, dominant hand, and scan site. (NOTE: THAT SENTENCE IS FOR MULTISITE STUDY DATA, NEED TO SPECIFY, ALSO NEED TO GET ALL CLINICAL DATA.)
+
+Any demographic features which influence the division of patients into groups will be reported and accounted for during later analyses.
+
+After identifying and accounting for demographic groups, we will expand the analysis to clinical and behavioral outcomes.
+
+Use pediatric, neonatal, and fetal images
+
+\textit{Proposed topic for a paper: different subject populations exhibit different patterns of motion according to age and clinical factors.}
+
+
+\section{Evaluate Relationships Between Motion and Outcomes} %Employ machine learning techniques to (a) measure the impact of motion on image harmonization in multi-center studies, and (b) evaluate the relationship between motion and cognitive, clinical, and behavioral outcomes of CHD patients.
+
+In addition to evaluating the effects of the DAG-based framework within the context of a motion correction pipeline, the registered images are used to explore the relationship between motion and clinical outcomes. Unsupervised machine learning techniques such as agglomerative clustering and k-means clustering are applied to the data. The results of the clustering techniques elucidate whether there are patterns in motion specific to certain patient groups. These groups could include patients with similar clinical outcomes, patients from the same site, or potentially other clinical or demographic groups.
+
+JENNA - EXPAND
+
+\section{Other potential areas I'm thinking about}
+
+\textbf{Machine Learning for Optimal Motion Correction} Start with a classification module for identifying severity of motion between template volume, previous volume(s), and current volume. The classifications will be based either on the patterns identified in Aim 2, or on the positional and signal change differences between the volumes of interest.
+
+After the severity of the motion reflected in a volume is determined...
+
+\textbf{Aim 4: Does Motion Correction Recover True Signal?} Hinted at earlier in first section of chapter, should it get its own section?
