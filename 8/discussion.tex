@@ -1,0 +1,21 @@
+\chapter{DISCUSSION}
+\label{ch:discussion}
+
+\section{Comparison of Volume Registration Methods}
+
+Resting-state BOLD MR images are used to evaluate the functional architecture of a patient’s brain . Because resting-state BOLD images are highly susceptible to motion, development of strong post-acquisition motion correction techniques is vital. Current pipelines for mitigating motion after sequence acquisition vary in terms of efficacy and effectiveness, but all begin with global volume registration. In this study, we compared the corrective performance of two global volume registration methods, the traditional framework and a novel DAG-based framework, on a set of 17 neonatal rs-fMRIs. 
+
+The correlation ratio matrices, FD, and DVARS values were calculated for each sequence. The decrease in the mean and standard deviations of the correlation ratio matrices for the registered sequences indicate that global volume registration reduces some effects of motion in rs-fMRIs. The histograms of the FD and DVARS values in the registered sequences show that the DAG-based method was better able to correct volumes to meet Power et al’s thresholds than the traditional registration method. These results indicate that the DAG-based global registration method is better able to reduce the effects of motion than the traditional global registration method when correcting motion in neonatal images. While no entire sequences were recovered, some high-motion volumes within each sequence were recovered by the DAG-based registration method that were not recovered by the traditional registration method. 
+
+\subsection{Relation to Existing Work}
+To the best of our knowledge, the only other study that has used a variant of the DAG-based method was performed by Liao et al \cite{Liao2016}. Liao et al’s dataset consisted of 10 fetal rs-fMRIs. In each of these sequences, the fetal brain, fetal liver, and placenta were manually segmented in the first volume of the sequence as well as in five other randomly chosen volumes. These overlap of these manual segmentations before and after registration as measured using the Dice coefficient was used to quantify the amount of motion in each sequence. Even though the Dice coefficients increase more in each sequence after Liao et al.’s registration than after traditional registration, their measure of positional change fails to quantify any changes in position between any other pairs of volumes that do not have manual segmentations. 
+
+\subsection{Limitations and Future Work}
+
+Subject motion during rs-MRI scans affects both the recorded position and orientation of the subject as well as the established magnetic spin gradients within the skull. The DAG-based technique can correct the positional effects of motion, but it cannot correct the effects of the motion that disrupt the magnetic spin gradients. Methods for prospectively estimating subject motion exist and can be used to change slice positions in each volume during acquisition. Retrospective techniques to correct for this effect will require shot-to-shot modeling of macroscopic B0 fields and are beyond the scope of the present research.
+
+In the future, we plan to apply the DAG-based technique to a cohort of preadolescent images for the purpose of characterizing motion in a large cohort as well as to a cohort of neonatal images to address the problem of correcting motion of multiple organs in images with large amounts of motion.  
+
+\section{Conclusions}
+
+In this feasibility study, we applied two global registration methods to set of rs-fMRIs of 17 healthy neonates. We showed that both global registration techniques reduce the amount of motion in the images as measured using the correlation ratio. We then showed that the DAG-based framework is better at correcting images to a pair of established gold standard thresholds for resting-state BOLD MRI usability than the traditional framework. In the future we plan to apply the DAG-based framework to other patient populations and multi-organ problems.

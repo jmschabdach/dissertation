@@ -8,47 +8,49 @@ A level-1 auxiliary file: 3/technical_background.aux
 A level-1 auxiliary file: 4/methods.aux
 A level-1 auxiliary file: 5/data.aux
 A level-1 auxiliary file: 6/experiments.aux
+A level-1 auxiliary file: 7/results.aux
+A level-1 auxiliary file: 8/discussion.aux
 Database file #1: sources.bib
 Warning--empty publisher in Mozaffarian2016
-You've used 46 entries,
+You've used 48 entries,
             1935 wiz_defined-function locations,
-            787 strings with 16227 characters,
-and the built_in function-call counts, 23638 in all, are:
-= -- 2194
-> -- 1550
-< -- 9
-+ -- 567
-- -- 566
-* -- 2323
-:= -- 4214
-add.period$ -- 137
-call.type$ -- 46
-change.case$ -- 513
-chr.to.int$ -- 45
-cite$ -- 47
-duplicate$ -- 653
-empty$ -- 1304
-format.name$ -- 620
-if$ -- 4389
+            797 strings with 16433 characters,
+and the built_in function-call counts, 24114 in all, are:
+= -- 2242
+> -- 1564
+< -- 11
++ -- 573
+- -- 570
+* -- 2353
+:= -- 4308
+add.period$ -- 141
+call.type$ -- 48
+change.case$ -- 525
+chr.to.int$ -- 47
+cite$ -- 49
+duplicate$ -- 673
+empty$ -- 1334
+format.name$ -- 626
+if$ -- 4475
 int.to.chr$ -- 2
 int.to.str$ -- 0
 missing$ -- 46
-newline$ -- 232
-num.names$ -- 138
-pop$ -- 429
+newline$ -- 240
+num.names$ -- 144
+pop$ -- 437
 preamble$ -- 1
-purify$ -- 513
+purify$ -- 525
 quote$ -- 0
-skip$ -- 487
+skip$ -- 505
 stack$ -- 0
-substring$ -- 1508
+substring$ -- 1534
 swap$ -- 61
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 274
+type$ -- 286
 warning$ -- 1
-while$ -- 172
+while$ -- 176
 width$ -- 0
-write$ -- 595
+write$ -- 615
 (There was 1 warning)
