@@ -26,24 +26,24 @@
 \BOOKMARK [2][]{subsection.3.5.3}{3.5.3 Filtering}{section.3.5}% 22
 \BOOKMARK [2][]{subsection.3.5.4}{3.5.4 Spin History Distortion Correction}{section.3.5}% 23
 \BOOKMARK [1][]{section.3.6}{3.6 MEASURING MOTION}{chapter.3}% 24
-\BOOKMARK [0][]{chapter.4}{4.0 AIMS}{}% 25
-\BOOKMARK [1][]{section.4.1}{4.1 Volume Registration In A Motion Correction Pipeline}{chapter.4}% 26
-\BOOKMARK [2][]{subsection.4.1.1}{4.1.1 Simulated Phantom}{section.4.1}% 27
-\BOOKMARK [2][]{subsection.4.1.2}{4.1.2 Human Phantom}{section.4.1}% 28
-\BOOKMARK [2][]{subsection.4.1.3}{4.1.3 Clinical Images}{section.4.1}% 29
-\BOOKMARK [1][]{section.4.2}{4.2 Detecting Population-Dependent Patterns of Motion}{chapter.4}% 30
-\BOOKMARK [1][]{section.4.3}{4.3 Evaluate Relationships Between Motion and Outcomes}{chapter.4}% 31
-\BOOKMARK [1][]{section.4.4}{4.4 Other potential areas I'm thinking about}{chapter.4}% 32
-\BOOKMARK [0][]{chapter.5}{5.0 DATA}{}% 33
-\BOOKMARK [1][]{section.5.1}{5.1 Neonatal Subject Population and Images}{chapter.5}% 34
-\BOOKMARK [1][]{section.5.2}{5.2 Preadolescent Subject Population and Images}{chapter.5}% 35
-\BOOKMARK [1][]{section.5.3}{5.3 Adult Subject Population and Images}{chapter.5}% 36
-\BOOKMARK [1][]{section.5.4}{5.4 Fetal Subject Population and Images}{chapter.5}% 37
-\BOOKMARK [1][]{section.5.5}{5.5 Simulated Phantom Images}{chapter.5}% 38
-\BOOKMARK [1][]{section.5.6}{5.6 Human Phantom Images}{chapter.5}% 39
-\BOOKMARK [0][]{chapter.6}{6.0 METHODS}{}% 40
-\BOOKMARK [1][]{section.6.1}{6.1 Volume Registration and Motion Correction}{chapter.6}% 41
-\BOOKMARK [1][]{section.6.2}{6.2 Pattern Detection}{chapter.6}% 42
-\BOOKMARK [1][]{section.6.3}{6.3 Tools}{chapter.6}% 43
-\BOOKMARK [1][]{section.6.4}{6.4 Metrics and Analyses}{chapter.6}% 44
+\BOOKMARK [0][]{chapter.4}{4.0 METHODS}{}% 25
+\BOOKMARK [1][]{section.4.1}{4.1 Volume Registration and Motion Correction}{chapter.4}% 26
+\BOOKMARK [1][]{section.4.2}{4.2 Pattern Detection}{chapter.4}% 27
+\BOOKMARK [1][]{section.4.3}{4.3 Tools}{chapter.4}% 28
+\BOOKMARK [1][]{section.4.4}{4.4 Metrics and Analyses}{chapter.4}% 29
+\BOOKMARK [0][]{chapter.5}{5.0 DATA}{}% 30
+\BOOKMARK [1][]{section.5.1}{5.1 Neonatal Subject Population and Images}{chapter.5}% 31
+\BOOKMARK [1][]{section.5.2}{5.2 Preadolescent Subject Population and Images}{chapter.5}% 32
+\BOOKMARK [1][]{section.5.3}{5.3 Adult Subject Population and Images}{chapter.5}% 33
+\BOOKMARK [1][]{section.5.4}{5.4 Fetal Subject Population and Images}{chapter.5}% 34
+\BOOKMARK [1][]{section.5.5}{5.5 Simulated Phantom Images}{chapter.5}% 35
+\BOOKMARK [1][]{section.5.6}{5.6 Human Phantom Images}{chapter.5}% 36
+\BOOKMARK [0][]{chapter.6}{6.0 AIMS}{}% 37
+\BOOKMARK [1][]{section.6.1}{6.1 Volume Registration In A Motion Correction Pipeline}{chapter.6}% 38
+\BOOKMARK [2][]{subsection.6.1.1}{6.1.1 Simulated Phantom}{section.6.1}% 39
+\BOOKMARK [2][]{subsection.6.1.2}{6.1.2 Human Phantom}{section.6.1}% 40
+\BOOKMARK [2][]{subsection.6.1.3}{6.1.3 Clinical Images}{section.6.1}% 41
+\BOOKMARK [1][]{section.6.2}{6.2 Detecting Population-Dependent Patterns of Motion}{chapter.6}% 42
+\BOOKMARK [1][]{section.6.3}{6.3 Evaluate Relationships Between Motion and Outcomes}{chapter.6}% 43
+\BOOKMARK [1][]{section.6.4}{6.4 Other potential areas I'm thinking about}{chapter.6}% 44
 \BOOKMARK [0][]{section*.1}{BIBLIOGRAPHY}{}% 45

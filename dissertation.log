@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  24 MAY 2019 20:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  28 MAY 2019 11:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -288,31 +288,31 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
 ) (./dissertation.aux (./1/introduction.aux) (./2/clinical_background.aux)
-(./3/technical_background.aux) (./4/aims.aux) (./5/data.aux)
+(./3/technical_background.aux) (./4/methods.aux) (./5/data.aux)
 (./6/experiments.aux))
 \openout1 = `dissertation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 51.
+LaTeX Font Info:    ... okay on input line 51.
 
 
 Package hyperref Warning: Option `letterpaper' is no longer used.
 
-Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 47.
-Package hyperref Info: Option `colorlinks' set `true' on input line 47.
-Package hyperref Info: Option `bookmarksopen' set `true' on input line 47.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 51.
+Package hyperref Info: Option `colorlinks' set `true' on input line 51.
+Package hyperref Info: Option `bookmarksopen' set `true' on input line 51.
 \AtBeginShipoutBox=\box30
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
@@ -322,7 +322,7 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package color Info: Driver file: pdftex.def on input line 147.
 )
-Package hyperref Info: Link coloring ON on input line 47.
+Package hyperref Info: Link coloring ON on input line 51.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -332,9 +332,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count121
 )
-LaTeX Info: Redefining \ref on input line 47.
-LaTeX Info: Redefining \pageref on input line 47.
-LaTeX Info: Redefining \nameref on input line 47.
+LaTeX Info: Redefining \ref on input line 51.
+LaTeX Info: Redefining \pageref on input line 51.
+LaTeX Info: Redefining \nameref on input line 51.
 
 (./dissertation.out) (./dissertation.out)
 \@outlinefile=\write4
@@ -411,26 +411,26 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 20.
-) [2] [3]
+ [2]) [3]
 \openout2 = `2/clinical_background.aux'.
 
 
 (./2/clinical_background.tex
 Chapter 2
 
-Overfull \hbox (74.7466pt too wide) in paragraph at lines 9--10
+Overfull \hbox (74.7466pt too wide) in paragraph at lines 10--11
 []\OT1/cmr/m/n/12 There are a num-ber of ge-netic and en-vi-ron-men-tal fac-tor
 s as-so-ci-ated with CHD [[]].
  []
 
-<2/chd-defects-usa.png, id=287, 728.7225pt x 587.19376pt>
+<2/chd-defects-usa.png, id=292, 728.7225pt x 587.19376pt>
 File: 2/chd-defects-usa.png Graphic file (type png)
 <use 2/chd-defects-usa.png>
-Package pdftex.def Info: 2/chd-defects-usa.png  used on input line 13.
+Package pdftex.def Info: 2/chd-defects-usa.png  used on input line 14.
 (pdftex.def)             Requested size: 281.85585pt x 227.1141pt.
 
 Class pittetd Warning: The caption of Figure 1 is longer than one line on input
- line 15.
+ line 16.
 
 [4
 
@@ -441,7 +441,7 @@ Class pittetd Warning: The caption of Figure 1 is longer than one line on input
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.34 M
+l.35 M
       ortality: still processing information. Overall, the mortality for CHD...
  <./2/chd-defects-usa.png>] [6]) [7]
 \openout2 = `3/technical_background.aux'.
@@ -457,12 +457,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [9]
 [10] [11]
-Overfull \hbox (48.3216pt too wide) in paragraph at lines 66--67
+Overfull \hbox (48.3216pt too wide) in paragraph at lines 68--69
 \OT1/cmr/m/n/12 gog-gles can dis-tract pa-tients [[]] [[]] [[]].
  []
 
 [12] [13] [14]
-Overfull \hbox (15.08pt too wide) in paragraph at lines 98--99
+Overfull \hbox (15.08pt too wide) in paragraph at lines 100--101
 []\OT1/cmr/m/n/12 Forman et al. mod-i-fied the chess-board marker to im-prove i
 ts flex-i-bil-ity [[]].
  []
@@ -478,13 +478,13 @@ Underfull \vbox (badness 4556) has occurred while \output is active []
 
  [17]
 [18] [19]
-Overfull \hbox (97.43358pt too wide) in paragraph at lines 168--169
+Overfull \hbox (97.43358pt too wide) in paragraph at lines 170--171
 \OT1/cmr/m/n/12 nec-tiv-ity stud-ies, but may in-ad-ver-tently weaken shorter-d
 istance con-nec-tions [[]][[]]
  []
 
 
-Overfull \hbox (15.70665pt too wide) in paragraph at lines 170--171
+Overfull \hbox (15.70665pt too wide) in paragraph at lines 172--173
 \OT1/cmr/m/n/12 [[]], re-align-ment pa-ram-e-ters from sur-round-ing tim-points
  [[]]
  []
@@ -501,15 +501,15 @@ Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
 
 [21]) [22]
-\openout2 = `4/aims.aux'.
+\openout2 = `4/methods.aux'.
 
- (./4/aims.tex
+ (./4/methods.tex
 Chapter 4
-[23
+) [23
 
 
 
-] [24] [25] [26]) [27]
+]
 \openout2 = `5/data.aux'.
 
  (./5/data.tex
@@ -517,28 +517,28 @@ Chapter 5
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [28
+ [24
 
 
 
 ]
 Underfull \vbox (badness 1292) has occurred while \output is active []
 
- [29]
-[30]
+ [25]
+[26]
 Underfull \vbox (badness 6380) has occurred while \output is active []
 
- [31]
-[32]) [33]
+ [27]
+[28]) [29]
 \openout2 = `6/experiments.aux'.
 
  (./6/experiments.tex
 Chapter 6
-) [34
+[30
 
 
 
-]
+] [31] [32] [33]) [34]
 BIBLIOGRAPHY
 (./dissertation.bbl [35
 
@@ -552,24 +552,24 @@ Missing character: There is no ” in font cmti12!
  [37] [38])
 \openout3 = `dissertation.etd'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 101.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 105.
  [39]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 101.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 105.
  (./dissertation.aux
 (./1/introduction.aux) (./2/clinical_background.aux)
-(./3/technical_background.aux) (./4/aims.aux) (./5/data.aux)
+(./3/technical_background.aux) (./4/methods.aux) (./5/data.aux)
 (./6/experiments.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 101.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 101.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 105.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 105.
 Package rerunfilecheck Info: File `dissertation.out' has not changed.
-(rerunfilecheck)             Checksum: 7A7F260789260C555971FC732BFCF0C5;3690.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 101.
+(rerunfilecheck)             Checksum: BC3ECE815BB64A1F2FF73D8ABA7FC361;3690.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 105.
  ) 
 Here is how much of TeX's memory you used:
- 6955 strings out of 492982
- 98931 string characters out of 6134895
- 194349 words of memory out of 5000000
- 10252 multiletter control sequences out of 15000+600000
+ 6961 strings out of 492982
+ 99023 string characters out of 6134895
+ 194633 words of memory out of 5000000
+ 10258 multiletter control sequences out of 15000+600000
  9545 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  34i,6n,30p,1423b,413s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -580,10 +580,10 @@ ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmti12.pfb>
-Output written on dissertation.pdf (44 pages, 284877 bytes).
+Output written on dissertation.pdf (44 pages, 285453 bytes).
 PDF statistics:
- 629 PDF objects out of 1000 (max. 8388607)
- 567 compressed objects within 6 object streams
+ 634 PDF objects out of 1000 (max. 8388607)
+ 572 compressed objects within 6 object streams
  141 named destinations out of 1000 (max. 500000)
  398 words of extra memory for PDF output out of 10000 (max. 10000000)
 
