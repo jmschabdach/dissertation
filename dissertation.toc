@@ -2,8 +2,8 @@
 \contentsline {chapter}{{\bfseries \numberline {2.0}NEURODEVELOPMENT, CONGENITAL HEART DISEASE, AND FUNCTIONAL CONNECTIVITY}}{4}{chapter.2}
 \contentsline {section}{\numberline {2.1}CONGENITAL HEART DEFECTS}{4}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}From Long-Term Risk of Hemorrhagic Stroke in Young Patients with CHD}{6}{subsection.2.1.1}
-\contentsline {section}{\numberline {2.2}CHD AND NEURODEVELOPMENT}{6}{section.2.2}
-\contentsline {section}{\numberline {2.3}RESTING-STATE NETWORKS}{6}{section.2.3}
+\contentsline {section}{\numberline {2.2}CHD AND BRAIN}{6}{section.2.2}
+\contentsline {section}{\numberline {2.3}RESTING-STATE NETWORKS}{7}{section.2.3}
 \contentsline {chapter}{{\bfseries \numberline {3.0}RS-FMRIS AND PATIENT MOTION}}{8}{chapter.3}
 \contentsline {section}{\numberline {3.1}STRUCTURE OF A RS-FMRI}{8}{section.3.1}
 \contentsline {section}{\numberline {3.2}SOURCES OF MOTION}{9}{section.3.2}
@@ -24,35 +24,37 @@
 \contentsline {subsection}{\numberline {3.6.2}Filtering}{22}{subsection.3.6.2}
 \contentsline {subsection}{\numberline {3.6.3}Spin History Distortion Correction}{22}{subsection.3.6.3}
 \contentsline {section}{\numberline {3.7}IMAGE USABILITY}{23}{section.3.7}
-\contentsline {chapter}{{\bfseries \numberline {4.0}METHODS}}{24}{chapter.4}
-\contentsline {section}{\numberline {4.1}Volume Registration Frameworks}{24}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Traditional Volume Registration}{24}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Directed Acyclic Graph Based Registration}{26}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}Pattern Detection}{27}{section.4.2}
-\contentsline {section}{\numberline {4.3}Metrics and Analyses}{27}{section.4.3}
-\contentsline {section}{\numberline {4.4}Implementation: Tools and Libraries}{28}{section.4.4}
-\contentsline {chapter}{{\bfseries \numberline {5.0}DATA}}{29}{chapter.5}
-\contentsline {section}{\numberline {5.1}Neonatal Subject Population and Images}{30}{section.5.1}
-\contentsline {section}{\numberline {5.2}Preadolescent Subject Population and Images}{30}{section.5.2}
-\contentsline {section}{\numberline {5.3}Adult Subject Population and Images}{31}{section.5.3}
-\contentsline {section}{\numberline {5.4}Fetal Subject Population and Images}{31}{section.5.4}
-\contentsline {section}{\numberline {5.5}Simulated Phantom Images}{33}{section.5.5}
-\contentsline {section}{\numberline {5.6}Human Phantom Images}{33}{section.5.6}
-\contentsline {chapter}{{\bfseries \numberline {6.0}AIMS}}{35}{chapter.6}
-\contentsline {section}{\numberline {6.1}Volume Registration In A Motion Correction Pipeline}{35}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Simulated Phantom}{35}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Human Phantom}{36}{subsection.6.1.2}
-\contentsline {subsection}{\numberline {6.1.3}Clinical Images}{36}{subsection.6.1.3}
-\contentsline {section}{\numberline {6.2}Detecting Population-Dependent Patterns of Motion}{37}{section.6.2}
-\contentsline {section}{\numberline {6.3}Evaluate Relationships Between Motion and Outcomes}{38}{section.6.3}
-\contentsline {section}{\numberline {6.4}Other potential areas I'm thinking about}{38}{section.6.4}
-\contentsline {chapter}{{\bfseries \numberline {7.0}PRELIMINARY RESULTS}}{40}{chapter.7}
-\contentsline {section}{\numberline {7.1}Comparison of Volume Registration Methods}{40}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}Subject Position Variability in the Registered Images}{40}{subsection.7.1.1}
-\contentsline {subsection}{\numberline {7.1.2}Comparison of Motion Correction Methods}{40}{subsection.7.1.2}
-\contentsline {chapter}{{\bfseries \numberline {8.0}DISCUSSION}}{44}{chapter.8}
-\contentsline {section}{\numberline {8.1}Comparison of Volume Registration Methods}{44}{section.8.1}
-\contentsline {subsection}{\numberline {8.1.1}Relation to Existing Work}{45}{subsection.8.1.1}
-\contentsline {subsection}{\numberline {8.1.2}Limitations and Future Work}{45}{subsection.8.1.2}
-\contentsline {section}{\numberline {8.2}Conclusions}{46}{section.8.2}
-\contentsline {chapter}{{\bfseries \bibname }}{47}{section*.1}
+\contentsline {chapter}{{\bfseries \numberline {4.0}DATA}}{24}{chapter.4}
+\contentsline {section}{\numberline {4.1}Neonatal Subject Population and Images}{25}{section.4.1}
+\contentsline {section}{\numberline {4.2}Preadolescent Subject Population and Images}{25}{section.4.2}
+\contentsline {section}{\numberline {4.3}Adult Subject Population and Images}{26}{section.4.3}
+\contentsline {section}{\numberline {4.4}Fetal Subject Population and Images}{26}{section.4.4}
+\contentsline {section}{\numberline {4.5}Simulated Phantom Images}{28}{section.4.5}
+\contentsline {section}{\numberline {4.6}Human Phantom Images}{28}{section.4.6}
+\contentsline {chapter}{{\bfseries \numberline {5.0}AIMS}}{30}{chapter.5}
+\contentsline {section}{\numberline {5.1}Volume Registration In A Motion Correction Pipeline}{30}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Simulated Phantom}{30}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Human Phantom}{31}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Clinical Images}{31}{subsection.5.1.3}
+\contentsline {section}{\numberline {5.2}Detecting Population-Dependent Patterns of Motion}{32}{section.5.2}
+\contentsline {section}{\numberline {5.3}Evaluate Relationships Between Motion and Outcomes}{33}{section.5.3}
+\contentsline {section}{\numberline {5.4}Other potential areas I'm thinking about}{33}{section.5.4}
+\contentsline {chapter}{{\bfseries \numberline {6.0}METHODS}}{35}{chapter.6}
+\contentsline {section}{\numberline {6.1}Volume Registration Frameworks}{35}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Traditional Volume Registration}{35}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Directed Acyclic Graph Based Registration}{37}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}Motion Correction Pipeline}{40}{subsection.6.1.3}
+\contentsline {section}{\numberline {6.2}Motion Metrics}{40}{section.6.2}
+\contentsline {section}{\numberline {6.3}Motion Patterns}{40}{section.6.3}
+\contentsline {section}{\numberline {6.4}Statistical Analyses}{41}{section.6.4}
+\contentsline {section}{\numberline {6.5}Implementation: Tools and Libraries}{41}{section.6.5}
+\contentsline {chapter}{{\bfseries \numberline {7.0}PRELIMINARY RESULTS}}{42}{chapter.7}
+\contentsline {section}{\numberline {7.1}Comparison of Volume Registration Methods}{42}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Subject Position Variability in the Registered Images}{42}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}Comparison of Motion Correction Methods}{42}{subsection.7.1.2}
+\contentsline {chapter}{{\bfseries \numberline {8.0}DISCUSSION}}{46}{chapter.8}
+\contentsline {section}{\numberline {8.1}Comparison of Volume Registration Methods}{46}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Relation to Existing Work}{47}{subsection.8.1.1}
+\contentsline {subsection}{\numberline {8.1.2}Limitations and Future Work}{47}{subsection.8.1.2}
+\contentsline {section}{\numberline {8.2}Conclusions}{48}{section.8.2}
+\contentsline {chapter}{{\bfseries \bibname }}{49}{section*.1}

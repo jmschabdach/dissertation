@@ -6,7 +6,7 @@
 \BOOKMARK [0][]{chapter.2}{2.0 NEURODEVELOPMENT, CONGENITAL HEART DISEASE, AND FUNCTIONAL CONNECTIVITY}{}% 2
 \BOOKMARK [1][]{section.2.1}{2.1 CONGENITAL HEART DEFECTS}{chapter.2}% 3
 \BOOKMARK [2][]{subsection.2.1.1}{2.1.1 From Long-Term Risk of Hemorrhagic Stroke in Young Patients with CHD}{section.2.1}% 4
-\BOOKMARK [1][]{section.2.2}{2.2 CHD AND NEURODEVELOPMENT}{chapter.2}% 5
+\BOOKMARK [1][]{section.2.2}{2.2 CHD AND BRAIN}{chapter.2}% 5
 \BOOKMARK [1][]{section.2.3}{2.3 RESTING-STATE NETWORKS}{chapter.2}% 6
 \BOOKMARK [0][]{chapter.3}{3.0 RS-FMRIS AND PATIENT MOTION}{}% 7
 \BOOKMARK [1][]{section.3.1}{3.1 STRUCTURE OF A RS-FMRI}{chapter.3}% 8
@@ -28,35 +28,37 @@
 \BOOKMARK [2][]{subsection.3.6.2}{3.6.2 Filtering}{section.3.6}% 24
 \BOOKMARK [2][]{subsection.3.6.3}{3.6.3 Spin History Distortion Correction}{section.3.6}% 25
 \BOOKMARK [1][]{section.3.7}{3.7 IMAGE USABILITY}{chapter.3}% 26
-\BOOKMARK [0][]{chapter.4}{4.0 METHODS}{}% 27
-\BOOKMARK [1][]{section.4.1}{4.1 Volume Registration Frameworks}{chapter.4}% 28
-\BOOKMARK [2][]{subsection.4.1.1}{4.1.1 Traditional Volume Registration}{section.4.1}% 29
-\BOOKMARK [2][]{subsection.4.1.2}{4.1.2 Directed Acyclic Graph Based Registration}{section.4.1}% 30
-\BOOKMARK [1][]{section.4.2}{4.2 Pattern Detection}{chapter.4}% 31
-\BOOKMARK [1][]{section.4.3}{4.3 Metrics and Analyses}{chapter.4}% 32
-\BOOKMARK [1][]{section.4.4}{4.4 Implementation: Tools and Libraries}{chapter.4}% 33
-\BOOKMARK [0][]{chapter.5}{5.0 DATA}{}% 34
-\BOOKMARK [1][]{section.5.1}{5.1 Neonatal Subject Population and Images}{chapter.5}% 35
-\BOOKMARK [1][]{section.5.2}{5.2 Preadolescent Subject Population and Images}{chapter.5}% 36
-\BOOKMARK [1][]{section.5.3}{5.3 Adult Subject Population and Images}{chapter.5}% 37
-\BOOKMARK [1][]{section.5.4}{5.4 Fetal Subject Population and Images}{chapter.5}% 38
-\BOOKMARK [1][]{section.5.5}{5.5 Simulated Phantom Images}{chapter.5}% 39
-\BOOKMARK [1][]{section.5.6}{5.6 Human Phantom Images}{chapter.5}% 40
-\BOOKMARK [0][]{chapter.6}{6.0 AIMS}{}% 41
-\BOOKMARK [1][]{section.6.1}{6.1 Volume Registration In A Motion Correction Pipeline}{chapter.6}% 42
-\BOOKMARK [2][]{subsection.6.1.1}{6.1.1 Simulated Phantom}{section.6.1}% 43
-\BOOKMARK [2][]{subsection.6.1.2}{6.1.2 Human Phantom}{section.6.1}% 44
-\BOOKMARK [2][]{subsection.6.1.3}{6.1.3 Clinical Images}{section.6.1}% 45
-\BOOKMARK [1][]{section.6.2}{6.2 Detecting Population-Dependent Patterns of Motion}{chapter.6}% 46
-\BOOKMARK [1][]{section.6.3}{6.3 Evaluate Relationships Between Motion and Outcomes}{chapter.6}% 47
-\BOOKMARK [1][]{section.6.4}{6.4 Other potential areas I'm thinking about}{chapter.6}% 48
-\BOOKMARK [0][]{chapter.7}{7.0 PRELIMINARY RESULTS}{}% 49
-\BOOKMARK [1][]{section.7.1}{7.1 Comparison of Volume Registration Methods}{chapter.7}% 50
-\BOOKMARK [2][]{subsection.7.1.1}{7.1.1 Subject Position Variability in the Registered Images}{section.7.1}% 51
-\BOOKMARK [2][]{subsection.7.1.2}{7.1.2 Comparison of Motion Correction Methods}{section.7.1}% 52
-\BOOKMARK [0][]{chapter.8}{8.0 DISCUSSION}{}% 53
-\BOOKMARK [1][]{section.8.1}{8.1 Comparison of Volume Registration Methods}{chapter.8}% 54
-\BOOKMARK [2][]{subsection.8.1.1}{8.1.1 Relation to Existing Work}{section.8.1}% 55
-\BOOKMARK [2][]{subsection.8.1.2}{8.1.2 Limitations and Future Work}{section.8.1}% 56
-\BOOKMARK [1][]{section.8.2}{8.2 Conclusions}{chapter.8}% 57
-\BOOKMARK [0][]{section*.1}{BIBLIOGRAPHY}{}% 58
+\BOOKMARK [0][]{chapter.4}{4.0 DATA}{}% 27
+\BOOKMARK [1][]{section.4.1}{4.1 Neonatal Subject Population and Images}{chapter.4}% 28
+\BOOKMARK [1][]{section.4.2}{4.2 Preadolescent Subject Population and Images}{chapter.4}% 29
+\BOOKMARK [1][]{section.4.3}{4.3 Adult Subject Population and Images}{chapter.4}% 30
+\BOOKMARK [1][]{section.4.4}{4.4 Fetal Subject Population and Images}{chapter.4}% 31
+\BOOKMARK [1][]{section.4.5}{4.5 Simulated Phantom Images}{chapter.4}% 32
+\BOOKMARK [1][]{section.4.6}{4.6 Human Phantom Images}{chapter.4}% 33
+\BOOKMARK [0][]{chapter.5}{5.0 AIMS}{}% 34
+\BOOKMARK [1][]{section.5.1}{5.1 Volume Registration In A Motion Correction Pipeline}{chapter.5}% 35
+\BOOKMARK [2][]{subsection.5.1.1}{5.1.1 Simulated Phantom}{section.5.1}% 36
+\BOOKMARK [2][]{subsection.5.1.2}{5.1.2 Human Phantom}{section.5.1}% 37
+\BOOKMARK [2][]{subsection.5.1.3}{5.1.3 Clinical Images}{section.5.1}% 38
+\BOOKMARK [1][]{section.5.2}{5.2 Detecting Population-Dependent Patterns of Motion}{chapter.5}% 39
+\BOOKMARK [1][]{section.5.3}{5.3 Evaluate Relationships Between Motion and Outcomes}{chapter.5}% 40
+\BOOKMARK [1][]{section.5.4}{5.4 Other potential areas I'm thinking about}{chapter.5}% 41
+\BOOKMARK [0][]{chapter.6}{6.0 METHODS}{}% 42
+\BOOKMARK [1][]{section.6.1}{6.1 Volume Registration Frameworks}{chapter.6}% 43
+\BOOKMARK [2][]{subsection.6.1.1}{6.1.1 Traditional Volume Registration}{section.6.1}% 44
+\BOOKMARK [2][]{subsection.6.1.2}{6.1.2 Directed Acyclic Graph Based Registration}{section.6.1}% 45
+\BOOKMARK [2][]{subsection.6.1.3}{6.1.3 Motion Correction Pipeline}{section.6.1}% 46
+\BOOKMARK [1][]{section.6.2}{6.2 Motion Metrics}{chapter.6}% 47
+\BOOKMARK [1][]{section.6.3}{6.3 Motion Patterns}{chapter.6}% 48
+\BOOKMARK [1][]{section.6.4}{6.4 Statistical Analyses}{chapter.6}% 49
+\BOOKMARK [1][]{section.6.5}{6.5 Implementation: Tools and Libraries}{chapter.6}% 50
+\BOOKMARK [0][]{chapter.7}{7.0 PRELIMINARY RESULTS}{}% 51
+\BOOKMARK [1][]{section.7.1}{7.1 Comparison of Volume Registration Methods}{chapter.7}% 52
+\BOOKMARK [2][]{subsection.7.1.1}{7.1.1 Subject Position Variability in the Registered Images}{section.7.1}% 53
+\BOOKMARK [2][]{subsection.7.1.2}{7.1.2 Comparison of Motion Correction Methods}{section.7.1}% 54
+\BOOKMARK [0][]{chapter.8}{8.0 DISCUSSION}{}% 55
+\BOOKMARK [1][]{section.8.1}{8.1 Comparison of Volume Registration Methods}{chapter.8}% 56
+\BOOKMARK [2][]{subsection.8.1.1}{8.1.1 Relation to Existing Work}{section.8.1}% 57
+\BOOKMARK [2][]{subsection.8.1.2}{8.1.2 Limitations and Future Work}{section.8.1}% 58
+\BOOKMARK [1][]{section.8.2}{8.2 Conclusions}{chapter.8}% 59
+\BOOKMARK [0][]{section*.1}{BIBLIOGRAPHY}{}% 60

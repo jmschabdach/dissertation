@@ -19,6 +19,12 @@ Assaf, M., Jagannathan, K., Calhoun, V.~D., Miller, L., Stevens, M.~C., Sahl,
   autism spectrum disorder patients}.
 \newblock {\em NeuroImage}, 53(1):247--256.
 
+\bibitem[Avants et~al., 2014]{Avants2014}
+Avants, B.~B., Tustison, N.~J., Stauffer, M., Song, G., Wu, B., and Gee, J.~C.
+  (2014).
+\newblock {The Insight ToolKit image registration framework}.
+\newblock {\em Frontiers in Neuroinformatics}, 8(April).
+
 \bibitem[Barnea-Goraly et~al., 2014]{Barnea-Goraly2014}
 Barnea-Goraly, N., Weinzimer, S.~A., Ruedy, K.~J., Mauras, N., Beck, R.~W.,
   Marzelli, M.~J., Mazaika, P.~K., Aye, T., White, N.~H., Tsalikian, E., Fox,
@@ -88,6 +94,13 @@ Garcia-Palacios, A., Hoffman, H.~G., Richards, T.~R., Seibel, E.~J., and
   during a Mock Magnetic Resonance Imaging Brain Scan: A Case Report}.
 \newblock {\em CyberPsychology and Behavior}, 10(3):485--488.
 
+\bibitem[Gorgolewski et~al., 2011]{Gorgolewski2011}
+Gorgolewski, K., Burns, C.~D., Madison, C., Clark, D., Halchenko, Y.~O.,
+  Waskom, M.~L., and Ghosh, S.~S. (2011).
+\newblock {Nipype : a flexible , lightweight and extensible neuroimaging data
+  processing framework in Python}.
+\newblock {\em Frontiers in Neuroinformatics}, 5(August).
+
 \bibitem[Greicius et~al., 2003]{Greicius2003}
 Greicius, M.~D., Krasnow, B., Reiss, A.~L., and Menon, V. (2003).
 \newblock {Functional connectivity in the resting brain: A network analysis of
@@ -130,6 +143,12 @@ Khan, J.~J., Donnely, L.~F., Koch, B.~L., Curtwright, L.~A., Dickerson, J.~M.,
 \bibitem[{KinetiCor Biometric Intelligence}, 2019]{kineticor}
 {KinetiCor Biometric Intelligence} (2019).
 \newblock The kineticor platform.
+
+\bibitem[Liao et~al., 2005]{Liao2005}
+Liao, R., Krolik, J.~L., and McKeown, M.~J. (2005).
+\newblock {An information-theoretic criterion for intrasubject alignment of
+  FMRI time series: Motion corrected independent component analysis}.
+\newblock {\em IEEE Transactions on Medical Imaging}, 24(1):29--44.
 
 \bibitem[Liao et~al., 2016]{Liao2016}
 Liao, R., Turk, E.~A., Zhang, M., Luo, J., {Ellen Grant}, P., Adalsteinsson,

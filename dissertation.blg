@@ -5,52 +5,52 @@ The style file: apalike.bst
 A level-1 auxiliary file: 1/introduction.aux
 A level-1 auxiliary file: 2/clinical_background.aux
 A level-1 auxiliary file: 3/technical_background.aux
-A level-1 auxiliary file: 4/methods.aux
 A level-1 auxiliary file: 5/data.aux
 A level-1 auxiliary file: 6/experiments.aux
+A level-1 auxiliary file: 4/methods.aux
 A level-1 auxiliary file: 7/results.aux
 A level-1 auxiliary file: 8/discussion.aux
 Database file #1: sources.bib
 Warning--empty publisher in Mozaffarian2016
-You've used 48 entries,
+You've used 51 entries,
             1935 wiz_defined-function locations,
-            797 strings with 16433 characters,
-and the built_in function-call counts, 24114 in all, are:
-= -- 2242
-> -- 1564
+            815 strings with 17174 characters,
+and the built_in function-call counts, 25432 in all, are:
+= -- 2361
+> -- 1653
 < -- 11
-+ -- 573
-- -- 570
-* -- 2353
-:= -- 4308
-add.period$ -- 141
-call.type$ -- 48
-change.case$ -- 525
-chr.to.int$ -- 47
-cite$ -- 49
-duplicate$ -- 673
-empty$ -- 1334
-format.name$ -- 626
-if$ -- 4475
++ -- 605
+- -- 602
+* -- 2482
+:= -- 4552
+add.period$ -- 150
+call.type$ -- 51
+change.case$ -- 556
+chr.to.int$ -- 50
+cite$ -- 52
+duplicate$ -- 713
+empty$ -- 1404
+format.name$ -- 661
+if$ -- 4716
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 46
-newline$ -- 240
-num.names$ -- 144
-pop$ -- 437
+missing$ -- 49
+newline$ -- 255
+num.names$ -- 153
+pop$ -- 462
 preamble$ -- 1
-purify$ -- 525
+purify$ -- 556
 quote$ -- 0
-skip$ -- 505
+skip$ -- 537
 stack$ -- 0
-substring$ -- 1534
-swap$ -- 61
+substring$ -- 1589
+swap$ -- 64
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 286
+type$ -- 304
 warning$ -- 1
-while$ -- 176
+while$ -- 184
 width$ -- 0
-write$ -- 615
+write$ -- 654
 (There was 1 warning)
