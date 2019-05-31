@@ -1,40 +1,17 @@
 \chapter{METHODS}
 \label{ch:methods}
 
-\section{Volume Registration Frameworks}
+\section{Motion Correction}
 
-In this section, we discuss the two registration frameworks we apply to our rs-fMRIs: the traditional global volume registration framework and the DAG-based global volume registration framework. The registration frameworks will later be evaluated in comparison to each other, but will also be evaluated in the context of a complete motion correction pipeline. The motion correction pipeline of choice, ICA, will also be discussed in this section.
+In the previous chapter, we discuss several techniques used to retrospectively correct motion. Motion correction pipelines may use denoising and filtering, but all pipelines begin with volume registration. In this section, we discuss a different approach to volume registration, how it compares to traditional volume registration, and how volume registration fits into a motion correction pipeline. 
 
-It has been demonstrated that image registration across the entire image sequence reduces the effects of motion on the image sequence, though they do note that motion also effects the image due to changes in the spin history of the image. These effects are not correctable by global volume registration alone. % and are addressed later in this chapter.
+%In this section, we discuss the two registration frameworks we apply to our rs-fMRIs: the traditional global volume registration framework and the DAG-based global volume registration framework. The registration frameworks will later be evaluated in comparison to each other, but will also be evaluated in the context of a complete motion correction pipeline. The motion correction pipeline of choice, ICA, will also be discussed in this section.
 
-\subsection{Traditional Volume Registration}
+\subsection{Directed Acyclic Graph Based Volume Registration}
 
-The rs-fMR image is stored in computer memory as a set of 3D matrices. The values in corresponding cells of each matrix are considered to be aligned in this digital space (voxel space). The voxel space is defined by the imaging protocol and relates to the physical space through the spatial resolution of the image. Even though the spatial and voxel spaces for the image align, the contents of the image volumes may be misaligned due to patient movement. Because we cannot assume that an image is completely motion-free, we cannot directly compare the contents of each image volume in the rs-fMRI sequence. However, we can use image registration to align the contents of the image volumes to reduce the impact of motion on patient position.
+As discussed previously, the major drawback to Friston et al.'s approach to volume registration is that it only minimized the positional differences between the reference volume and the rest of the sequence. This drawback demonstrates an inability for the traditional approach to account for relationships in the patient's position throughout the scan. Intuitively, we know that the patient's position at any volume in the scan is more similar to his position in the immediately previous or subsequent volume than to another randomly chosen volume in the image.
 
-Image registration is the process of morphing the contents of one image so that they overlap optimally with another image. The morphing operations include translation, rotation, scaling, skewing, and nonlinear adjustments. The linear and affine operations in this list should be used to perform rigid body registrations for organs such as the brain. Nonlinear operations can be used to fine-tune the alignment of more pliable organs such as the liver. All morphing operations are applied to one image repeatedly until it's contents optimally match those of the static reference image as determined by a chosen similarity metric. 
-
-One of the earliest examples of image registration was described by Friston et al. in 1995 \cite{Friston1995}. They performed image registration on positron emission tomography (PET) scans and MRI scans of a human brain. During the registration process, one scan was designated as the ``reference'' image, which remained stationary, and the other scan was designated as the ``object'' image, which was transformed to match the reference image. Constraining the alignment process to transforming a single image into the coordinates of the other image rather than transforming both images into an independent coordinate frame simplifies the registration process.
-
-\begin{figure}
-\centering
-\includegraphics[width=.7\textwidth]{4/traditional-registration.png}
-\label{fig:ch4:traditional-reg}
-\caption{The traditional approach to volume registration in an rs-fMRI sequence consists of registering all volumes in the sequence to a single reference volume.}
-\end{figure}
-
-When performing image registration on a sequence of image volumes, one volume must be chosen as the reference volume for the entire sequence. All other volumes in the sequence are registered to this volume. An example of this process can be seen in Figure \ref{fig:ch4:traditional-reg}. In subsequent work, Friston et al. used the first volume in the rs-fMRI sequence as the universal reference image \cite{Friston1996}. Common choices for the reference volume include the volume with the least FD to all other volumes in the sequence, a volume produced by averaging all volumes in the sequence, or the first volume in the sequence \cite{Friston1996} \cite{Liao2005}. In our implementation, we chose to use the first volume in the sequence as the reference volume.
-
-One drawback to this traditional approach to volume registration is that it only minimizes the differences between all the image volumes in the sequence and the reference volume. The key word here is minimizes: minimizing differences between image volumes does not mean that there are no differences between the image volumes. Image registration is an optimization problem, and its goal is to find the overlap between a pair of volumes with as few differences as possible either within a defined time period or until the optimization cost does not change above a certain tolerance for a certain amount of time. These practical constraints on optimization problems mean that there may still be differences between other pairs of image volumes in the sequence that do not include the reference volume. 
-
-%Variations on Friston et al.'s framework have been developed over the last two decades. Liao et al. suggested that a rs-fMRI sequence could be viewed as a hidden Markov model, and reflected this idea in their suggested registration framework \cite{Liao2016}. They still use the first volume in the image sequence as the reference volume. Their framework uses the transformation of the previous volume to the reference volume to initialize the transformation for the current volume and the reference volume. 
-
-%The success of volume registration in an rs-fMRI sequence is defined by the framewise differences between temporally neighboring image volumes.  During the registration process, the three translation and three rotation parameters can be used to calculate the displacement between a pair of images, which is often referred to as the framewise displacement (FD). Three groups have proposed slightly different methods for calculating the FD: Power et al., Jenkinson et al., and DOsenbach et al. \cite{Power2012} \cite{Jenkinson2002} \cite{Dosenbach2017}. All three FD calculations produce correlated metrics: the FD metric proposed by Power et al. produces measurements approximately twice as large as the metric proposed by Jenkinson et al., and Dosenbach et al. reported a high correlation between their FD and Power's FD \cite{Yan2013a} \cite{Dosenbach2017}.
-
-%The FD metric only measures the positional effects of motion, not the variations in signal in individual voxels caused by motion. Changes in signal between volumes can be measured using the temporal derivative of the variance in the BOLD signal intensity (DVARS) between neighboring volumes \cite{Power2012} \cite{Smyser2015}. DVARs is an effective measure of the spin gradient effects of motion because it measures the change in BOLD signal intensity, which is highly related to motion-induced spin gradient changes. 
-
-\subsection{Directed Acyclic Graph Based Registration}
-
-In our proposed framework, we wish to account for the spatiotemporal relationships between temporally neighboring volumes in the sequence. To accomplish this goal, we start by viewing the rs-fMRI sequence as a directed acyclic graph (DAG). A DAG consists of a set of nodes and edges. Each edge has a direction associated with it and connects a pair of nodes. Since a DAG contains no cycles, there is no possible path back to a node once it has been traversed. 
+In our proposed framework, we wish to account for these spatiotemporal relationships between temporally neighboring volumes in the sequence. To accomplish this goal, we start by viewing the rs-fMRI sequence as a directed acyclic graph (DAG). A DAG consists of a set of nodes and edges. Each edge has a direction associated with it and connects a pair of nodes. Since a DAG contains no cycles, there is no possible path back to a node once it has been traversed. 
 
 \begin{figure}
 \centering
@@ -86,19 +63,66 @@ Traditional volume registration assumes that
 
 \subsection{Motion Correction Pipeline}
 
-After performing both volume registration techniques independently on all images, both registered versions of the images will undergo motion correction. Many pipelines exist for correcting motion in rs-fMRIs. We choose to use a method which uses independent component analysis. 
+After performing volume registration to ensure the patient is in the same physical space throughout the image sequence, the image sequence may still contain artifacts due to motion. Many pipelines exist for correcting motion in registered rs-fMRIs. 
 
 \section{Motion Metrics}
 
-Power et al. thresholds
+In the previous chapter, the gold standard thresholds for rs-fMRI usability were discussed. These thresholds use the FD and DVARs metrics between neighboring volumes. While the FD and DVARs metrics quantify the volume-to-volume motion well, they do not quantify the overall motion contained in the image sequence. Other metrics, such as the Dice coefficient and the correlation ratio, may be useful in quantifying whole-sequence motion.
+
+\subsection{Dice Coefficient}
+
+The Dice coefficient was proposed by Lee R. Dice in 1945 \cite{Dice1945}. Dice examined several existing metrics for measuring association, and finding them lacking, proposed his own ``coincidence index''. His coincidence index measures the association between a number of samples $a$ where condition $A$ is true and a number of samples $b$ where condition $B$ is true:
+
+\begin{equation}
+Index = \frac{2h}{a+b}
+\end{equation}
+
+In this equation, $h$ represents the number of samples where both conditions $A$ and $B$ are true. His index can take on any value between 1.0 and 0.0 such that a value of 1.0 means that conditions $A$ and $B$ are true for all samples. Similarly, a value of 0.0 means that conditions $A$ and $B$ are never both true for any sample. While this index is a count of samples that meant both conditions and not a true probability, Dice suggests that the chi-squared test can be used to determine if the combinations of conditions in the samples from a set of data is meaningful or due to random chance. 
+
+Many medical imaging researchers have adapted the Dice coefficient to measure the overlap between pairs of images. %The images could be manual and automatic segmentations of the same area, segmented images registered to each other, or ELEPHANTS.
+Zijdenbos et al. trained an artificial neural network to semiautomatically segment brain MRIs and compared the generated segmentations to manual segmentations using the Dice coefficient \cite{Zijdenbos1994}.
+Zou et al. used the Dice similarity coefficient in their analysis of the reproducibility of manually segmented MRIs and the accuracy of automatic segmentations of the same images for prostate and brain tumor datasets \cite{Zou2004}. 
+Liao et al. used it to measure the accuracy of a volume registration framework for aligning manual segmentations of multiple organs in fetal images \cite{Liao2016}. Bharatha et al. performed a study on pre- and intra-operative images of the prostate. They segmented the images, generated deformable finite element models of the segmentations, and used the Dice coefficient to compare the registered segmentations and finite element models \cite{Bharatha2001}.
 
 %The global volume registration techniques were applied to all 17 resting-state BOLD MR images. After the registrations, each subject had three sequences associated with it: the original sequence, the sequence registered using the traditional framework, and the sequence registered using the DAG-based framework. The globally registered images were compared to each other in terms of correlation ratios between all volumes in the sequence as well as FD and DVARS between temporally neighboring volumes. 
 
-Correlation ratio matrix
+It should be noted that the Dice coefficient as used in these contexts is a measure of similarity of items from two categories which take on binary conditions. Additionally, all studies mentioned in the previous paragraph require a manually segmented gold standard image to which the automatic segmentations or registered images can be compared. Medical images do not naturally have binary values, nor is it always reasonable to obtain manual segmentations of all images in a dataset. In cases where a good image segmentation cannot be obtained, other similarity metrics such as mutual information and cross correlation should be used instead.
 
-%The correlation ratio is an asymmetrical, spatially informed measure of the overlap between images where volumes with better alignment will have lower correlation ratios \cite{Roche1998}. For each sequence, we used FLIRT (FMRIB’s Linear Image Registration Tool) to calculate the correlation ratio between each possible pair of volumes in the sequence \cite{Jenkinson2001} \cite{Jenkinson2002}. We then used the average and standard deviation of the correlation ratio distribution of each image to compare the images. We also calculated the FD and DVARS metrics defined by Power et al. using the FSLMotionOutliers tool \cite{Power2012}. These metrics were calculated for each image and were used for evaluation of the efficacy of the registration frameworks.
+\subsection{Correlation Ratio Matrix}
 
-Dice coefficients?
+The correlation ratio is an asymmetrical, spatially informed measure of the overlap between images. It is different from other similarity metrices in that a lower correlation ratio indicates a better alignment between two images rather than a worse alginment. 
+
+The earliest symbolic representation of the correlation ratio is 
+
+\begin{equation}
+\label{ch4:eq:cr-orig}
+\eta = \frac{\Sigma}{\sigma_y} = \frac{\sqrt{\frac{\sum(n_x(\overline{y}_x - \overline{y})^2)}{N}}}{\sigma_y}
+\end{equation}
+
+where $n_x$ is the number of samples in any one set $x$, $\overline{y}_x$ is the average of the samples in $x$, $\overline{y}$ is the average of all samples in all sets, $\sigma_y$ is the standard deviation of all samples in all sets, and $N$ is the total number of samples across all sets \cite{Rugg1917}. The meaning of this equation was simplified by Ayres, who describes it as ``the ratio between two standard deviations'' \cite{Ayres1920}. In Equation \ref{ch4:eq:cr-orig}, the numerator is the standard deviation of a single set of samples with respect to all sets of samples, and the denominator is the standard deviation of all sets of samples. The process of calculating the individual components of this equation are outlined in \cite{Rugg1917}.
+
+The correlation ratio was proposed for use in medical imaging applications in 1998 and compared to other similarity metrics. Roche et al. provide an example of algining two black images, one with a uniform gray stripe and the other with a horizontal gray gradient, such that the overlap between the two images is maximally similar \cite{Roche1998a}, \cite{Roche1998}. They show that the mutual information metric has a maximum value at every translation of an integer number of pixels while the correlation ratio had a maximum value at one single alignment. They apply the correlation ratio to MR images as well as computed tomography and positron emission tomography images. Their experiments suggest that in the context of multimodal registration, the correlation ratio balances accuracy and robustness.
+
+In the context of medical imaging, the correlation ratio measures the functional dependence between a pair of images $X$ and $Y$. The correlation ratio of $Y$ given $X$ is
+
+\begin{equation}
+\eta(Y|X) = \frac{Var[E(Y|X)]}{Var(Y)}
+\end{equation}
+
+This equation is comparing the energy of $Y$ in $X$ to the total energy of $Y$. If $X$ and $Y$ overlap in area $\Omega$, the number of pixels in that area is $N = Card(\Omega)$. Since $X$ is known, it can be divided into sets of pixels $\Omega_i$ where each set is comprised of locations in $\Omega$ where the pixels $X$ have the same value $i$. 
+
+Because the correlation ratio shows is a strong metric for measuring the similarity between two images, we suggest using it to quantify the similarity between all volumes in an image sequence. We choose to refer to this metric as the correlation ratio matrix. For a sequence of length $l$, the correlation ratio matrix $M$ is a square, asymmetrical matrix of size $l*l$. Each cell in $M$ is calculated as
+
+\begin{equation}
+M_{i,j} = \eta(J_i, J_j) = \frac{Var[E(J_i|J_j)]}{Var(J_i)} =  \frac{\sqrt{\frac{\sum |J_i|(\overline{J_i} - \overline{J_i \cap J_j})^2)}{|J_i \cap J_j|}}}{\sigma_{J_i \cap J_j}}
+\end{equation}
+
+where $J_i$ and $J_j$ are volumes $i \in l$ and $j \in l$ in the sequence, respectively, $|*|$ indicates the number of voxels in the operand, $\overline{*}$ indicates the average of the voxel values in the operand, and $J_i \cap J_j$ is the volume of space where images $J_i$ and $J_j$ intersect. %In volume registration, the computer assumes the entire contents of $J_i$ and $J_j$ intersect provided they are the same size (in voxels), which somewhat simplifies 
+
+Since the matrix $M$ is quite large, using statistics describing $M$ rather than $M$ itself can simplify analyses. On the other hand, the whole matrix $M$ may be more comprehensively analyzed using statistical tests such as the $t$-test.
+
+
+
 
 \section{Motion Patterns} 
 
@@ -106,9 +130,9 @@ We suggest that the ways that patients move are specific to certain patient grou
 
 There is also a chance that patients within the same age group move differently possibly due to their cognitive state. Preadolescents who have ADHD likely become bored and fidgety in the MR scanner at different rates then their non-ADHD counterparts. Adults suffering from dementia may have more difficulty remaining still for the duration of a scan than adults with similar demographics and no dementia.
 
-We have several goals for this portion of our work. The first is to identify features of the rs-fMRIs that are informative about patient movement during a scan. We will initially use the metrics described in the previous section, but may experiment with other metrics from the biomedical imaging and computer vision domains.
+%We have several goals for this portion of our work. The first is to identify features of the rs-fMRIs that are informative about patient movement during a scan. We will initially use the metrics described in the previous section, but may experiment with other metrics from the biomedical imaging and computer vision domains.
 
-Our second goal is to group patients based on features extracted from their original images, their registered images, and their motion corrected images. Additional behavioral, clinical, and demographic data will also be used. We will use machine learning and statistical analysis techniques to identify relationships between different features or subsets of features. 
+%Our second goal is to group patients based on features extracted from their original images, their registered images, and their motion corrected images. Additional behavioral, clinical, and demographic data will also be used. We will use machine learning and statistical analysis techniques to identify relationships between different features or subsets of features. 
 
 % If the relationships between different types of patient motion and behavioral, clinical, and demographic data are sufficiently strong, we will train a machine learning model to identify a patient's output variable based on his image features.
 
@@ -118,5 +142,4 @@ Our second goal is to group patients based on features extracted from their orig
 
 The registration frameworks described in this section were implemented in Python using the nipype (Neuroimaging in Python Pipelines and Interfaces) library \cite{Gorgolewski2011}. Affine volume registration was performed using ANTs (Advanced Normalization Tools) \cite{Avants2014}. The metric used to estimate the dissimilarity between the pairs of volumes being registered was cross-correlation with a local window size of 5 voxels. 
 
-Cite FSL, etc. here
-
+To calculate metrics, we used FLIRT (FMRIB’s Linear Image Registration Tool) to calculate the correlation ratio between each possible pair of volumes in the sequences \cite{Jenkinson2001} \cite{Jenkinson2002}. We then used the average and standard deviation of the correlation ratio distribution of each image to compare the images. We calculated the FD and DVARS metrics defined by Power et al. using the FSLMotionOutliers tool \cite{Power2012}. These metrics were calculated for each image and were used for evaluation of the efficacy of the registration frameworks.

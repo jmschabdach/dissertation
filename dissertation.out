@@ -24,41 +24,43 @@
 \BOOKMARK [2][]{subsection.3.5.3}{3.5.3 Image Space Motion Correction}{section.3.5}% 20
 \BOOKMARK [2][]{subsection.3.5.4}{3.5.4 General Limitations of Prospective Motion Correction}{section.3.5}% 21
 \BOOKMARK [1][]{section.3.6}{3.6 RETROSPECTIVE MOTION CORRECTION}{chapter.3}% 22
-\BOOKMARK [2][]{subsection.3.6.1}{3.6.1 Denoising}{section.3.6}% 23
-\BOOKMARK [2][]{subsection.3.6.2}{3.6.2 Filtering}{section.3.6}% 24
-\BOOKMARK [2][]{subsection.3.6.3}{3.6.3 Spin History Distortion Correction}{section.3.6}% 25
-\BOOKMARK [1][]{section.3.7}{3.7 IMAGE USABILITY}{chapter.3}% 26
-\BOOKMARK [0][]{chapter.4}{4.0 DATA}{}% 27
-\BOOKMARK [1][]{section.4.1}{4.1 Neonatal Subject Population and Images}{chapter.4}% 28
-\BOOKMARK [1][]{section.4.2}{4.2 Preadolescent Subject Population and Images}{chapter.4}% 29
-\BOOKMARK [1][]{section.4.3}{4.3 Adult Subject Population and Images}{chapter.4}% 30
-\BOOKMARK [1][]{section.4.4}{4.4 Fetal Subject Population and Images}{chapter.4}% 31
-\BOOKMARK [1][]{section.4.5}{4.5 Simulated Phantom Images}{chapter.4}% 32
-\BOOKMARK [1][]{section.4.6}{4.6 Human Phantom Images}{chapter.4}% 33
-\BOOKMARK [0][]{chapter.5}{5.0 AIMS}{}% 34
-\BOOKMARK [1][]{section.5.1}{5.1 Volume Registration In A Motion Correction Pipeline}{chapter.5}% 35
-\BOOKMARK [2][]{subsection.5.1.1}{5.1.1 Simulated Phantom}{section.5.1}% 36
-\BOOKMARK [2][]{subsection.5.1.2}{5.1.2 Human Phantom}{section.5.1}% 37
-\BOOKMARK [2][]{subsection.5.1.3}{5.1.3 Clinical Images}{section.5.1}% 38
-\BOOKMARK [1][]{section.5.2}{5.2 Detecting Population-Dependent Patterns of Motion}{chapter.5}% 39
-\BOOKMARK [1][]{section.5.3}{5.3 Evaluate Relationships Between Motion and Outcomes}{chapter.5}% 40
-\BOOKMARK [1][]{section.5.4}{5.4 Other potential areas I'm thinking about}{chapter.5}% 41
-\BOOKMARK [0][]{chapter.6}{6.0 METHODS}{}% 42
-\BOOKMARK [1][]{section.6.1}{6.1 Volume Registration Frameworks}{chapter.6}% 43
-\BOOKMARK [2][]{subsection.6.1.1}{6.1.1 Traditional Volume Registration}{section.6.1}% 44
-\BOOKMARK [2][]{subsection.6.1.2}{6.1.2 Directed Acyclic Graph Based Registration}{section.6.1}% 45
-\BOOKMARK [2][]{subsection.6.1.3}{6.1.3 Motion Correction Pipeline}{section.6.1}% 46
-\BOOKMARK [1][]{section.6.2}{6.2 Motion Metrics}{chapter.6}% 47
-\BOOKMARK [1][]{section.6.3}{6.3 Motion Patterns}{chapter.6}% 48
-\BOOKMARK [1][]{section.6.4}{6.4 Statistical Analyses}{chapter.6}% 49
-\BOOKMARK [1][]{section.6.5}{6.5 Implementation: Tools and Libraries}{chapter.6}% 50
-\BOOKMARK [0][]{chapter.7}{7.0 PRELIMINARY RESULTS}{}% 51
-\BOOKMARK [1][]{section.7.1}{7.1 Comparison of Volume Registration Methods}{chapter.7}% 52
-\BOOKMARK [2][]{subsection.7.1.1}{7.1.1 Subject Position Variability in the Registered Images}{section.7.1}% 53
-\BOOKMARK [2][]{subsection.7.1.2}{7.1.2 Comparison of Motion Correction Methods}{section.7.1}% 54
-\BOOKMARK [0][]{chapter.8}{8.0 DISCUSSION}{}% 55
-\BOOKMARK [1][]{section.8.1}{8.1 Comparison of Volume Registration Methods}{chapter.8}% 56
-\BOOKMARK [2][]{subsection.8.1.1}{8.1.1 Relation to Existing Work}{section.8.1}% 57
-\BOOKMARK [2][]{subsection.8.1.2}{8.1.2 Limitations and Future Work}{section.8.1}% 58
-\BOOKMARK [1][]{section.8.2}{8.2 Conclusions}{chapter.8}% 59
-\BOOKMARK [0][]{section*.1}{BIBLIOGRAPHY}{}% 60
+\BOOKMARK [2][]{subsection.3.6.1}{3.6.1 Volume Registration}{section.3.6}% 23
+\BOOKMARK [2][]{subsection.3.6.2}{3.6.2 Denoising}{section.3.6}% 24
+\BOOKMARK [2][]{subsection.3.6.3}{3.6.3 Filtering}{section.3.6}% 25
+\BOOKMARK [2][]{subsection.3.6.4}{3.6.4 Spin History Distortion Correction}{section.3.6}% 26
+\BOOKMARK [1][]{section.3.7}{3.7 IMAGE USABILITY}{chapter.3}% 27
+\BOOKMARK [0][]{chapter.4}{4.0 METHODS}{}% 28
+\BOOKMARK [1][]{section.4.1}{4.1 Motion Correction}{chapter.4}% 29
+\BOOKMARK [2][]{subsection.4.1.1}{4.1.1 Directed Acyclic Graph Based Volume Registration}{section.4.1}% 30
+\BOOKMARK [2][]{subsection.4.1.2}{4.1.2 Motion Correction Pipeline}{section.4.1}% 31
+\BOOKMARK [1][]{section.4.2}{4.2 Motion Metrics}{chapter.4}% 32
+\BOOKMARK [2][]{subsection.4.2.1}{4.2.1 Dice Coefficient}{section.4.2}% 33
+\BOOKMARK [2][]{subsection.4.2.2}{4.2.2 Correlation Ratio Matrix}{section.4.2}% 34
+\BOOKMARK [1][]{section.4.3}{4.3 Motion Patterns}{chapter.4}% 35
+\BOOKMARK [1][]{section.4.4}{4.4 Statistical Analyses}{chapter.4}% 36
+\BOOKMARK [1][]{section.4.5}{4.5 Implementation: Tools and Libraries}{chapter.4}% 37
+\BOOKMARK [0][]{chapter.5}{5.0 DATA}{}% 38
+\BOOKMARK [1][]{section.5.1}{5.1 Neonatal Subject Population and Images}{chapter.5}% 39
+\BOOKMARK [1][]{section.5.2}{5.2 Preadolescent Subject Population and Images}{chapter.5}% 40
+\BOOKMARK [1][]{section.5.3}{5.3 Adult Subject Population and Images}{chapter.5}% 41
+\BOOKMARK [1][]{section.5.4}{5.4 Fetal Subject Population and Images}{chapter.5}% 42
+\BOOKMARK [1][]{section.5.5}{5.5 Simulated Phantom Images}{chapter.5}% 43
+\BOOKMARK [1][]{section.5.6}{5.6 Human Phantom Images}{chapter.5}% 44
+\BOOKMARK [0][]{chapter.6}{6.0 AIMS}{}% 45
+\BOOKMARK [1][]{section.6.1}{6.1 Volume Registration In A Motion Correction Pipeline}{chapter.6}% 46
+\BOOKMARK [2][]{subsection.6.1.1}{6.1.1 Simulated Phantom}{section.6.1}% 47
+\BOOKMARK [2][]{subsection.6.1.2}{6.1.2 Human Phantom}{section.6.1}% 48
+\BOOKMARK [2][]{subsection.6.1.3}{6.1.3 Clinical Images}{section.6.1}% 49
+\BOOKMARK [1][]{section.6.2}{6.2 Detecting Population-Dependent Patterns of Motion}{chapter.6}% 50
+\BOOKMARK [1][]{section.6.3}{6.3 Evaluate Relationships Between Motion and Outcomes}{chapter.6}% 51
+\BOOKMARK [1][]{section.6.4}{6.4 Other potential areas I'm thinking about}{chapter.6}% 52
+\BOOKMARK [0][]{chapter.7}{7.0 PRELIMINARY RESULTS}{}% 53
+\BOOKMARK [1][]{section.7.1}{7.1 Comparison of Volume Registration Methods}{chapter.7}% 54
+\BOOKMARK [2][]{subsection.7.1.1}{7.1.1 Subject Position Variability in the Registered Images}{section.7.1}% 55
+\BOOKMARK [2][]{subsection.7.1.2}{7.1.2 Comparison of Motion Correction Methods}{section.7.1}% 56
+\BOOKMARK [0][]{chapter.8}{8.0 DISCUSSION}{}% 57
+\BOOKMARK [1][]{section.8.1}{8.1 Comparison of Volume Registration Methods}{chapter.8}% 58
+\BOOKMARK [2][]{subsection.8.1.1}{8.1.1 Relation to Existing Work}{section.8.1}% 59
+\BOOKMARK [2][]{subsection.8.1.2}{8.1.2 Limitations and Future Work}{section.8.1}% 60
+\BOOKMARK [1][]{section.8.2}{8.2 Conclusions}{chapter.8}% 61
+\BOOKMARK [0][]{section*.1}{BIBLIOGRAPHY}{}% 62

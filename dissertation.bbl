@@ -25,6 +25,11 @@ Avants, B.~B., Tustison, N.~J., Stauffer, M., Song, G., Wu, B., and Gee, J.~C.
 \newblock {The Insight ToolKit image registration framework}.
 \newblock {\em Frontiers in Neuroinformatics}, 8(April).
 
+\bibitem[Ayres, 1920]{Ayres1920}
+Ayres, L.~P. (1920).
+\newblock The correlation ratio.
+\newblock {\em The Journal of Educational Research}, 2(1):452--456.
+
 \bibitem[Barnea-Goraly et~al., 2014]{Barnea-Goraly2014}
 Barnea-Goraly, N., Weinzimer, S.~A., Ruedy, K.~J., Mauras, N., Beck, R.~W.,
   Marzelli, M.~J., Mazaika, P.~K., Aye, T., White, N.~H., Tsalikian, E., Fox,
@@ -41,6 +46,14 @@ Behzadi, Y., Restom, K., Liau, J., and Liu, T.~T. (2007).
   perfusion based fMRI}.
 \newblock {\em NeuroImage}, 37(1):90--101.
 
+\bibitem[Bharatha et~al., 2001]{Bharatha2001}
+Bharatha, A., Hirose, M., Hata, N., Warfield, S.~K., Ferrant, M., Zou, K.~H.,
+  Suarez-Santana, E., Ruiz-Alzola, J., D'Amico, A., Cormack, R.~A., Kikinis,
+  R., Jolesz, F.~A., and Tempany, C.~M. (2001).
+\newblock {Evaluation of three-dimensional finite element-based deformable
+  registration of pre- and intraoperative prostate imaging}.
+\newblock {\em Medical Physics}, 28(12):2551--60.
+
 \bibitem[Cot{\'{e}} and Wilson, 2016]{Cote2016}
 Cot{\'{e}}, C.~J. and Wilson, S. (2016).
 \newblock {Guidelines for Monitoring and Management of Pediatric Patients
@@ -53,6 +66,11 @@ Dewey, M., Schink, T., and Dewey, C.~F. (2007).
 \newblock {Claustrophobia during magnetic resonance imaging: Cohort study in
   over 55,000 patients}.
 \newblock {\em Journal of Magnetic Resonance Imaging}, 26(5):1322--1327.
+
+\bibitem[Dice, 1945]{Dice1945}
+Dice, L.~R. (1945).
+\newblock {Measures of the Amount of Ecologic Association Between Species}.
+\newblock {\em Ecology}, 26(3):297--302.
 
 \bibitem[Dosenbach et~al., 2017]{Dosenbach2017}
 Dosenbach, N.~U., Koller, J.~M., Earl, E.~A., Miranda-Dominguez, O., Klein,
@@ -119,6 +137,12 @@ Jenkinson, M., Bannister, P., Brady, M., and Smith, S. (2002).
 \newblock {Improved Optimization for the Robust and Accurate Linear
   Registration and Motion Correction of Brain Images}.
 \newblock {\em NeuroImage}, 17:825--841.
+
+\bibitem[Jenkinson and Smith, 2001]{Jenkinson2001}
+Jenkinson, M. and Smith, S. (2001).
+\newblock {A global optimisation method for robust affine registration of brain
+  images}.
+\newblock {\em Medical Image Analysis}, 5:143--156.
 
 \bibitem[Jo et~al., 2013]{Jo2013}
 Jo, H.~J., Gotts, S.~J., Reynolds, R.~C., Bandettini, P.~A., Martin, A., Cox,
@@ -245,6 +269,24 @@ Raichle, M.~E., MacLeod, A.~M., Snyder, A.~Z., Powers, W.~J., Gusnard, D.~A.,
 \newblock {\em Proceedings of the National Academy of Sciences},
   98(2):676--682.
 
+\bibitem[Roche et~al., 1998a]{Roche1998a}
+Roche, A., Malandain, G., Ayache, N., and Pennec, X. (1998a).
+\newblock {\em Multimodal image registration by maximization of the correlation
+  ratio}.
+\newblock PhD thesis, INRIA.
+
+\bibitem[Roche et~al., 1998b]{Roche1998}
+Roche, A., Malandain, G., Pennec, X., and Ayache, N. (1998b).
+\newblock {The correlation ratio as a new similarity measure for multimodal
+  image registration}.
+\newblock {\em Proceedings of MICCAI}, pages 1115--1124.
+
+\bibitem[Rugg, 1917]{Rugg1917}
+Rugg, H.~O. (1917).
+\newblock {\em Statistical methods applied to education: A textbook for
+  students of education in the quantitative study of school problems}.
+\newblock Houghton Mifflin.
+
 \bibitem[Rutman, 2009]{Rutman2009}
 Rutman, M.~S. (2009).
 \newblock {Sedation for emergent diagnostic imaging studies in pediatric
@@ -335,5 +377,18 @@ Zang, Y.~F., Yong, H., Chao-Zhe, Z., Qing-Jiu, C., Man-Qiu, S., Meng, L.,
 \newblock {Altered baseline brain activity in children with ADHD revealed by
   resting-state functional MRI}.
 \newblock {\em Brain and Development}, 29(2):83--91.
+
+\bibitem[Zijdenbos et~al., 1994]{Zijdenbos1994}
+Zijdenbos, A.~P., Dawant, B.~M., Margolin, R.~A., and Palmer, A.~C. (1994).
+\newblock {Morphometric Analysis of White Matter Lesions in MR Images: Method
+  and Validation}.
+\newblock {\em IEEE Transactions on Medical Imaging}, 13(4):716--724.
+
+\bibitem[Zou et~al., 2004]{Zou2004}
+Zou, K.~H., Warfield, S.~K., Bharatha, A., Tempany, C.~M., Kaus, M.~R., Haker,
+  S.~J., Wells, W.~M., Jolesz, F.~A., and Kikinis, R. (2004).
+\newblock {Statistical Validation of Image Segmentation Quality Based on a
+  Spatial Overlap Index}.
+\newblock {\em Academic Radiology}, 11(2):178--189.
 
 \end{thebibliography}
