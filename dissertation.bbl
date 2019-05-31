@@ -211,6 +211,7 @@ Mozaffarian, D., Benjamin, E.~J., Go, A.~S., Arnett, D.~K., Blaha, M.~J.,
   D., Yeh, R.~W., and Turner, M.~B. (2016).
 \newblock {\em {Heart Disease and Stroke Statistics — 2016 Update A Report
   From the American Heart Association}}.
+\newblock American Heart Association.
 
 \bibitem[Murphy and Brunberg, 1997]{Murphy1997}
 Murphy, K.~J. and Brunberg, J.~A. (1997).
@@ -326,8 +327,8 @@ Smyser, C.~D. and Neil, J.~J. (2015).
 TracInnovations (2019).
 \newblock Tracinnovations mri markerless motion tracker and monitor system.
 
-\bibitem[Unknown, 2016]{FDA2016}
-Unknown (2016).
+\bibitem[{United States Food and Drug Administration}, 2016]{FDA2016}
+{United States Food and Drug Administration} (2016).
 \newblock {Drug Safety and Availability - FDA Drug Safety Communication: FDA
   review results in new warnings about using general anesthetics and sedation
   drugs in young children and pregnant women}.

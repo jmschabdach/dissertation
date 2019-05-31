@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  30 MAY 2019 17:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  31 MAY 2019 15:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -473,7 +473,11 @@ Overfull \hbox (48.3216pt too wide) in paragraph at lines 97--98
 \OT1/cmr/m/n/12 gog-gles can dis-tract pa-tients [[]] [[]] [[]].
  []
 
-[15] [16] [17]
+[15]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [16]
+[17]
 Overfull \hbox (15.08pt too wide) in paragraph at lines 129--130
 []\OT1/cmr/m/n/12 Forman et al. mod-i-fied the chess-board marker to im-prove i
 ts flex-i-bil-ity [[]].
@@ -495,16 +499,14 @@ Package pdftex.def Info: 3/traditional-registration.png  used on input line 191
 Class pittetd Warning: The caption of Figure 2 is longer than one line on input
  line 193.
 
-[22pdfTeX warning (ext4): destination with the same identifier (name{figure.3.2
-}) has been already used, duplicate ignored
+[22] [23pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.3.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.197 
-       <./3/traditional-registration.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [23]
+l.208 R
+       egression of the global signal (global signal regression, GSR) correc...
+ <./3/traditional-registration.png>]
 Overfull \hbox (97.43358pt too wide) in paragraph at lines 208--209
 \OT1/cmr/m/n/12 nec-tiv-ity stud-ies, but may in-ad-ver-tently weaken shorter-d
 istance con-nec-tions [[]][[]]
@@ -576,7 +578,7 @@ Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
 )
-Overfull \hbox (74.55603pt too wide) in paragraph at lines 145--91
+Overfull \hbox (74.55603pt too wide) in paragraph at lines 143--91
 \OT1/cmr/m/n/12 late the cor-re-la-tion ra-tio be-tween each pos-si-ble pair of
  vol-umes in the se-quences [[]]
  []
@@ -726,7 +728,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 107.
 Here is how much of TeX's memory you used:
  7100 strings out of 492982
  101001 string characters out of 6134895
- 209425 words of memory out of 5000000
+ 209462 words of memory out of 5000000
  10314 multiletter control sequences out of 15000+600000
  9545 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -744,7 +746,7 @@ onts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on dissertation.pdf (63 pages, 468321 bytes).
+Output written on dissertation.pdf (63 pages, 468405 bytes).
 PDF statistics:
  903 PDF objects out of 1000 (max. 8388607)
  806 compressed objects within 9 object streams

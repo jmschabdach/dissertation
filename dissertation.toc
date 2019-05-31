@@ -14,11 +14,11 @@
 \contentsline {subsection}{\numberline {3.4.1}Sedation}{12}{subsection.3.4.1}
 \contentsline {subsection}{\numberline {3.4.2}Education, Distraction, and Behavioral Techniques}{14}{subsection.3.4.2}
 \contentsline {subsection}{\numberline {3.4.3}Feed and Sleep Protocols}{16}{subsection.3.4.3}
-\contentsline {section}{\numberline {3.5}PROSPECTIVE MOTION CORRECTION}{16}{section.3.5}
+\contentsline {section}{\numberline {3.5}PROSPECTIVE MOTION CORRECTION}{17}{section.3.5}
 \contentsline {subsection}{\numberline {3.5.1}Optical Motion Correction}{17}{subsection.3.5.1}
 \contentsline {subsection}{\numberline {3.5.2}External Sensors CONTINUE HERE}{19}{subsection.3.5.2}
 \contentsline {subsection}{\numberline {3.5.3}Image Space Motion Correction}{20}{subsection.3.5.3}
-\contentsline {subsection}{\numberline {3.5.4}General Limitations of Prospective Motion Correction}{20}{subsection.3.5.4}
+\contentsline {subsection}{\numberline {3.5.4}General Limitations of Prospective Motion Correction}{21}{subsection.3.5.4}
 \contentsline {section}{\numberline {3.6}RETROSPECTIVE MOTION CORRECTION}{21}{section.3.6}
 \contentsline {subsection}{\numberline {3.6.1}Volume Registration}{21}{subsection.3.6.1}
 \contentsline {subsection}{\numberline {3.6.2}Denoising}{24}{subsection.3.6.2}

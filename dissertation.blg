@@ -11,33 +11,32 @@ A level-1 auxiliary file: 6/experiments.aux
 A level-1 auxiliary file: 7/results.aux
 A level-1 auxiliary file: 8/discussion.aux
 Database file #1: sources.bib
-Warning--empty publisher in Mozaffarian2016
 You've used 60 entries,
             1935 wiz_defined-function locations,
-            879 strings with 19169 characters,
-and the built_in function-call counts, 29599 in all, are:
-= -- 2763
+            880 strings with 19232 characters,
+and the built_in function-call counts, 29603 in all, are:
+= -- 2765
 > -- 1872
 < -- 16
 + -- 686
 - -- 680
-* -- 2862
-:= -- 5279
-add.period$ -- 177
+* -- 2859
+:= -- 5281
+add.period$ -- 178
 call.type$ -- 60
 change.case$ -- 638
 chr.to.int$ -- 58
-cite$ -- 61
+cite$ -- 60
 duplicate$ -- 848
 empty$ -- 1661
 format.name$ -- 750
-if$ -- 5511
+if$ -- 5513
 int.to.chr$ -- 3
 int.to.str$ -- 0
 missing$ -- 58
-newline$ -- 300
+newline$ -- 301
 num.names$ -- 180
-pop$ -- 532
+pop$ -- 531
 preamble$ -- 1
 purify$ -- 640
 quote$ -- 0
@@ -49,8 +48,7 @@ text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 356
-warning$ -- 1
+warning$ -- 0
 while$ -- 217
 width$ -- 0
-write$ -- 770
-(There was 1 warning)
+write$ -- 772
