@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  31 MAY 2019 15:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.12)  3 JUN 2019 16:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -400,30 +400,34 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 (./1/introduction.tex
 Chapter 1
+
+Overfull \hbox (70.66997pt too wide) in paragraph at lines 4--5
+\OT1/cmr/m/n/12 Every year, ap-prox-i-mately 1.35 chil-dren are born with a con
+-gen-i-tal heart de-fect [[]].
+ []
+
 [1
 
 
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 20.
- (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+Underfull \vbox (badness 1675) has occurred while \output is active []
+
+ [2]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 25.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 20.
- [2]) [3]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 25.
+) [3] [4]
 \openout2 = `2/clinical_background.aux'.
 
 
 (./2/clinical_background.tex
 Chapter 2
-
-Overfull \hbox (74.7466pt too wide) in paragraph at lines 10--11
-[]\OT1/cmr/m/n/12 There are a num-ber of ge-netic and en-vi-ron-men-tal fac-tor
-s as-so-ci-ated with CHD [[]].
- []
-
-<2/chd-defects-usa.png, id=382, 728.7225pt x 587.19376pt>
+<2/chd-defects-usa.png, id=392, 728.7225pt x 587.19376pt>
 File: 2/chd-defects-usa.png Graphic file (type png)
 <use 2/chd-defects-usa.png>
 Package pdftex.def Info: 2/chd-defects-usa.png  used on input line 14.
@@ -432,52 +436,73 @@ Package pdftex.def Info: 2/chd-defects-usa.png  used on input line 14.
 Class pittetd Warning: The caption of Figure 1 is longer than one line on input
  line 16.
 
-[4
+[5
 
 
 
-] [5pdfTeX warning (ext4): destination with the same identifier (name{figure.2.
-1}) has been already used, duplicate ignored
+]
+Underfull \vbox (badness 2617) has occurred while \output is active []
+
+ [6pdfTeX warning (ext4): destination with the same identifier (name{figure.2.1
+}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.35 M
-      ortality: still processing information. Overall, the mortality for CHD...
- <./2/chd-defects-usa.png>]
-Underfull \vbox (badness 2384) has occurred while \output is active []
+l.28 
+      <./2/chd-defects-usa.png>]
+<2/CHD-burden-webb.png, id=425, 821.0675pt x 483.8075pt>
+File: 2/CHD-burden-webb.png Graphic file (type png)
+<use 2/CHD-burden-webb.png>
+Package pdftex.def Info: 2/CHD-burden-webb.png  used on input line 38.
+(pdftex.def)             Requested size: 328.82706pt x 193.7558pt.
 
- [6])
-[7]
+
+Class pittetd Warning: The caption of Figure 2 is longer than one line on input
+ line 40.
+
+[7] [8pdfTeX warning (ext4): destination with the same identifier (name{figure.
+2.2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.63 
+      <./2/CHD-burden-webb.png>] [9]
+Overfull \hbox (26.09006pt too wide) in paragraph at lines 96--97
+\OT1/cmr/m/n/12 cog-ni-tive, lan-guage, social-emotional, mo-tor, and adap-tive
+ be-hav-ior tests [[]]. 
+ []
+
+[10]) [11]
 \openout2 = `3/technical_background.aux'.
 
  (./3/technical_background.tex
 Chapter 3
-[8
+[12
 
 
 
 ]
 Underfull \vbox (badness 2538) has occurred while \output is active []
 
- [9]
+ [13]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
 
-[10]
+[14]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
- [11] [12] [13] [14]
+ [15] [16] [17] [18]
 Overfull \hbox (48.3216pt too wide) in paragraph at lines 97--98
 \OT1/cmr/m/n/12 gog-gles can dis-tract pa-tients [[]] [[]] [[]].
  []
 
-[15]
+[19]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [16]
-[17]
+ [20]
+[21]
 Overfull \hbox (15.08pt too wide) in paragraph at lines 129--130
 []\OT1/cmr/m/n/12 Forman et al. mod-i-fied the chess-board marker to im-prove i
 ts flex-i-bil-ity [[]].
@@ -486,9 +511,9 @@ ts flex-i-bil-ity [[]].
 
 Underfull \vbox (badness 5652) has occurred while \output is active []
 
- [18]
-[19] [20] [21]
-<3/traditional-registration.png, id=543, 525.965pt x 228.052pt>
+ [22]
+[23] [24] [25]
+<3/traditional-registration.png, id=593, 525.965pt x 228.052pt>
 File: 3/traditional-registration.png Graphic file (type png)
 <use 3/traditional-registration.png>
 Package pdftex.def Info: 3/traditional-registration.png  used on input line 191
@@ -496,11 +521,11 @@ Package pdftex.def Info: 3/traditional-registration.png  used on input line 191
 (pdftex.def)             Requested size: 328.82706pt x 142.58086pt.
 
 
-Class pittetd Warning: The caption of Figure 2 is longer than one line on input
+Class pittetd Warning: The caption of Figure 3 is longer than one line on input
  line 193.
 
-[22] [23pdfTeX warning (ext4): destination with the same identifier (name{figur
-e.3.2}) has been already used, duplicate ignored
+[26] [27pdfTeX warning (ext4): destination with the same identifier (name{figur
+e.3.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -521,21 +546,21 @@ Overfull \hbox (15.70665pt too wide) in paragraph at lines 210--211
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
-[24]) [25]
+[28]) [29]
 \openout2 = `4/methods.aux'.
 
  (./4/methods.tex
 Chapter 4
-<4/dag-chain.png, id=616, 582.175pt x 147.752pt>
+<4/dag-chain.png, id=665, 582.175pt x 147.752pt>
 File: 4/dag-chain.png Graphic file (type png)
 <use 4/dag-chain.png>
 Package pdftex.def Info: 4/dag-chain.png  used on input line 18.
 (pdftex.def)             Requested size: 328.82706pt x 83.45522pt.
 
-Class pittetd Warning: The caption of Figure 3 is longer than one line on input
+Class pittetd Warning: The caption of Figure 4 is longer than one line on input
  line 19.
 
-[26
+[30
 
 
 
@@ -543,8 +568,8 @@ Class pittetd Warning: The caption of Figure 3 is longer than one line on input
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
- [27pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
-3}) has been already used, duplicate ignored
+ [31pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
+4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -553,27 +578,27 @@ l.35 \end{equation}
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
-<4/dag-registration.png, id=630, 525.965pt x 286.671pt>
+<4/dag-registration.png, id=680, 525.965pt x 286.671pt>
 File: 4/dag-registration.png Graphic file (type png)
 <use 4/dag-registration.png>
 Package pdftex.def Info: 4/dag-registration.png  used on input line 57.
 (pdftex.def)             Requested size: 328.82706pt x 179.23016pt.
 
 
-Class pittetd Warning: The caption of Figure 4 is longer than one line on input
+Class pittetd Warning: The caption of Figure 5 is longer than one line on input
  line 59.
 
-[28pdfTeX warning (ext4): destination with the same identifier (name{figure.4.4
+[32pdfTeX warning (ext4): destination with the same identifier (name{figure.4.5
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.63 
-      <./4/dag-registration.png>] [29]
+      <./4/dag-registration.png>] [33]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [30]
-[31] [32]
+ [34]
+[35] [36]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
@@ -583,7 +608,7 @@ Overfull \hbox (74.55603pt too wide) in paragraph at lines 143--91
  vol-umes in the se-quences [[]]
  []
 
-[33]
+[37]
 \openout2 = `5/data.aux'.
 
  (./5/data.tex
@@ -591,28 +616,28 @@ Chapter 5
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [34
+ [38
 
 
 
 ]
 Underfull \vbox (badness 1292) has occurred while \output is active []
 
- [35]
-[36]
+ [39]
+[40]
 Underfull \vbox (badness 6380) has occurred while \output is active []
 
- [37]
-[38]) [39]
+ [41]
+[42]) [43]
 \openout2 = `6/experiments.aux'.
 
  (./6/experiments.tex
 Chapter 6
-[40
+[44
 
 
 
-] [41] [42] [43]) [44]
+] [45] [46] [47]) [48]
 \openout2 = `7/results.aux'.
 
  (./7/results.tex
@@ -648,17 +673,17 @@ line 65.
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
-) [45
+) [49
 
 
 
-] [46] [47pdfTeX warning (ext4): destination with the same identifier (name{tab
+] [50] [51pdfTeX warning (ext4): destination with the same identifier (name{tab
 le.7.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.96 \include{7/results}
-                        ] [48pdfTeX warning (ext4): destination with the same i
+                        ] [52pdfTeX warning (ext4): destination with the same i
 dentifier (name{table.7.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -690,30 +715,30 @@ Missing character: There is no ™ in font cmr12!
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [49
+ [53
 
 
 
 ])
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [50]
-[51]
+ [54]
+[55]
 BIBLIOGRAPHY
-(./dissertation.bbl [52
+(./dissertation.bbl [56
 
 
 ]
 Missing character: There is no â in font cmr12!
- [53]
+ [57] [58]
 Missing character: There is no â in font cmti12!
 Missing character: There is no € in font cmti12!
 Missing character: There is no ” in font cmti12!
- [54] [55] [56])
+ [59] [60] [61])
 \openout3 = `dissertation.etd'.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 107.
- [57]
+ [62]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 107.
  (./dissertation.aux
 (./1/introduction.aux) (./2/clinical_background.aux)
@@ -722,14 +747,14 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 107.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 107.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 107.
 Package rerunfilecheck Info: File `dissertation.out' has not changed.
-(rerunfilecheck)             Checksum: F21AFF8508F658CA0A544A140A0D6DE5;5070.
+(rerunfilecheck)             Checksum: D3FFCCE8A73C702F3334087EC35F426B;5128.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 107.
  ) 
 Here is how much of TeX's memory you used:
- 7100 strings out of 492982
- 101001 string characters out of 6134895
- 209462 words of memory out of 5000000
- 10314 multiletter control sequences out of 15000+600000
+ 7136 strings out of 492982
+ 101501 string characters out of 6134895
+ 210063 words of memory out of 5000000
+ 10331 multiletter control sequences out of 15000+600000
  9545 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  34i,16n,30p,1448b,413s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -746,10 +771,10 @@ onts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on dissertation.pdf (63 pages, 468405 bytes).
+Output written on dissertation.pdf (68 pages, 644964 bytes).
 PDF statistics:
- 903 PDF objects out of 1000 (max. 8388607)
- 806 compressed objects within 9 object streams
- 205 named destinations out of 1000 (max. 500000)
- 549 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 963 PDF objects out of 1000 (max. 8388607)
+ 858 compressed objects within 9 object streams
+ 223 named destinations out of 1000 (max. 500000)
+ 562 words of extra memory for PDF output out of 10000 (max. 10000000)
 

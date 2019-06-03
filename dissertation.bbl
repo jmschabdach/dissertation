@@ -86,6 +86,12 @@ Forman, C., Aksoy, M., Hornegger, J., and Bammer, R. (2011).
   in MRI}.
 \newblock {\em Medical Image Analysis}, 15(5):708--719.
 
+\bibitem[Fox et~al., 2015]{Fox2015}
+Fox, C.~K., Sidney, S., and Fullerton, H.~J. (2015).
+\newblock Community-based case--control study of childhood stroke risk
+  associated with congenital heart disease.
+\newblock {\em Stroke}, 46(2):336--340.
+
 \bibitem[Friston et~al., 1995]{Friston1995}
 Friston, K.~J., Ashburner, J., Frith, C.~D., Poline, J.~â., Heather, J.~D., and
   Frackowiak, R.~S. (1995).
@@ -157,6 +163,12 @@ Jo, H.~J., Saad, Z.~S., Simmons, W.~K., Milbury, L.~A., and Cox, R.~W. (2010).
   detection and removal}.
 \newblock {\em NeuroImage}, 52(2):571--582.
 
+\bibitem[Khalil et~al., 1994]{Khalil1994}
+Khalil, A., Aggarwal, R., Thirupuram, S., and Arora, R. (1994).
+\newblock {Incidence of Congenital Heart Disease Among Hospital Live Births in
+  India}.
+\newblock {\em Journal of Indian Pediatrics}, 31:519--527.
+
 \bibitem[Khan et~al., 2007]{Khan2007}
 Khan, J.~J., Donnely, L.~F., Koch, B.~L., Curtwright, L.~A., Dickerson, J.~M.,
   Hardin, J.~L., Hutchinson, S., Wright, J., and Gessner, K.~E. (2007).
@@ -199,6 +211,12 @@ Mathur, A.~M., Neil, J.~J., McKinstry, R.~C., and Inder, T.~E. (2008).
   neonates}.
 \newblock {\em Pediatric Radiology}, 38(3):260--264.
 
+\bibitem[Mebius et~al., 2017]{Mebius2017}
+Mebius, M.~J., Kooi, E.~M., Bilardo, C.~M., and Bos, A.~F. (2017).
+\newblock {Brain Injury and Neurodevelopmental Outcome in Congenital Heart
+  Disease: A Systematic Review}.
+\newblock {\em Pediatrics}, 140(1):e20164055.
+
 \bibitem[Mozaffarian et~al., 2016]{Mozaffarian2016}
 Mozaffarian, D., Benjamin, E.~J., Go, A.~S., Arnett, D.~K., Blaha, M.~J.,
   Cushman, M., Das, S.~R., Ferranti, S.~D., Despr{\'{e}}s, J.-p., Fullerton,
@@ -217,6 +235,13 @@ Mozaffarian, D., Benjamin, E.~J., Go, A.~S., Arnett, D.~K., Blaha, M.~J.,
 Murphy, K.~J. and Brunberg, J.~A. (1997).
 \newblock {Adult claustrophobia, anxiety and sedation in MRI}.
 \newblock {\em Magnetic Resonance Imaging}, 15(1):51--54.
+
+\bibitem[Nikyar et~al., 2011]{Nikyar2011}
+Nikyar, B., Sedehi, M., Mirfazeli, A., Qorbani, M., and Golalipour, M.-J.
+  (2011).
+\newblock {Prevalence and Pattern of Congenital Heart Disease among Neonates in
+  Gorgan, Northern Iran (2007-2008).}
+\newblock {\em Iranian Journal of Pediatrics}, 21(3):307--12.
 
 \bibitem[Parkes et~al., 2017]{Parkes2017}
 Parkes, L., Fulcher, B.~D., Yucel, M., and Fornito, A. (2017).
@@ -262,6 +287,18 @@ Pruim, R.~H., Mennes, M., van Rooij, D., Llera, A., Buitelaar, J.~K., and
 \newblock {ICA-AROMA: A robust ICA-based strategy for removing motion artifacts
   from fMRI data}.
 \newblock {\em NeuroImage}, 112:267--277.
+
+\bibitem[Qu et~al., 2016]{Qu2016}
+Qu, Y., Liu, X., Zhuang, J., Chen, G., Mai, J., Guo, X., Ou, Y., Chen, J.,
+  Gong, W., Gao, X., Wu, Y., and Nie, Z. (2016).
+\newblock {Incidence of Congenital Heart Disease: The 9-Year Experience of the
+  Guangdong Registry of Congenital Heart Disease, China}.
+\newblock {\em PLOS ONE}, 11(7):e0159257.
+
+\bibitem[Rahim et~al., 2008]{Rahim2008}
+Rahim, F., Ebadi, A., Saki, G., and Remazani, A. (2008).
+\newblock {Prevalence of Congenital Heart Disease in Iran: A Clinical Study}.
+\newblock {\em Journal of Medical Sciences(Faisalabad)}, 8(6):547--552.
 
 \bibitem[Raichle et~al., 2001]{Raichle2001}
 Raichle, M.~E., MacLeod, A.~M., Snyder, A.~Z., Powers, W.~J., Gusnard, D.~A.,
@@ -317,6 +354,16 @@ Satterthwaite, T.~D., Wolf, D.~H., Loughead, J., Ruparel, K., Elliott, M.~A.,
   Connectivity: Relevance for Studies of Neurodevelopment in Youth}.
 \newblock {\em NeuroImage}, 60(1):623--632.
 
+\bibitem[Saxena, 2005]{Saxena2005}
+Saxena, A. (2005).
+\newblock {Congenital Heart Disease in India: A Status Report}.
+\newblock {\em Indian Journal of Pediatrics}, 72(7):595--598.
+
+\bibitem[Shah et~al., 2008]{Shah2008}
+Shah, G., Singh, M., Pandey, T., Kalakheti, B., and Bhandari, G. (2008).
+\newblock {Incidence of congenital heart disease in tertiary care hospital}.
+\newblock {\em Kathmandu University Medical Journal}, 6(1):33--36.
+
 \bibitem[Smyser and Neil, 2015]{Smyser2015}
 Smyser, C.~D. and Neil, J.~J. (2015).
 \newblock {Use of resting state functional MRI to study brain development and
@@ -334,11 +381,28 @@ TracInnovations (2019).
   drugs in young children and pregnant women}.
 \newblock Technical report, United States Food and Drug Administration.
 
+\bibitem[van~der Linde et~al., 2011]{VanderLinde2011}
+van~der Linde, D., Konings, E.~E., Slager, M.~A., Witsenburg, M., Helbing,
+  W.~A., Takkenberg, J.~J., and Roos-Hesselink, J.~W. (2011).
+\newblock {Birth Prevalence of Congenital Heart Disease Worldwide}.
+\newblock {\em Journal of the American College of Cardiology},
+  58(21):2241--2247.
+
 \bibitem[van Dijk et~al., 2012]{VanDijk2012}
 van Dijk, K.~R., Sabuncu, M.~R., and Buckner, R.~L. (2012).
 \newblock {The influence of head motion on intrinsic functional connectivity
   MRI}.
 \newblock {\em NeuroImage}, 59(1):431--438.
+
+\bibitem[Webb et~al., 2015]{Webb2015}
+Webb, G., Mulder, B.~J., Aboulhosn, J., Daniels, C.~J., Elizari, M.~A., Hong,
+  G., Horlick, E., Landzberg, M.~J., Marelli, A.~J., O'Donnell, C.~P.,
+  Oechslin, E.~N., Pearson, D.~D., Pieper, E.~P., Saxena, A., Schwerzmann, M.,
+  Stout, K.~K., Warnes, C.~A., and Khairy, P. (2015).
+\newblock {The care of adults with congenital heart disease across the globe:
+  Current assessment and future perspective: A position statement from the
+  International Society for Adult Congenital Heart Disease (ISACHD)}.
+\newblock {\em International Journal of Cardiology}, 195:326--333.
 
 \bibitem[Windram et~al., 2011]{Windram2011}
 Windram, J.~D., Grosse-Wortmann, L., Shariat, M., Greer, M.-L., and Yoo, S.-J.
@@ -378,6 +442,11 @@ Zang, Y.~F., Yong, H., Chao-Zhe, Z., Qing-Jiu, C., Man-Qiu, S., Meng, L.,
 \newblock {Altered baseline brain activity in children with ADHD revealed by
   resting-state functional MRI}.
 \newblock {\em Brain and Development}, 29(2):83--91.
+
+\bibitem[Zhao et~al., 2019]{Zhao2019}
+Zhao, Q.~M., Liu, F., Wu, L., Ma, X.~J., Niu, C., and Huang, G.~Y. (2019).
+\newblock {Prevalence of Congenital Heart Disease at Live Birth in China}.
+\newblock {\em Journal of Pediatrics}, 204:53--58.
 
 \bibitem[Zijdenbos et~al., 1994]{Zijdenbos1994}
 Zijdenbos, A.~P., Dawant, B.~M., Margolin, R.~A., and Palmer, A.~C. (1994).
