@@ -40,6 +40,12 @@ Barnea-Goraly, N., Weinzimer, S.~A., Ruedy, K.~J., Mauras, N., Beck, R.~W.,
   (DirecNet) experience}.
 \newblock {\em Pediatric Radiology}, 44(2):181--186.
 
+\bibitem[Beckmann and Smith, 2004]{Beckmann2004}
+Beckmann, C.~F. and Smith, S.~M. (2004).
+\newblock {Probabilistic Independent Component Analysis for Functional Magnetic
+  Resonance Imaging}.
+\newblock {\em IEEE Transactions on Medical Imaging}, 23(2):137--152.
+
 \bibitem[Behzadi et~al., 2007]{Behzadi2007}
 Behzadi, Y., Restom, K., Liau, J., and Liu, T.~T. (2007).
 \newblock {A component based noise correction method (CompCor) for BOLD and
@@ -363,6 +369,13 @@ Saxena, A. (2005).
 Shah, G., Singh, M., Pandey, T., Kalakheti, B., and Bhandari, G. (2008).
 \newblock {Incidence of congenital heart disease in tertiary care hospital}.
 \newblock {\em Kathmandu University Medical Journal}, 6(1):33--36.
+
+\bibitem[Smyser et~al., 2010]{Smyser2010}
+Smyser, C.~D., Inder, T.~E., Shimony, J.~S., Hill, J.~E., Degnan, A.~J.,
+  Snyder, A.~Z., and Neil, J.~J. (2010).
+\newblock {Longitudinal analysis of neural network development in preterm
+  infants}.
+\newblock {\em Cerebral Cortex}, 20(12):2852--2862.
 
 \bibitem[Smyser and Neil, 2015]{Smyser2015}
 Smyser, C.~D. and Neil, J.~J. (2015).

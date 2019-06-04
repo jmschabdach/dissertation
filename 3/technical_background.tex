@@ -3,19 +3,19 @@
 
 This chapter covers one of the most prominent challenges in using rs-fMRIs: patient motion. These topics include sources of motion, current methods for preventing and managing motion in rs-fMRIs, quantifying motion, and usability criteria for using images corrupted by motion.
 
+\section{SOURCES OF MOTION IN MEDICAL IMAGES}
+
+During every medical imaging scan, the patient will naturally perform small, automatic movements due to regular bodily functions. Minuscule movements caused by cardiac activity may disrupt scans with high spatial resolution or with high sensitivity to the movement of blood molecules. Larger movements caused by respiration result in motion artifacts in images of the thoracic and abdominal cavities. 
+
+Other motions occur on a larger and more conscious scale. It is important to note that different populations may exhibit more of certain macro-motions than others. The patient may fidget or shift his gaze when he becomes bored in the scanner. If the patient falls asleep during a scan, there may be slight movement as the body relaxes and retenses if the patient wakes. Certain MRI protocols are known to produce loud sounds: during one of these protocols, the patient may become surprised and react by jumping. Additionally, clausterphobic patients or patients who feel secure around specific people who are not allowed in the scanner room may become agitated. 
+
 \section{STRUCTURE OF A RS-FMRI}
 
-A rs-fMRI scan produces a four dimensional image series. The first three dimensions are length, width, and depth and encompass the physical space occupied by the patient's head. The information in these three dimensions is interpreted as a three dimensional, volumetric image. The fourth dimension is time. The time dimension interacts with the spatial dimensions in that the contents of that image volume change with time.
+A rs-fMRI scan produces a four dimensional image series. The first three dimensions are length, width, and depth and encompass the physical space occupied by the patient's head. The information in these three dimensions is interpreted as a three dimensional, volumetric image. The fourth dimension is time. The temporal dimension interacts with the spatial dimensions such that the contents of that image volume change with time.
 
-One of the important notes about rs-fMRIs is that they are discrete representations of continuous data. A new image volume of the patient's brain is acquired every two to three seconds. The image volume is composed of a three dimensional version of a pixel called a voxel (volume element). Just as the ``distance'' between each image volume encompasses a certain amount of time, each voxel encompasses a small volume of physical space. The translations between the continuous physical and temporal spaces and the discrete physical and temporal spaces are the spatial and temporal resolutions. 
+rs-fMRIs are discrete representations of continuous data. A new image volume of the patient's brain is acquired every two to three seconds. The image volume is composed of a three dimensional version of a pixel called a voxel (volume element). Just as the ``distance'' between each image volume encompasses a certain amount of time, each voxel encompasses a small volume of physical space. The transformations between the continuous physical and temporal dimensions and the discrete physical and temporal dimensions are the spatial and temporal resolutions. 
 
-An rs-fMRI is considered to have relatively low spatial resolution. The physical size of a single voxel seems small at about 4 mm$^3$, but this resolution is not granular enough to capture details about activity within small structures of the brain. At the same time, a major strength of rs-fMRI is that is has relatively high temporal resolution. A temporal resolution of two to three seconds is fast enough to obtain data which changes on the scale of a second, but it is not fast enough to actively compensate for sources of noise which occur on the scale of fractions of a second. 
-
-\section{SOURCES OF MOTION}
-
-During every MRI scan, the patient will naturally perform small, automatic movements due to regular bodily functions. Minuscule movements caused by cardiac activity may disrupt scans with high spatial resolution or with high sensitivity to the movement of blood molecules. Larger movements caused by respiration result in motion artifacts in images of the thoracic and abdominal cavities. 
-
-Other motions occur on a larger and more conscious scale. It is important to note that different populations may exhibit more of certain macro-motions than others. The patient may fidget or shift his gaze when he becomes bored in the scanner. If the patient falls asleep during a scan, there may be slight movement as the body relaxes and retenses if the patient wakes. Certain MRI protocols are known to produce loud sounds: during one of these protocols, the patient may become surprised and jump in response to the unexpected sound. Additionally, clausterphobic patients or patients who feel secure around specific people who are not allowed in the scanner room may become agitated. 
+An rs-fMRI is considered to have relatively low spatial resolution but high temporal resolution. The physical size of a single voxel seems small at about 4 mm$^3$, but this resolution is not granular enough to capture details about activity within small structures of the brain. The activity information recorded during a rs-fMRI must be combined with the detailed anatomic information from a structural MRI to know precisely which areas of the brain are active at each point in time. A structural MRI volume takes much longer to acquire than a rs-fMRI volume, which can be obtained every two to three seconds. Unfortunately, the patient's position and neural activity can change faster than the image volume can be acquired. As a result, a temporal resolution of two to three seconds is not fast enough to actively compensate for sources of noise which confound the BOLD signal. 
 
 \section{EFFECTS OF MOTION}
 
@@ -27,40 +27,49 @@ The smallest movement can alter the position of the patient enough to cause the 
 
 The effect of motion on patient position is measured in terms of the difference in position between temporally neighboring image volumes. The difference in position is determined using metrics calculated by performing rigid volume registration on the two volumes. 
 In rigid volume registration, one volume is chosen as the reference volume and the other is considered the moving volume. The reference volume remains stationary while the moving volume is translated and rotated in three-dimensional space on top of it. The registration is considered successfully complete when the position of the patient in the moving volume matches the position in the reference volume. % Maybe move these sentences to methods?
-The three translation and three rotation parameters used to achieve this alignment are used to calculate the positional change between the image volumes, which is often called the framewise displacement (FD).  
+
+The moving volume can undergo linear or nonlinear transformations. Linear transformations include translation, rotation, and affine transformations along all three spatial dimensions as well as a scaling factor. These transformations move the image volume as a whole: all voxels in the moving image remain in the same location relative to their neighbors. On the other hand, nonlinear transformations have the ability to warp the contents of the moving volume so that it better matches the contents of the reference volume. Nonlinear transformations are more complex than linear transformation. They involve additional image processing steps such as smoothing and interpolation.
+
+Even in cases when nonlinear transformations are used, the registration process begins with the translation and rotation transformations. The three translation and three rotation parameters used to achieve the best alignment are used to calculate the positional change between the image volumes. The positional change between temporally neighboring volumes is called the framewise displacement (FD).  
 
 Several researchers have proposed different methods for calculating the FD. Power et al., Jenkinson et al., and Dosenbach et al. each propose a slightly different method for calculating the FD \cite{Power2012} \cite{Jenkinson2002} \cite{Dosenbach2017}. All three FD calculations produce correlated metrics: the FD metric proposed by Power et al. produces measurements approximately twice as large as the metric proposed by Jenkinson et al., and Dosenbach et al. reported a high correlation between their FD and Power’s FD \cite{Yan2013a} \cite{Dosenbach2017}. Herein, we use Power et al.'s version of the FD metric.
 
-\subsection{Signal Effects of Motion - NEEDS WORK}
+\subsection{Signal Effects of Motion}
 
-Even if the movement does not significantly change the recorded position of the subject, it impacts the established spin gradients, which introduces artifacts into the image sequence.
+In addition to changing the recorded position of the subject, it impacts the established spin gradients, which introduces artifacts into the image sequence.
 
-According to principles of quantum mechanics, elementary particles intrinsically have two types of angular momentum: orbital angular momentum and spin angular momentum. The same types of elementary molecules have the same spin angular momentum, which is denoted by a spin quantum number specific to that particle type. A spin quantum number 
+%According to principles of quantum mechanics, elementary particles intrinsically have two types of angular momentum: orbital angular momentum and spin angular momentum. The same types of elementary molecules have the same spin angular momentum, which is denoted by a spin quantum number specific to that particle type. A spin quantum number 
 
-Ideally, the subject is sitting in the scanner and all molecules are aligned with the primary magnetic field B0 in a relaxed state. Then, an RF pulse is applied to the field. The purpose of the pulse is to excite the molecules in a certain volume of physical space to orient the molecules to align to a secondary field in a different plane. When the pulse ends, the molecules precess back to their orientation in B0. As they do, the small magnetic field they embody induces an electric current on the RF coil. 
+During an ideal MRI scan, the patient is sitting in the scanner and all molecules are aligned with the primary magnetic field $B_0$ in a relaxed state. Then, an radiofrequency (RF) pulse is applied to the field. The purpose of the pulse is to excite the molecules in a certain volume of physical space to orient the molecules to align to a secondary field in a different plane. When the pulse ends, the molecules precess back to their orientation in $B_0$. As they do, their small magnetic fields induce electric currents on the RF coil. The currents are received by the scanner as signals in frequency space. The volume of the space intended to be excited is known, and the signal produced by the induced electric current is used in conjunction to reconstruct the image in voxel space.
 
-The current is received by the scanner as a signal in k-space (frequency space? how does this work exactly?). The volume of the space intended to be excited is known, and the signal produced by the induced electric current is used in conjunction to reconstruct the image in voxel space.
+However, when the patient moves, the volume of space which was thought to be excited is not actually excited: some other volume of space, which may or may not overlap with the intended volume of space, is excited instead. Because the MRI scanner has no way to know this assumption is not true, it does not know that not all of the molecules in its intended area are relaxed and correctly aligned to the $B_0$ field at the end of the RF pulse. The scanner proceeds with the next RF pulse, which tries to excite ``relaxed molecules'' which are not actually relaxed. As a result, the signals produced in the second RF pulse are different than they should be. For example, signals that are smaller than they should be result in dark shadows within motion affected frames of the sequence.
 
-However, when the patient moves, the volume of space which was thought to be excited is not actually excited: some other volume of space, which may or may not overlap with the intended volume of space, is excited instead. Because the MRI scanner has no way to know this assumption is not true, it does not know that not all of the molecules in its intended area are relaxed/correctly oriented to the B0 field at the end of the RF pulse. The scanner proceeds with the next RF pulse, which tries to excite "relaxed molecules" that are not actually relaxed. As a result, the signals produced in the second RF pulse are different than they should be. 
+These effects of motion are more difficult to measure than the positional effects. They occur because motion disrupts the magnetic spin gradients present in the patient during the scan. The spin gradients need time to recover to the correct magnetic field orientation, and up to eight to ten seconds may pass before the recovery is complete \cite{Power2014}. While the spin gradients are reorienting, the recorded BOLD signal will vary more than usual between temporally neighboring volumes. 
 
-Based on a conversation with a researcher studying fetal motion, signals that are smaller than they should be due to the effects of motion on a patient’s spin history result in dark shadows within motion affected frames of the sequence.
+There are few metrics to measure the change in BOLD signal between image volumes. In 2010, Smyser et al. developed a metric called DVARS, which measures the temporal derivative of the root mean squared variance over the voxels between two volumes \cite{Smyser2010}. Power et al. explain the steps to calculate DVARS in a separate study \cite{Power2012}. The DVARS value is calculated in two steps. The first step uses backward differences to approximate the derivative of the BOLD signal change between volumes $J_i$ and $J_{i-1}$ at every point $\vec{x}$:
 
-Movements cause the orientation of existing spin gradients to change, and the gradients require time to realign to the magnetic field. This recovery time often results in a decrease in the global signal in frames obtained over the following 8-10 seconds, which can affect the functional connectivity analysis \cite{Power2014}.
+\begin{equation}
+\frac{\partial}{\partial t} J_i(\vec{x}) \approx J_i(\vec{x}) - J_{i-1}(\vec{x}).
+\end{equation}
 
-The effects of motion on the BOLD signal are more difficult to measure. They occur because motion disrupts the magnetic spin gradients present in the patient during the scan. The spin gradients need time to recover to the correct magnetic field orientation, and up to eight to ten seconds may pass before the recovery is complete \cite{Power2014}. While the spin gradients are reorienting, the recorded BOLD signal may vary between temporally neighboring volumes. 
+The second step calculates the root mean square of the approximated derivatives for all $N$ points $\vec{x}$ contained in both image volumes:
 
-These changes can be measured using the temporal derivative of the variance in the BOLD signal intensity (DVARS) between the  frames \cite{Power2012}.
+\begin{equation}
+DVARS(J_i) = \sqrt{ \frac{1}{N} \sum_{\vec{x} \in J_i, J_{i-1}} \left( \frac{\partial}{\partial t} J_i(\vec{x}) \right)^2 }.
+\end{equation}
+
+DVARs measures the change in BOLD signal intensity, which is highly related to motion-induced spin gradient changes. 
 
 \section{MOTION PREVENTION}
 
-Various techniques and protocols have been developed to prevent patients from moving during the image acquisition process. Not all of these techniques are suitable for all patient populations, and some techniques have been designed specifically for certain populations populations.
+Various techniques and protocols have been developed to prevent patients from moving during the image acquisition process. Not all of these techniques are suitable for all patient populations, and some techniques have been designed specifically for certain populations.
 
 \subsection{Sedation}
 
 Sedation can be used to help a patient tolerate an MRI scan. Murphy and Brunberg retrospectively analyzed seven weeks of data from the MR department and found that 14.2\% of their adult patients required some form of sedation \cite{Murphy1997}. In a study about claustrophobia and MR acquisitions, Dewey et al. report that out of 55,734 patients who underwent MRI scans, a total of 1,004 patients experienced claustrophobia and 610 of these patients required intravenous sedation before their scans \cite{Dewey2007}. Even though sedation allowed the patients mentioned in this paragraph to undergo an MRI scan, the authors of both studies note that sedation can result in adverse events and advise the reader to avoid patient sedation if possible.
 
 
-Sedation can be used with pediatric patients, though the risks are more significant than with adult patients. Studies have shown that sedation for pediatric imaging can lead to hypoxemia and inappropriate sedation levels during image acquisition \cite{Malviya2000}. Some pediatric patients can also expect ``motor imbalance and gastrointestinal effects,'' as well as agitation and restlessness for a period of hours after waking from sedation.
+Sedation can be used with pediatric patients, though the risks are more significant than with adult patients. Studies have shown that sedation for pediatric imaging can lead to hypoxemia and inappropriate sedation levels during image acquisition \cite{Malviya2000}. Pediatric patients can also expect ``motor imbalance and gastrointestinal effects,'' as well as agitation and restlessness for a period of hours after waking from sedation.
 
 A report from the American Academy of Pediatrics and the American Academy of Pediatric Dentistry outlines the minimum set of criteria needed for a pediatric patient to be sedated for a procedure \cite{Cote2016}:
 \begin{itemize}
@@ -68,7 +77,7 @@ A report from the American Academy of Pediatrics and the American Academy of Ped
 \item The patient's health status must be evaluated and verified by the sedation team prior to the procedure.
 \item Informed consent must be obtained prior to the procedure.
 \item Instructions for what to expect and how to transport the patient home safely must be provided to the patient's responsible adult.
-\item At least one responsible person must be with the patient at the medical facility, though the report recommends that two adults are present for patients who travel to and from the facility using car seats. This practice ensures that one adult can monitor the patient after the procedure while the other adult drives.
+\item At least one responsible adult must be with the patient at the medical facility, though the report recommends that two adults are present for patients who travel to and from the facility using car seats. This practice ensures that one adult can monitor the patient after the procedure while the other adult drives.
 \item The patient's food and drink intake prior to the procedure should be taken into account to minimize the risk of pulmonary aspiration.
 \item The clinician administering the sedation must have immediate access to emergency facilities, personnel, and equipment, and should monitor the patient for adverse events including respiratory events, seizures, vomiting, and allergic reactions.
 \item There must be a clear protocol outlined for immediately accessing these emergency services.
@@ -77,9 +86,9 @@ A report from the American Academy of Pediatrics and the American Academy of Ped
 \item The facility should have a dedicated recovery area, and the status of the patient should be recorded when he is discharged. The patient should not be discharged if his level of consciousness and oxygen saturation do not meet recognized guidelines.
 \item The patient may be held at the facility for prolonged monitoring after the procedure.
 \end{itemize}
-\noindent This report clearly states that the levels of monitoring suggested above should serve as minimum levels of involvement: clinicians should increase patient monitoring as needed for complex cases. Rutman has a similar and detailed perspective on patient monitoring during and after sedation, adding that two independent medical personnel should be present during the scan and one should be present until the patient is discharged \cite{Rutman2009}. Rutman also notes that all sedation and monitoring equipment must be MR compatible, which is a simple but important safety constraint. This constraint may make sedation less advisable if the appropriate equipment is not available.
+\noindent This report clearly states that the levels of monitoring suggested above should serve as minimum levels of involvement: clinicians should increase patient monitoring as needed for complex cases. Rutman has a similar and detailed perspective on patient monitoring during and after sedation, adding that two independent medical personnel should be present during the scan and one should be present until the patient is discharged \cite{Rutman2009}. Rutman also notes that all sedation and monitoring equipment must be MR compatible, which is a simple but important safety constraint. This constraint makes sedation less advisable if the appropriate equipment is not available.
 
-Sedation in neonatal and infant populations is not recommended. The  U.~S.~Food and Drug Administration (FDA) issued a warning in late 2016 about repeated use of sedation or general anesthesia in patients under three years of age or in pregnant women in their third trimester \cite{FDA2016}. The warning states that while a single, relatively short exposure to sedative and anesthetic drugs is unlikely to impact the patient, the effects of prolonged exposure to these drugs are still being studied. Studies of sedative and anesthetic drugs in multiple animal models have shown that these drugs can lead to loss of nerve cells in the brain when the animals undergo prolonged, repeated exposure to them during period of brain development. More data is needed to determine if this effect translates to humans.
+Sedation in neonatal and infant populations is not recommended. The  U.~S.~Food and Drug Administration (FDA) issued a warning in late 2016 about repeated use of sedation or general anesthesia for patients under three years of age or for pregnant women during their third trimester \cite{FDA2016}. The warning states that while a single, relatively short exposure to sedative and anesthetic drugs is unlikely to impact the patient, the effects of prolonged exposure to these drugs are still being studied. Studies of sedative and anesthetic drugs in multiple animal models have shown that these drugs can lead to loss of nerve cells in the brain when the animals undergo prolonged, repeated exposure to them during period of brain development. More data is needed to determine if this effect translates to humans.
 
 \subsection{Education, Distraction, and Behavioral Techniques}
 
@@ -89,12 +98,12 @@ Educational material can be used to help the patient understand what to expect d
 Most of the formal literature focuses on educational, distraction, and behavioral techniques to use during pediatric MRI scans. Many of the following approaches could be adapted for use with adults.
 
 % Pediatric patients
-In a review of the available literature, Alexander found several commonly used techniques to educate, comfort, and distract pediatric patients during radiology procedures. Tools such as educational coloring books and short videos can expose patients to the types of equipment they can expect to see using a familiar, engaging medium. Pediatric patients can learn coping strategies to employ during the scan such as breathing techniques, imagery, and positive statements. Alexander notes that allowing a pediatric patient to choose a behavioral coping strategy gives the patient a sense of control and may encourage the patient to cooperate during the MRI acquisition \cite{Alexander2012}.
+In a review of the available literature, Alexander found several commonly used techniques to educate, comfort, and distract pediatric patients during radiology procedures \cite{Alexander2012}. Tools such as educational coloring books and short videos can expose patients to the types of equipment they can expect to see using a familiar, engaging medium. Pediatric patients can learn coping strategies to employ during the scan such as breathing techniques, imagery, and positive statements. Alexander notes that allowing a pediatric patient to choose a behavioral coping strategy gives the patient a sense of control and may encourage the patient to cooperate during the MRI acquisition.
 
 Mock scanners and MRI simulators can also help the patient feel more comfortable during the scan. Barnea-Goraly et al. showed that both a commerical MRI simulator and a low-tech mock scanner desensitized pediatric patients between four and ten years of age to the MRI scanner with the results that 92.3\% of the acquired images could be used in high-resolution anatomical studies \cite{Barnea-Goraly2014}. 
 
 % distraction
-During the MRI acquisition, headphones with music or stories and MR compatible video goggles can distract patients \cite{Alexander2012} \cite{Barnea-Goraly2014} \cite{Harned2001}. Khan et al. found that a relatively simple moving light show can be helpful in distracting younger patients \cite{Khan2007}. Garcia-Palacios et al. performed a case study comparing the efficacy of music and immersive virtual reality tools as distractions during a mock scan \cite{Garcia-Palacios2007}. They suggest that immersive virtual reality may help decrease patient anxiety during a scan more effectively than music alone. As virtual reality technology improves, it may join headphones and MR compatible video goggles as an available distraction method.
+Several groups have investigated the role of auditory and visual distraction during an MRI acquisition. Headphones with music and stories or MR compatible video goggles can distract patients from the tedium of the scan \cite{Alexander2012} \cite{Barnea-Goraly2014} \cite{Harned2001}. Khan et al. found that a relatively simple moving light show can be helpful in distracting younger patients \cite{Khan2007}. Garcia-Palacios et al. performed a case study comparing the efficacy of music and immersive virtual reality tools as distractions during a mock scan \cite{Garcia-Palacios2007}. They suggest that immersive virtual reality may help decrease patient anxiety during a scan more effectively than music alone. As virtual reality technology improves, it may join headphones and MR compatible video goggles as an available distraction method.
 
 Another helpful source of distraction for pediatric patients could be the patient's parent or parents. Having a parent involved with the scanning process may calm the patient and encourage him to cooperate; however, parental distress can further upset an anxious patient and complicate the scanning process \cite{Alexander2012}. 
 
@@ -106,23 +115,23 @@ Neither sedation nor educational and behavioral techniques are appropriate to us
 
 Windram et al. describe a protocol in which the infant is deprived of food for four hours prior to the scan \cite{Windram2011}. At the scanning facility, the patient is fed by his mother, swaddled, and placed in a vacuum-bag immobilizer for the duration of the scan. 
 
-Rather than deprive the patient of food prior to the scan, Gale et al.'s protocol recommends timing the scan so that the patient is fed after arrival on site and less than 45 minutes before the scan \cite{Gale2013}. The patient's ears are protected from the noise of the MR scanner by a layer of dental putty, followed by headphones, and held in place by a hat. The patient is the swaddled and placed in the scanner once he is asleep. Additional foam padding is used to cushion the patient's head and provides extra noise protection.
+Rather than deprive the patient of food prior to the scan, Gale et al.'s protocol recommends timing the scan so that the patient is fed after arrival on site and less than 45 minutes before the scan \cite{Gale2013}. The patient's ears are protected from the noise of the MR scanner by a layer of dental putty followed by headphones, and held in place by a hat. The patient is the swaddled and placed in the scanner once he is asleep. Additional foam padding is used to cushion the patient's head and provides extra noise protection.
 
 Mathur et al. describe a protocol similar to the previous two: the patient's feeding schedule is adjusted so that he feeds 30-45 minutes before the scan time, and he is swaddled, given ear protection, and placed in a vacuum-bag immobilizer \cite{Mathur2008}.
 
-These protocols are generally successful: when performed correctly, the neonatal patient usually sleeps for the duration of the MRI scan. However, the patient may shift slightly while asleep or may wake up and move mid-scan.
+When performed correctly, these protocols are generally successful and the neonatal patient will sleep for the duration of the MRI scan. However, the patient may shift slightly while asleep or may wake up and move mid-scan.
 
 % application of rs-fMRI to evaluate neonates neurodevelopmental status of infants and neonates, and in personalized care by identifying patients who may benefit from certain therapies or neuroprotective interventions \cite{Smyser2015}.
 
 \section{PROSPECTIVE MOTION CORRECTION}
 
-Since motion cannot be completely eliminated from rs-fMRI scans, different approaches have developed for correcting for the effects of motion after the scan. These approaches can be divided into two groups: those that monitor the patient's motion during the scan and those that work solely on the acquired sequences.
+Since motion cannot be completely eliminated from rs-fMRI scans, different approaches have developed for correcting for the effects of motion after the scan. These approaches can be divided into two groups: those which monitor the patient's motion during the scan and those which work solely on the acquired sequences.
 
 \subsection{Optical Motion Correction}
 
-Several groups have developed methods for actively accounting for changes in the patient's position during an MRI scan. Optical-based methods record the patient's position using a combination of markers placed on the patient and one or more MR compatible optical cameras placed the scanner bore. The changes in the patient position from one time point to the next are used to update the MR parameters in real-time. Real-time updates of the MR parameters result in less spatial and spin-history effects of motion in the acquired sequences.
+Several groups have developed methods for actively accounting for changes in the patient's position during an MRI scan. Optical-based methods record the patient's position using a combination of markers placed on the patient and one or more MR compatible optical cameras placed the scanner bore. The changes in the patient position from one time point to the next are used to update the MR parameters in real-time. Real-time updates of the MR parameters result in decreased spatial and spin-history effects of motion in the acquired sequences.
 
-The first report of successful prospective motion correction using optical cameras and markers was by Zaitsev et al. in 2006 \cite{Zaitsev2006}. Their dual camera system was located outside of the MRI scanner and focused on the patient inside the system. Four reflective markers were attached to a modified mouthpiece originally designed for patient immobilization. Changes in the translation and rotation of the patient were recorded and processed during the exam. The processed changes were sent in real-time to the MRI scanner which used them to update the gradient orientations and RF frequencies and phases at every time point during the acquisition process.
+The first report of successful prospective motion correction using optical cameras and markers was by Zaitsev et al. in 2006 \cite{Zaitsev2006}. Their dual camera system was located outside of the MRI scanner and focused on the patient inside the system. Four reflective markers were attached to a modified mouthpiece originally designed for patient immobilization. Changes in the translation and rotation of the patient were recorded and processed during the exam. The processed changes were sent in real-time to the MRI scanner which used them to update the gradient orientations, RF frequencies, and RF phases at every time point during the acquisition process.
 
 Aksoy et al. simplify this approach by using a single in-bore optical camera and replacing the 3D markers with a small 2D chessboard grid \cite{Aksoy2008}. Properties intrinsic to the camera as well as information about the camera's placement within the MRI scanner were recorded prior as part of a calibration process. During the scan, patient movements recorded using the optical camera were used to calculate the relationship between the patient's position at the current time point in the physical space and the patient's position at the initial time point in the MR space. The transformation needed to translate between these two positions was calculated on a laptop and passed to the MRI scanner to correct for motion in real-time. The camera used to record the position of the chessboard is mounted on the head coil. If the patient moves his head significantly, the camera will only be able to record the position of part of the chessboard marker. This limitation makes it difficult for the computer vision processing to identify the independent features on the standard chessboard. 
 
@@ -139,23 +148,25 @@ The methods discussed above have a few limitations due to the optical camera set
 % Limitation: systems using markers attached to patient suffer from imperfect attachment of the marker to the subject, where the marker slips or moves during the scan independently from the subject, 
 % Look up Oliver Speck?
 
-\subsection{External Sensors CONTINUE HERE}
+\subsection{External Sensors}
 
 Cameras are not the only type of external sensor that can be used to measure motion during a rs-fMRI scan. 
 
-There is a class of sensors which can take advantage of electrophysics properties of an MRI scanner. These sensors include wired nuclear magnetic resonance field probes, wireless inductivity coupled markers, and off-resonance markers. CITATIONS AND DETAILS. The fact that these sensors directly interact with the magnetic field of the MR scanner means that protocols using these sensors must be modified to account for them. As a result of the protocol modification, the scan time might need to be extended.
+There is a class of sensors which can take advantage of electrophysics properties of an MRI scanner. These sensors include wired nuclear magnetic resonance field probes, wireless inductivity coupled markers, and off-resonance markers. %CITATIONS AND DETAILS. 
+The fact that these sensors directly interact with the magnetic field of the MR scanner means that protocols using these sensors must be modified to account for them. As a result of the protocol modification, the scan time might need to be extended.
 
-CHECK DETAILS AND CITATION As mentioned earlier in this chapter, respiration is a source of patient motion. Since respiration is relatively periodic, it can be monitored and accounted for within a scan protocol via gating. Gating prevents an image from being acquired unless the patient is in the expected state. In the case of respiration, the expected state is either complete inhalation or exhalation. The state of a patient's respiration can be tracked using respiration bellows. After acquiring the MRI sequence, volumes in the sequence can be grouped depending on when they were recorded in the breathing cycle. By only using volumes recorded during the same stage of the breathing cycle, the effects of respiratory motion can be mitigated.
+%CHECK DETAILS AND CITATION 
+As mentioned earlier in this chapter, respiration is a source of patient motion. Since respiration is relatively periodic, it can be monitored and accounted for within a scan protocol via gating. Gating prevents an image from being acquired unless the patient is in the expected state. In the case of respiration, the expected state is either complete inhalation or exhalation. The state of a patient's respiration can be tracked using respiration bellows. After acquiring the MRI sequence, volumes in the sequence can be grouped depending on when they were recorded in the breathing cycle. By only using volumes recorded during the same stage of the breathing cycle, the effects of respiratory motion can be mitigated.
 
-Cardiac: pulse oximeter (delay relative to central pulse) 
-ECG: less reliable at high field strengths (Frauenrath et al JMRI 2012; 36: 364-72
-Acoustic cardiac triggering: 
-Frauenrath et al, Investigative Radiology 2009,
-Frauenrath et al J Cardiovascular MR 2010
+%Cardiac: pulse oximeter (delay relative to central pulse) 
+%ECG: less reliable at high field strengths (Frauenrath et al JMRI 2012; 36: 364-72
+%Acoustic cardiac triggering: 
+%Frauenrath et al, Investigative Radiology 2009,
+%Frauenrath et al J Cardiovascular MR 2010
 
-Additional sensors complicate the scan setup
+%Additional sensors complicate the scan setup
 
-Detection using RF coils? Changes conductivity and RF power (Buikman et al MRI 1988)
+%Detection using RF coils? Changes conductivity and RF power (Buikman et al MRI 1988)
 
 Ultimately, the addition of extra sensors complicate the process and set up of a rs-fMRI scan.
 
@@ -189,8 +200,8 @@ One of the earliest examples of image registration was described by Friston et a
 \begin{figure}
 \centering
 \includegraphics[width=.7\textwidth]{3/traditional-registration.png}
-\label{fig:ch4:traditional-reg}
 \caption{The traditional approach to volume registration in an rs-fMRI sequence consists of registering all volumes in the sequence to a single reference volume.}
+\label{fig:ch4:traditional-reg}
 \end{figure}
 
 When performing image registration on a sequence of image volumes, one volume must be chosen as the reference volume for the entire sequence. All other volumes in the sequence are registered to this volume. An example of this process can be seen in Figure \ref{fig:ch4:traditional-reg}. In subsequent work, Friston et al. used the first volume in the rs-fMRI sequence as the universal reference image \cite{Friston1996}. Common choices for the reference volume include the volume with the least FD to all other volumes in the sequence, a volume produced by averaging all volumes in the sequence, or the first volume in the sequence \cite{Friston1996} \cite{Liao2005}. In our implementation, we chose to use the first volume in the sequence as the reference volume.
@@ -205,7 +216,7 @@ It has been demonstrated that image registration across the entire image sequenc
 
 Denoising techniques can be applied to a rs-fMRI after global volume registration is completed. They consist of regressions of various confound variables. 
 
-Regression of the global signal (global signal regression, GSR) corrects for variance between temporal signals within a voxel and for the mean BOLD signal across all voxels \cite{Power2014} \cite{Satterthwaite2013} \cite{Yan2013} \cite{Yan2013a}. GSR has been shown to reduce spuriously increased long-distance correlations in functional connectivity studies, but may inadvertently weaken shorter-distance connections \cite{Jo2013}\cite{Power2014} \cite{Satterthwaite2012}. 
+Regression of the global signal (global signal regression, GSR) corrects for variance between temporal signals within a voxel and for the mean BOLD signal across all voxels \cite{Power2014} \cite{Satterthwaite2013} \cite{Yan2013} \cite{Yan2013a}. GSR has been shown to reduce spuriously increased long-distance correlations in functional connectivity studies, but may inadvertently weaken shorter-distance connections \cite{Jo2013} \cite{Power2014}  \cite{Satterthwaite2012}. 
 
 Other regression parameters which have been investigated include the six realignment parameters and their first-order derivatives \cite{Power2012} \cite{Satterthwaite2012} \cite{VanDijk2012}, realignment parameters from surrounding timpoints \cite{Patriat2017} \cite{Power2014} \cite{Satterthwaite2013} \cite{Yan2013a}, signals from white matter or cerebral spinal fluid \cite{Power2014} \cite{Satterthwaite2013} \cite{Yan2013a} \cite{Jo2010}, and components identified using principal or independent component analysis \cite{Pruim2015} \cite{Salimi-Khorshidi2014} \cite{Behzadi2007}. Regression of each of these sets of parameters has been shown to reduce the effects of motion in the sequence but not remove them entirely \cite{Power2015} \cite{Parkes2017}. 
 
@@ -221,9 +232,7 @@ A number of post-acquisition methods have been developed specifically to correct
 \section{IMAGE USABILITY}
 
 
-%The success of volume registration in an rs-fMRI sequence is defined by the framewise differences between temporally neighboring image volumes.  During the registration process, the three translation and three rotation parameters can be used to calculate the displacement between a pair of images, which is often referred to as the framewise displacement (FD). Three groups have proposed slightly different methods for calculating the FD: Power et al., Jenkinson et al., and DOsenbach et al. \cite{Power2012} \cite{Jenkinson2002} \cite{Dosenbach2017}. All three FD calculations produce correlated metrics: the FD metric proposed by Power et al. produces measurements approximately twice as large as the metric proposed by Jenkinson et al., and Dosenbach et al. reported a high correlation between their FD and Power's FD \cite{Yan2013a} \cite{Dosenbach2017}.
-
-%The FD metric only measures the positional effects of motion, not the variations in signal in individual voxels caused by motion. Changes in signal between volumes can be measured using the temporal derivative of the variance in the BOLD signal intensity (DVARS) between neighboring volumes \cite{Power2012} \cite{Smyser2015}. DVARs is an effective measure of the spin gradient effects of motion because it measures the change in BOLD signal intensity, which is highly related to motion-induced spin gradient changes. 
+%The FD metric only measures the positional effects of motion, not the variations in signal in individual voxels caused by motion. Changes in signal between volumes can be measured using the temporal derivative of the variance in the BOLD signal intensity (DVARS) between neighboring volumes \cite{Power2012} \cite{Smyser2015}. 
 
 Even though the effects of motion on the patient position and the recorded signal can be measured, we still need gold standard criteria to determine whether an image containing motion can be used. Patients move slightly due to breathing and cardiac function, and the BOLD signal naturally fluctuates over time. Some motion is expected; however, we need to know how much motion can be present in the image before it is considered to be corrupted by it. Power et al. established thresholds for FD and DVARS to determine the usability of a pair of images:
 \begin{itemize}

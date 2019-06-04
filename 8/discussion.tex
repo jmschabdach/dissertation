@@ -12,10 +12,10 @@ To the best of our knowledge, the only other study that has used a variant of th
 
 \subsection{Limitations and Future Work}
 
-Subject motion during rs-MRI scans affects both the recorded position and orientation of the subject as well as the established magnetic spin gradients within the skull. The DAG-based technique can correct the positional effects of motion, but it cannot correct the effects of the motion that disrupt the magnetic spin gradients. Methods for prospectively estimating subject motion exist and can be used to change slice positions in each volume during acquisition. Retrospective techniques to correct for this effect will require shot-to-shot modeling of macroscopic B0 fields and are beyond the scope of the present research.
+Subject motion during rs-MRI scans affects both the recorded position and orientation of the subject as well as the established magnetic spin gradients within the skull. The DAG-based technique can correct the positional effects of motion, but it cannot correct the effects of the motion that disrupt the magnetic spin gradients. Methods for prospectively estimating subject motion exist and can be used to change slice positions in each volume during acquisition. Retrospective techniques to correct for this effect will require shot-to-shot modeling of macroscopic $B_0$ fields and are beyond the scope of the present research.
 
 In the future, we plan to apply the DAG-based technique to a cohort of preadolescent images for the purpose of characterizing motion in a large cohort as well as to a cohort of neonatal images to address the problem of correcting motion of multiple organs in images with large amounts of motion.  
 
-\section{Conclusions}
+\subsection{Conclusions}
 
 In this feasibility study, we applied two global registration methods to set of rs-fMRIs of 17 healthy neonates. We showed that both global registration techniques reduce the amount of motion in the images as measured using the correlation ratio. We then showed that the DAG-based framework is better at correcting images to a pair of established gold standard thresholds for resting-state BOLD MRI usability than the traditional framework. In the future we plan to apply the DAG-based framework to other patient populations and multi-organ problems.

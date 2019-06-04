@@ -20,7 +20,7 @@ In our proposed framework, we wish to account for these spatiotemporal relations
 \label{ch4:fig:dag-chain}
 \end{figure}
 
-In the case of a rs-fMRI, each volume can be considered a node. The relationship between each pair of temporally neighboring volumes is represented as a directed edge connecting the node for the first volume to the node for the next volume. The acyclic nature of the DAG means that once a patient was in a specific position, he will never return to that exact same position with the exact same neurons firing. The position of the subject and his brain activity as measured by the BOLD signal may be similar in subsequent image volumes, but it will never be precisely the same. The perspectives of an rs-fMRI sequence as a set of images and of the sequence as a DAG can be seen in Figure \ref{ch4:fig:dag-chain}.
+In the case of an rs-fMRI, each volume can be considered a node. The relationship between each pair of temporally neighboring volumes is represented as a directed edge connecting the node for the first volume to the node for the next volume. The acyclic nature of the DAG means that once a patient was in a specific position, he will never return to that exact same position with the exact same neurons firing. The position of the subject and his brain activity as measured by the BOLD signal may be similar in subsequent image volumes, but it will never be precisely the same. The perspectives of an rs-fMRI sequence as a set of images and of the sequence as a DAG can be seen in Figure \ref{ch4:fig:dag-chain}.
 
 The cost of transitioning from one node to the next in our DAG has a parallel representation to the combination of the positional transformation needed to align volume $i$ to volume $i+1$ and the signal change between the volumes. This representation can be written as 
 
@@ -55,8 +55,8 @@ Traditional volume registration assumes that
 \begin{figure}
 \centering
 \includegraphics[width=.7\textwidth]{4/dag-registration.png}
-\label{ch4:fig:dag-reg}
 \caption{The traditional approach to volume registration in an rs-fMRI sequence consists of registering all volumes in the sequence to a single reference volume.}
+\label{ch4:fig:dag-reg}
 \end{figure}
 
 \noindent{and calculates $\phi_{i,i+2}$ directly. We argue that this assumption is not true in all cases. Rather than directly calculate $\phi_{0,i}$ and use it to align volume $i$ to the reference volume as the traditional method does, we calculate each component $\phi$ that is a factor of $\phi_{0,i}$. Each component $\phi_{i,i+1}$ is combined with the preceding $\phi_{0,i}$s to recursively align volume $i+1$ to the reference volume without making the large and often inaccurate transformations required by directly calculating $\phi_{0,i+1}$.} This process is outlined in Figure \ref{ch4:fig:dag-reg}.
@@ -121,6 +121,11 @@ where $J_i$ and $J_j$ are volumes $i \in l$ and $j \in l$ in the sequence, respe
 
 Since the matrix $M$ is quite large, using statistics describing $M$ rather than $M$ itself can simplify analyses. On the other hand, the whole matrix $M$ may be more comprehensively analyzed using statistical tests such as the $t$-test.
 
+\section{Analysis of Motion Correction}
+
+The purpose of motion correction is to remove noise from valuable signal in an image. The amount of motion removed from an image can be quantified using the FD and DVARS usability thresholds, but that analysis does not explain how volume registration and motion correction techniques generalize to larger populations. 
+
+Statistical analyses can be used to identify general trends within a data set. Statistical tests can be used to compare images before and after motion correction within each subject population. They can also indicate the degree of significance of the effects of volume registration and motion correction. 
 
 \section{Motion Patterns} 
 
@@ -128,16 +133,14 @@ We suggest that the ways that patients move are specific to certain patient grou
 
 There is also a chance that patients within the same age group move differently possibly due to their cognitive state. Preadolescents who have ADHD likely become bored and fidgety in the MR scanner at different rates then their non-ADHD counterparts. Adults suffering from dementia may have more difficulty remaining still for the duration of a scan than adults with similar demographics and no dementia.
 
-%We have several goals for this portion of our work. The first is to identify features of the rs-fMRIs that are informative about patient movement during a scan. We will initially use the metrics described in the previous section, but may experiment with other metrics from the biomedical imaging and computer vision domains.
+These patterns are essentially signals specific to different categories of patients. Machine learning techniques are useful for identifying patterns in signals from different sources. Unsupervised learning techniques group samples from a population based on the patterns in their features. The results of unsupervised clustering algorithms can be visualized and analyzed to determine how the computer chose each group of samples. 
 
-%Our second goal is to group patients based on features extracted from their original images, their registered images, and their motion corrected images. Additional behavioral, clinical, and demographic data will also be used. We will use machine learning and statistical analysis techniques to identify relationships between different features or subsets of features. 
+Another approach to analyzing these signals is regression. Regression models the relationships between a set of independent features and an outcome or set of outcomes. For example, the linear regression could be used to evaluate the relationship between motion metrics and the severity of neurodevelopmental outcomes or patient age. 
 
-% If the relationships between different types of patient motion and behavioral, clinical, and demographic data are sufficiently strong, we will train a machine learning model to identify a patient's output variable based on his image features.
-
-\section{Statistical Analyses}
+In addition to machine learning and regression, other techniques from the biomedical imaging and computer vision domains may be used. Supervised machine learning models may also be trained to predict a clinical or behavioral outcome based on a patient's image features.
 
 \section{Implementation: Tools and Libraries}
 
 The registration frameworks described in this section were implemented in Python using the nipype (Neuroimaging in Python Pipelines and Interfaces) library \cite{Gorgolewski2011}. Affine volume registration was performed using ANTs (Advanced Normalization Tools) \cite{Avants2014}. The metric used to estimate the dissimilarity between the pairs of volumes being registered was cross-correlation with a local window size of 5 voxels. 
 
-To calculate metrics, we used FLIRT (FMRIB’s Linear Image Registration Tool) to calculate the correlation ratio between each possible pair of volumes in the sequences \cite{Jenkinson2001} \cite{Jenkinson2002}. We then used the average and standard deviation of the correlation ratio distribution of each image to compare the images. We calculated the FD and DVARS metrics defined by Power et al. using the FSLMotionOutliers tool \cite{Power2012}. These metrics were calculated for each image and were used for evaluation of the efficacy of the registration frameworks.
+To calculate metrics, we used several existing tools. FLIRT (FMRIB’s Linear Image Registration Tool) was used to calculate the correlation ratio between each possible pair of volumes in the sequences \cite{Jenkinson2001} \cite{Jenkinson2002}. We then used the average and standard deviation of the correlation ratio distribution of each image to compare the images. We calculated the FD and DVARS metrics defined by Power et al. using the FSLMotionOutliers tool \cite{Power2012}. These metrics were calculated for each image and were used for evaluation of the efficacy of the registration frameworks.
