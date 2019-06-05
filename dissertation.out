@@ -3,33 +3,33 @@
 \BOOKMARK [0][]{prelim.2}{ABSTRACT}{}
 \BOOKMARK [0][]{prelim.4}{TABLE OF CONTENTS}{}
 \BOOKMARK [0][]{chapter.1}{1.0 INTRODUCTION}{}% 1
-\BOOKMARK [0][]{chapter.2}{2.0 NEURODEVELOPMENT, CONGENITAL HEART DISEASE, AND FUNCTIONAL CONNECTIVITY}{}% 2
-\BOOKMARK [1][]{section.2.1}{2.1 CONGENITAL HEART DEFECTS}{chapter.2}% 3
-\BOOKMARK [1][]{section.2.2}{2.2 CHD AND NEUROCOGNITIVE DISORDERS}{chapter.2}% 4
-\BOOKMARK [1][]{section.2.3}{2.3 IDENTIFYING NEUROCOGNITIVE DISORDERS}{chapter.2}% 5
-\BOOKMARK [2][]{subsection.2.3.1}{2.3.1 PATIENT SURVEYS}{section.2.3}% 6
-\BOOKMARK [2][]{subsection.2.3.2}{2.3.2 NEUROLOGICAL IMAGES}{section.2.3}% 7
+\BOOKMARK [0][]{chapter.2}{2.0 CLINICAL BACKGROUND}{}% 2
+\BOOKMARK [1][]{section.2.1}{2.1 Congenital Heart Defects}{chapter.2}% 3
+\BOOKMARK [1][]{section.2.2}{2.2 CHD and Neurocognitive Disorders}{chapter.2}% 4
+\BOOKMARK [1][]{section.2.3}{2.3 Identifying Neurocognitive Disorders}{chapter.2}% 5
+\BOOKMARK [2][]{subsection.2.3.1}{2.3.1 Patient Surveys}{section.2.3}% 6
+\BOOKMARK [2][]{subsection.2.3.2}{2.3.2 Neurological Images}{section.2.3}% 7
 \BOOKMARK [0][]{chapter.3}{3.0 RS-FMRIS AND PATIENT MOTION}{}% 8
-\BOOKMARK [1][]{section.3.1}{3.1 SOURCES OF MOTION IN MEDICAL IMAGES}{chapter.3}% 9
-\BOOKMARK [1][]{section.3.2}{3.2 STRUCTURE OF A RS-FMRI}{chapter.3}% 10
-\BOOKMARK [1][]{section.3.3}{3.3 EFFECTS OF MOTION}{chapter.3}% 11
+\BOOKMARK [1][]{section.3.1}{3.1 Structure of an rs-fMRI}{chapter.3}% 9
+\BOOKMARK [1][]{section.3.2}{3.2 Sources of Motion in rs-fMRIs}{chapter.3}% 10
+\BOOKMARK [1][]{section.3.3}{3.3 Effects of Motion}{chapter.3}% 11
 \BOOKMARK [2][]{subsection.3.3.1}{3.3.1 Positional Effects of Motion}{section.3.3}% 12
 \BOOKMARK [2][]{subsection.3.3.2}{3.3.2 Signal Effects of Motion}{section.3.3}% 13
-\BOOKMARK [1][]{section.3.4}{3.4 MOTION PREVENTION}{chapter.3}% 14
+\BOOKMARK [1][]{section.3.4}{3.4 Motion Prevention}{chapter.3}% 14
 \BOOKMARK [2][]{subsection.3.4.1}{3.4.1 Sedation}{section.3.4}% 15
 \BOOKMARK [2][]{subsection.3.4.2}{3.4.2 Education, Distraction, and Behavioral Techniques}{section.3.4}% 16
 \BOOKMARK [2][]{subsection.3.4.3}{3.4.3 Feed and Sleep Protocols}{section.3.4}% 17
-\BOOKMARK [1][]{section.3.5}{3.5 PROSPECTIVE MOTION CORRECTION}{chapter.3}% 18
+\BOOKMARK [1][]{section.3.5}{3.5 Prospective Motion Correction}{chapter.3}% 18
 \BOOKMARK [2][]{subsection.3.5.1}{3.5.1 Optical Motion Correction}{section.3.5}% 19
 \BOOKMARK [2][]{subsection.3.5.2}{3.5.2 External Sensors}{section.3.5}% 20
-\BOOKMARK [2][]{subsection.3.5.3}{3.5.3 Image Space Motion Correction}{section.3.5}% 21
+\BOOKMARK [2][]{subsection.3.5.3}{3.5.3 Intra-Image Motion Monitoring}{section.3.5}% 21
 \BOOKMARK [2][]{subsection.3.5.4}{3.5.4 General Limitations of Prospective Motion Correction}{section.3.5}% 22
-\BOOKMARK [1][]{section.3.6}{3.6 RETROSPECTIVE MOTION CORRECTION}{chapter.3}% 23
+\BOOKMARK [1][]{section.3.6}{3.6 Retrospective Motion Correction}{chapter.3}% 23
 \BOOKMARK [2][]{subsection.3.6.1}{3.6.1 Volume Registration}{section.3.6}% 24
 \BOOKMARK [2][]{subsection.3.6.2}{3.6.2 Denoising}{section.3.6}% 25
 \BOOKMARK [2][]{subsection.3.6.3}{3.6.3 Filtering}{section.3.6}% 26
 \BOOKMARK [2][]{subsection.3.6.4}{3.6.4 Spin History Distortion Correction}{section.3.6}% 27
-\BOOKMARK [1][]{section.3.7}{3.7 IMAGE USABILITY}{chapter.3}% 28
+\BOOKMARK [1][]{section.3.7}{3.7 Image Usability}{chapter.3}% 28
 \BOOKMARK [0][]{chapter.4}{4.0 METHODS}{}% 29
 \BOOKMARK [1][]{section.4.1}{4.1 Motion Correction}{chapter.4}% 30
 \BOOKMARK [2][]{subsection.4.1.1}{4.1.1 Directed Acyclic Graph Based Volume Registration}{section.4.1}% 31

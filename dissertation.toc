@@ -1,66 +1,66 @@
 \contentsline {chapter}{{\bfseries \numberline {1.0}INTRODUCTION}}{1}{chapter.1}
-\contentsline {chapter}{{\bfseries \numberline {2.0}NEURODEVELOPMENT, CONGENITAL HEART DISEASE, AND FUNCTIONAL CONNECTIVITY}}{5}{chapter.2}
-\contentsline {section}{\numberline {2.1}CONGENITAL HEART DEFECTS}{5}{section.2.1}
-\contentsline {section}{\numberline {2.2}CHD AND NEUROCOGNITIVE DISORDERS}{8}{section.2.2}
-\contentsline {section}{\numberline {2.3}IDENTIFYING NEUROCOGNITIVE DISORDERS}{9}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}PATIENT SURVEYS}{9}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}NEUROLOGICAL IMAGES}{10}{subsection.2.3.2}
-\contentsline {chapter}{{\bfseries \numberline {3.0}RS-FMRIS AND PATIENT MOTION}}{12}{chapter.3}
-\contentsline {section}{\numberline {3.1}SOURCES OF MOTION IN MEDICAL IMAGES}{12}{section.3.1}
-\contentsline {section}{\numberline {3.2}STRUCTURE OF A RS-FMRI}{13}{section.3.2}
-\contentsline {section}{\numberline {3.3}EFFECTS OF MOTION}{13}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Positional Effects of Motion}{14}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Signal Effects of Motion}{15}{subsection.3.3.2}
-\contentsline {section}{\numberline {3.4}MOTION PREVENTION}{17}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Sedation}{17}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Education, Distraction, and Behavioral Techniques}{19}{subsection.3.4.2}
-\contentsline {subsection}{\numberline {3.4.3}Feed and Sleep Protocols}{20}{subsection.3.4.3}
-\contentsline {section}{\numberline {3.5}PROSPECTIVE MOTION CORRECTION}{21}{section.3.5}
-\contentsline {subsection}{\numberline {3.5.1}Optical Motion Correction}{21}{subsection.3.5.1}
-\contentsline {subsection}{\numberline {3.5.2}External Sensors}{24}{subsection.3.5.2}
-\contentsline {subsection}{\numberline {3.5.3}Image Space Motion Correction}{25}{subsection.3.5.3}
-\contentsline {subsection}{\numberline {3.5.4}General Limitations of Prospective Motion Correction}{25}{subsection.3.5.4}
-\contentsline {section}{\numberline {3.6}RETROSPECTIVE MOTION CORRECTION}{26}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Volume Registration}{26}{subsection.3.6.1}
-\contentsline {subsection}{\numberline {3.6.2}Denoising}{28}{subsection.3.6.2}
-\contentsline {subsection}{\numberline {3.6.3}Filtering}{29}{subsection.3.6.3}
-\contentsline {subsection}{\numberline {3.6.4}Spin History Distortion Correction}{29}{subsection.3.6.4}
-\contentsline {section}{\numberline {3.7}IMAGE USABILITY}{29}{section.3.7}
-\contentsline {chapter}{{\bfseries \numberline {4.0}METHODS}}{31}{chapter.4}
-\contentsline {section}{\numberline {4.1}Motion Correction}{31}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Directed Acyclic Graph Based Volume Registration}{31}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Motion Correction Pipeline}{34}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}Motion Metrics}{34}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Dice Coefficient}{34}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Correlation Ratio Matrix}{36}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}Analysis of Motion Correction}{37}{section.4.3}
-\contentsline {section}{\numberline {4.4}Motion Patterns}{38}{section.4.4}
-\contentsline {section}{\numberline {4.5}Implementation: Tools and Libraries}{39}{section.4.5}
-\contentsline {chapter}{{\bfseries \numberline {5.0}DATA}}{40}{chapter.5}
-\contentsline {section}{\numberline {5.1}Neonatal Subject Population and Images}{41}{section.5.1}
-\contentsline {section}{\numberline {5.2}Preadolescent Subject Population and Images}{41}{section.5.2}
-\contentsline {section}{\numberline {5.3}Adult Subject Population and Images}{41}{section.5.3}
-\contentsline {section}{\numberline {5.4}Fetal Subject Population and Images}{42}{section.5.4}
-\contentsline {section}{\numberline {5.5}Simulated Phantom Images}{43}{section.5.5}
-\contentsline {section}{\numberline {5.6}Human Phantom Images}{44}{section.5.6}
-\contentsline {chapter}{{\bfseries \numberline {6.0}AIMS}}{45}{chapter.6}
-\contentsline {section}{\numberline {6.1}Volume Registration In A Motion Correction Pipeline}{45}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Simulated Phantom}{45}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Human Phantom}{46}{subsection.6.1.2}
-\contentsline {subsection}{\numberline {6.1.3}Clinical Images}{46}{subsection.6.1.3}
-\contentsline {section}{\numberline {6.2}Describing Motion Patterns}{47}{section.6.2}
-\contentsline {section}{\numberline {6.3}Identifying Motion Patterns}{47}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Demographic-Related Motion Patterns}{48}{subsection.6.3.1}
-\contentsline {subsection}{\numberline {6.3.2}Clinical-Related Motion Patterns}{48}{subsection.6.3.2}
-\contentsline {chapter}{{\bfseries \numberline {7.0}PRELIMINARY RESULTS}}{49}{chapter.7}
-\contentsline {section}{\numberline {7.1}Comparison of Volume Registration Methods}{49}{section.7.1}
-\contentsline {subsection}{\numberline {7.1.1}Subject Position Variability in the Registered Images}{49}{subsection.7.1.1}
-\contentsline {subsection}{\numberline {7.1.2}Comparison of Motion Correction Methods}{49}{subsection.7.1.2}
-\contentsline {chapter}{{\bfseries \numberline {8.0}DISCUSSION}}{53}{chapter.8}
-\contentsline {section}{\numberline {8.1}Comparison of Volume Registration Methods}{53}{section.8.1}
-\contentsline {subsection}{\numberline {8.1.1}Relation to Existing Work}{54}{subsection.8.1.1}
-\contentsline {subsection}{\numberline {8.1.2}Limitations and Future Work}{54}{subsection.8.1.2}
-\contentsline {subsection}{\numberline {8.1.3}Conclusions}{54}{subsection.8.1.3}
-\contentsline {chapter}{{\bfseries APPENDIX A. POTENTIAL PUBLICATION TOPICS}}{56}{appendix.A}
-\contentsline {chapter}{{\bfseries APPENDIX B. PROPOSED TIMELINE}}{57}{appendix.B}
-\contentsline {chapter}{{\bfseries \bibname }}{59}{section*.1}
+\contentsline {chapter}{{\bfseries \numberline {2.0}CLINICAL BACKGROUND}}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}Congenital Heart Defects}{5}{section.2.1}
+\contentsline {section}{\numberline {2.2}CHD and Neurocognitive Disorders}{8}{section.2.2}
+\contentsline {section}{\numberline {2.3}Identifying Neurocognitive Disorders}{10}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Patient Surveys}{10}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Neurological Images}{11}{subsection.2.3.2}
+\contentsline {chapter}{{\bfseries \numberline {3.0}RS-FMRIS AND PATIENT MOTION}}{13}{chapter.3}
+\contentsline {section}{\numberline {3.1}Structure of an rs-fMRI}{13}{section.3.1}
+\contentsline {section}{\numberline {3.2}Sources of Motion in rs-fMRIs}{14}{section.3.2}
+\contentsline {section}{\numberline {3.3}Effects of Motion}{14}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Positional Effects of Motion}{15}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Signal Effects of Motion}{16}{subsection.3.3.2}
+\contentsline {section}{\numberline {3.4}Motion Prevention}{17}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Sedation}{18}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Education, Distraction, and Behavioral Techniques}{20}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Feed and Sleep Protocols}{21}{subsection.3.4.3}
+\contentsline {section}{\numberline {3.5}Prospective Motion Correction}{22}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Optical Motion Correction}{22}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}External Sensors}{25}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Intra-Image Motion Monitoring}{25}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.4}General Limitations of Prospective Motion Correction}{26}{subsection.3.5.4}
+\contentsline {section}{\numberline {3.6}Retrospective Motion Correction}{27}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Volume Registration}{27}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}Denoising}{29}{subsection.3.6.2}
+\contentsline {subsection}{\numberline {3.6.3}Filtering}{30}{subsection.3.6.3}
+\contentsline {subsection}{\numberline {3.6.4}Spin History Distortion Correction}{30}{subsection.3.6.4}
+\contentsline {section}{\numberline {3.7}Image Usability}{30}{section.3.7}
+\contentsline {chapter}{{\bfseries \numberline {4.0}METHODS}}{32}{chapter.4}
+\contentsline {section}{\numberline {4.1}Motion Correction}{32}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Directed Acyclic Graph Based Volume Registration}{32}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Motion Correction Pipeline}{35}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Motion Metrics}{35}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Dice Coefficient}{35}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Correlation Ratio Matrix}{37}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Analysis of Motion Correction}{38}{section.4.3}
+\contentsline {section}{\numberline {4.4}Motion Patterns}{39}{section.4.4}
+\contentsline {section}{\numberline {4.5}Implementation: Tools and Libraries}{40}{section.4.5}
+\contentsline {chapter}{{\bfseries \numberline {5.0}DATA}}{41}{chapter.5}
+\contentsline {section}{\numberline {5.1}Neonatal Subject Population and Images}{42}{section.5.1}
+\contentsline {section}{\numberline {5.2}Preadolescent Subject Population and Images}{42}{section.5.2}
+\contentsline {section}{\numberline {5.3}Adult Subject Population and Images}{42}{section.5.3}
+\contentsline {section}{\numberline {5.4}Fetal Subject Population and Images}{43}{section.5.4}
+\contentsline {section}{\numberline {5.5}Simulated Phantom Images}{44}{section.5.5}
+\contentsline {section}{\numberline {5.6}Human Phantom Images}{45}{section.5.6}
+\contentsline {chapter}{{\bfseries \numberline {6.0}AIMS}}{46}{chapter.6}
+\contentsline {section}{\numberline {6.1}Volume Registration In A Motion Correction Pipeline}{46}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Simulated Phantom}{46}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Human Phantom}{47}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}Clinical Images}{47}{subsection.6.1.3}
+\contentsline {section}{\numberline {6.2}Describing Motion Patterns}{48}{section.6.2}
+\contentsline {section}{\numberline {6.3}Identifying Motion Patterns}{48}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Demographic-Related Motion Patterns}{49}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Clinical-Related Motion Patterns}{49}{subsection.6.3.2}
+\contentsline {chapter}{{\bfseries \numberline {7.0}PRELIMINARY RESULTS}}{50}{chapter.7}
+\contentsline {section}{\numberline {7.1}Comparison of Volume Registration Methods}{50}{section.7.1}
+\contentsline {subsection}{\numberline {7.1.1}Subject Position Variability in the Registered Images}{50}{subsection.7.1.1}
+\contentsline {subsection}{\numberline {7.1.2}Comparison of Motion Correction Methods}{50}{subsection.7.1.2}
+\contentsline {chapter}{{\bfseries \numberline {8.0}DISCUSSION}}{54}{chapter.8}
+\contentsline {section}{\numberline {8.1}Comparison of Volume Registration Methods}{54}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Relation to Existing Work}{55}{subsection.8.1.1}
+\contentsline {subsection}{\numberline {8.1.2}Limitations and Future Work}{55}{subsection.8.1.2}
+\contentsline {subsection}{\numberline {8.1.3}Conclusions}{55}{subsection.8.1.3}
+\contentsline {chapter}{{\bfseries APPENDIX A. POTENTIAL PUBLICATION TOPICS}}{57}{appendix.A}
+\contentsline {chapter}{{\bfseries APPENDIX B. PROPOSED TIMELINE}}{58}{appendix.B}
+\contentsline {chapter}{{\bfseries \bibname }}{60}{section*.1}

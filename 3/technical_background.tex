@@ -3,13 +3,7 @@
 
 This chapter covers one of the most prominent challenges in using rs-fMRIs: patient motion. These topics include sources of motion, current methods for preventing and managing motion in rs-fMRIs, quantifying motion, and usability criteria for using images corrupted by motion.
 
-\section{SOURCES OF MOTION IN MEDICAL IMAGES}
-
-During every medical imaging scan, the patient will naturally perform small, automatic movements due to regular bodily functions. Minuscule movements caused by cardiac activity may disrupt scans with high spatial resolution or with high sensitivity to the movement of blood molecules. Larger movements caused by respiration result in motion artifacts in images of the thoracic and abdominal cavities. 
-
-Other motions occur on a larger and more conscious scale. It is important to note that different populations may exhibit more of certain macro-motions than others. The patient may fidget or shift his gaze when he becomes bored in the scanner. If the patient falls asleep during a scan, there may be slight movement as the body relaxes and retenses if the patient wakes. Certain MRI protocols are known to produce loud sounds: during one of these protocols, the patient may become surprised and react by jumping. Additionally, clausterphobic patients or patients who feel secure around specific people who are not allowed in the scanner room may become agitated. 
-
-\section{STRUCTURE OF A RS-FMRI}
+\section{Structure of an rs-fMRI}
 
 A rs-fMRI scan produces a four dimensional image series. The first three dimensions are length, width, and depth and encompass the physical space occupied by the patient's head. The information in these three dimensions is interpreted as a three dimensional, volumetric image. The fourth dimension is time. The temporal dimension interacts with the spatial dimensions such that the contents of that image volume change with time.
 
@@ -17,42 +11,49 @@ rs-fMRIs are discrete representations of continuous data. A new image volume of 
 
 An rs-fMRI is considered to have relatively low spatial resolution but high temporal resolution. The physical size of a single voxel seems small at about 4 mm$^3$, but this resolution is not granular enough to capture details about activity within small structures of the brain. The activity information recorded during a rs-fMRI must be combined with the detailed anatomic information from a structural MRI to know precisely which areas of the brain are active at each point in time. A structural MRI volume takes much longer to acquire than a rs-fMRI volume, which can be obtained every two to three seconds. Unfortunately, the patient's position and neural activity can change faster than the image volume can be acquired. As a result, a temporal resolution of two to three seconds is not fast enough to actively compensate for sources of noise which confound the BOLD signal. 
 
-\section{EFFECTS OF MOTION}
+\section{Sources of Motion in rs-fMRIs}
+
+During every medical imaging scan, the patient will naturally perform small, automatic movements due to regular bodily functions. Minuscule movements caused by cardiac activity may disrupt scans with high spatial resolution or with high sensitivity to the movement of blood molecules. Larger movements caused by respiration result in motion artifacts in images of the thoracic and abdominal cavities. 
+
+Other motions occur on a larger and more conscious scale. It is important to note that different populations may exhibit more of certain macro-motions than others. The patient may fidget or shift his gaze when he becomes bored in the scanner. If the patient falls asleep during a scan, there may be slight movement as the body relaxes and retenses if the patient wakes. Certain MRI protocols are known to produce loud sounds: during one of these protocols, the patient may become surprised and react by jumping. Additionally, clausterphobic patients or patients who feel secure around specific people who are not allowed in the scanner room may become agitated. 
+
+
+\section{Effects of Motion}
 
 Due to their low spatial and high temporal resolutions, rs-fMRIs are highly susceptible to all types of motion outlined in the previous section. The effects of motion on rs-fMRIs can be clearly divided into two categories: the effect on patient position and the effect on the recorded BOLD signal.
 
 \subsection{Positional Effects of Motion}
 
-The smallest movement can alter the position of the patient enough to cause the voxels to record signals from different brain regions and tissue types. The technique used for analyzing rs-fMRIs, called functional connectivity analysis, does not know anything about changes in patient position during the scan. It assumes that the contents of one voxel at two different time points both contain signal from a single point in the brain. This assumption is vital to the networks of activity the technique infers. 
+The smallest motion can alter the position of the patient enough to cause the voxels to record signals from different brain regions and tissue types. The technique used for analyzing rs-fMRIs, called functional connectivity analysis, assumes that the contents of one voxel at two different time points both contain signal from a single point in the brain. This assumption is vital in the process of inferring networks of neuronal activity. 
 
-The effect of motion on patient position is measured in terms of the difference in position between temporally neighboring image volumes. The difference in position is determined using metrics calculated by performing rigid volume registration on the two volumes. 
-In rigid volume registration, one volume is chosen as the reference volume and the other is considered the moving volume. The reference volume remains stationary while the moving volume is translated and rotated in three-dimensional space on top of it. The registration is considered successfully complete when the position of the patient in the moving volume matches the position in the reference volume. % Maybe move these sentences to methods?
+The effect of motion on patient position is measured in terms of the difference in the positions of the contents of temporally neighboring image volumes. The difference in position is determined using metrics calculated by performing rigid volume registration on the two volumes. 
+In rigid volume registration, one volume is chosen as the reference volume and the other is considered the moving volume. The reference volume remains stationary while the moving volume is translated and rotated in three-dimensional space on top of it. The registration is considered complete when the position of the patient in the moving volume matches the position in the reference volume. % Maybe move these sentences to methods?
 
-The moving volume can undergo linear or nonlinear transformations. Linear transformations include translation, rotation, and affine transformations along all three spatial dimensions as well as a scaling factor. These transformations move the image volume as a whole: all voxels in the moving image remain in the same location relative to their neighbors. On the other hand, nonlinear transformations have the ability to warp the contents of the moving volume so that it better matches the contents of the reference volume. Nonlinear transformations are more complex than linear transformation. They involve additional image processing steps such as smoothing and interpolation.
+The moving volume can undergo linear or nonlinear transformations. Linear transformations include translation, rotation, and affine transformations along all three spatial dimensions as well as a scaling transformation. These transformations move the image volume as a whole: all voxels in the moving image remain in the same location relative to their neighbors. On the other hand, nonlinear transformations have the ability to warp the contents of the moving volume so that it better matches the contents of the reference volume. Nonlinear transformations are more complex than linear transformation. They involve additional image processing steps such as smoothing and voxel interpolation.
 
 Even in cases when nonlinear transformations are used, the registration process begins with the translation and rotation transformations. The three translation and three rotation parameters used to achieve the best alignment are used to calculate the positional change between the image volumes. The positional change between temporally neighboring volumes is called the framewise displacement (FD).  
 
-Several researchers have proposed different methods for calculating the FD. Power et al., Jenkinson et al., and Dosenbach et al. each propose a slightly different method for calculating the FD \cite{Power2012} \cite{Jenkinson2002} \cite{Dosenbach2017}. All three FD calculations produce correlated metrics: the FD metric proposed by Power et al. produces measurements approximately twice as large as the metric proposed by Jenkinson et al., and Dosenbach et al. reported a high correlation between their FD and Power’s FD \cite{Yan2013a} \cite{Dosenbach2017}. Herein, we use Power et al.'s version of the FD metric.
+Several researchers have proposed slightly different methods for calculating the FD. Power et al., Jenkinson et al., and Dosenbach et al. each propose a slightly different method for calculating the FD \cite{Power2012} \cite{Jenkinson2002} \cite{Dosenbach2017}. All three FD calculations produce correlated metrics: the FD metric proposed by Power et al. produces measurements approximately twice as large as the metric proposed by Jenkinson et al., and Dosenbach et al. reported a high correlation between their FD and Power’s FD \cite{Yan2013a} \cite{Dosenbach2017}. Herein, we use Power et al.'s version of the FD metric.
 
 \subsection{Signal Effects of Motion}
 
-In addition to changing the recorded position of the subject, it impacts the established spin gradients, which introduces artifacts into the image sequence.
+In addition to changing the recorded position of the subject, motion impacts the established spin gradients, which introduces artifacts into the image sequence.
 
 %According to principles of quantum mechanics, elementary particles intrinsically have two types of angular momentum: orbital angular momentum and spin angular momentum. The same types of elementary molecules have the same spin angular momentum, which is denoted by a spin quantum number specific to that particle type. A spin quantum number 
 
-During an ideal MRI scan, the patient is sitting in the scanner and all molecules are aligned with the primary magnetic field $B_0$ in a relaxed state. Then, an radiofrequency (RF) pulse is applied to the field. The purpose of the pulse is to excite the molecules in a certain volume of physical space to orient the molecules to align to a secondary field in a different plane. When the pulse ends, the molecules precess back to their orientation in $B_0$. As they do, their small magnetic fields induce electric currents on the RF coil. The currents are received by the scanner as signals in frequency space. The volume of the space intended to be excited is known, and the signal produced by the induced electric current is used in conjunction to reconstruct the image in voxel space.
+During an ideal MRI scan, the patient is sitting in the scanner and all molecules are aligned with the primary magnetic field $B_0$ in a relaxed state. Then, a radiofrequency (RF) pulse is applied to the field. The purpose of the pulse is to excite the molecules in a certain volume of physical space to orient the molecules to align to a secondary field in a different plane. When the pulse ends, the molecules precess back to their orientation in $B_0$. As they do, their small magnetic fields induce electric currents on the RF coil. The currents are received by the scanner as signals in frequency space. The volume of the space intended to be excited is known, and the signal produced by the induced electric current is used in conjunction to reconstruct the image in voxel space.
 
-However, when the patient moves, the volume of space which was thought to be excited is not actually excited: some other volume of space, which may or may not overlap with the intended volume of space, is excited instead. Because the MRI scanner has no way to know this assumption is not true, it does not know that not all of the molecules in its intended area are relaxed and correctly aligned to the $B_0$ field at the end of the RF pulse. The scanner proceeds with the next RF pulse, which tries to excite ``relaxed molecules'' which are not actually relaxed. As a result, the signals produced in the second RF pulse are different than they should be. For example, signals that are smaller than they should be result in dark shadows within motion affected frames of the sequence.
+However, when the patient moves, the volume of space which was thought to be excited is not actually excited: some other volume of space, which may or may not overlap with the intended volume of space, is excited instead. Because the MRI scanner has no way to know this assumption is not true, it does not know that not all of the molecules in its intended area are relaxed and correctly aligned to the $B_0$ field at the end of the RF pulse. The scanner proceeds with the next RF pulse, which excites a new set of ``relaxed molecules'', some of which are still excited from the previous pulse. As a result, the signals produced in the second RF pulse are different than they should be. For example, signals that are smaller than they should be result in dark shadows within motion affected volumes of the sequence.
 
-These effects of motion are more difficult to measure than the positional effects. They occur because motion disrupts the magnetic spin gradients present in the patient during the scan. The spin gradients need time to recover to the correct magnetic field orientation, and up to eight to ten seconds may pass before the recovery is complete \cite{Power2014}. While the spin gradients are reorienting, the recorded BOLD signal will vary more than usual between temporally neighboring volumes. 
+The previous few paragraphs in this section describe how motion disrupts the magnetic spin gradients present in the patient during an rs-fMRI scan. The spin gradients need time to recover to the correct magnetic field orientation, and up to eight to ten seconds may pass before the recovery is complete \cite{Power2014}. While the spin gradients are reorienting, the recorded BOLD signal will vary more than usual between temporally neighboring volumes. These variations are more difficult to quantify than the positional effects of motion.
 
-There are few metrics to measure the change in BOLD signal between image volumes. In 2010, Smyser et al. developed a metric called DVARS, which measures the temporal derivative of the root mean squared variance over the voxels between two volumes \cite{Smyser2010}. Power et al. explain the steps to calculate DVARS in a separate study \cite{Power2012}. The DVARS value is calculated in two steps. The first step uses backward differences to approximate the derivative of the BOLD signal change between volumes $J_i$ and $J_{i-1}$ at every point $\vec{x}$:
+One popular metric to measure changes in the BOLD signal due to patient motion was developed by Smyser et al. in 2010. Their metric is called DVARS, which measures the temporal \textbf{d}erivative of the root mean squared \textbf{var}iance over the voxels between two volumes \cite{Smyser2010}. Power et al. explain the steps to calculate DVARS in a separate study \cite{Power2012}. The DVARS value is calculated in two steps. The first step uses backward differences to approximate the derivative of the BOLD signal change between volumes $J_i$ and $J_{i-1}$ at every point $\vec{x}$ contained in both image volumes:
 
 \begin{equation}
 \frac{\partial}{\partial t} J_i(\vec{x}) \approx J_i(\vec{x}) - J_{i-1}(\vec{x}).
 \end{equation}
 
-The second step calculates the root mean square of the approximated derivatives for all $N$ points $\vec{x}$ contained in both image volumes:
+The second step calculates the root mean square of the approximated derivatives for all $N$ points $\vec{x}$:
 
 \begin{equation}
 DVARS(J_i) = \sqrt{ \frac{1}{N} \sum_{\vec{x} \in J_i, J_{i-1}} \left( \frac{\partial}{\partial t} J_i(\vec{x}) \right)^2 }.
@@ -60,13 +61,13 @@ DVARS(J_i) = \sqrt{ \frac{1}{N} \sum_{\vec{x} \in J_i, J_{i-1}} \left( \frac{\pa
 
 DVARs measures the change in BOLD signal intensity, which is highly related to motion-induced spin gradient changes. 
 
-\section{MOTION PREVENTION}
+\section{Motion Prevention}
 
 Various techniques and protocols have been developed to prevent patients from moving during the image acquisition process. Not all of these techniques are suitable for all patient populations, and some techniques have been designed specifically for certain populations.
 
 \subsection{Sedation}
 
-Sedation can be used to help a patient tolerate an MRI scan. Murphy and Brunberg retrospectively analyzed seven weeks of data from the MR department and found that 14.2\% of their adult patients required some form of sedation \cite{Murphy1997}. In a study about claustrophobia and MR acquisitions, Dewey et al. report that out of 55,734 patients who underwent MRI scans, a total of 1,004 patients experienced claustrophobia and 610 of these patients required intravenous sedation before their scans \cite{Dewey2007}. Even though sedation allowed the patients mentioned in this paragraph to undergo an MRI scan, the authors of both studies note that sedation can result in adverse events and advise the reader to avoid patient sedation if possible.
+Sedation can be used to help a patient tolerate an MRI scan. Murphy and Brunberg retrospectively analyzed seven weeks of data from the MR department and found that 14.2\% of their adult patients required some form of sedation \cite{Murphy1997}. In a study about claustrophobia and MR acquisitions, Dewey et al. report that out of 55,734 patients who underwent MRI scans, a total of 1004 patients experienced claustrophobia and 610 of these patients required intravenous sedation before their scans \cite{Dewey2007}. Even though sedation allowed the patients mentioned in this paragraph to undergo an MRI scan, the authors of both studies note that sedation can result in adverse events and advise the reader to avoid patient sedation if possible.
 
 
 Sedation can be used with pediatric patients, though the risks are more significant than with adult patients. Studies have shown that sedation for pediatric imaging can lead to hypoxemia and inappropriate sedation levels during image acquisition \cite{Malviya2000}. Pediatric patients can also expect ``motor imbalance and gastrointestinal effects,'' as well as agitation and restlessness for a period of hours after waking from sedation.
@@ -123,7 +124,7 @@ When performed correctly, these protocols are generally successful and the neona
 
 % application of rs-fMRI to evaluate neonates neurodevelopmental status of infants and neonates, and in personalized care by identifying patients who may benefit from certain therapies or neuroprotective interventions \cite{Smyser2015}.
 
-\section{PROSPECTIVE MOTION CORRECTION}
+\section{Prospective Motion Correction}
 
 Since motion cannot be completely eliminated from rs-fMRI scans, different approaches have developed for correcting for the effects of motion after the scan. These approaches can be divided into two groups: those which monitor the patient's motion during the scan and those which work solely on the acquired sequences.
 
@@ -170,9 +171,9 @@ As mentioned earlier in this chapter, respiration is a source of patient motion.
 
 Ultimately, the addition of extra sensors complicate the process and set up of a rs-fMRI scan.
 
-\subsection{Image Space Motion Correction}
+\subsection{Intra-Image Motion Monitoring}
 
-Dosenbach et al. have developed a tool to evaluate motion in rs-fMRI sequences as they are acquired \cite{Dosenbach2017}. It registers each frame to the initial frame of the rs-fMRI sequence immediately after the new frame is recorded. The parameters produced by this registration are used to calculate the framewise displacement between pairs of frames, which is then compared to a set of displacement thresholds associated with the scan quality. The number of frames that meet each threshold is used to determine how many more frames are needed to obtain five minutes of low-motion frames. This method for assessing the quality of a scan in real time is useful for ensuring images are acquired with a sufficient number of low-motion frames. It can also aid the technologists in determining whether to prematurely terminate a scan, which may be desirable if the amount of time needed to obtain enough low-motion frames is greater than the amount of time remaining for the patient in the scanner. 
+Dosenbach et al. have developed a tool to evaluate motion in rs-fMRI sequences as they are acquired \cite{Dosenbach2017}. It registers each volume to the initial volume of the rs-fMRI sequence immediately after the new volume is recorded. The parameters produced by this registration are used to calculate the framewise displacement between pairs of volumes, which is then compared to a set of displacement thresholds associated with the scan quality. The number of volumes that meet each threshold is used to determine how many more volumes are needed to obtain five minutes of low-motion volumes. This method for assessing the quality of a scan in real time is useful for ensuring images are acquired with a sufficient number of low-motion volumes. It can also aid the technologists in determining whether to prematurely terminate a scan, which may be desirable if the amount of time needed to obtain enough low-motion volumes is greater than the amount of time remaining for the patient in the scanner. 
 
 
 \subsection{General Limitations of Prospective Motion Correction}
@@ -185,7 +186,7 @@ In order to view a scan not impacted by prospective motion correction, the patie
 Finally, though prospective motion correction has great power for managing motion during a scan, it cannot be used to recover motion-corrupted data in existing data sets.
 
 
-\section{RETROSPECTIVE MOTION CORRECTION}
+\section{Retrospective Motion Correction}
 
 Many groups have put significant effort into developing techniques for motion correction after the scan is acquired. Here, we discuss several commonly used techniques: volume registration, denoising, and filtering. % and give examples of pipelines which utilize these tools.
 
@@ -223,13 +224,13 @@ Other regression parameters which have been investigated include the six realign
 
 \subsection{Filtering}
 
-Filtering, which is also referred to as censoring, involves the identification and removal or interpolation of frames containing high quantities of motion. Two popular techniques are scrubbing and spike regression. Power et al.’s scrubbing technique removes frames with more than 0.2 mm of FD \cite{Power2012}. Spike regression identifies frames with large FD and replaces them with interpolated volumes \cite{Satterthwaite2013}. Unfortunately, these filtering techniques ultimately result in the loss of data as frames are removed from the sequence. A third technique called despiking detects signal spikes at the voxel level and interpolates over the spikes \cite{Jo2013} \cite{Patel2014}. Despiking does not remove frames, but could accidentally remove valuable signals. 
+Filtering, which is also referred to as censoring, involves the identification and removal or interpolation of volumes containing high quantities of motion. Two popular techniques are scrubbing and spike regression. Power et al.’s scrubbing technique removes volumes with more than 0.2 mm of FD \cite{Power2012}. Spike regression identifies volumes with large FD and replaces them with interpolated volumes \cite{Satterthwaite2013}. Unfortunately, these filtering techniques ultimately result in the loss of data as volumes are removed from the sequence. A third technique called despiking detects signal spikes at the voxel level and interpolates over the spikes \cite{Jo2013} \cite{Patel2014}. Despiking does not remove volumes, but could accidentally remove valuable signals. 
 
 \subsection{Spin History Distortion Correction}
 
 A number of post-acquisition methods have been developed specifically to correct for distortions due to the impact of motion on the magnetic field. The usability of these dynamic distortion correction methods has been studied in a few specific cases, but their generalizability has yet to be confirmed in a broader range of fMRI studies \cite{Zaitsev2017}.
 
-\section{IMAGE USABILITY}
+\section{Image Usability}
 
 
 %The FD metric only measures the positional effects of motion, not the variations in signal in individual voxels caused by motion. Changes in signal between volumes can be measured using the temporal derivative of the variance in the BOLD signal intensity (DVARS) between neighboring volumes \cite{Power2012} \cite{Smyser2015}. 
