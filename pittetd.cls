@@ -444,7 +444,7 @@
         This \lowercase\expandafter{\@this} was presented\\
         by\\[.67\@singleline]\@author\\[.67\@singleline]
         \if@dategiven
-            It was defended on\\
+            It was proposed on\\ %change proposed to defended!
             \@date\\ \else\ClassWarningNoLine{pittetd}{%
             You really should provide the date of the defense
             (command \string\date)}\fi

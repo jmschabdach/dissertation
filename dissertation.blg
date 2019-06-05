@@ -11,10 +11,11 @@ A level-1 auxiliary file: 6/experiments.aux
 A level-1 auxiliary file: 7/results.aux
 A level-1 auxiliary file: 8/discussion.aux
 A level-1 auxiliary file: 999_appendices/list_of_papers.aux
+A level-1 auxiliary file: 999_appendices/proposed_schedule.aux
 Database file #1: sources.bib
 You've used 73 entries,
             1935 wiz_defined-function locations,
-            970 strings with 22698 characters,
+            971 strings with 22734 characters,
 and the built_in function-call counts, 36368 in all, are:
 = -- 3396
 > -- 2300
