@@ -1,7 +1,7 @@
 \chapter{rs-fMRIs and Patient Motion}
 \label{ch:mri}
 
-This chapter covers one of the most prominent challenges in using rs-fMRIs: patient motion. These topics include sources of motion, current methods for preventing and managing motion in rs-fMRIs, quantifying motion, and usability criteria for using images corrupted by motion.
+This chapter discusses rs-fMRIs and how they are affected by patient motion. Specific topics include the structure of rs-fMRIs, sources of motion, current methods for preventing and managing motion in rs-fMRIs, quantifying motion, and usability criteria for using images corrupted by motion.
 
 \section{Structure of an rs-fMRI}
 
@@ -15,7 +15,7 @@ An rs-fMRI is considered to have relatively low spatial resolution but high temp
 
 During every medical imaging scan, the patient will naturally perform small, automatic movements due to regular bodily functions. Minuscule movements caused by cardiac activity may disrupt scans with high spatial resolution or with high sensitivity to the movement of blood molecules. Larger movements caused by respiration result in motion artifacts in images of the thoracic and abdominal cavities. 
 
-Other motions occur on a larger and more conscious scale. It is important to note that different populations may exhibit more of certain macro-motions than others. The patient may fidget or shift his gaze when he becomes bored in the scanner. If the patient falls asleep during a scan, there may be slight movement as the body relaxes and retenses if the patient wakes. Certain MRI protocols are known to produce loud sounds: during one of these protocols, the patient may become surprised and react by jumping. Additionally, clausterphobic patients or patients who feel secure around specific people who are not allowed in the scanner room may become agitated. 
+Other motions occur on a larger and more conscious scale. It is important to note that different populations may exhibit more of certain macro-motions than others. The patient may fidget or shift his gaze when he becomes bored in the scanner. If the patient falls asleep during a scan, there may be slight movement as the body relaxes and retenses if the patient wakes. Certain MRI protocols are known to produce loud sounds: during one of these protocols, the patient may become surprised and react by jumping. Additionally, clausterphobic patients or patients who feel secure around specific people that are not allowed in the scanner room may become agitated. 
 
 
 \section{Effects of Motion}
@@ -53,6 +53,8 @@ One popular metric to measure changes in the BOLD signal due to patient motion w
 \frac{\partial}{\partial t} J_i(\vec{x}) \approx J_i(\vec{x}) - J_{i-1}(\vec{x}).
 \end{equation}
 
+% FD(J_i) = | \Delta d_{ix} | + | \Delta d_{iy} | + | \Delta d_{iz} | \\ + | \Delta \alpha_i | + | \Delta \beta_i | + | \Delta \gamma_i |
+
 The second step calculates the root mean square of the approximated derivatives for all $N$ points $\vec{x}$:
 
 \begin{equation}
@@ -65,7 +67,23 @@ DVARs measures the change in BOLD signal intensity, which is highly related to m
 
 Various techniques and protocols have been developed to prevent patients from moving during the image acquisition process. Not all of these techniques are suitable for all patient populations, and some techniques have been designed specifically for certain populations.
 
-\subsection{Sedation}
+\subsection{Pre-Scan: Education}
+
+Educational material can be used to help the patient understand what to expect during an MRI scan as well as to teach the patient different behavioral coping strategies. The education materials can be used either before or upon arrival at the imaging facility. Most of the formal literature focuses on informative, distraction, and behavioral techniques to use during pediatric MRI scans, though many of the following approaches could be adapted for use with adults.
+
+% Pediatric patients
+In a review of the available literature, Alexander found several commonly used techniques to educate pediatric patients before and comfort or distract pediatric patients during radiology procedures \cite{Alexander2012}. Tools such as educational coloring books and short videos can expose patients to the types of equipment they can expect to see using a familiar, engaging medium. Pediatric patients can learn coping strategies to employ during the scan such as breathing techniques, imagery, and positive statements. Alexander notes that allowing a pediatric patient to choose a behavioral coping strategy gives the patient a sense of control and may encourage the patient to cooperate during the MRI acquisition.
+
+Mock scanners and MRI simulators can also help the patient feel more comfortable during the scan. Barnea-Goraly et al. showed that both a commerical MRI simulator and a low-tech mock scanner desensitized pediatric patients between four and ten years of age to the MRI scanner with the results that 92.3\% of the acquired images could be used in high-resolution anatomical studies \cite{Barnea-Goraly2014}. 
+
+% distraction
+Several groups have investigated the role of auditory and visual distraction during an MRI acquisition. Headphones with music and stories or MR compatible video goggles can distract patients from the tedium of the scan \cite{Alexander2012} \cite{Barnea-Goraly2014} \cite{Harned2001}. Khan et al. found that a relatively simple moving light show can be helpful in distracting younger patients \cite{Khan2007}. Garcia-Palacios et al. performed a case study comparing the efficacy of music and immersive virtual reality tools as distractions during a mock scan \cite{Garcia-Palacios2007}. They suggest that immersive virtual reality may help decrease patient anxiety during a scan more effectively than music alone. As virtual reality technology improves, it may join headphones and MR compatible video goggles as an available distraction method.
+
+Another helpful source of distraction for pediatric patients could be the patient's parent or parents. Having a parent involved with the scanning process may calm the patient and encourage him to cooperate; however, parental distress can further upset an anxious patient and complicate the scanning process \cite{Alexander2012}. 
+
+These techniques for educating the patient and helping the patient cope with the anxiety that can accompany an MRI scan all depend on the ability of the patient to understand instructions and communicate with the scan team. Due to the gap in communication abilities, these techniques are not useful for young patients such as neonates, infants, toddlers, and possibly elementary school aged children. Other patient populations, such as those with developmental delays and neurobehavioral disorders, may also have difficulty adhering to these protocols. Even in patients with developed and intact communication skills, the techniques outlined here do not actively prevent the patient from moving during the scan: they only help the patient feel more comfortable with the MRI environment.
+
+\subsection{During Scan: Sedation}
 
 Sedation can be used to help a patient tolerate an MRI scan. Murphy and Brunberg retrospectively analyzed seven weeks of data from the MR department and found that 14.2\% of their adult patients required some form of sedation \cite{Murphy1997}. In a study about claustrophobia and MR acquisitions, Dewey et al. report that out of 55,734 patients who underwent MRI scans, a total of 1004 patients experienced claustrophobia and 610 of these patients required intravenous sedation before their scans \cite{Dewey2007}. Even though sedation allowed the patients mentioned in this paragraph to undergo an MRI scan, the authors of both studies note that sedation can result in adverse events and advise the reader to avoid patient sedation if possible.
 
@@ -91,26 +109,7 @@ A report from the American Academy of Pediatrics and the American Academy of Ped
 
 Sedation in neonatal and infant populations is not recommended. The  U.~S.~Food and Drug Administration (FDA) issued a warning in late 2016 about repeated use of sedation or general anesthesia for patients under three years of age or for pregnant women during their third trimester \cite{FDA2016}. The warning states that while a single, relatively short exposure to sedative and anesthetic drugs is unlikely to impact the patient, the effects of prolonged exposure to these drugs are still being studied. Studies of sedative and anesthetic drugs in multiple animal models have shown that these drugs can lead to loss of nerve cells in the brain when the animals undergo prolonged, repeated exposure to them during period of brain development. More data is needed to determine if this effect translates to humans.
 
-\subsection{Education, Distraction, and Behavioral Techniques}
-
-Educational material can be used to help the patient understand what to expect during an MRI scan as well as to teach the patient different behavioral coping strategies. The education materials can be used either before or upon arrival at the imaging facility. 
-
-% Adult patients
-Most of the formal literature focuses on educational, distraction, and behavioral techniques to use during pediatric MRI scans. Many of the following approaches could be adapted for use with adults.
-
-% Pediatric patients
-In a review of the available literature, Alexander found several commonly used techniques to educate, comfort, and distract pediatric patients during radiology procedures \cite{Alexander2012}. Tools such as educational coloring books and short videos can expose patients to the types of equipment they can expect to see using a familiar, engaging medium. Pediatric patients can learn coping strategies to employ during the scan such as breathing techniques, imagery, and positive statements. Alexander notes that allowing a pediatric patient to choose a behavioral coping strategy gives the patient a sense of control and may encourage the patient to cooperate during the MRI acquisition.
-
-Mock scanners and MRI simulators can also help the patient feel more comfortable during the scan. Barnea-Goraly et al. showed that both a commerical MRI simulator and a low-tech mock scanner desensitized pediatric patients between four and ten years of age to the MRI scanner with the results that 92.3\% of the acquired images could be used in high-resolution anatomical studies \cite{Barnea-Goraly2014}. 
-
-% distraction
-Several groups have investigated the role of auditory and visual distraction during an MRI acquisition. Headphones with music and stories or MR compatible video goggles can distract patients from the tedium of the scan \cite{Alexander2012} \cite{Barnea-Goraly2014} \cite{Harned2001}. Khan et al. found that a relatively simple moving light show can be helpful in distracting younger patients \cite{Khan2007}. Garcia-Palacios et al. performed a case study comparing the efficacy of music and immersive virtual reality tools as distractions during a mock scan \cite{Garcia-Palacios2007}. They suggest that immersive virtual reality may help decrease patient anxiety during a scan more effectively than music alone. As virtual reality technology improves, it may join headphones and MR compatible video goggles as an available distraction method.
-
-Another helpful source of distraction for pediatric patients could be the patient's parent or parents. Having a parent involved with the scanning process may calm the patient and encourage him to cooperate; however, parental distress can further upset an anxious patient and complicate the scanning process \cite{Alexander2012}. 
-
-These techniques for educating the patient and helping the patient cope with the anxiety that can accompany an MRI scan all depend on the ability of the patient to understand instructions and communicate with the scan team. Due to the gap in communication abilities, these techniques are not useful for young patients such as neonates, infants, toddlers, and possibly elementary school aged children. Other patient populations, such as those with developmental delays and neurobehavioral disorders, may also have difficulty adhering to these protocols. Even in patients with developed and intact communication skills, the techniques outlined here do not actively prevent the patient from moving during the scan: they only help the patient feel more comfortable with the MRI environment.
-
-\subsection{Feed and Sleep Protocols}
+\subsection{During Scan: Feed and Sleep Protocols}
 
 Neither sedation nor educational and behavioral techniques are appropriate to use with neonatal patients, but rs-fMRIs in neonates and infants are invaluable  in studying early brain development and neurological diseases \cite{Smyser2015}. A set of protocols have been developed specifically for scanning neonates without sedation. These protocols are referred to as ``feed and sleep'' or ``feed and bundle'' protocols.
 
@@ -171,7 +170,7 @@ As mentioned earlier in this chapter, respiration is a source of patient motion.
 
 Ultimately, the addition of extra sensors complicate the process and set up of a rs-fMRI scan.
 
-\subsection{Intra-Image Motion Monitoring}
+\subsection{Image Signal Motion Monitoring}
 
 Dosenbach et al. have developed a tool to evaluate motion in rs-fMRI sequences as they are acquired \cite{Dosenbach2017}. It registers each volume to the initial volume of the rs-fMRI sequence immediately after the new volume is recorded. The parameters produced by this registration are used to calculate the framewise displacement between pairs of volumes, which is then compared to a set of displacement thresholds associated with the scan quality. The number of volumes that meet each threshold is used to determine how many more volumes are needed to obtain five minutes of low-motion volumes. This method for assessing the quality of a scan in real time is useful for ensuring images are acquired with a sufficient number of low-motion volumes. It can also aid the technologists in determining whether to prematurely terminate a scan, which may be desirable if the amount of time needed to obtain enough low-motion volumes is greater than the amount of time remaining for the patient in the scanner. 
 
@@ -241,4 +240,12 @@ Even though the effects of motion on the patient position and the recorded signa
 \item DVARS less than or equal to 25 units on a normalized scale of [0, 1000] signal units \cite{Power2014}
 \end{itemize}
 
-Image volumes that meet these criteria are considered to be low-motion. van Dijk et al. established that approximately five minutes of low-motion data is sufficient for use in functional connectivity analysis \cite{VanDijk2012}. Unfortunately, it is often difficult to obtain enough low-motion data from patients to use in these analyses.
+Image volumes that meet these criteria are considered to be low-motion.
+
+The time span of low-motion data is highly debated. van Dijk et al. established that approximately five minutes of low-motion data is sufficient for use in functional connectivity analysis \cite{VanDijk2012}. However, a recent study by Laumann et al. suggests that at least 10 minutes of low-motion data is essential for obtaining high-quality results \cite{Laumann2015}. From a practical standpoint, it is difficult to obtain even five minutes of low motion data from certain patient populations, so radiology technicians and neuroimaging study designers are often content with the five minute time standard. 
+
+\section{Summary}
+
+Resting-state fMRIs are four dimensional images which record BOLD signal in active areas of the brain. The BOLD signal can be used to evaluate the functional connnectivity of different underlying networks in a patient's brain. Since rs-fMRIs are highly sensitive to motion, clinicians and psychologists have devised techniques to inform patients about what they can expect during an MRI scan as well as different coping mechanisms to help them remain calm during the scan. These techniques do not prevent the patient from moving, but approaches that do are not always appropriate to use during a rs-fMRI scan. Techniques and algorithms to prospectively and retrospectively remove motion from rs-fMRIs have also been developed, though they are not always successful in removing the effects of motion. Ultimately, the amount of motion present in the rs-fMRI sequence dictates whether or not the sequence can be used in clinical or research applications.
+
+In the next chapter, we will discuss rs-fMRIs in the context of our chosen population of CHD patients.
