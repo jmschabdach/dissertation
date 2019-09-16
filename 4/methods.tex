@@ -133,7 +133,61 @@ We suggest that the ways that patients move are specific to certain patient grou
 
 There is also a chance that patients within the same age group move differently possibly due to their cognitive state. Preadolescents who have ADHD likely become bored and fidgety in the MR scanner at different rates then their non-ADHD counterparts. Adults suffering from dementia may have more difficulty remaining still for the duration of a scan than adults with similar demographics and no dementia.
 
-These patterns are essentially signals specific to different categories of patients. Machine learning techniques are useful for identifying patterns in signals from different sources. Unsupervised learning techniques group samples from a population based on the patterns in their features. The results of unsupervised clustering algorithms can be visualized and analyzed to determine how the computer chose each group of samples. 
+These patterns are essentially signals specific to different categories of patients. Machine learning techniques are useful for identifying patterns in signals from different sources. In addition to the motion metrics identified in the previous section, we will also use demographic and clinical data as features for our machine learning models.
+
+We further divide this section into a discussion of unsupervised and supervised learning techniques we used to investigate (population/patient) motion patterns. 
+
+\subsection{Unsupervised Learning}
+
+Unsupervised learning techniques group samples from a population based on the patterns in their features. They do not use information about any known data groups(SYN) to inform their classification processes.
+
+A common subtype of unsupervised learning is clustering. Clustering methods ...
+
+\subsubsection{K-means Clustering}
+
+In k-means clustering, the features of a set of data that are fed to the model are viewed as the locations of each data sample in \textit{n}-dimensional space, where \textit{n} is the number of features per sample. In this space, \textit{k} cluster centroids are initially distrubuted. The distribution pattern can place the centroids either randomly between the data samples or using randomly selected data points.
+
+After the locations of the cluster centroids are initialized, the distance between each sample and each centroid is calculated. Each sample is assigned to the cluster represented by the centroid closest to it. Once the clusters are defined, the location of the centroid of each cluster is recalculated. The new centroid location is the mean of the locations of all samples in its cluster. The distance between each sample and each cluster centroid is recalculated, samples are reassigned to their closest cluster centroid, and the centroid of each cluster is recalculated. This process continues until a stopping criteria is reached. With most unsupervised machine learning methods, the stopping criteria is that the classifications of the model do not change for a certain number of iterations. In some cases, the stopping criteria could be dependent on the number of iterations the model has [passed through/undergone] (SYN). 
+
+Strengths of k-means are ...
+
+One of the major limitations of k-means clustering is that the number of clusters must be given to the model. It is difficult to know how many clusters are needed to adequately represent subgroups within a data set. If too many clusters are used, the groups identified by the algorithm will be more granular than they should be; however, using too few clusters will produce large groups which mask distinct subgroups. 
+
+There are many variations of k-means clustering. For example, k-mediods follows the same steps as k-means, but uses the median of the known clusters as the new centroid location.
+
+\subsubsection{Spectral Clustering}
+
+While spectral clustering is related to k-means clustering, it approaches the problem of identifying associations in a group of data from a different perspective. Spectral clustering treats each data point in a sample as a node in a network. The connections between data points are characterized by the adjacency matrix and the degree matrix of the graph. These two matrices are used to calculate the Laplacian matrix of the graph, whose properties are used to identify clusters. All three matrices are $n$x$n$ matrices, where $n$ is the number of data points in the sample.
+
+The adjacency matrix specifies the strength of the connection between the nodes represented by the rows and columns of the matrix. For data that does not begin in graph form, algorithms such as k-nearest neighbors can be used to generate the adjacency matrix. In the adjacency matrix, each entry $i, j$ contains the weight of the connection between node $i$ and node $j$. If the edges are unweighted, the value of the entry is either 0 or 1. If the graph is undirected, the value of entry $i, j$ is the same as the value of entry $j, i$. All entries where $i=j$ should be 0, unless node $i$ has a self-loop.
+
+The degree matrix is a diagonal matrix which represents the number of edges connected to each node. If the graph is directed, the directionality of the degree matrix must be specified: a directed connection from node $a$ to node $b$ contributes to the count for node $a$ if the degree matrix counts the number of edges that begin at each node (outdegree), but contributes to the count for node $b$ if the degree matrix counts the number of terminating edges at each node (indegree). In the case of an undirected graph, the connections include all edges that begin or terminate at a node. To summarize, in an directed graph, each edge contributes to only one node count while in an undirected graph each edge contributes to both nodes.
+
+The adjacency matrix and the degree matrix are used together to construct the Laplacian matrix of the graph. This calculation of the normal Laplacian is simple: the adjacency matrix is subtracted from the degree matrix. The resulting matrix has the following properties:
+\begin{itemize}
+\item The diagonals are the number of connections per node less the number of self-connections
+\item All off-diagonal values are the negative of the weight connecting node $i$ to node $j$.
+\end{itemize}
+The Laplacian matrix can be used to explore many properties of a graph. In particular, the eigenvalues of the Laplacian matrix are informative about the number of connected components in the graph. Connected components are areas of the network that are connected to each other but not anything outside that component. Each connected component is not its own cluster, though: the connected components could be large and contain smaller sets of connected nodes that are good options for clusters.
+
+To determine the number of clusters in the graph, the eigenvalues of the Laplacian matrix are sorted in increasing order. The number of zero-valued eigenvalues is the number of connected components in the graph. Eigenvalues close to zero suggest weak edges preventing some connected component from being two separate components. Manually examining these eigenvalues before performing spectral clustering can be informative about the number of clusters to create: the number of values below the first large gap between the eigenvalues are the number of clusters, $k$. The eigenvectors associated with these $k$ eigenvalues are used as a lower-dimensional representation of the data in the graph. Performing $k$-means clustering on this data produces the labels for the clusters within the data that are not linearly separable otherwise.
+
+\subsubsection{Agglomerative Clustering}
+
+Agglomerative clustering is a specific type of hierarchical clustering which builds a tree of similarities between data samples from the ``bottom up''. The data samples in agglomerative clustering are also viewed as distinct points in \textit{n}-dimensional space, but the number of groups to identify is not specified. 
+
+First, the distance from every data sample to every other data sample is calculated. The two data points that are closest together in terms of some similarity metric are combined into a single cluster. In the [relationship tree] representing the similarities between all data samples, a node is created and the joined data points are connected to that node. That node or cluster is treated as an intermediate data sample. The distance from the new ``data sample'' to every other data sample is calculated and the two closest data samples are again combined into another intermediate sample. A node representing the new cluster is added to the [relationship tree] and the data sample or samples merged into the cluster are connected to the node. The process of combining data points into clusters based on similarity to other data points terminates when all data points and clusters have been combined. 
+
+The results of agglomerative clustering can be interpreted by traversing the [relationship tree]. The [relationship tree] recorded the history of which nodes were merged into which clusters at each stage. Due to the nature of agglomerative clustering, these stages can be viewed as distinct levels in the tree. Beginning at the final node (the root) of the tree, the granularity of the clusters can be explored. At the top level, there is only one cluster, but at the second to last level of the tree there will be two clusters, at the third level there will be three clusters, and so on. How each cluster grew can reveal information about the relationships between the data samples within that cluster.
+
+
+\subsubsection{Visualizing Clustering Results} 
+
+The results of unsupervised clustering algorithms can be visualized and analyzed to determine how the computer chose each group of samples.
+
+Agglomerative clustering also lends itself well to visualization via heatmap. The heatmap allows the researcher to see the distribution of feature values across the dataset and across visually prominent clusters. ``Eyeballing'' a heatmap is no substitution for performing statistical analyses, but it can provide a better sense of context than summary statistics.  
+
+\subsection{Supervised Learning}
 
 Another approach to analyzing these signals is regression. Regression models the relationships between a set of independent features and an outcome or set of outcomes. For example, the linear regression could be used to evaluate the relationship between motion metrics and the severity of neurodevelopmental outcomes or patient age. 
 
