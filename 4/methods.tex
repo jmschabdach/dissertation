@@ -141,19 +141,19 @@ The goal of applying machine learning to identify population level motion patter
 
 \subsection{K-means Clustering}
 
-In k-means clustering, the features of a set of data that are fed to the model are viewed as the locations of each data sample in \textit{n}-dimensional space, where \textit{n} is the number of features per sample. In this space, \textit{k} cluster centroids are initially distrubuted. The distribution pattern can place the centroids either randomly between the data samples or using randomly selected data points.
+K-means clustering divides a group of data samples with $n$ features into $k$ groups based on each sample's distance from the average value of the group \cite{macqueen1967}, \cite{Hartigan1979}. In k-means clustering, the features of a set of data are viewed as the locations of each data sample in \textit{n}-dimensional space. In this space, \textit{k} cluster centroids are initially distrubuted. The distribution pattern can place the centroids either randomly between data samples or using randomly selected data points.
 
 After the locations of the cluster centroids are initialized, the distance between each sample and each centroid is calculated. Each sample is assigned to the cluster represented by the centroid closest to it. Once the clusters are defined, the location of the centroid of each cluster is recalculated. The new centroid location is the mean of the locations of all samples in its cluster. The distance between each sample and each cluster centroid is recalculated, samples are reassigned to their closest cluster centroid, and the centroid of each cluster is recalculated. This process continues until a stopping criteria is reached. With most unsupervised machine learning methods, the stopping criteria is that the classifications of the model do not change for a certain number of iterations. In some cases, the stopping criteria could be dependent on the number of iterations the model has [passed through/undergone] (SYN). 
 
-One of the major strengths of k-means is its simplicity.
-
 One of the major limitations of k-means clustering is that the number of clusters must be given to the model. It is difficult to know how many clusters are needed to adequately represent subgroups within a data set. If too many clusters are used, the groups identified by the algorithm will be more granular than they should be; however, using too few clusters will produce large groups which mask distinct subgroups. 
 
-There are many variations of k-means clustering. For example, k-mediods follows the same steps as k-means, but uses the median of the known clusters as the new centroid location.
+There are many variations of k-means clustering. For example, k-medians follows the same steps as k-means, but uses the median of the known data points in a cluster as the new centroid for that cluster \cite{Juan1998}. Another variation called k-mediods uses the data point closest to the center of the cluster as the new cluster centroid rather than a descriptive statistic of the cluster \cite{Kaufman1987}.
 
 \subsection{Spectral Clustering}
 
-While spectral clustering is related to k-means clustering, it approaches the problem of identifying associations in a group of data from a different perspective. Spectral clustering treats each data point in a sample as a node in a network. The connections between data points are characterized by the adjacency matrix and the degree matrix of the graph. These two matrices are used to calculate the Laplacian matrix of the graph, whose properties are used to identify clusters. All three matrices are $n$x$n$ matrices, where $n$ is the number of data points in the sample.
+While spectral clustering is related to k-means clustering, it approaches the problem of identifying associations in a group of data from a different perspective. Spectral clustering treats each data point in a sample as a node in a graph. The connections between data points are characterized by the adjacency matrix and the degree matrix of the graph. These two matrices are used to calculate the Laplacian matrix of the graph, whose properties are used to identify clusters. All three matrices are $n$x$n$ matrices, where $n$ is the number of data points in the sample. 
+
+Herein, we discuss spectral clustering when the data can be represented using a simple graph. As such, certain mathematical shortcuts can be employed to simplify certain computations. A more general mathematical approach has been discussed by Ng, Jordan, and Weiss \cite{Ng2002}.
 
 The adjacency matrix specifies the strength of the connection between the nodes represented by the rows and columns of the matrix. For data that does not begin in graph form, algorithms such as k-nearest neighbors can be used to generate the adjacency matrix. In the adjacency matrix, each entry $i, j$ contains the weight of the connection between node $i$ and node $j$. If the edges are unweighted, the value of the entry is either 0 or 1. If the graph is undirected, the value of entry $i, j$ is the same as the value of entry $j, i$. All entries where $i=j$ should be 0, unless node $i$ has a self-loop.
 
@@ -176,7 +176,7 @@ To determine the number of clusters in the graph, the eigenvalues of the Laplaci
 
 \subsection{Agglomerative Clustering}
 
-Agglomerative clustering is a specific type of hierarchical clustering which builds a tree of similarities between data samples from the ``bottom up''. The data samples in agglomerative clustering are also viewed as distinct points in $n$-dimensional space, but the number of groups to identify is not specified. 
+Agglomerative clustering is a specific type of hierarchical clustering which builds a tree of similarities between data samples from the ``bottom up'' \cite{Ward1963}. The data samples in agglomerative clustering are also viewed as distinct points in $n$-dimensional space, but the number of groups to identify is not specified. 
 
 First, the distance from every data sample to every other data sample is calculated. The two data points that are closest together in terms of some similarity metric are combined into a single cluster. In the [relationship tree] representing the similarities between all data samples, a node is created and the joined data points are connected to that node. That node or cluster is treated as an intermediate data sample. The distance from the new ``data sample'' to every other data sample is calculated and the two closest data samples are again combined into another intermediate sample. A node representing the new cluster is added to the [relationship tree] and the data sample or samples merged into the cluster are connected to the node. The process of combining data points into clusters based on similarity to other data points terminates when all data points and clusters have been combined. 
 
@@ -186,9 +186,13 @@ The results of agglomerative clustering can be interpreted by traversing the [re
 
 The results of unsupervised clustering algorithms can be visualized to illustrate how the computer chose each group of samples. Depending on the number of features $n$ for each data sample, a dimensionality reduction method may be needed to transform the location of the data sample in $n$-dimensional feature space to a more easily visualized 2-dimensional or 3-dimensional space.
 
-Dimensionality reduction methods include principle component analysis, TSNE, and XXXXXX.
+Dimensionality reduction methods include principle component analysis (PCA), TSNE, and XXXXXX.
 
-\textbf{Principle Component Analysis}
+Principle component analysis is a multivariate statistical technique that can be used to transform a set of variables with some degree of intercorrelation into a set of new, independent, orthogonal variables \cite{Abdi2010}. These variables are called principle components of the data set. The principle components are ordered with respect to the amount of variance in the data set that can be projected onto each component. In general, PCA fits an $p$-dimensional ellipsiod to a data set with $n$ features such that $p < n$. Each axis of the ellipsoid represents a single prinicple component. 
+
+It is important to note that prior to the application of PCA, the data must be normalized. Normalizing the data allows different features to be compared on the same scale.
+
+The first two or three principle components can be used to plot the results of a clustering algorithm in 2D or 3D space. An example of plotting clustering results using PCA can be seen in Figure [INSERT].
 
 \textbf{TSNE}
 
