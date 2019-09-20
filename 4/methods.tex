@@ -188,7 +188,7 @@ The results of unsupervised clustering algorithms can be visualized to illustrat
 
 Dimensionality reduction methods include principle component analysis (PCA), TSNE, and XXXXXX.
 
-Principle component analysis is a multivariate statistical technique that can be used to transform a set of variables with some degree of intercorrelation into a set of new, independent, orthogonal variables \cite{Abdi2010}. These variables are called principle components of the data set. The principle components are ordered with respect to the amount of variance in the data set that can be projected onto each component. In general, PCA fits an $p$-dimensional ellipsiod to a data set with $n$ features such that $p < n$. Each axis of the ellipsoid represents a single prinicple component. 
+Principle component analysis is a multivariate statistical technique that can be used to transform a set of variables with some degree of intercorrelation into a set of new, independent, orthogonal variables \cite{Abdi2010}. These variables are called principle components of the data set. The principle components are ordered with respect to the amount of variance in the data set that can be projected onto each component. In general, PCA fits an $p$-dimensional ellipsoid to a data set with $n$ features such that $p < n$. Each axis of the ellipsoid represents a single principle component. 
 
 It is important to note that prior to the application of PCA, the data must be normalized. Normalizing the data allows different features to be compared on the same scale.
 
@@ -200,7 +200,44 @@ Agglomerative clustering also lends itself well to visualization via heatmap. Th
 
 \section{Predicting Patient Outcomes Using Motion Patterns}
 
-\subsection{Logistic Regression}
+\subsection{Regression}
+
+The first supervised machine learning method we discuss is regression. In general, regression maps a set of features to a set of outcomes. Each feature is weighted based on its contribution to the outcome. Features which are more relevant to the outcome have larger weights, while less important features have smaller weights. 
+
+The simplest version of regression is linear regression. Linear regression is used when the outcome being predicted has continuous values: a common example would be using the size of a house to predict its cost. The cost, $y$, would be modeled as
+
+\begin{equation}
+y = w_0 + w*x
+\end{equation}
+
+\noindent where $w$ is the weight assigned to the feature $x$, which is the size of the house, and $w_0$ is the weight for the bias in the model. As more features are added to the model, this equation generalizes to 
+
+\begin{equation}
+y = w_0 + \sum_{i \in N} w_i*x_i
+\end{equation}
+
+\noindent where $w_i$ is the weight for feature $i$, $x_i$ in the set of $N$ features. 
+
+Alternatively, if the goal was to predict whether a house was owned or rented, linear regression would be a poor model choice. The goal of this problem is to identify a nominal class, not a value in a continuous interval. This type of problem is better suited for logistic regression.
+
+Logistic regression takes the equation for linear regression and passes it through the logistic function. % BUT WHY
+The logistic function is 
+
+\begin{equation}
+f(\pi) = \frac{1}{1+e^{\pi}}
+\end{equation}
+
+\noindent which means that a logistic regression models takes the form
+
+\begin{equation}
+y = \frac{1}{1+e^{w_0 + \sum_{i \in N} w_i*x_i}}
+\end{equation}
+
+This form of logistic regression is for binary, nominal outcomes, though multinomial logistic regression can model three or more outcomes and ordinal logistic regression can model ordered, discrete outcomes.
+
+\textbf{HOW ARE WE GOING TO USE IT}
+
+\textbf{STRENGTHS AND WEAKNESSES}
 
 \subsection{Support Vector Machine}
 
