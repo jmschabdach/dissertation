@@ -79,3 +79,27 @@ These subjects are considered human phantoms because of their health adult statu
 %\item Are there any preliminary analyses/results on this data?
 %\end{itemize}
 
+\section{Purpose for each cohort}
+
+\subsection{Simulated Phantom}
+
+The phantom experiments will be used to probe the volume registration technique. By applying the DAG-based and traditional registration techniques to the base phantom sequence, we will be able to evaluate the degrees of positional and signal change errors each technique may introduce into the registration process. After determining the baseline error, we will apply both registration techniques to the BOLD phantom sequence. The registered versions of the BOLD phantom sequence will be compared to each other and to the original BOLD phantom sequence to determine how well each registration retains the BOLD signal.
+
+This particular experiment will be one of the first to investigate how much true BOLD signal is preserved through motion correction. One of the major drawbacks to existing motion correction pipelines is that they remove signal along with noise. In clinical data, there is no way to know the ground truth signal contained within the image; however, simulated phantom images have a de facto known ground truth signal. The design for this experiment can be used to evaluate how much BOLD signal is recovered by other motion correction pipelines, and how close the recovered signal is to the signal of interest.
+
+\subsection{Human Phantom}
+
+The human phantom images from all sites will be used both as a set of true healthy control adults and as examples of low motion images of the same subjects taken at multiple sites.
+
+\subsection{Clinical Images}
+%For each subject in a cohort of 74 healthy neonatal subjects, at least one rs-fMRI was acquired. The images underwent motion correction using a pipeline developed by Power et al. \cite{Power2014}. The motion corrected image were compared to Power et al.'s thresholds of acceptability for their FD and DVARS metrics \cite{Power2014}. Of the 74 subjects in this cohort, 17 subjects had rs-fMRIs which did not meet Power et al.'s usability criteria. These high motion images were used in our study.
+
+\textbf{Neonatal Cohort.} Our set of neonatal subjects includes a cohort of 74 healthy neonates. Each subject in this cohort underwent an MRI scan, and the rs-fMRIs obtained during this process were compared to Power et al.'s positional and signal change usability thresholds. Of the 74 subjects, 17 of them had rs-fMRIs which did not meet the usability criteria. These high motion images were used to test the feasibility of the DAG-based volume registration framework. 
+
+These images were ideal for the feasibility study for three reasons. First, the neonates were healthy, which eliminates disease status as a confounding variable in the analysis of the registered images. Second, the neonates in this study were scanned using a feed and sleep protocol. Because the neonates were asleep during the scan, they generally did not move very much. The high-motion neonates are an obvious exception to this concept, but many of the high-motion images contained long periods where the subject was stationary. Evaluating the DAG-based framework on data with various patterns of motion and different periods of low and high motion allowed us to explore the effects of the DAG-based algorithm in different combinations of motion features. Third, these images were too corrupted by motion to be used in other analyses. Applying both the DAG-based framework and the traditional registration framework to these images provided the opportunity to compare the performances of both registration frameworks to each other in the context of the usability gold standard thresholds. 
+
+\textbf{Preadolescent Cohort.} The multicenter imaging study of preadolescent subjects provides a unique opportunity to evaluate the efficacy of the DAG-based framework on a large subject cohort containing variable amounts of motion. The outcome of this experiment will be used in the next experiment to determine if there are any site-specific or vendor-specific variables influencing patient motion.
+
+\textbf{Adult Cohorts.} The adult cohorts encompass many clinical outcomes and a wider age range than the other clinical populations. 
+
+\textbf{Fetal Cohort.} As the fetal subjects have both neurological and placental images, their data will be used to examine the impact of volume registration on different organ types.

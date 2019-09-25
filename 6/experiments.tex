@@ -1,94 +1,30 @@
-\chapter{EXPERIMENTS}
+\chapter{EXPERIMENTAL PIPELINE}
 \label{ch:experiments}
 
-\section{Volume Registration In A Motion Correction Pipeline}
 
-All images in each data set and cohort underwent both types of registration independently. The registered and original images are compared to the Power et. al. usability thresholds. The results at this stage answer the question of whether or not the DAG-based registration technique is more effective than the traditional registration technique for reducing motion in the initial step of a motion correction pipeline.  
+\section{Global Volume Registration and Motion Correction}
 
-Next, each pair of registered images will undergo a motion correction via an independent component analysis (ICA) pipeline outlined by Beckmann and Smith and implemented as FMRIB's MELODIC tool \cite{Beckmann2004}. The results of this experiment show how the DAG-based framework fits into an existing, comprehensive motion correction pipeline. 
+Both volume registration techniques described in Chapter \ref{ch:methods} were applied independently to each image from the subject cohorts described in Chapter \ref{ch:data}. After registration, three versions of each image existed: the original BOLD sequence, the sequence modified using traditional volume registration, and the sequence modified using the novel registration method.
 
-\subsection{Simulated Phantom}
+The registration algorithms both used a combination of affine and nonlinear transformations to align each pair of image volumes. During the registration, the following registration parameters were used:
+\begin{itemize}
+\item Interpolation type: nearest neighbor
+\item Number of threads: 100
+\item Registration metric: cross correlation.
+\end{itemize}
 
-The phantom experiments will be used to probe the volume registration technique. By applying the DAG-based and traditional registration techniques to the base phantom sequence, we will be able to evaluate the degrees of positional and signal change errors each technique may introduce into the registration process. After determining the baseline error, we will apply both registration techniques to the BOLD phantom sequence. The registered versions of the BOLD phantom sequence will be compared to each other and to the original BOLD phantom sequence to determine how well each registration retains the BOLD signal.
+After both volume registration techniques were applied to each image, the registered sequences underwent motion correction via a well-established motion correction pipeline. We chose to use the independent component analysis (ICA) pipeline outlined by Beckmann and Smith and implemented as FMRIB's MELODIC tool \cite{Beckmann2004}. The motion corrected sequences produced by MELODIC were saved alongside the original and registered sequences. 
 
-This particular experiment will be one of the first to investigate how much true BOLD signal is preserved through motion correction. One of the major drawbacks to existing motion correction pipelines is that they remove signal along with noise. In clinical data, there is no way to know the ground truth signal contained within the image; however, simulated phantom images have a de facto known ground truth signal. The design for this experiment can be used to evaluate how much BOLD signal is recovered by other motion correction pipelines, and how close the recovered signal is to the signal of interest.
+% NEEDS HELP
+The original, registered, and motion corrected sequences were all compared to the Power et al. usability thresholds. The amount of motion removed from an image can be quantified using the FD and DVARS usability thresholds, but that analysis does not explain how volume registration and motion correction techniques generalize to larger populations. Other metrics including the correlation ratio matrix were calculated for each version of the sequence.
 
-\subsection{Human Phantom}
+The differences between patient motion in the original and registered sequences were compared to these thresholds in a small evaluation of the immediate impact of registration algorithm on the image sequence. It is highly unlikely that an entire image sequence would meet the Power et al. usability thresholds after only the initial step of a motion correction pipeline, but it is valuable to examine the impact of a volume registration algorithm at each stage of the pipeline. 
 
-The human phantom images from all sites will be used both as a set of true healthy control adults and as examples of low motion images of the same subjects taken at multiple sites.
+%The results of this experiment show how the DAG-based framework fits into an existing, comprehensive motion correction pipeline. 
 
-\subsection{Clinical Images}
-%For each subject in a cohort of 74 healthy neonatal subjects, at least one rs-fMRI was acquired. The images underwent motion correction using a pipeline developed by Power et al. \cite{Power2014}. The motion corrected image were compared to Power et al.'s thresholds of acceptability for their FD and DVARS metrics \cite{Power2014}. Of the 74 subjects in this cohort, 17 subjects had rs-fMRIs which did not meet Power et al.'s usability criteria. These high motion images were used in our study.
+\section{Analyzing Patient Motion}
 
-\textbf{Neonatal Cohort.} Our set of neonatal subjects includes a cohort of 74 healthy neonates. Each subject in this cohort underwent an MRI scan, and the rs-fMRIs obtained during this process were compared to Power et al.'s positional and signal change usability thresholds. Of the 74 subjects, 17 of them had rs-fMRIs which did not meet the usability criteria. These high motion images were used to test the feasibility of the DAG-based volume registration framework. 
-
-These images were ideal for the feasibility study for three reasons. First, the neonates were healthy, which eliminates disease status as a confounding variable in the analysis of the registered images. Second, the neonates in this study were scanned using a feed and sleep protocol. Because the neonates were asleep during the scan, they generally did not move very much. The high-motion neonates are an obvious exception to this concept, but many of the high-motion images contained long periods where the subject was stationary. Evaluating the DAG-based framework on data with various patterns of motion and different periods of low and high motion allowed us to explore the effects of the DAG-based algorithm in different combinations of motion features. Third, these images were too corrupted by motion to be used in other analyses. Applying both the DAG-based framework and the traditional registration framework to these images provided the opportunity to compare the performances of both registration frameworks to each other in the context of the usability gold standard thresholds. 
-
-\textbf{Preadolescent Cohort.} The multicenter imaging study of preadolescent subjects provides a unique opportunity to evaluate the efficacy of the DAG-based framework on a large subject cohort containing variable amounts of motion. The outcome of this experiment will be used in the next experiment to determine if there are any site-specific or vendor-specific variables influencing patient motion.
-
-\textbf{Adult Cohorts.} The adult cohorts encompass many clinical outcomes and a wider age range than the other clinical populations. 
-
-\textbf{Fetal Cohort.} As the fetal subjects have both neurological and placental images, their data will be used to examine the impact of volume registration on different organ types.
-
-\section{Motion Metrics}
-
-In the previous chapter, the gold standard thresholds for rs-fMRI usability were discussed. These thresholds use the FD and DVARs metrics between neighboring volumes. While the FD and DVARs metrics quantify the volume-to-volume motion well, they do not quantify the overall motion contained in the image sequence. Other metrics, such as the Dice coefficient and the correlation ratio, may be useful in quantifying whole-sequence motion.
-
-\subsection{Dice Coefficient}
-
-The Dice coefficient was proposed by Lee R. Dice in 1945 \cite{Dice1945}. Dice examined several existing metrics for measuring association, and finding them lacking, proposed his own ``coincidence index''. His coincidence index measures the association between a number of samples $a$ where condition $A$ is true and a number of samples $b$ where condition $B$ is true:
-
-\begin{equation}
-Index = \frac{2h}{a+b}
-\end{equation}
-
-In this equation, $h$ represents the number of samples where both conditions $A$ and $B$ are true. His index can take on any value between 1.0 and 0.0 such that a value of 1.0 means that conditions $A$ and $B$ are true for all samples. Similarly, a value of 0.0 means that conditions $A$ and $B$ are never both true for any sample. While this index is a count of samples that meant both conditions and not a true probability, Dice suggests that the chi-squared test can be used to determine if the combinations of conditions in the samples from a set of data is meaningful or due to random chance. 
-
-Many medical imaging researchers have adapted the Dice coefficient to measure the overlap between pairs of images. %The images could be manual and automatic segmentations of the same area, segmented images registered to each other, or ELEPHANTS.
-Zijdenbos et al. trained an artificial neural network to semiautomatically segment brain MRIs and compared the generated segmentations to manual segmentations using the Dice coefficient \cite{Zijdenbos1994}.
-Zou et al. used the Dice similarity coefficient in their analysis of the reproducibility of manually segmented MRIs and the accuracy of automatic segmentations of the same images for prostate and brain tumor datasets \cite{Zou2004}. 
-Liao et al. used it to measure the accuracy of a volume registration framework for aligning manual segmentations of multiple organs in fetal images \cite{Liao2016}. Bharatha et al. performed a study on pre- and intra-operative images of the prostate. They segmented the images, generated deformable finite element models of the segmentations, and used the Dice coefficient to compare the registered segmentations and finite element models \cite{Bharatha2001}.
-
-%The global volume registration techniques were applied to all 17 resting-state BOLD MR images. After the registrations, each subject had three sequences associated with it: the original sequence, the sequence registered using the traditional framework, and the sequence registered using the DAG-based framework. The globally registered images were compared to each other in terms of correlation ratios between all volumes in the sequence as well as FD and DVARS between temporally neighboring volumes. 
-
-It should be noted that the Dice coefficient as used in these contexts is a measure of similarity of items from two categories which take on binary conditions. Additionally, all studies mentioned in the previous paragraph require a manually segmented gold standard image to which the automatic segmentations or registered images can be compared. Medical images do not naturally have binary values, nor is it always reasonable to obtain manual segmentations of all images in a dataset. In cases where a good image segmentation cannot be obtained, other similarity metrics such as mutual information and cross correlation should be used instead.
-
-\subsection{Correlation Ratio Matrix}
-
-The correlation ratio is an asymmetrical, spatially informed measure of the overlap between images. It is different from other similarity metrices in that a lower correlation ratio indicates a better alignment between two images rather than a worse alginment. 
-
-The earliest symbolic representation of the correlation ratio is 
-
-\begin{equation}
-\label{ch4:eq:cr-orig}
-\eta = \frac{\Sigma}{\sigma_y} = \frac{\sqrt{\frac{\sum(n_x(\overline{y}_x - \overline{y})^2)}{N}}}{\sigma_y}
-\end{equation}
-
-\noindent where $n_x$ is the number of samples in any one set $x$, $\overline{y}_x$ is the average of the samples in $x$, $\overline{y}$ is the average of all samples in all sets, $\sigma_y$ is the standard deviation of all samples in all sets, and $N$ is the total number of samples across all sets \cite{Rugg1917}. The meaning of this equation was simplified by Ayres, who describes it as ``the ratio between two standard deviations'' \cite{Ayres1920}. In Equation \ref{ch4:eq:cr-orig}, the numerator is the standard deviation of a single set of samples with respect to all sets of samples, and the denominator is the standard deviation of all sets of samples. The process of calculating the individual components of this equation are outlined in \cite{Rugg1917}.
-
-The correlation ratio was proposed for use in medical imaging applications in 1998 and compared to other similarity metrics. Roche et al. provide an example of algining two black images, one with a uniform gray stripe and the other with a horizontal gray gradient, such that the overlap between the two images is maximally similar \cite{Roche1998a}, \cite{Roche1998}. They show that the mutual information metric has a maximum value at every translation of an integer number of pixels while the correlation ratio had a maximum value at one single alignment. They apply the correlation ratio to MR images as well as computed tomography and positron emission tomography images. Their experiments suggest that in the context of multimodal registration, the correlation ratio balances accuracy and robustness.
-
-In the context of medical imaging, the correlation ratio measures the functional dependence between a pair of images $X$ and $Y$. The correlation ratio of $Y$ given $X$ is
-
-\begin{equation}
-\eta(Y|X) = \frac{Var[E(Y|X)]}{Var(Y)}
-\end{equation}
-
-This equation is comparing the energy of $Y$ in $X$ to the total energy of $Y$. If $X$ and $Y$ overlap in area $\Omega$, the number of pixels in that area is $N = Card(\Omega)$. Since $X$ is known, it can be divided into sets of pixels $\Omega_i$ where each set is comprised of locations in $\Omega$ where the pixels $X$ have the same value $i$. 
-
-Because the correlation ratio shows is a strong metric for measuring the similarity between two images, we suggest using it to quantify the similarity between all volumes in an image sequence. We choose to refer to this metric as the correlation ratio matrix. For a sequence of length $l$, the correlation ratio matrix $M$ is a square, asymmetrical matrix of size $l*l$. Each cell in $M$ is calculated as
-
-\begin{equation}
-M_{i,j} = \eta(J_i, J_j) = \frac{Var[E(J_i|J_j)]}{Var(J_i)} =  \frac{\sqrt{\frac{\sum |J_i|(\overline{J_i} - \overline{J_i \cap J_j})^2)}{|J_i \cap J_j|}}}{\sigma_{J_i \cap J_j}}
-\end{equation}
-
-\noindent where $J_i$ and $J_j$ are volumes $i \in l$ and $j \in l$ in the sequence, respectively, $|*|$ indicates the number of voxels in the operand, $\overline{*}$ indicates the average of the voxel values in the operand, and $J_i \cap J_j$ is the volume of space where images $J_i$ and $J_j$ intersect. %In volume registration, the computer assumes the entire contents of $J_i$ and $J_j$ intersect provided they are the same size (in voxels), which somewhat simplifies 
-
-Since the matrix $M$ is quite large, using statistics describing $M$ rather than $M$ itself can simplify analyses. On the other hand, the whole matrix $M$ may be more comprehensively analyzed using statistical tests such as the $t$-test.
-
-\section{Analysis of Motion Correction}
-
-The purpose of motion correction is to remove noise from valuable signal in an image. The amount of motion removed from an image can be quantified using the FD and DVARS usability thresholds, but that analysis does not explain how volume registration and motion correction techniques generalize to larger populations.
+The metrics described in the previous section are strong alternatives to the FD and DVARs metrics 
 
 Statistical analyses can be used to identify general trends within a data set. Statistical tests can be used to compare images before and after motion correction within each subject population. They can also indicate the degree of significance of the effects of volume registration and motion correction. 
 
@@ -98,23 +34,25 @@ Statistical analyses can be used to identify general trends within a data set. S
 
 %Machine learning techniques can be used to classify images as belonging to different groups, but many of these techniques use difficult to interpret ``black box'' logic. In some cases, examining the logic behind a classification reveals patterns in a dataset which a human missed but a computer detected. These patterns can be helpful for improving human classification of the images, but they may also be based on artifacts which were not filtered out during preprocessing.
 
-We suggest that the ways that patients move are specific to certain patient groups. For example, fetal patients live suspended in amneotic fluid and as such are subject to different physical constraints than patients in other age groups. Neonatal patients are often scanned using a ``feed and bundle'' protocol, which often results in them sleeping through the scan. However, neonatal patients sometimes wake up during the scan. The way a baby woken up from a nap moves is different from how a fidgety preadolescent moves, though the terminology to define how the characteristics of these movement patterns differ is lacking. 
+We suggest that the ways that patients move are specific to certain age groups. For example, fetal patients live suspended in amniotic fluid and as such are subject to different physical constraints than patients in other age groups. Neonatal patients are often scanned using a ``feed and bundle'' protocol, which often results in them sleeping through the scan. However, neonatal patients sometimes wake up during the scan, and the way a baby woken up from a nap moves is different from how a fidgety preadolescent moves. % though the terminology to define how the characteristics of these movement patterns differ is lacking. 
 
 There is also a chance that patients within the same age group move differently possibly due to their cognitive state. Preadolescents who have ADHD likely become bored and fidgety in the MR scanner at different rates then their non-ADHD counterparts. Adults suffering from dementia may have more difficulty remaining still for the duration of a scan than adults from similar demographics with no dementia.
 
 These patterns are essentially signals specific to different categories of patients. Machine learning techniques are useful for identifying patterns in signals from different sources. In addition to the motion metrics identified in the previous section, we will also use demographic and clinical data as features for our machine learning models. 
 
-The goal of applying machine learning to identify population level motion patterns lends itself well to unsupervised machine learning techniques. Unsupervised learning techniques group samples from a population based on the patterns in their features. They do not use information about any known data groups(SYN) to inform their classification processes. In this section, we discuss several different unsupervised machine learning techniques used to measure degrees of association within and identify subgroups of a data set.
+The goal of applying machine learning to identify population level motion patterns lends itself well to unsupervised machine learning techniques. Unsupervised learning techniques group samples from a population based on the patterns in their features. They do not use information about any known groups in the population to inform their classification processes. In this section, we discuss several different unsupervised machine learning techniques used to measure degrees of association within subgroups of a data set.
 
 \subsection{K-means Clustering}
 
-K-means clustering divides a group of data samples with $n$ features into $k$ groups based on each sample's distance from the average value of the group \cite{macqueen1967}, \cite{Hartigan1979}. In k-means clustering, the features of a set of data are viewed as the locations of each data sample in \textit{n}-dimensional space. In this space, \textit{k} cluster centroids are initially distrubuted. The distribution pattern can place the centroids either randomly between data samples or using randomly selected data points.
+K-means clustering divides a group of data samples with $n$ features into $k$ groups based on each sample's distance from the average value of the group \cite{Hartigan1979}, \cite{macqueen1967}. In k-means clustering, the features of a set of data are viewed as the locations of each data sample in \textit{n}-dimensional space. In this space, \textit{k} cluster centroids are initially distrubuted. The distribution pattern can place the centroids either randomly between data samples or using randomly selected data points.
 
-After the locations of the cluster centroids are initialized, the distance between each sample and each centroid is calculated. Each sample is assigned to the cluster represented by the centroid closest to it. Once the clusters are defined, the location of the centroid of each cluster is recalculated. The new centroid location is the mean of the locations of all samples in its cluster. The distance between each sample and each cluster centroid is recalculated, samples are reassigned to their closest cluster centroid, and the centroid of each cluster is recalculated. This process continues until a stopping criteria is reached. With most unsupervised machine learning methods, the stopping criteria is that the classifications of the model do not change for a certain number of iterations. In some cases, the stopping criteria could be dependent on the number of iterations the model has [passed through/undergone] (SYN). 
+After the locations of the cluster centroids are initialized, the distance between each sample and each centroid is calculated. Each sample is assigned to the cluster represented by the centroid closest to it. Once the clusters are defined, the location of the centroid of each cluster is recalculated. The new centroid location is the mean of the locations of all samples in its cluster. The distance between each sample and each cluster centroid is recalculated, samples are reassigned to their closest cluster centroid, and the centroid of each cluster is recalculated. This process continues until a stopping criteria is fulfilled. With most unsupervised machine learning methods, the stopping criteria is that the classifications of the model do not change for a certain number of iterations. However, a maximum number of iterations is imposed on the learning process to prevent a model from running indefinitely. As a result, it is possible for a model to ``time out'' before reaching a stable state.
+
+There are many variations of k-means clustering. For example, k-medians follows the same steps as k-means, but uses the median of the known data points in a cluster as the new centroid for that cluster \cite{Juan1998}. Another variation called k-mediods uses the data point closest to the center of the cluster as the new cluster centroid rather than a descriptive statistic of the cluster \cite{Kaufman1987}.
 
 One of the major limitations of k-means clustering is that the number of clusters must be given to the model. It is difficult to know how many clusters are needed to adequately represent subgroups within a data set. If too many clusters are used, the groups identified by the algorithm will be more granular than they should be; however, using too few clusters will produce large groups which mask distinct subgroups. 
 
-There are many variations of k-means clustering. For example, k-medians follows the same steps as k-means, but uses the median of the known data points in a cluster as the new centroid for that cluster \cite{Juan1998}. Another variation called k-mediods uses the data point closest to the center of the cluster as the new cluster centroid rather than a descriptive statistic of the cluster \cite{Kaufman1987}.
+
 
 \subsection{Spectral Clustering}
 
