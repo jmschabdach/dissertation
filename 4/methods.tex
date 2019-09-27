@@ -239,9 +239,7 @@ The Laplacian matrix can be used to explore many properties of a graph. In parti
 
 To determine the number of clusters in the graph, the eigenvalues of the Laplacian matrix are sorted in increasing order. The number of zero-valued eigenvalues is the number of connected components in the graph. Eigenvalues close to zero suggest weak edges preventing some connected component from being two separate components. Manually examining these eigenvalues before performing spectral clustering can be informative about the number of clusters to create: the number of values below the first large gap between the eigenvalues are the number of clusters, $k$. The eigenvectors associated with these $k$ eigenvalues are used as a lower-dimensional representation of the data in the graph. Performing $k$-means clustering on this data produces the labels for the clusters within the data that are not linearly separable otherwise.
 
-\textbf{Strengths of spectral clustering}
-
-\textbf{Weaknesses of spectral clustering}
+%\textbf{STRENGTHS AND WEAKNESSES}
 
 \subsection{Agglomerative Clustering}
 
@@ -250,6 +248,16 @@ Agglomerative clustering is a specific type of hierarchical clustering which bui
 First, the distance from every data sample to every other data sample is calculated. The two data points that are closest together in terms of some similarity metric are combined into a single cluster. In the [relationship tree] representing the similarities between all data samples, a node is created and the joined data points are connected to that node. That node or cluster is treated as an intermediate data sample. The distance from the new ``data sample'' to every other data sample is calculated and the two closest data samples are again combined into another intermediate sample. A node representing the new cluster is added to the [relationship tree] and the data sample or samples merged into the cluster are connected to the node. The process of combining data points into clusters based on similarity to other data points terminates when all data points and clusters have been combined. 
 
 The results of agglomerative clustering can be interpreted by traversing the [relationship tree]. The [relationship tree] recorded the history of which nodes were merged into which clusters at each stage. Due to the nature of agglomerative clustering, these stages can be viewed as distinct levels in the tree. Beginning at the final node (the root) of the tree, the granularity of the clusters can be explored. At the top level, there is only one cluster, but at the second to last level of the tree there will be two clusters, at the third level there will be three clusters, and so on. How each cluster grew can reveal information about the relationships between the data samples within that cluster.
+
+%\subsection{Gaussian Mixture Models and Expectation Maximization}
+
+%As the number of samples in a data set tends to infinity, the Central Limit Theorem states that the distribution of the data will approach a Gaussian distribution. Since our data is composed of different groups, it can be modeled as a collection of multivariate Gaussian distributions. The underlying Gaussian distributions would contribute to the overall distribution with different strengths. This type of model is called a Gaussian mixture model (GMM). The parameters defining the mixture models and their contribution to the overall distribution are unknown, but can be calculated using expectation-maximization.
+%
+%The goal of expectation-maximization (EM) is to estimate the maximum likelihood of parameters in statistical models. The EM algorithm is composed of two steps: the expectation step and the maximization step. During the expectation step, the logarithm of the likelihood of the parameters taking their current values is calculated. Then, during the maximization step, the values of the parameters are recalculated to maximize the likelihood in the next step. 
+%
+%The process of using the EM algorithm to estimate the parameters of a multivariate GMM begins with the initialization of the parameters for each multivariate Gaussian distribution. These parameters include the mean, the covariance, and the mixing coefficient of the distribution. 
+%
+%The EM algorithm may not find the globally optimal values of the parameters of interest. It is only guaranteed to find local optima. 
 
 \subsection{Visualizing Clustering Results} 
 
@@ -306,17 +314,74 @@ y = \frac{1}{1+e^{(w_0 + \sum_{i \in N} w_i*x_i)}}
 
 This form of a logistic regression model is for binary, nominal outcomes, though multinomial logistic regression can model three or more outcomes and ordinal logistic regression can model ordered, discrete outcomes. For the purposes of this document, when we say logistic regression, we mean the form which models binary, nominal outcomes. 
 
-\textbf{STRENGTHS AND WEAKNESSES} 
+%\textbf{STRENGTHS AND WEAKNESSES} 
 
 \subsection{Support Vector Machine}
 
-\subsection{Expectation Maximization}
+The mathematical framework for support vector machines (SVMs) was developed in 1963. In its original form, it could only be used to classify linearly separable data. SVMs treat data samples with $n$ features as points in $n$-dimensional space. The SVM is composed of a collection of binary hyperplane classifiers. Binary hyperplane classifiers label data as belonging to a class or not belonging to that class depending on which side of the hyperplane the data is located. For a single binary hyperplane, the ideal location and alignment of the hyperplane is calculated using the following equation
+
+\begin{equation}
+\vec{w}\cdot\vec{x}+b = 0
+\end{equation}
+
+\noindent where $\vec{w}$ is the vector of weights assigned to the features in $\vec{x}$ and the variable $b$ is a bias factor. This equation defines the hyperplane itself, but there are many hyperplanes that could satisfy this equation. The optimal hyperplane is determined using the support vectors. 
+
+The support vectors are the data points closest to the hyperplane. They define the location and orientation of the hyperplane. The space between the points on opposite sides of the hyperplane is called the margin, $d$. The optimal hyperplane is defined as the hyperplane whose $\vec{w}$ and $b$ result in the largest $d$.
+
+The largest $d$ occurs when the weights for the data samples are minimized. The weights indicate how important a data sample is in defining the hyperplane. Data samples which do not increase the size of $d$ (are not support vectors) should not contribute to the model. These samples should be assigned weights of $0$.
+
+When the ideal $\vec{w}$ and $b$ parameters have been determined, data on one side of the hyperplane is labeled as belonging to one class while the data on the other side of the hyperplane does not belong to that class. In a two class scenario, data that does not belong to one class clearly must belong to the other class. As more classes are added to a data set, the number of hyperplanes must also increase. Instead of optimizing a single hyperplane, the entire collection of hyperplanes must be optimized together.
+
+In some cases, data with $n$ dimensions may not be separable in $n$-dimensional space. In 1992, it was proposed that the original data could be mapped to a higher dimensional space where it would be linearly separable. The SVM could be built in that space and would still function as a linear classifier, even though it would appear to be a nonlinear classifier in the original space. Different kernel functions have been developed. 
+
+After a SVM model has been trained, the kernel used to map the data from $n$-dimensional space to the higher dimensional space is used to map new data to that space. The new data is assigned labels depending on where it lies in the higher dimensional space.  
+
+SVMs are versatile supervised learning techniques that perform well in classifying both linearly and nonlinearly separable data. By their very nature, they find the globally optimal solution. However, finding the optimal parameters for a SVM model can be a computationally expensive and complex process depending on the characteristics of the data samples.
 
 \subsection{LSTM Recurrent Neural Network}
 
-Another approach to analyzing these signals is regression. Regression models the relationships between a set of independent features and an outcome or set of outcomes. For example, the linear regression could be used to evaluate the relationship between motion metrics and the severity of neurodevelopmental outcomes or patient age. 
+% And of course I would be remiss if I left out neural networks, the current sin du jour of supervised machine learning
 
-In addition to machine learning and regression, other techniques from the biomedical imaging and computer vision domains may be used. Supervised machine learning models may also be trained to predict a clinical or behavioral outcome based on a patient's image features.
+One of the most popular supervised learning algorithms is the artificial neural network. A basic artificial neural network is composed of connected layers of units modeled after neurons in a biological brain. Every artificial neural network has at least two layers: an input layer and an output layer. The number of neurons in the input layer is the same as the number of features in the data being fed to the network. The input layer is connected to the output layer by weighted edges. For a network with $n$ features in the input layer and one neuron in the output layer, the value predicted by the network 
+for data point $\vec{x}$ is given as
+
+\begin{equation}
+\label{ch4:eq:nn_01}
+f(\vec{x}) = \vec{w} \cdot \vec{x} + b
+\end{equation}
+
+\noindent where $\vec{w}$ is the weight assigned to the edge connecting each input neuron to the output neuron, $\vec{x}$ is the values of the input vector, and $b$ is an offset factor.
+
+Layers can be added between the input layer and the output layer to model more complex relationships. These layers are called hidden layers because they are not seen at the data input or model output. The value of each neuron in each layer can be calculated using the values of the neurons in the previous layer, which means that for two layers, Equation \ref{ch4:eq:nn_01} expands to
+
+\begin{equation}
+f(\vec{x}) = \vec{w_2} (\vec{w_1} \cdot \vec{x} + b_1) + b_2
+\end{equation}
+
+More generally, Equation \ref{ch4:eq:nn_01} can be written as
+
+\begin{equation}
+\label{ch4:eq:nn_02}
+f_n(\vec{x}) = \vec{w_n} f_{n-1}(\vec{x})+ b_n
+\end{equation}
+
+\noindent where dot product of the weights of the current layer $w_n$ and the output $f_{n-1}(\vec{x})$ of the previous hidden layer $n-1$ are offset by some bias factor $b_n$ to produce the output $f_n(\vec{x})$ of the current layer. For the first layer of the network, the output is calculated using Equation \ref{ch4:eq:nn_01}.
+
+To model nonlinear relationships in data, this equation must be generalized further to allow for activation functions. Activation functions are intended to represent the action potential firing in a biological neuron. A biological neuron is either activated or not activated, but the activation function of a neuron in an artificial neural network is not limited to binary states. For example, the output of a rectified linear unit (ReLU) is in the range $[0, \inf)$, a sigmoid function's output is in the range $(0, 1)$, and a hyperbolic tangent produces a value in the range $(-1, 1)$. Different activation functions are used for different applicationd depending on the desired behavior of the model.
+
+We represent the activation function generically as $g_n(\cdot)$ and rewrite Equation \ref{ch4:eq:nn_02} as
+
+\begin{equation}
+\label{ch4:eq:nn_03}
+f_n(\vec{x}) = g_c \left( \vec{w_n} f_{n-1}(\vec{x})+ b_n \right)
+\end{equation}
+
+Until this point, we have been describing feed-forward neural networks. All of the connections flow in a single direction from the input nodes to the output nodes. Networks built using a feed-forward paradigm are often used for pattern recognition or other cases where a given input is associated with a known output. However, neural networks can also have connections that skip layers, link back to previous layers, or connect to other neurons in the same layer. This type of network is called a recurrent neural network.
+
+One particularly interesting type of recurrent neural network is a long short-term memory (LSTM) network. LSTM networks have more complex unit structure than basic neural networks. LSTM units are composed of a memory component and three types of gates: an input gate, an output gate, and a forget gate. The memory component tracks the current value of the unit. The input gate dictates how much data being passed to the cell impacts the memory component, the forget gate dictates how long a value is stored in the memory component, and the output gate dictates the impact of the value in the memory component is used to produce the output activation of the unit. Due to the nature of the LSTM units, networks made of LSTM units have an advantage over feed-forward networks when working with time-series data. 
+
+%One of the major drawbacks of both regression and SVMs is that the data used to train these models must be in feature vector form. Neural networks have the ability to work with more complex input data. They have been used for tasks as complex as speech recognition and video processing. 
+
 
 \subsection{Application of Supervised Machine Learning}
 
@@ -346,29 +411,41 @@ The ``wellness''/``goodness'' of a binary classification model is determined usi
 \end{tabular}
 \end{table}
 
-Various metrics can be calculated from the truth table. Accuracy, for example, is a measure of how many data samples were classified correctly:
+Various metrics can be calculated from the truth table, such as sensitivity and precision. Sensitivity measures how well the model performed at correctly identifying actually true data samples:
+
+\begin{equation}
+sensitivity = TPR = \frac{TP}{TP+FN}
+\end{equation}
+
+\noindent Precision measures the ratio of positive predictions to actually true data:
+
+\begin{equation}
+specificity = PPV = \frac{TP}{TP+FP}
+\end{equation}
+
+These metrics are also known as the true positive rate and the positive predictive value, respectively
+
+These metrics are independently informative about different aspects of the model, but during training only one metric is used to evaluate a model's performance. Accuracy, for example, is a measure of how many data samples were classified correctly:
 
 \begin{equation}
 A = \frac{TP+TN}{TP+TN+FP+FN}
 \end{equation}
 
-\noindent Other metrics such as sensitivity and specificity evaluate how well a model performed at correctly identifying data samples from each known class where sensitivity is calculated as
+We choose to use the balanced F1 score to evaluate the success of our supervised learning models. The balanced F1 score is calculated as:
 
 \begin{equation}
-000
+\begin{split}
+F1 & = \frac{2 \cdot TPR \cdot PPV}{TPR+PPV} \\
+& = \frac{2 \cdot TP}{2 \cdot TP + FP + FN}
+\end{split}
 \end{equation}
 
-These metrics are also known as the true positive and true negative rates. Another metric, precision, evaluates how many classifications of the model into a single class actually belong in that class.
+The balanced F1 score places equal value on a model correctly identifying actually true data compared to false data as well as identifying as much actually true data as possible. Accuracy only accounts for the number of correctly classified data samples. In cases where all classes in a data set are not evenly represented, the balanced F1 score produces a more robust model than accuracy. 
 
-These metrics are independently informative about different aspects of the model, but during training one metric is used to evaluate a model's performance. We choose to use the balanced F1 score to evaluate the success of our supervised learning models. The balanced F1 score is calculated as:
-
-\begin{equation}
-F1 = \frac{}{}
-\end{equation}
 
 \section{Describing Motion Patterns}
 
-In previous sections we describe practical knowledge about how fetal, neonatal, preadolescent, and adult patients move in different ways during MRI scans. We wish to quantify these movement patterns using the metrics described in Chapter \ref{ch:methods} and identify appropriate terminology that can be used to describe them.
+In previous sections we describe practical knowledge about how fetal, neonatal, preadolescent, and adult patients move in different ways during MRI scans. We wish to quantify these movement patterns using the metrics described earlier in this chapter and identify appropriate terminology that can be used to describe them.
 
 
 %\subsection{Demographic-Related Motion Patterns} % in different populations to formally describe age-group or clinical status related motion patterns.
