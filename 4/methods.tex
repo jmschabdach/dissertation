@@ -1,7 +1,7 @@
 \chapter{METHODS}
 \label{ch4:methods}
 
-\section{Volume Registration Framework}
+\section{Volume Registration and Motion Correction}
 
 In the previous chapter, we discuss several techniques used to retrospectively correct motion. Motion correction pipelines may use denoising and filtering, but all pipelines begin with volume registration. In this section, we discuss a different approach to volume registration, how it compares to traditional volume registration, and how volume registration fits into a motion correction pipeline. 
 
@@ -61,7 +61,39 @@ Traditional volume registration assumes that
 
 \noindent{and calculates $\phi_{i,i+2}$ directly. We argue that this assumption is not true in all cases. Rather than directly calculate $\phi_{0,i}$ and use it to align volume $i$ to the reference volume as the traditional method does, we calculate each component $\phi$ that is a factor of $\phi_{0,i}$. Each component $\phi_{i,i+1}$ is combined with the preceding $\phi_{0,i}$s to recursively align volume $i+1$ to the reference volume without making the large and often inaccurate transformations required by directly calculating $\phi_{0,i+1}$.} This process is outlined in Figure \ref{ch4:fig:dag-reg}.
 
-\subsection{Motion Correction Pipeline}
+\subsection{Independent Component Analysis}
+
+The purpose of image registration is purely to ensure the position of the patient throughout the entire rs-fMRI is consistent. After registration, the image still contains BOLD source signals and noise signals caused by factors other than brain activity. The challenge of separating these combined signals is called blind source separation (BSS). 
+
+We chose to focus on an independent component analysis (ICA) approach for solving the BSS problem. The specific technique we use has been described by Beckmann and Smith as probabilisic ICA. Probabilistic ICA is a linear regression model which performs mixing in the original data space and assumes the true BOLD signal has been confounded by Gaussian noise. These constraints mean that BSS can be solved in three steps:
+
+\begin{enumerate}
+\item Estimate a joint subspace consisting of source and noise signals and an noise subspace orthogonal to the joint subspace,
+\item Estimate the independent sources in the joint subspace, and 
+\item Assess the statistical significance of the independent sources.
+\end{enumerate} 
+
+\textbf{In the first step}, probabilistic ICA treats the voxel intensity values in every frame of the image sequence as a matrix of $V$ voxels across $n$ time points. For each voxel $v_i \in V$, the observed signal in that voxel can be modeled as
+
+\begin{equation}
+\label{ch4:eq:ica01}
+\vec{x_i} = A \vec{s_i} + \mu + \vec{\eta_i}
+\end{equation}
+
+\noindent This equation allows three different types of signals to contribute to the observed voxel values $\vec{x_i}$ for a given voxel across all $n$ timepoints in the sequence. The first type of signal is a vector of non-Gaussian source signals $\vec{s_i}$ across all $n$ timepoints. The source signals are modulated by mixing matrix $A$ whose shape is the number of time points $n$ by the number of source signals $q$. The second type of signal is an offset denoted by $\mu$. The offset constrains the observed signals to be centered around the mean of all observed signals. The third type of signal $\vec{\eta_i}$ is a vector of noise throughout the duration of the sequence. To summarize, ICA assumes that the observed signal in a given voxel can be divided into non-Gaussian source signals, Gaussian noise signals, and an offset.
+
+Probabilisitic ICA explicitly assumes an isotropic Gaussian noise model. This assumption makes it easier to separate a source signal from a noise signal: a noise signal will have a Gaussian distribution while a source signal will not. Because of this assumption, the intensity values across all individual voxels must be normalized to have a mean of 0 and a standard deviation of 1.
+
+The information about the type of distributions of source signals and noise signals can be used to identify the number of source signals. In a noiseless system, the number of source signals is equivalent to the rank of the covariance matrix of the mixing matrix. Because rs-fMRIs are inherently noisy, we must incorporate the covariance of the noise into the covariance of the mixing matrix. In this more general case, the number of sources is more complex to determine. Beckmann and Smith suggest that the number of source signals is the same as the number of eigenvalues of the covariance matrix that violate the ``sphericity assumption of the isotropic Gaussian noise model'' \cite{Beckmann2004}.
+
+\textbf{In the second step}, 
+
+One of the major limitations of ICA is that it assumes the dataset contains a sufficiently large number of images, each with a sufficiently large number of voxels.
+
+  
+%ICA treats the different behaviors present across individual voxels throughout the time course of the imageimage as a series of signal sources combined to create the observed signal. 
+
+\subsection{Pipeline}
 
 Both the traditional and novel volume registration techniques were applied independently to each image from the subject cohorts described in Chapter \ref{ch:data}. After registration, three versions of each image existed: the original BOLD sequence, the sequence modified using traditional volume registration, and the sequence modified using the novel registration method.
 
