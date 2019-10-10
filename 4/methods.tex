@@ -139,7 +139,13 @@ Zijdenbos et al. trained an artificial neural network to semiautomatically segme
 Zou et al. used the Dice similarity coefficient in their analysis of the reproducibility of manually segmented MRIs and the accuracy of automatic segmentations of the same images for prostate and brain tumor datasets \cite{Zou2004}. 
 Liao et al. used it to measure the accuracy of a volume registration framework for aligning manual segmentations of multiple organs in fetal images \cite{Liao2016}. Bharatha et al. performed a study on pre- and intra-operative images of the prostate. They segmented the images, generated deformable finite element models of the segmentations, and used the Dice coefficient to compare the registered segmentations and finite element models \cite{Bharatha2001}.
 
-It should be noted that the Dice coefficient as used in these contexts is a measure of similarity of items from two categories which take on binary conditions. Additionally, all studies mentioned in the previous paragraph require a manually segmented gold standard image to which the automatic segmentations or registered images can be compared. Medical images do not naturally have binary values, nor is it always reasonable to obtain manual segmentations of all images in a dataset. In cases where a good image segmentation cannot be obtained, other similarity metrics such as mutual information and cross correlation should be used instead.
+It should be noted that the Dice coefficient as used in these contexts is a measure of similarity of items from two categories where each item belongs to exactly one class. The two classes of interest in the case of rs-fMRIs are ``brain'' or ``not brain''. Medical images do not naturally have binary values. All studies mentioned in the previous paragraph require a domain expert to manually segment each image that will be analyzed using the Dice coefficient. The manually segmented images are considered the gold standard to which automatic segmentations or registered images can be compared. 
+
+The images in our dataset have been manually curated to remove the skull and other anatomical features outside of it, but the images still contain a continuous range of voxel intensity values. The Dice coefficient cannot be directly applied to these image sequences, even though each voxel only belongs to one of two classes. The volumes first must undergo thresholding to create binary images to clearly separate brain and background for computational purposes. We use Otsu thresholding to accomplish this task. 
+
+Otsu thresholding divides the contents of an image into two binary classes based on the histogram of voxel intensity values. It assumes that the classes are represented in the histogram by separable peaks. It separates the peaks by finding the separation threshold with the best separation between classes. In its original form, Otsu thresholding exhaustively searches the space of all possible thresholds and calculates the within-class variance and between-class variance for the pair of classes separated by the current threshold option. The ideal threshold is the one which produces the minimal within-class variance and the maximal between-class variance. The ideal threshold is then used to convert the original image into a binary image volume where background voxels have a value of zero and voxels in the brain have a value of one. The binarized image volume can be compared to other binarized image volumes using the Dice coefficient. 
+
+In cases where a good Otsu thresholded binary image cannot be obtained, other similarity metrics such as mutual information and cross correlation should be used instead.
 
 \subsection{Correlation Ratio Matrix}
 
@@ -218,13 +224,16 @@ Even though the rs-fMRIs in our study are all obtained using the same imaging mo
 
 \subsection{Implementation: Tools and Libraries}
 
-To calculate metrics, we used several existing tools. 
+To calculate metrics, we used several existing tools and libraries. When no existing tool could be found, functions were implemented manually in Python3. 
 
-As the Dice coefficient is a measure of the binary overlap of a pair of image volumes, it cannot be immediately applied to rs-fMRI volumes. The volumes first must undergo thresholding to separate voxels located within the brain and voxels in the background. The Dice coefficient could then be calculated for each pair of binary image volume. This calculation was implemented manually.
+%As the Dice coefficient is a measure of the binary overlap of a pair of image volumes, it cannot be immediately applied to rs-fMRI volumes. The volumes first must undergo thresholding to label voxels located within the brain and  voxels in the background. Since each voxel can only belong to one of two classes, brain or background, we use Otsu thresholding to separate brain and background. 
+For the Dice coefficient calculation, we first had to create a binary version of each image volume. To binarize the image volumes, we used OpenCV's Otsu thresholding function. The binary images were then passes to a manually implemented function to calculate the Dice coefficient.
 
-FLIRT (FMRIB’s Linear Image Registration Tool) was used to calculate the correlation ratio between each possible pair of volumes in the sequences \cite{Jenkinson2001} \cite{Jenkinson2002}. We then used the average and standard deviation of the correlation ratio distribution of each image to compare the images.
+The correlation ratio between each possible pair of volumes in the sequence was calculated using bash and FLIRT (FMRIB’s Linear Image Registration Tool) \cite{Jenkinson2001} \cite{Jenkinson2002}. We then used the average and standard deviation of the correlation ratio distribution of each image to compare the images.
 
 The mutual information calculation was implemented in two steps. The first step was to create a function that computes the joint histogram of the voxel value distributions between the two image volumes. This histogram was fed to a second function that converts the histogram counts to probabilities and calculates the mutual information value. 
+
+%--------------------------------------------------------------------------
 
 \section{Patient Classification Using Motion Patterns} 
 
