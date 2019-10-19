@@ -1,0 +1,78 @@
+\chapter{Volume Registration Parameters}
+\label{appendix:registration-params}
+
+The parameters used for the registration of pairs of image volumes can be seen below.
+
+\begin{lstlisting}[language=Python]
+
+##
+# Register a pair of image volumes
+#
+# Effects: save a copy of the registered image and the registration parameters
+#
+# @param fixedImgFn The filename of the fixed image as a string
+# @param movinImgFn The filename of the moving image as a string
+# @param regImgOutFn The filename as a string specifying where to save the registered moving image
+# @param transformPrefix 
+# @param initialize Optional parameter to specify the location of the transform matrix from the previous registration
+# @param regType Optional parameter to specify the type of registration to use (affine ['Affine'] or nonlinear ['Syn']) Default: nonlinear
+def registerVolumes(fixedImgFn, movinImgFn, regImgOutFn, transformPrefix, initialize=None, regtype='nonlinear'):
+    # Registration set up: for both Affine and SyN transforms
+    reg = Registration()
+    reg.inputs.fixed_image = fixedImgFn
+    reg.inputs.moving_image = movinImgFn
+    reg.inputs.output_transform_prefix = transformPrefix 
+    reg.inputs.interpolation = 'NearestNeighbor'
+    reg.inputs.dimension = 3
+    reg.inputs.write_composite_transform = False 
+    reg.inputs.collapse_output_transforms = False
+    reg.inputs.initialize_transforms_per_stage = False
+    reg.inputs.num_threads = 100
+    reg.inputs.output_warped_image = regImgOutFn
+
+    # Registration set up: Specify certain parameters for the Affine registration step
+    reg.inputs.transforms = ['Affine']
+    reg.inputs.transform_parameters = [(2.0,)]
+    reg.inputs.number_of_iterations = [[1500, 200]] 
+    reg.inputs.metric = ['CC'] 
+    reg.inputs.metric_weight = [1]
+    reg.inputs.radius_or_number_of_bins = [5] 
+    reg.inputs.convergence_threshold = [1.e-8]
+    reg.inputs.convergence_window_size = [20]
+    reg.inputs.smoothing_sigmas = [[1,0]]
+    reg.inputs.sigma_units = ['vox']
+    reg.inputs.shrink_factors = [[2,1]]
+    reg.inputs.use_estimate_learning_rate_once = [True]
+    reg.inputs.use_histogram_matching = [True] # This is the default, but specify it anyway
+
+    # Registration set up: nonlinear transforms only
+    if regtype == 'nonlinear':
+        reg.inputs.transforms.append('SyN')
+        reg.inputs.transform_parameters.append((0.25, 3.0, 0.0))
+        reg.inputs.number_of_iterations.append([100, 50, 30])
+        reg.inputs.metric.append('CC')
+        reg.inputs.metric_weight.append(1)
+        reg.inputs.radius_or_number_of_bins.append(5)
+        reg.inputs.convergence_threshold.append(1.e-9)
+        reg.inputs.convergence_window_size.append(20)
+        reg.inputs.smoothing_sigmas.append([2,1,0])
+        reg.inputs.sigma_units.append('vox')
+        reg.inputs.shrink_factors.append([3,2,1])
+        reg.inputs.use_estimate_learning_rate_once.append(True)
+        reg.inputs.use_histogram_matching.append(True) # This is the default value, but specify it anyway
+
+    # If the registration is initialized, set a few more parameters
+    if initialize is not None:
+        reg.inputs.initial_moving_transform = initialize
+        reg.inputs.invert_initial_moving_transform = False
+
+    # Keep the user updated with the status of the registration
+    print("Starting", regtype, "registration for", regImgOutFn)
+    
+    # Run the registration
+    reg.run()
+    
+    # Keep the user updated with the status of the registration
+    print("Finished", regtype, "registration for", regImgOutFn)
+
+\end{lstlisting}

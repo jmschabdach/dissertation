@@ -21,13 +21,21 @@
 %\usepackage{amsthm}
 \usepackage{graphics} % for improved inclusion of graphics
 %\usepackage{wrapfig} % to include figure with text wrapping around it
-%\usepackage{subcaption}
+\usepackage{subfigure} % fit multiple graphics in one figure
 %\usepackage[margin=10pt,font=small,labelfont=bf]{caption}
 \usepackage{algorithm}
 %\usepackage{algorithmic}
 \usepackage{algpseudocode}
 \usepackage{hyperref}
 \usepackage{multirow}
+\usepackage{listings}
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
 
 \def\sectionautorefname{Section}
 \def\chapterautorefname{Chapter}
@@ -105,8 +113,9 @@ We devised a novel approach to volume registration, which is the first step in m
 
 %
 \appendix
-\include{999_appendices/list_of_papers}
-\include{999_appendices/proposed_schedule}
+\include{999_appendices/registration_parameters}
+%\include{999_appendices/list_of_papers}
+%\include{999_appendices/proposed_schedule}
 %\chapter{Raw data}
 %
 \safebibliography{sources}          

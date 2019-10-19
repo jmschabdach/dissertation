@@ -46,7 +46,7 @@ J_{i+2} & = \phi_{i+1,i+2} J_{i+1} + \epsilon^* \\
 \end{split}
 \end{equation}
 
-Traditional volume registration assumes that 
+\noindent Traditional volume registration assumes that 
 
 \begin{equation}
 \phi_{i,i+2} = \phi_{i+1,i+2} \phi_{i,i+1}
@@ -91,26 +91,15 @@ The information about the type of distributions of source signals and noise sign
 One of the major limitations of ICA is that it assumes the dataset contains a sufficiently large number of images, each with a sufficiently large number of voxels.
 
   
-%ICA treats the different behaviors present across individual voxels throughout the time course of the imageimage as a series of signal sources combined to create the observed signal. 
+%ICA treats the different behaviors present across individual voxels throughout the time course of the image; image as a series of signal sources combined to create the observed signal. 
 
-\subsection{Pipeline}
+\subsection{Motion Correction Pipeline and Implementation}
 
 Both the traditional and novel volume registration techniques were applied independently to each image from the subject cohorts described in Chapter \ref{ch:data}. After registration, three versions of each image existed: the original BOLD sequence, the sequence modified using traditional volume registration, and the sequence modified using the novel registration method.
 
-The registration algorithms both used a combination of affine and nonlinear transformations to align each pair of image volumes. During the registration, the following registration parameters were used:
-\begin{itemize}
-\item Interpolation type: nearest neighbor
-\item Number of threads: 100
-\item Registration metric: cross correlation.
-\end{itemize}
+The registration algorithms applied to rigid tissue types used affine registration with two degrees of granularity. When applied to soft tissue types (ie, placenta),  three nonlinear transformations with increasing granularities were performed after the affine registrations. The exact parameters used for each volume registration can be seen in Appendix A\ref{appendix:registration-params}. The registration frameworks were implemented in Python using the nipype (Neuroimaging in Python Pipelines and Interfaces) library \cite{Gorgolewski2011}. Volume registration used the ANTs (Advanced Normalization Tools) tools as a backend \cite{Avants2014}.
 
-After performing volume registration to ensure the patient is in the same physical space throughout the image sequence, the image sequence may still contain artifacts due to motion. Our registered sequences underwent motion correction via a well-established motion correction pipeline. We chose to use the independent component analysis (ICA) pipeline outlined by Beckmann and Smith \cite{Beckmann2004}. The motion corrected sequences produced by MELODIC were saved alongside the original and registered sequences.  
-
-\subsection{Implementation: Tools and Libraries}
-
-The registration frameworks described in this section were implemented in Python using the nipype (Neuroimaging in Python Pipelines and Interfaces) library \cite{Gorgolewski2011}. Affine volume registration was performed using ANTs (Advanced Normalization Tools) \cite{Avants2014}. The metric used to estimate the dissimilarity between the pairs of volumes being registered was cross-correlation with a local window size of 5 voxels. 
-
-The ICA pipeline described was applied to the registered images using FMRIB's MELODIC tool \cite{Beckmann2004}.
+After performing volume registration to ensure the patient is in the same physical space throughout the image sequence, the image sequence may still contain artifacts due to motion. Our registered sequences underwent motion correction via a well-established motion correction pipeline. We chose to use the independent component analysis (ICA) pipeline outlined by Beckmann and Smith \cite{Beckmann2004}. The motion corrected sequences produced by FMRIB's MELODIC tool were saved alongside the original and registered sequences.  
 
 \section{Evaluating Registered and Motion Corrected Sequences Against Gold Standard Usability Thresholds}
 
@@ -168,17 +157,17 @@ In the context of medical imaging, the correlation ratio measures the functional
 \eta(Y|X) = \frac{Var[E(Y|X)]}{Var(Y)}
 \end{equation}
 
-This equation is comparing the energy of $Y$ in $X$ to the total energy of $Y$. If $X$ and $Y$ overlap in area $\Omega$, the number of pixels in that area is $N = Card(\Omega)$. Since $X$ is known, it can be divided into sets of pixels $\Omega_i$ where each set is comprised of locations in $\Omega$ where the pixels $X$ have the same value $i$. 
+\noindent This equation is comparing the energy of $Y$ in $X$ to the total energy of $Y$. If $X$ and $Y$ overlap in area $\Omega$, the number of pixels in that area is $N = Card(\Omega)$. Since $X$ is known, it can be divided into sets of pixels $\Omega_i$ where each set is comprised of locations in $\Omega$ where the pixels $X$ have the same value $i$. 
 
-Because the correlation ratio shows is a strong metric for measuring the similarity between two images, we suggest using it to quantify the similarity between all volumes in an image sequence. We choose to refer to this metric as the correlation ratio matrix. For a sequence of length $l$, the correlation ratio matrix $M$ is a square, asymmetrical matrix of size $l*l$. Each cell in $M$ is calculated as
+Because the correlation ratio is a strong metric for measuring the similarity between two images, we suggest using it to quantify the similarity between all volumes in an image sequence. We choose to refer to this metric as the correlation ratio matrix. For a sequence of length $l$, the correlation ratio matrix $M$ is a square, asymmetrical matrix of size $l*l$. Each cell in $M$ is calculated as
 
 \begin{equation}
 M_{i,j} = \eta(J_i, J_j) = \frac{Var[E(J_i|J_j)]}{Var(J_i)} =  \frac{\sqrt{\frac{\sum |J_i|(\overline{J_i} - \overline{J_i \cap J_j})^2)}{|J_i \cap J_j|}}}{\sigma_{J_i \cap J_j}}
 \end{equation}
 
-\noindent where $J_i$ and $J_j$ are volumes $i \in l$ and $j \in l$ in the sequence, respectively, $|*|$ indicates the number of voxels in the operand, $\overline{*}$ indicates the average of the voxel values in the operand, and $J_i \cap J_j$ is the volume of space where images $J_i$ and $J_j$ intersect. %In volume registration, the computer assumes the entire contents of $J_i$ and $J_j$ intersect provided they are the same size (in voxels), which somewhat simplifies 
+\noindent where $J_i$ and $J_j$ are volumes $i \in l$ and $j \in l$ in the sequence, respectively. The sequence $J_i \cap J_j$ is the volume of space where images $J_i$ and $J_j$ intersect. The equation measures two different properties of the volume spaces $J_i$, $J_j$, and $J_i \cap J_j$: the number of voxels and the average of the voxel values in the space. The symbol $|.|$ indicates the number of voxels the specified space, and the symbol $\overline{.}$ indicates the average of the voxel values in the specified space. %In volume registration, the computer assumes the entire contents of $J_i$ and $J_j$ intersect provided they are the same size (in voxels), which somewhat simplifies 
 
-Since the matrix $M$ is quite large, using statistics describing $M$ rather than $M$ itself can simplify analyses. On the other hand, the whole matrix $M$ may be more comprehensively analyzed using statistical tests such as the $t$-test.
+Since the matrix $M$ is quite large, using statistics describing $M$ rather than $M$ itself can simplify analyses. On the other hand, the whole matrix $M$ can be more comprehensively analyzed using statistical tests such as the $t$-test.
 
 \subsection{Mutual Information}
 
@@ -186,7 +175,7 @@ The earliest description of mutual information was written in the context of mat
 
 \begin{equation}
 \label{ch4:eq:mi_01}
-MI(X, Y) = H(X) - H(X|Y)
+MI(X, Y) = H(X) + H(Y) - H(XY)
 \end{equation}
 
 \noindent where $H(X)$ is the entropy of signal $X$
@@ -196,27 +185,32 @@ MI(X, Y) = H(X) - H(X|Y)
 H(X) = - \sum_{x \in X} p_x log(p_x) 
 \end{equation}
 
-and $H(X|Y)$ is the conditional entropy of signal $X$ given the known signal $Y$
+\noindent where $p_x$ is the marginal distribution of the signal $X$. Substituting $y$ for $x$ in this equation produces $H(Y)$, the marginal entropy of the signal $Y$. Similarly, $H(XY)$ is the joint entropy of signals $X$ and $Y$ given the known signals $X$ and $Y$
 
 \begin{equation}
 \label{ch4:eq:mi_03}
-H(X|Y) = - \sum_{x \in X, y \in Y} p_{xy} log \frac{p_{xy}}{p_y}.
+H(XY) = - \sum_{x \in X, y \in Y} p_{xy} log (p_{xy}).
 \end{equation}
 
-Substituting Equations \ref{ch4:eq:mi_02} and \ref{ch4:eq:mi_03} in Equation \ref{ch4:eq:mi_01} produces the following
+It is worth noting that since the two signals of interest are registered images, $x$ and $y$ refer to voxel locations in the same image space. Substituting Equations \ref{ch4:eq:mi_02} and \ref{ch4:eq:mi_03} in Equation \ref{ch4:eq:mi_01} produces the following
 
 \begin{equation}
 \label{ch4:eq:mi_04}
 \begin{split}
-MI(X, Y) & = - \sum_{x \in X} p_x log(p_x) + \sum_{x \in X, y \in Y} p_{xy} log \frac{p_{xy}}{p_y} \\
- & = \sum_{x \in X, y \in Y} p_{xy} log \frac{p_{xy}}{p_y} - 1*\sum_{x \in X} log(p_x) \\
- & = \sum_{x \in X, y \in Y} p_{xy} log \frac{p_{xy}}{p_x p_y}
+MI(X, Y) & = - \sum_{x \in X} p_x log(p_x) - \sum_{y \in Y} p_y log(p_y) + \sum_{x \in X, y \in Y} p_{xy} log (p_{xy}) \\
+ & = \sum_{x \in X, y \in Y} p_{xy} log p_{xy} - \left( \sum_{x \in X} p_x log(p_x) + \sum_{y \in Y} p_y log(p_y) \right) \\
 \end{split}
 \end{equation}
 
-\noindent where $p(.)$ is the joint distribution of $X$ and $Y$, $p$ and $p$ are the marginal distributions of the two signals, and $X$ and $Y$ are the signals themselves. It is worth noting that since the two signals of interest are registered images, $x$ and $y$ refer to voxel locations in the same image space.
+\noindent In the case where signals $X$ and $Y$ are independent, Equation \ref{ch4:eq:mi_04} can be simplified to
 
-The mutual information can take on values in the range $[0, 1]$. A value of $0$ indicates that the two signals are completely independent and no information about signal $X$ is gained by knowing about signal $Y$. If signals $X$ and $Y$ are the same, 
+\begin{equation}
+\label{ch4:eq:mi_05}
+\begin{split}
+MI(X, Y) & = \sum_{x \in X, y \in Y} p_{xy} log (p_{xy}) - \left( \sum_{x \in X} \sum_{y \in Y} p_{xy} log(p_x p_y) \right) \\
+ & = \sum_{x \in X, y \in Y} p_{xy} log \left( \frac{p_{xy}}{p_x p_y} \right) \\
+\end{split}
+\end{equation} 
 
 Mutual information can be used to determine how the distribution of amplitudes in one signal relates to the distribution of another signal. It is commonly used in the medical imaging domain to objectively compare images of the same tissue taken using different modalities. For example, a computed tomography (CT) scan of a patient's abdomen contains different information about each tissue types' material properties than an MRI of the same organs. Some tissue types may appear similar in one of these modalities but drastically different in the other. Combining the information about a tissue's material properties gained from both imaging modalities provides more information than could be gained from either modality independently. (In other words, the resulting information is greater than the sum of its parts.)
 
@@ -227,7 +221,7 @@ Even though the rs-fMRIs in our study are all obtained using the same imaging mo
 To calculate metrics, we used several existing tools and libraries. When no existing tool could be found, functions were implemented manually in Python3. 
 
 %As the Dice coefficient is a measure of the binary overlap of a pair of image volumes, it cannot be immediately applied to rs-fMRI volumes. The volumes first must undergo thresholding to label voxels located within the brain and  voxels in the background. Since each voxel can only belong to one of two classes, brain or background, we use Otsu thresholding to separate brain and background. 
-For the Dice coefficient calculation, we first had to create a binary version of each image volume. To binarize the image volumes, we used OpenCV's Otsu thresholding function. The binary images were then passes to a manually implemented function to calculate the Dice coefficient.
+For the Dice coefficient calculation, we first had to create a binary version of each image volume. To binarize the image volumes, we used Simple ITK's Otsu thresholding function. The binary images were then passes to a manually implemented function to calculate the Dice coefficient.
 
 The correlation ratio between each possible pair of volumes in the sequence was calculated using bash and FLIRT (FMRIB’s Linear Image Registration Tool) \cite{Jenkinson2001} \cite{Jenkinson2002}. We then used the average and standard deviation of the correlation ratio distribution of each image to compare the images.
 
@@ -258,7 +252,6 @@ There are many variations of k-means clustering. For example, k-medians follows 
 One of the major limitations of k-means clustering is that the number of clusters must be given to the model. It is difficult to know how many clusters are needed to adequately represent subgroups within a data set. If too many clusters are used, the groups identified by the algorithm will be more granular than they should be; however, using too few clusters will produce large groups which mask distinct subgroups. 
 
 
-
 \subsection{Spectral Clustering}
 
 While spectral clustering is related to k-means clustering, it approaches the problem of identifying associations in a group of data from a different perspective. Spectral clustering treats each data point in a sample as a node in a graph. The connections between data points are characterized by the adjacency matrix and the degree matrix of the graph. These two matrices are used to calculate the Laplacian matrix of the graph, whose properties are used to identify clusters. All three matrices are $n$x$n$ matrices, where $n$ is the number of data points in the sample. 
@@ -280,15 +273,27 @@ The Laplacian matrix can be used to explore many properties of a graph. In parti
 
 To determine the number of clusters in the graph, the eigenvalues of the Laplacian matrix are sorted in increasing order. The number of zero-valued eigenvalues is the number of connected components in the graph. Eigenvalues close to zero suggest weak edges preventing some connected component from being two separate components. Manually examining these eigenvalues before performing spectral clustering can be informative about the number of clusters to create: the number of values below the first large gap between the eigenvalues are the number of clusters, $k$. The eigenvectors associated with these $k$ eigenvalues are used as a lower-dimensional representation of the data in the graph. Performing $k$-means clustering on this data produces the labels for the clusters within the data that are not linearly separable otherwise.
 
-%\textbf{STRENGTHS AND WEAKNESSES}
+\begin{figure}
+\includegraphics[width=.75\textwidth]{4/spectral_clustering_limitation.png}
+\caption{(a) Two different distributions, a 2D Gaussian density and a thin horizontal rectangle are difficult to separate (b) due to their overlap and the penalties built into the cost function of the spectral clustering algorithm. From \cite{Nadler2007}.}
+\label{ch4:fig:spect-clust-lim-01}
+\end{figure}
+
+The limitations of spectral clustering are strongly related to the process of remapping the data to a lower dimensional space.  When reducing the number of features used to represent a data set, information about that data set is inherently lost. The missing information can make separating classes in the lower dimensional data significantly more difficult, if not impossible. Consider the following two cases: a case where two classes overlap and a case where three classes are unevenly represented in the data.
+
+In cases where two seemingly obvious clusters overlap, the clustering algorithm may be unable to accurately identify them due to the mathematical penalties imposed on separating points in the feature space. An example of this problem as described by Nadler and Galun can be seen in Figure \ref{ch4:fig:spect-clust-lim-01} \cite{Nadler2007}. The two distinct groups are the small 2D Gaussian density and the horizontal rectangle. The spectral clustering algorithm (in this case, the normalized cut algorithm) is unable to separate the groups because the degree of overlap between the Gaussian density and the rectangle is greater than the height of the rectangle. It is more cost-effective for the algorithm to make a vertical cut to divide the rectangle in two than to cut the Gaussian density away from the rectangle.
+
+Uneven distributions of data classes can severely impact spectral clustering results. Consider the case where a data set contains one highly populated class with a wide variation in its data's features and two less populated classes with less variation in their data's features. The scale of the large, highly populated class can overshadow the smaller classes: if the three most important eigenvectors are more related to the large class than the smaller classes, the algorithm will not be able to differentiate between the two smaller classes.
 
 \subsection{Agglomerative Clustering}
 
 Agglomerative clustering is a specific type of hierarchical clustering which builds a tree of similarities between data samples from the ``bottom up'' \cite{Ward1963}. The data samples in agglomerative clustering are also viewed as distinct points in $n$-dimensional space, but the number of groups to identify is not specified. 
 
-First, the distance from every data sample to every other data sample is calculated. The two data points that are closest together in terms of some similarity metric are combined into a single cluster. In the [relationship tree] representing the similarities between all data samples, a node is created and the joined data points are connected to that node. That node or cluster is treated as an intermediate data sample. The distance from the new ``data sample'' to every other data sample is calculated and the two closest data samples are again combined into another intermediate sample. A node representing the new cluster is added to the [relationship tree] and the data sample or samples merged into the cluster are connected to the node. The process of combining data points into clusters based on similarity to other data points terminates when all data points and clusters have been combined. 
+First, the distance from every data sample to every other data sample is calculated. The two data points that are closest together in terms of some similarity metric are combined into a single cluster. In the relationship tree representing the similarities between all data samples, a node is created and the joined data points are connected to that node. That node or cluster is treated as an intermediate data sample. The distance from the new ``data sample'' to every other data sample is calculated and the two closest data samples are again combined into another intermediate sample. A node representing the new cluster is added to the relationship tree and the data sample or samples merged into the cluster are connected to the node. The process of combining data points into clusters based on similarity to other data points terminates when all data points and clusters have been combined. 
 
-The results of agglomerative clustering can be interpreted by traversing the [relationship tree]. The [relationship tree] recorded the history of which nodes were merged into which clusters at each stage. Due to the nature of agglomerative clustering, these stages can be viewed as distinct levels in the tree. Beginning at the final node (the root) of the tree, the granularity of the clusters can be explored. At the top level, there is only one cluster, but at the second to last level of the tree there will be two clusters, at the third level there will be three clusters, and so on. How each cluster grew can reveal information about the relationships between the data samples within that cluster.
+The results of agglomerative clustering can be interpreted by traversing the relationship tree. The relationship tree recorded the history of which nodes were merged into which clusters at each stage. Due to the nature of agglomerative clustering, these stages can be viewed as distinct levels in the tree. Beginning at the final node (the root) of the tree, the granularity of the clusters can be explored. At the top level, there is only one cluster, but at the second to last level of the tree there will be two clusters, at the third level there will be three clusters, and so on. How each cluster grew can reveal information about the relationships between the data samples within that cluster.
+
+Agglomerative clustering also lends itself well to visualization via heatmap. The heatmap allows the researcher to see the distribution of feature values across the dataset and across visually prominent clusters. ``Eyeballing'' a heatmap is no substitution for performing statistical analyses, but it can provide a better sense of context than summary statistics. 
 
 %\subsection{Gaussian Mixture Models and Expectation Maximization}
 
@@ -302,19 +307,30 @@ The results of agglomerative clustering can be interpreted by traversing the [re
 
 \subsection{Visualizing Clustering Results} 
 
-The results of unsupervised clustering algorithms can be visualized to illustrate how the computer chose each group of samples. Depending on the number of features $n$ for each data sample, a dimensionality reduction method may be needed to transform the location of the data sample in $n$-dimensional feature space to a more easily visualized 2-dimensional or 3-dimensional space.
+The results of unsupervised clustering algorithms can be visualized to illustrate how the computer chose each group of samples. Depending on the number of features $n$ for each data sample, a dimensionality reduction method may be needed to transform the location of the data sample in $n$-dimensional feature space to a more easily visualized 2-dimensional or 3-dimensional space. The three dimensionality reduction methods we consider are principle component analysis (PCA), T-distributed stochastic neighbor embedding (t-SNE), and uniform manifold approximation and projection (UMAP).
 
-Dimensionality reduction methods include principle component analysis (PCA), TSNE, and XXXXXX.
-
-Principle component analysis is a multivariate statistical technique that can be used to transform a set of variables with some degree of intercorrelation into a set of new, independent, orthogonal variables \cite{Abdi2010}. These variables are called principle components of the data set. The principle components are ordered with respect to the amount of variance in the data set that can be projected onto each component. In general, PCA fits an $p$-dimensional ellipsoid to a data set with $n$ features such that $p < n$. Each axis of the ellipsoid represents a single principle component. 
+\textbf{PCA}. Principle component analysis is a multivariate statistical technique that can be used to transform a set of variables with some degree of intercorrelation into a set of new, independent, orthogonal variables \cite{Abdi2010}. These variables are called principle components of the data set. The principle components are ordered with respect to the amount of variance in the data set that can be projected onto each component. In general, PCA fits an $p$-dimensional ellipsoid to a data set with $n$ features such that $p < n$. Each axis of the ellipsoid represents a single principle component. The first two or three principle components can be used to plot the results of a clustering algorithm in 2D or 3D space.
 
 It is important to note that prior to the application of PCA, the data must be normalized. Normalizing the data allows different features to be compared on the same scale.
 
-The first two or three principle components can be used to plot the results of a clustering algorithm in 2D or 3D space. An example of plotting clustering results using PCA can be seen in Figure [INSERT].
+\textbf{t-SNE}. T-distributed stochastic neighbor embedding (t-SNE) was developed by Maaten and Hilton to perform nonlinear dimensionality reduction for visualizing high-dimensional data in a 2D or 3D space \cite{Maaten2008}. The algorithm first constructs a distribution of the high-dimensional data to measure the pairwise similarity of all data points. It also constructs a second distribution to measure the pairwise similarity of the data points in the lower dimensional space. Then, it performs gradient descent to minimize the difference between the two distributions as measured by the Kullback-Leibler divergence. At each iteration of the gradient descent, the distribution of points in the lower dimensional space is modified. The algorithm converges when the distribution of pairwise similarities between data points in the lower dimensional space most closely matches the corresponding distribution in the original high-dimensional space.
 
-\textbf{TSNE}
+t-SNE is a computationally expensive technique with a complexity of $O(N^2)$ where $N$ is the number of data points. For this reason, it is recommended that data with more than 50 features undergo another form of dimensionality reduction before t-SNE is applied to a data set. Even when this recommendation is not followed, the lower dimensional data produced using t-SNE lacks the interpretability of PCA data: the resulting dimensions have no interpretable meaning.
 
-Agglomerative clustering also lends itself well to visualization via heatmap. The heatmap allows the researcher to see the distribution of feature values across the dataset and across visually prominent clusters. ``Eyeballing'' a heatmap is no substitution for performing statistical analyses, but it can provide a better sense of context than summary statistics.  
+\textbf{UMAP}. Uniform manifold approximation and projection (UMAP) was proposed as an alternative to t-SNE \cite{McInnes2018}. Rather than build a pairwise similarity distribution, UMAP uses topological representations of the data. For each point $x_i$, the distances between $x_i$ and its $k$ nearest neighbors are measured and normalized by the distance between $x_i$ and the $k$th neighbor. These collections of distances around each point are local manifolds. The local manifolds are combined into the same global manifold using fuzzy simplical sets. After the global of the data is known, it is used to determine where data points must lie in a lower dimensional space so that they both adhere to the known manifold topology and retain the distance metrics from their $k$ nearest neighbors. The topology of the lower dimensional manifold is adjusted iteratively to minimize the cross-entropy between the higher dimensional representation and the lower dimension representation. In practice, UMAP treats each data point as a node in a weighted graph. It first determines each point's $k$ nearest neighbors and calculates the distances between them, and then computes a version of that topology in a lower dimensional space.
+
+UMAP was developed under the belief that local structure is more important than global structure. It learns structures in a data set, even when the local structures can only be attributed to noise. It is not suitable for use in small, noisy data sets or in large data sets with only global (not local) structure. Figures produced using UMAP-reduced data should be interpreted with care: they could contain spurious structures from the data sample and not the target population. Additionally, UMAP is similar to t-SNE in that the dimensions produced by UMAP were generated nonlinearly and contain no true meaning. 
+
+\begin{figure}
+\centering
+\subfigure[PCA]{\includegraphics[width=.49\textwidth]{4/pca.png}}
+\subfigure[t-SNE]{\includegraphics[width=.49\textwidth]{4/tsne.png}}\\
+\subfigure[UMAP]{\includegraphics[width=.5\textwidth]{4/umap.png}}\\
+\caption{Visualization of MNIST data in 3D via TensorFlow Projector as generated using PCA, t-SNE, and UMAP dimensionality reduction techniques.}
+\label{ch4:fig:data-viz}
+\end{figure}
+
+We performed a preliminary comparison of PCA, t-SNE, and UMAP for visualizing high dimensional data using TensorFlow's Projector tool \cite{TFProjector}. This tool is a web interface for visualizing high dimensional data from either built-in data sets or data sets uploaded by the user. It supports all three of the dimensionality reduction methods discussed previously in this section as well as a customizable projection of the entire data set to two or three feature vectors. The PCA, t-SNE, and UMAP visualizations of the popular MNIST handwriting data set can be seen in Figure \ref{ch4:fig:data-viz}. 
 
 \section{Predicting Patient Outcomes Using Motion Patterns}
 
@@ -406,9 +422,9 @@ More generally, Equation \ref{ch4:eq:nn_01} can be written as
 f_n(\vec{x}) = \vec{w_n} f_{n-1}(\vec{x})+ b_n
 \end{equation}
 
-\noindent where dot product of the weights of the current layer $w_n$ and the output $f_{n-1}(\vec{x})$ of the previous hidden layer $n-1$ are offset by some bias factor $b_n$ to produce the output $f_n(\vec{x})$ of the current layer. For the first layer of the network, the output is calculated using Equation \ref{ch4:eq:nn_01}.
+\noindent where the dot product of the weights of the current layer $w_n$ and the output $f_{n-1}(\vec{x})$ of the previous hidden layer $n-1$ are offset by some bias factor $b_n$ to produce the output $f_n(\vec{x})$ of the current layer. For the first layer of the network, the output is calculated using Equation \ref{ch4:eq:nn_01}.
 
-To model nonlinear relationships in data, this equation must be generalized further to allow for activation functions. Activation functions are intended to represent the action potential firing in a biological neuron. A biological neuron is either activated or not activated, but the activation function of a neuron in an artificial neural network is not limited to binary states. For example, the output of a rectified linear unit (ReLU) is in the range $[0, \inf)$, a sigmoid function's output is in the range $(0, 1)$, and a hyperbolic tangent produces a value in the range $(-1, 1)$. Different activation functions are used for different applicationd depending on the desired behavior of the model.
+To model nonlinear relationships in data, this equation must be generalized further to allow for activation functions. Activation functions are intended to represent the action potential firing in a biological neuron. A biological neuron is either activated or not activated, but the activation function of a neuron in an artificial neural network is not limited to binary states. For example, the output of a rectified linear unit (ReLU) is in the range $[0, \inf)$, a sigmoid function's output is in the range $(0, 1)$, and a hyperbolic tangent produces a value in the range $(-1, 1)$. Different activation functions are used for different application depending on the desired behavior of the model.
 
 We represent the activation function generically as $g_n(\cdot)$ and rewrite Equation \ref{ch4:eq:nn_02} as
 
@@ -434,7 +450,7 @@ The second definition of normal is that the patient is healthy. We choose to ide
 
 If a machine learning model reaches 100\% accuracy on both training and test data sets, data scientists should immediately assume something has gone wrong either with the model itself or with the training and testing data. Current machine learning models suffer from the difficulty of balancing two sources of error: bias and variance. Bias is the degree to which the machine learning model matches the underlying model of the training data. Variance is the breadth of the distribution of the data from the population of interest covered by the training data. Models with low bias and high variance overfit the training data: they model the training data well but generalize poorly to new data. Conversely, models with high bias and low variance underfit the training data: they fit the training data poorly, possibly because they learned noise in the training data rather than the signal. Underfitted models fail to capture the important signals from the training data and perform poorly overall.
 
-A good model neither overfit nor underfits the training data. It has low bias and low variance, and the challenge of balancing these two sources of error has been discussed elsewhere but is important to address here to set realistic expectations about the training and testing classifications of a model. Ideally, the model will classify both training and testing data well, but it is not possible with current techniques and data availability for a model to have perfect classification of every data sample. 
+A good model neither overfits nor underfits the training data. It has low bias and low variance, and the challenge of balancing these two sources of error has been discussed elsewhere but is important to address here to set realistic expectations about the training and testing classifications of a model. Ideally, the model will classify both training and testing data well, but it is not possible with current techniques and data availability for a model to have perfect classification of every data sample. 
 
 The ``wellness''/``goodness'' of a binary classification model is determined using a truth table. A truth table is a $2*2$ table filled with the number of occurrences where data was classified correctly and incorrectly as belonging to each class. An example table can be seen in Table \ref{ch4:tab:truthtable}.
 
@@ -464,7 +480,7 @@ sensitivity = TPR = \frac{TP}{TP+FN}
 specificity = PPV = \frac{TP}{TP+FP}
 \end{equation}
 
-These metrics are also known as the true positive rate and the positive predictive value, respectively
+These metrics are also known as the true positive rate and the positive predictive value, respectively.
 
 These metrics are independently informative about different aspects of the model, but during training only one metric is used to evaluate a model's performance. Accuracy, for example, is a measure of how many data samples were classified correctly:
 
