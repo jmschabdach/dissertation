@@ -5,13 +5,13 @@ This chapter discusses rs-fMRIs and how they are affected by patient motion. Spe
 
 \section{Structure of an rs-fMRI}
 
-A rs-fMRI scan produces a four dimensional image series. The first three dimensions are length, width, and depth and encompass the physical space occupied by the patient's head. The information in these three dimensions is interpreted as a three dimensional, volumetric image. The fourth dimension is time. The temporal dimension interacts with the spatial dimensions such that the contents of that image volume change with time.
+A rs-fMRI scan produces a four dimensional image series. The first three dimensions are length, width, and depth and encompass the physical space occupied by the patient's head. The information in these three dimensions is interpreted as a three dimensional, volumetric image. The fourth dimension is time. The temporal dimension interacts with the spatial dimensions such that the contents of that image volume change with time. This concept of a 4D image can be illustrated in two different ways. The first is an ordered list of 3D image volumes. The second is a single 3D image volume where the value of each voxel is a temporal signal. 
 
 rs-fMRIs are discrete representations of continuous data. A new image volume of the patient's brain is acquired every two to three seconds. The image volume is composed of a three dimensional version of a pixel called a voxel (volume element). Just as the ``distance'' between each image volume encompasses a certain amount of time, each voxel encompasses a small volume of physical space. The transformations between the continuous physical and temporal dimensions and the discrete physical and temporal dimensions are the spatial and temporal resolutions. 
 
 An rs-fMRI is considered to have relatively low spatial resolution but high temporal resolution. The physical size of a single voxel seems small at about 4 mm$^3$, but this resolution is not granular enough to capture details about activity within small structures of the brain. The activity information recorded during a rs-fMRI must be combined with the detailed anatomic information from a structural MRI to know precisely which areas of the brain are active at each point in time. A structural MRI volume takes much longer to acquire than a rs-fMRI volume, which can be obtained every two to three seconds. Unfortunately, the patient's position and neural activity can change faster than the image volume can be acquired. As a result, a temporal resolution of two to three seconds is not fast enough to actively compensate for sources of noise which confound the BOLD signal. 
 
-\section{Sources of Motion in rs-fMRIs}
+\section{*Sources of Motion in rs-fMRIs}
 
 During every medical imaging scan, the patient will naturally perform small, automatic movements due to regular bodily functions. Minuscule movements caused by cardiac activity may disrupt scans with high spatial resolution or with high sensitivity to the movement of blood molecules. Larger movements caused by respiration result in motion artifacts in images of the thoracic and abdominal cavities. 
 
@@ -218,8 +218,23 @@ Denoising techniques can be applied to a rs-fMRI after global volume registratio
 
 Regression of the global signal (global signal regression, GSR) corrects for variance between temporal signals within a voxel and for the mean BOLD signal across all voxels \cite{Power2014} \cite{Satterthwaite2013} \cite{Yan2013} \cite{Yan2013a}. GSR has been shown to reduce spuriously increased long-distance correlations in functional connectivity studies, but may inadvertently weaken shorter-distance connections \cite{Jo2013} \cite{Power2014}  \cite{Satterthwaite2012}. 
 
-Other regression parameters which have been investigated include the six realignment parameters and their first-order derivatives \cite{Power2012} \cite{Satterthwaite2012} \cite{VanDijk2012}, realignment parameters from surrounding timpoints \cite{Patriat2017} \cite{Power2014} \cite{Satterthwaite2013} \cite{Yan2013a}, signals from white matter or cerebral spinal fluid \cite{Power2014} \cite{Satterthwaite2013} \cite{Yan2013a} \cite{Jo2010}, and components identified using principal or independent component analysis \cite{Pruim2015} \cite{Salimi-Khorshidi2014} \cite{Behzadi2007}. Regression of each of these sets of parameters has been shown to reduce the effects of motion in the sequence but not remove them entirely \cite{Power2015} \cite{Parkes2017}. 
+Other regression parameters have been investigated. Commonly, the six rigid realignment parameters and their first order derivatives are suggested as regression parameters \cite{Power2012} \cite{Satterthwaite2012} \cite{VanDijk2012}. More recently, researchers have also incorporated the rigid realignment parameters from surrounding timpoints \cite{Power2014} \cite{Satterthwaite2013} \cite{Yan2013a}.
 
+, signals from white matter or cerebral spinal fluid \cite{Power2014} \cite{Satterthwaite2013} \cite{Yan2013a} \cite{Jo2010}, and components identified using principal or independent component analysis \cite{Pruim2015} \cite{Salimi-Khorshidi2014} \cite{Behzadi2007}. Regression of each of these sets of parameters has been shown to reduce the effects of motion in the sequence but not remove them entirely \cite{Power2015} \cite{Parkes2017}. 
+
+
+
+Patriat et al. performed a robust comparison of different regression parameters on their MotSim motion data set \cite{Patriat2017}. They included rigid realignment parameters, but also used parameters obtained by performing principle component analysis (PCA) on the image sequences. PCA generates a set of linear, uncorrelated components that reflect the main features of a patient's motion. The list of parameter combinations included 
+\begin{itemize}
+\item 12mot: The six rigid realignment parameters and their first derivatives,
+\item 12for: The first 12 principal components of the whole brain before realignment,
+\item 12back: The first 12 principal components of the whole brain after realignment,
+\item 12both: The first 12 principal components of the whole brain both before and after realignment,
+\item 24mot: the six rigid realignment parameters of the current volume, the six rigid realignment parameters of the previous volume, and the square of these rigid realignment parameters,
+\item 24both: the first 24 principle components of the whole brain before and after realignment.
+\end{itemize}
+
+\noindent They found that the features extracted from the image sequence using PCA explained more variance in the image sequence (measured using $R^2$) than the rigid realignment parameters. They showed that increasing the number of regressors increased the amount of variance explained, but with diminishing returns. While their work is promising, their experiment was performed on a simulated data set using healthy subject data and required an accurate estimate of the subject's head motion.
 
 \subsection{Filtering}
 
