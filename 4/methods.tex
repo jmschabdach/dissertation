@@ -1,113 +1,7 @@
-\chapter{METHODS}
-\label{ch4:methods}
+\chapter{METHODS: Evaluating Motion Patterns}
+\label{ch4:mopa}
 
-\section{Volume Registration and Motion Correction}
-
-In the previous chapter, we discuss several techniques used to retrospectively correct motion. Motion correction pipelines may use denoising and filtering, but all pipelines begin with volume registration. In this section, we discuss a different approach to volume registration, how it compares to traditional volume registration, and how volume registration fits into a motion correction pipeline. 
-
-%In this section, we discuss the two registration frameworks we apply to our rs-fMRIs: the traditional global volume registration framework and the DAG-based global volume registration framework. The registration frameworks will later be evaluated in comparison to each other, but will also be evaluated in the context of a complete motion correction pipeline. The motion correction pipeline of choice, ICA, will also be discussed in this section.
-
-\subsection{Directed Acyclic Graph Based Volume Registration}
-
-As discussed previously, the major drawback to Friston et al.'s approach to volume registration is that it only minimized the positional differences between the reference volume and the rest of the sequence. This drawback demonstrates an inability for the traditional approach to account for relationships in the patient's position throughout the scan. Intuitively, we know that the patient's position at any volume in the scan is more similar to his position in the immediately previous or subsequent volume than to another randomly chosen volume in the image.
-
-In our proposed framework, we wish to account for these spatiotemporal relationships between temporally neighboring volumes in the sequence. To accomplish this goal, we start by viewing the rs-fMRI sequence as a directed acyclic graph (DAG). A DAG consists of a set of nodes and edges. Each edge has a direction associated with it and connects a pair of nodes. Since a DAG contains no cycles, there is no possible path back to a node once it has been traversed. 
-
-\begin{figure}
-\centering
-\includegraphics[width=.7\textwidth]{4/dag-chain.png}
-\caption{A rs-fMRI can be viewed as a directed acyclic graph where each volume is a node and the edges connect from each volume $i$ to the following volume $i+1$.}
-\label{ch4:fig:dag-chain}
-\end{figure}
-
-In the case of an rs-fMRI, each volume can be considered a node. The relationship between each pair of temporally neighboring volumes is represented as a directed edge connecting the node for the first volume to the node for the next volume. The acyclic nature of the DAG means that once a patient was in a specific position, he will never return to that exact same position with the exact same neurons firing. The position of the subject and his brain activity as measured by the BOLD signal may be similar in subsequent image volumes, but it will never be precisely the same. The perspectives of an rs-fMRI sequence as a set of images and of the sequence as a DAG can be seen in Figure \ref{ch4:fig:dag-chain}.
-
-The cost of transitioning from one node to the next in our DAG has a parallel representation to the combination of the positional transformation needed to align volume $i$ to volume $i+1$ and the signal change between the volumes. This representation can be written as 
-
-\begin{equation}
-J_{i+1} = \phi_{i,i+1} J_i + \delta s_{i,i+1} + \epsilon
-\end{equation}
-
-\noindent{where $J_i$ and $J_{i+1}$ are volumes $i$ and $i+1$, $\phi_{i,i+1}$ is a matrix of transformation parameters that must be applied to $J_i$ to achieve the patient’s position in $J_{i+1}$, $\delta s_{i,i+1}$ is the natural change in BOLD signal, and $\epsilon$ is the change in BOLD signal due to motion. Currently, there is no way to estimate the natural change in BOLD signal and the change in BOLD signal due to motion without incorporating additional information about the MRI scanner and the patient that is not included in a rs-fMRI. We simplify our representation of the relationship between two volumes to}
-
-\begin{equation}
-J_{i+1} = \phi_{i,i+1} J_i + \epsilon^*
-\end{equation}
-
-\noindent{where $\epsilon^*$ is the change in the BOLD signal that cannot be accounted for after aligning the patient’s position in the two volumes. Here, we use the notation $\epsilon^*$ to represent the generic error change in BOLD signal across any pair of volumes.}
-
-After aligning two volumes $i$ and $i+1$, we will then align volumes $i+1$ and $i+2$:
-
-\begin{equation}
-\begin{split}
-J_{i+2} & = \phi_{i+1,i+2} J_{i+1} + \epsilon^* \\
-& = \phi_{i+1,i+2} (\phi_{i,i+1} J_i + \epsilon^*) +\epsilon^*\\
-& = \phi_{i+1,i+2} \phi_{i,i+1} J_i + \epsilon^{*'}\\
-\end{split}
-\end{equation}
-
-\noindent Traditional volume registration assumes that 
-
-\begin{equation}
-\phi_{i,i+2} = \phi_{i+1,i+2} \phi_{i,i+1}
-\end{equation}
-
-\begin{figure}
-\centering
-\includegraphics[width=.7\textwidth]{4/dag-registration.png}
-\caption{The traditional approach to volume registration in an rs-fMRI sequence consists of registering all volumes in the sequence to a single reference volume.}
-\label{ch4:fig:dag-reg}
-\end{figure}
-
-\noindent{and calculates $\phi_{i,i+2}$ directly. We argue that this assumption is not true in all cases. Rather than directly calculate $\phi_{0,i}$ and use it to align volume $i$ to the reference volume as the traditional method does, we calculate each component $\phi$ that is a factor of $\phi_{0,i}$. Each component $\phi_{i,i+1}$ is combined with the preceding $\phi_{0,i}$s to recursively align volume $i+1$ to the reference volume without making the large and often inaccurate transformations required by directly calculating $\phi_{0,i+1}$.} This process is outlined in Figure \ref{ch4:fig:dag-reg}.
-
-\subsection{Independent Component Analysis}
-
-The purpose of image registration is purely to ensure the position of the patient throughout the entire rs-fMRI is consistent. After registration, the image still contains BOLD source signals and noise signals caused by factors other than brain activity. The challenge of separating these combined signals is called blind source separation (BSS). 
-
-We chose to focus on an independent component analysis (ICA) approach for solving the BSS problem. The specific technique we use has been described by Beckmann and Smith as probabilisic ICA. Probabilistic ICA is a linear regression model which performs mixing in the original data space and assumes the true BOLD signal has been confounded by Gaussian noise. These constraints mean that BSS can be solved in three steps:
-
-\begin{enumerate}
-\item Estimate a joint subspace consisting of source and noise signals and an noise subspace orthogonal to the joint subspace,
-\item Estimate the independent sources in the joint subspace, and 
-\item Assess the statistical significance of the independent sources.
-\end{enumerate} 
-
-\textbf{In the first step}, probabilistic ICA treats the voxel intensity values in every frame of the image sequence as a matrix of $V$ voxels across $n$ time points. For each voxel $v_i \in V$, the observed signal in that voxel can be modeled as
-
-\begin{equation}
-\label{ch4:eq:ica01}
-\vec{x_i} = A \vec{s_i} + \mu + \vec{\eta_i}
-\end{equation}
-
-\noindent This equation allows three different types of signals to contribute to the observed voxel values $\vec{x_i}$ for a given voxel across all $n$ timepoints in the sequence. The first type of signal is a vector of non-Gaussian source signals $\vec{s_i}$ across all $n$ timepoints. The source signals are modulated by mixing matrix $A$ whose shape is the number of time points $n$ by the number of source signals $q$. The second type of signal is an offset denoted by $\mu$. The offset constrains the observed signals to be centered around the mean of all observed signals. The third type of signal $\vec{\eta_i}$ is a vector of noise throughout the duration of the sequence. To summarize, ICA assumes that the observed signal in a given voxel can be divided into non-Gaussian source signals, Gaussian noise signals, and an offset.
-
-Probabilisitic ICA explicitly assumes an isotropic Gaussian noise model. This assumption makes it easier to separate a source signal from a noise signal: a noise signal will have a Gaussian distribution while a source signal will not. Because of this assumption, the intensity values across all individual voxels must be normalized to have a mean of 0 and a standard deviation of 1.
-
-The information about the type of distributions of source signals and noise signals can be used to identify the number of source signals. In a noiseless system, the number of source signals is equivalent to the rank of the covariance matrix of the mixing matrix. Because rs-fMRIs are inherently noisy, we must incorporate the covariance of the noise into the covariance of the mixing matrix. In this more general case, the number of sources is more complex to determine. Beckmann and Smith suggest that the number of source signals is the same as the number of eigenvalues of the covariance matrix that violate the ``sphericity assumption of the isotropic Gaussian noise model'' \cite{Beckmann2004}.
-
-\textbf{In the second step}, 
-
-One of the major limitations of ICA is that it assumes the dataset contains a sufficiently large number of images, each with a sufficiently large number of voxels.
-
-  
-%ICA treats the different behaviors present across individual voxels throughout the time course of the image; image as a series of signal sources combined to create the observed signal. 
-
-\subsection{Motion Correction Pipeline and Implementation}
-
-Both the traditional and novel volume registration techniques were applied independently to each image from the subject cohorts described in Chapter \ref{ch:data}. After registration, three versions of each image existed: the original BOLD sequence, the sequence modified using traditional volume registration, and the sequence modified using the novel registration method.
-
-The registration algorithms applied to rigid tissue types used affine registration with two degrees of granularity. When applied to soft tissue types (ie, placenta),  three nonlinear transformations with increasing granularities were performed after the affine registrations. The exact parameters used for each volume registration can be seen in Appendix A\ref{appendix:registration-params}. The registration frameworks were implemented in Python using the nipype (Neuroimaging in Python Pipelines and Interfaces) library \cite{Gorgolewski2011}. Volume registration used the ANTs (Advanced Normalization Tools) tools as a backend \cite{Avants2014}.
-
-After performing volume registration to ensure the patient is in the same physical space throughout the image sequence, the image sequence may still contain artifacts due to motion. Our registered sequences underwent motion correction via a well-established motion correction pipeline. We chose to use the independent component analysis (ICA) pipeline outlined by Beckmann and Smith \cite{Beckmann2004}. The motion corrected sequences produced by FMRIB's MELODIC tool were saved alongside the original and registered sequences.  
-
-\section{Evaluating Registered and Motion Corrected Sequences Against Gold Standard Usability Thresholds}
-
-The main goal of motion correction is to reduce the effects of motion on the image so that it is usable. The gold standards for rs-fMRI usability as established by Power et al. are that the FD and DVARs metrics must change less than 0.2 mm and 2.5\% normalized voxel units between at least 50\% of the neighboring volumes. The FD and DVARs metrics between each pair of subsequent image volumes were calculated for the original, registered, and motion corrected sequences. The metrics for each sequence were then compared to the gold standard image usability thresholds. This comparison answers the key question of how each registration framework impacts an established motion correction pipeline.
-
-Additionally, a smaller comparison of the registered sequences was conducted. This comparison evaluates the immediate impact of the registration algorithm on the image sequence. It is highly unlikely that an entire image sequence would meet the Power et al. usability thresholds after only the initial step of a motion correction pipeline, but it is valuable to examine the impact of a volume registration algorithm at each stage of the pipeline. 
-
-\textbf{Implementation.} We calculated the FD and DVARS metrics defined by Power et al. using the FSLMotionOutliers tool \cite{Power2012}. 
+In the previous chapter, we describe the methods we use to mitigate the positional effects of motion in rs-fMRI sequences. We briefly discuss how the motion corrected sequences were evaluated with respect to gold standard usability criteria. Here, we expand on our analysis of the motion extracted from the sequences.
 
 \section{Measuring Motion Patterns}
 
@@ -243,13 +137,20 @@ The goal of applying machine learning to identify population level motion patter
 
 \subsection{K-means Clustering}
 
+\begin{figure}
+\centering
+\includegraphics[width=.5\textwidth]{4/kmeans-example.png}
+\caption{An example of $k$-means clustering performed on the Iris data set. The results of the algorithm are highly dependent on the number of clusters specified.}
+\label{ch4:fig:kmeans}
+\end{figure}
+
 K-means clustering divides a group of data samples with $n$ features into $k$ groups based on each sample's distance from the average value of the group \cite{Hartigan1979}, \cite{macqueen1967}. In k-means clustering, the features of a set of data are viewed as the locations of each data sample in \textit{n}-dimensional space. In this space, \textit{k} cluster centroids are initially distrubuted. The distribution pattern can place the centroids either randomly between data samples or using randomly selected data points.
 
 After the locations of the cluster centroids are initialized, the distance between each sample and each centroid is calculated. Each sample is assigned to the cluster represented by the centroid closest to it. Once the clusters are defined, the location of the centroid of each cluster is recalculated. The new centroid location is the mean of the locations of all samples in its cluster. The distance between each sample and each cluster centroid is recalculated, samples are reassigned to their closest cluster centroid, and the centroid of each cluster is recalculated. This process continues until a stopping criteria is fulfilled. With most unsupervised machine learning methods, the stopping criteria is that the classifications of the model do not change for a certain number of iterations. However, a maximum number of iterations is imposed on the learning process to prevent a model from running indefinitely. As a result, it is possible for a model to ``time out'' before reaching a stable state.
 
 There are many variations of k-means clustering. For example, k-medians follows the same steps as k-means, but uses the median of the known data points in a cluster as the new centroid for that cluster \cite{Juan1998}. Another variation called k-mediods uses the data point closest to the center of the cluster as the new cluster centroid rather than a descriptive statistic of the cluster \cite{Kaufman1987}.
 
-One of the major limitations of k-means clustering is that the number of clusters must be given to the model. It is difficult to know how many clusters are needed to adequately represent subgroups within a data set. If too many clusters are used, the groups identified by the algorithm will be more granular than they should be; however, using too few clusters will produce large groups which mask distinct subgroups. 
+One of the major limitations of k-means clustering is that the number of clusters must be given to the model. It is difficult to know how many clusters are needed to adequately represent subgroups within a data set. If too many clusters are used, the groups identified by the algorithm will be more granular than they should be; however, using too few clusters will produce large groups which mask distinct subgroups. An example of k-means clustering as applied to the Iris data set can be seen in Figure \ref{ch4:fig:kmeans} \cite{Varoquaux2019}. The results of the clustering are dependent on the number of clusters specified as well as the points used to initialize the algorithm.
 
 
 \subsection{Spectral Clustering}
@@ -287,23 +188,20 @@ Uneven distributions of data classes can severely impact spectral clustering res
 
 \subsection{Agglomerative Clustering}
 
+\begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{4/clustermap-example.png}
+\caption{An example of agglomerative clustering on the Iris data set plotted using \textbf{seaborn}'s \textbf{clustermap} function.}
+\label{ch4:fig:agg}
+\end{figure}
+
 Agglomerative clustering is a specific type of hierarchical clustering which builds a tree of similarities between data samples from the ``bottom up'' \cite{Ward1963}. The data samples in agglomerative clustering are also viewed as distinct points in $n$-dimensional space, but the number of groups to identify is not specified. 
 
 First, the distance from every data sample to every other data sample is calculated. The two data points that are closest together in terms of some similarity metric are combined into a single cluster. In the relationship tree representing the similarities between all data samples, a node is created and the joined data points are connected to that node. That node or cluster is treated as an intermediate data sample. The distance from the new ``data sample'' to every other data sample is calculated and the two closest data samples are again combined into another intermediate sample. A node representing the new cluster is added to the relationship tree and the data sample or samples merged into the cluster are connected to the node. The process of combining data points into clusters based on similarity to other data points terminates when all data points and clusters have been combined. 
 
 The results of agglomerative clustering can be interpreted by traversing the relationship tree. The relationship tree recorded the history of which nodes were merged into which clusters at each stage. Due to the nature of agglomerative clustering, these stages can be viewed as distinct levels in the tree. Beginning at the final node (the root) of the tree, the granularity of the clusters can be explored. At the top level, there is only one cluster, but at the second to last level of the tree there will be two clusters, at the third level there will be three clusters, and so on. How each cluster grew can reveal information about the relationships between the data samples within that cluster.
 
-Agglomerative clustering also lends itself well to visualization via heatmap. The heatmap allows the researcher to see the distribution of feature values across the dataset and across visually prominent clusters. ``Eyeballing'' a heatmap is no substitution for performing statistical analyses, but it can provide a better sense of context than summary statistics. 
-
-%\subsection{Gaussian Mixture Models and Expectation Maximization}
-
-%As the number of samples in a data set tends to infinity, the Central Limit Theorem states that the distribution of the data will approach a Gaussian distribution. Since our data is composed of different groups, it can be modeled as a collection of multivariate Gaussian distributions. The underlying Gaussian distributions would contribute to the overall distribution with different strengths. This type of model is called a Gaussian mixture model (GMM). The parameters defining the mixture models and their contribution to the overall distribution are unknown, but can be calculated using expectation-maximization.
-%
-%The goal of expectation-maximization (EM) is to estimate the maximum likelihood of parameters in statistical models. The EM algorithm is composed of two steps: the expectation step and the maximization step. During the expectation step, the logarithm of the likelihood of the parameters taking their current values is calculated. Then, during the maximization step, the values of the parameters are recalculated to maximize the likelihood in the next step. 
-%
-%The process of using the EM algorithm to estimate the parameters of a multivariate GMM begins with the initialization of the parameters for each multivariate Gaussian distribution. These parameters include the mean, the covariance, and the mixing coefficient of the distribution. 
-%
-%The EM algorithm may not find the globally optimal values of the parameters of interest. It is only guaranteed to find local optima. 
+Agglomerative clustering also lends itself well to visualization via heatmap. The heatmap allows the researcher to see the distribution of feature values across the dataset and across visually prominent clusters. The Python library \textbf{seaborn} has a function called \textbf{clustermap} which both performs agglomerative clustering and shows the resulting trees in a structured heatmap. An example of agglomerative clustering from the \textbf{seaborn} documentation where the clustering was applied to the Iris data set can be seen in  Figure \ref{ch4:fig:agg} \cite{Waskom2018}. Each column represents a feature and each row represents a single sample. The colorbar in the top left of the figure shows that lighter colors in each cell represent higher values. The dendrogram along the top of the heatmap shows the distance between each feature. The dendrogram along the left of the heatmap shows the distance between each data sample and the data sample most similar to it. The column immediately to the right of this dendrogram shows the known class (species) for each data sample. The class labels in conjunction with the dendrogram of the data samples show the distinct groups present in the data which were identified using agglomerative clustering. 
 
 \subsection{Visualizing Clustering Results} 
 
@@ -356,8 +254,7 @@ y = w_0 + \sum_{i \in N} w_i*x_i
 
 Alternatively, if the goal was to predict whether a house was owned or rented, linear regression would be a poor model choice. The goal of this problem is to identify a nominal class, not a value in a continuous interval. This type of problem is better suited for logistic regression.
 
-Logistic regression takes the equation for linear regression and passes it through the logistic function. % BUT WHY
-The logistic function is 
+Logistic regression takes the equation for linear regression and passes it through the logistic function to map it to a range of $[0, 1]$. The logistic function is 
 
 \begin{equation}
 f(\pi) = \frac{1}{1+e^{\pi}}
@@ -372,6 +269,7 @@ y = \frac{1}{1+e^{(w_0 + \sum_{i \in N} w_i*x_i)}}
 This form of a logistic regression model is for binary, nominal outcomes, though multinomial logistic regression can model three or more outcomes and ordinal logistic regression can model ordered, discrete outcomes. For the purposes of this document, when we say logistic regression, we mean the form which models binary, nominal outcomes. 
 
 %\textbf{STRENGTHS AND WEAKNESSES} 
+The greatest strength and weakness of regression models is that they model linear relationships well. Linear models are fairly interpretable: the weights assigned to each feature in the linear model shows the importance the model believes that feature is. Interpretability is an important aspect of machine learning because people are more likely to trust a model if they can understand how it reached its conclusions. Unfortunately, it does not matter how interpretable the model is if the model is ill-suited for the data set. In particular, regression may have difficulty fitting data with nonlinear relationships.
 
 \subsection{Support Vector Machine}
 
@@ -437,7 +335,7 @@ Until this point, we have been describing feed-forward neural networks. All of t
 
 One particularly interesting type of recurrent neural network is a long short-term memory (LSTM) network. LSTM networks have more complex unit structure than basic neural networks. LSTM units are composed of a memory component and three types of gates: an input gate, an output gate, and a forget gate. The memory component tracks the current value of the unit. The input gate dictates how much data being passed to the cell impacts the memory component, the forget gate dictates how long a value is stored in the memory component, and the output gate dictates the impact of the value in the memory component is used to produce the output activation of the unit. Due to the nature of the LSTM units, networks made of LSTM units have an advantage over feed-forward networks when working with time-series data. 
 
-%One of the major drawbacks of both regression and SVMs is that the data used to train these models must be in feature vector form. Neural networks have the ability to work with more complex input data. They have been used for tasks as complex as speech recognition and video processing. 
+One of the major drawbacks of both regression and SVMs is that the data used to train these models must be in feature vector form. Neural networks have the ability to work with more complex input data. They have been used for tasks as complex as speech recognition and video processing using the audio or video itself as input. Their ability to work with data directly is a key strength of this type of technique. However, sequential data requires more memory than feature vectors. Similarly, the structure of artificial neurons needed to process and learn from these sequences is more complex and computationally expensive than regression, SVMs, or smaller and simpler neural network structures.
 
 
 \subsection{Application of Supervised Machine Learning}
@@ -446,7 +344,7 @@ Generally, the outcomes of interest when applying supervised machine learning to
 
 The first definition of normal is that enough motion can be removed from the image that the image is usable. The abnormal label is that the image cannot be recovered based on the patient's motion patterns.
 
-The second definition of normal is that the patient is healthy. We choose to identify the opposite label of ``the patient is healthy'' as ``the patient \textbf{may} not be healthy'' because of the heterogeneity of our data. CHD is a heterogeneous disease with many presentation types, and the neurodevelopmental disorders add another degree of granularity and complexity to a subject's clinical diagnosis. While it would be impressive to be able to build a clinical decision support tool that can diagnose a patient as having a particular form of CHD accompanied by a specific neurocognitive disorder, this goal is not the purpose of this project.
+The second definition of normal is that the patient is functioning typically. We choose to identify the opposite of this label as ``the patient \textbf{may} not be functioning typically'' because of the heterogeneity of our data. CHD is a heterogeneous disease with many presentation types, and the neurodevelopmental disorders add another degree of granularity and complexity to a subject's clinical diagnosis. While it would be impressive to be able to build a clinical decision support tool that can diagnose a patient as having a particular form of CHD accompanied by a specific neurocognitive disorder, this goal is not the purpose of this project.
 
 If a machine learning model reaches 100\% accuracy on both training and test data sets, data scientists should immediately assume something has gone wrong either with the model itself or with the training and testing data. Current machine learning models suffer from the difficulty of balancing two sources of error: bias and variance. Bias is the degree to which the machine learning model matches the underlying model of the training data. Variance is the breadth of the distribution of the data from the population of interest covered by the training data. Models with low bias and high variance overfit the training data: they model the training data well but generalize poorly to new data. Conversely, models with high bias and low variance underfit the training data: they fit the training data poorly, possibly because they learned noise in the training data rather than the signal. Underfitted models fail to capture the important signals from the training data and perform poorly overall.
 
