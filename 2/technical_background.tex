@@ -58,7 +58,7 @@ While rs-fMRIs have a spatial resolution on the order of millimeters, neuronal a
 
 \subsection{The Spin History Effects of Motion}
 
-In addition to changing the recorded position of the subject, motion impacts the established spin gradients, which introduces artifacts into the image sequence.
+In addition to changing the recorded position of the patient, motion impacts the established spin gradients, which introduces artifacts into the image sequence.
 
 %According to principles of quantum mechanics, elementary particles intrinsically have two types of angular momentum: orbital angular momentum and spin angular momentum. The same types of elementary molecules have the same spin angular momentum, which is denoted by a spin quantum number specific to that particle type. A spin quantum number 
 
@@ -68,10 +68,17 @@ However, when the patient moves, the volume of space which was thought to be exc
 
 The previous few paragraphs in this section describe how motion disrupts the magnetic spin gradients present in the patient during an rs-fMRI scan. The spin gradients need time to recover to the correct magnetic field orientation, and up to eight to ten seconds may pass before the recovery is complete \cite{Power2014}. While the spin gradients are reorienting, the recorded BOLD signal will vary more than usual between temporally neighboring volumes. These variations are more difficult to quantify than the positional effects of motion.
 
+% Paper calls them field maps, but are they actually susceptibility maps?
+The nature of the B0 field in a MRI scanner can be recorded using a field map. Acquiring a field map while the patient is in the scanner records information about how the patient interact with the B0 field. These field maps of the patient in the scanner can be used to perform distortion correction on the acquired sequence. A study of the effects of distortion correction on rs-fMRIs of 40 healthy subjects suggested that distortion correction using field maps can increase the functional connectivity in rs-fMRIs \cite{Togo2017}.
+
+
 \subsection{The Susceptibility Effects of Motion}
 
-The susceptibility of a material describes how the material will behave when placed in a magnetic field. Most materials are either paramagnetic or diamagnetic. Paramagnetic materials are attracted to and align with magnetic fields while diamagnetic are repelled from and become anti-aligned with magnetic fields. Additionally, paramagnetic materials contribute to the magnetic field where they interact with it while diamagnetic materials detract from it.
+The susceptibility of a material describes how the material will behave when placed in a magnetic field. Most materials are either paramagnetic or diamagnetic. Paramagnetic materials are attracted to and align with magnetic fields while diamagnetic are repelled from and become anti-aligned with magnetic fields. Additionally, paramagnetic materials contribute to the magnetic field where they interact with it while diamagnetic materials detract from it. 
 
+Both types of materials cause distortions in the magnetic field. These distortions are more prominent in stronger magnetic fields and at the interface of two different material types. In MRI scanners, the differences in susceptibility between soft tissue and bone or between soft tissue and air can produce artifacts in the acquired sequence. These artifacts are amplified when the patient moves. When the patient moves, the interfaces between tissues and air distort the B0 field. The distortions in the B0 field change the electromagnetic signal recorded by the scanner and lead to spurious correlations during the analysis of the rs-fMRI sequence.
+
+Susceptibility artifacts can be reduced using susceptibility maps. Susceptibility maps are short acquisitions which use multiple echo periods to detect small changes in the location of susceptibility interfaces in a MRI sequence. They are not part of most rs-fRMI acquisition protocols.
 
 
 \section{Measuring Motion}
@@ -108,6 +115,21 @@ DVARS(J_i) = \sqrt{ \frac{1}{N} \sum_{\vec{x} \in J_i, J_{i-1}} \left( \frac{\pa
 \end{equation}
 
 DVARs measures the change in BOLD signal intensity, which is highly related to motion-induced spin gradient changes. 
+
+\subsection{Acceptable Motion Quantities}
+
+
+%The FD metric only measures the positional effects of motion, not the variations in signal in individual voxels caused by motion. Changes in signal between volumes can be measured using the temporal derivative of the variance in the BOLD signal intensity (DVARS) between neighboring volumes \cite{Power2012} \cite{Smyser2015}. 
+
+Even though the effects of motion on the patient position and the recorded signal can be measured, we still need gold standard criteria to determine whether an image containing motion can be used. Patients move slightly due to breathing and cardiac function, and the BOLD signal naturally fluctuates over time. Some motion is expected; however, we need to know how much motion can be present in the image before it is considered to be corrupted by it. Power et al. established thresholds for FD and DVARS to determine the usability of a pair of images:
+\begin{itemize}
+\item FD less than or equal to 0.2 mm from previous volume, and
+\item DVARS less than or equal to 25 units on a normalized scale of [0, 1000] signal units \cite{Power2014}
+\end{itemize}
+
+Image volumes that meet these criteria are considered to be low-motion.
+
+The time span of low-motion data is highly debated. van Dijk et al. established that approximately five minutes of low-motion data is sufficient for use in functional connectivity analysis \cite{VanDijk2012}. However, a recent study by Laumann et al. suggests that at least 10 minutes of low-motion data is essential for obtaining high-quality results \cite{Laumann2015}. From a practical standpoint, it is difficult to obtain even five minutes of low motion data from certain patient populations, so radiology technicians and neuroimaging study designers are often content with the five minute time standard. 
 
 \section{Motion Prevention}
 
@@ -188,13 +210,14 @@ Several companies have developed commercial products for prospective motion corr
 % Limitation: MR safe equipment
 % Limitation: measurements must be made  
 % Limitation: only rigid body motion. 
-The methods discussed above have a few limitations due to the optical camera setups. For precise real-time motion correction, the camera or cameras must be carefully placed so that the position of the marker on the patient can be recorded. They must have a clear line of sight, which means they will be in the same room as the MRI scanner, if not within the scanner bore. The cameras and markers must be MR compatible, and the positions of the cameras and markers in physical space relative to the visual markers on the patient must be known. These positions are vital for the calculations used to measure the motions. Even if the motion measurements are accurate, the changes in position that are recorded and used to adapt the scan parameters will only be true for rigid body motion of the body part to which the markers are attached: any distortion of soft tissue will not be accurately accounted for during the motion correction unless the camera system was specifically built for and trained to do so. 
-% To incorporate
 % Limitation: optical trackers must have clean line of sight to subject 
-% Limitation: systems using markers attached to patient suffer from imperfect attachment of the marker to the subject, where the marker slips or moves during the scan independently from the subject, 
+The methods and technologies discussed above have a few limitations due to the optical camera setups. For precise real-time motion correction, the camera or cameras must be carefully placed so that the position of the marker on the patient can be recorded. They must have a clear line of sight, which means they will be in the same room as the MRI scanner, if not within the scanner bore. The cameras and markers must be MR compatible, and the positions of the cameras and markers in physical space relative to the visual markers on the patient must be known. These positions are vital for the calculations used to measure the motions. Even if the motion measurements are accurate, the changes in position that are recorded and used to adapt the scan parameters will only be true for rigid body motion of the body part to which the markers are attached: any distortion of soft tissue will not be accurately accounted for during the motion correction unless the camera system was specifically built for and trained to do so. 
+
+% Limitation: 
+Systems using markers attached to patient suffer from these limitations, but also from limitations due to the markers themselves. If the marker is not attached correctly to the patient, the marker can slip and move independently from the patient. The whole purpose of the markers are that they provide a known set of visual features that can be used to determine how a patient moved because they moved with the subject.
 % Look up Oliver Speck?
 
-\subsection{External Sensors}
+\subsection{Non-Visual External Sensors}
 
 Cameras are not the only type of external sensor that can be used to measure motion during a rs-fMRI scan. 
 
@@ -202,7 +225,11 @@ There is a class of sensors which can take advantage of electrophysics propertie
 The fact that these sensors directly interact with the magnetic field of the MR scanner means that protocols using these sensors must be modified to account for them. As a result of the protocol modification, the scan time might need to be extended.
 
 %CHECK DETAILS AND CITATION 
-As mentioned earlier in this chapter, respiration is a source of patient motion. Since respiration is relatively periodic, it can be monitored and accounted for within a scan protocol via gating. Gating prevents an image from being acquired unless the patient is in the expected state. In the case of respiration, the expected state is either complete inhalation or exhalation. The state of a patient's respiration can be tracked using respiration bellows. After acquiring the MRI sequence, volumes in the sequence can be grouped depending on when they were recorded in the breathing cycle. By only using volumes recorded during the same stage of the breathing cycle, the effects of respiratory motion can be mitigated.
+As mentioned earlier in this chapter, respiration and cardiac activity are sources of patient motion. The most straightforward way to reduce the effect of respiratory motion is to instruct the patient to hold their breath at specific intervals during the scan. One alternative to breath holding uses the periodic nature of respiration. Since respiration is relatively periodic, it can be monitored and accounted for within a scan protocol via gating. A comparative study of breath holding and respiratory gating in MRIs of the coronary arteries suggests that images acquired using respiratory gating had 76\% better quality than the images acquired using breath holding \cite{PMID:7822549}.
+
+In cases where only respiration is taken into account, gating prevents an image from being acquired unless the patient is in the specified state. In the case of respiration, the specified state is either complete inhalation or exhalation. The state of a patient's respiration can be tracked using respiration bellows. After acquiring the MRI sequence, volumes in the sequence can be grouped depending on when they were recorded in the breathing cycle. By only using volumes recorded during the same stage of the breathing cycle, the effects of respiratory motion can be mitigated. This approach to gating will increase the amount of scanner time needed.
+
+When both cardiac and respiratory motion are considered, the patient's respiration is monitored through a bellows or pressure belt and their cardiac activity is monitored on a delay during the scan through a pulse oximeter on the patient's finger \cite{Hu1995}. The cardiac and respiratory data are synchronized with the acquired image after the scan. The synchronized signals are then used to remove changes in the image associated with physiological motion, which ``substantially reduces image-to-image fluctuations'' \cite{Hu199}.
 
 %Cardiac: pulse oximeter (delay relative to central pulse) 
 %ECG: less reliable at high field strengths (Frauenrath et al JMRI 2012; 36: 364-72
@@ -214,7 +241,7 @@ As mentioned earlier in this chapter, respiration is a source of patient motion.
 
 %Detection using RF coils? Changes conductivity and RF power (Buikman et al MRI 1988)
 
-Ultimately, the addition of extra sensors complicate the process and set up of a rs-fMRI scan.
+Ultimately, using external sensors to monitor the patient for inherent physiological motion can improve the quality of the obtained MR images. However, the addition of extra sensors complicate the process and set up of a rs-fMRI scan.
 
 \subsection{Image Signal Motion Monitoring}
 
@@ -250,7 +277,7 @@ One of the earliest examples of image registration was described by Friston et a
 \label{fig:ch4:traditional-reg}
 \end{figure}
 
-When performing image registration on a sequence of image volumes, one volume must be chosen as the reference volume for the entire sequence. All other volumes in the sequence are registered to this volume. An example of this process can be seen in Figure \ref{fig:ch4:traditional-reg}. In subsequent work, Friston et al. used the first volume in the rs-fMRI sequence as the universal reference image \cite{Friston1996}. Common choices for the reference volume include the volume with the least FD to all other volumes in the sequence, a volume produced by averaging all volumes in the sequence, or the first volume in the sequence \cite{Friston1996} \cite{Liao2005}. In our implementation, we chose to use the first volume in the sequence as the reference volume.
+When performing image registration on a sequence of image volumes, one volume must be chosen as the reference volume for the entire sequence. All other volumes in the sequence are registered to this volume. An example of this process can be seen in Figure \ref{fig:ch4:traditional-reg}. In subsequent work, Friston et al. used the first volume in the rs-fMRI sequence as the universal reference image \cite{Friston1996}. Common choices for the reference volume include the volume with the least positional difference to all other volumes in the sequence, a volume produced by averaging all volumes in the sequence, or the first volume in the sequence \cite{Friston1996} \cite{Liao2005}. In our implementation, we chose to use the first volume in the sequence as the reference volume.
 
 One drawback to this traditional approach to volume registration is that it only minimizes the differences between all the image volumes in the sequence and the reference volume. The key word here is minimizes: minimizing differences between image volumes does not mean that there are no differences between the image volumes. Image registration is an optimization problem, and its goal is to find the overlap between a pair of volumes with as few differences as possible either within a defined time period or until the optimization cost does not change above a certain tolerance for a certain amount of time. These practical constraints on optimization problems mean that there may still be differences between other pairs of image volumes in the sequence that do not include the reference volume. 
 
@@ -262,13 +289,9 @@ It has been demonstrated that image registration across the entire image sequenc
 
 Denoising techniques can be applied to a rs-fMRI after global volume registration is completed. They consist of regressions of various confound variables. 
 
-Regression of the global signal (global signal regression, GSR) corrects for variance between temporal signals within a voxel and for the mean BOLD signal across all voxels \cite{Power2014} \cite{Satterthwaite2013} \cite{Yan2013} \cite{Yan2013a}. GSR has been shown to reduce spuriously increased long-distance correlations in functional connectivity studies, but may inadvertently weaken shorter-distance connections \cite{Jo2013} \cite{Power2014}  \cite{Satterthwaite2012}. 
+It is relatively common for researchers to use rigid realignment parameters calculated during volume registration as signals to remove vai regression. The realignment parameters are the translations along and the rotations about the $x$, $y$, and $z$ axes \cite{Power2012}. These six parameters and their first order derivatives are suggested as regression parameters by several researchers \cite{Power2012} \cite{Satterthwaite2012} \cite{VanDijk2012}. 
 
-Other regression parameters have been investigated. Commonly, the six rigid realignment parameters and their first order derivatives are suggested as regression parameters \cite{Power2012} \cite{Satterthwaite2012} \cite{VanDijk2012}. More recently, researchers have also incorporated the rigid realignment parameters from surrounding timpoints \cite{Power2014} \cite{Satterthwaite2013} \cite{Yan2013a}.
-
-, signals from white matter or cerebral spinal fluid \cite{Power2014} \cite{Satterthwaite2013} \cite{Yan2013a} \cite{Jo2010}, and components identified using principal or independent component analysis \cite{Pruim2015} \cite{Salimi-Khorshidi2014} \cite{Behzadi2007}. Regression of each of these sets of parameters has been shown to reduce the effects of motion in the sequence but not remove them entirely \cite{Power2015} \cite{Parkes2017}. 
-
-
+While the realignment parameters and their derivative for the current image volumes helps reduce the effects of motion on an image sequence, these parameters are not sufficient on their own. As the effects of motion on rs-fMRIs have been studied, it has been established that motion at one point in the sequence can affect the next several volumes. Researchers have decided to address this effect by incorporating the rigid realignment parameters from surrounding timpoints into the regression parameters for any given current image volume \cite{Power2014} \cite{Satterthwaite2013} \cite{Yan2013a}.
 
 Patriat et al. performed a robust comparison of different regression parameters on their MotSim motion data set \cite{Patriat2017}. They included rigid realignment parameters, but also used parameters obtained by performing principle component analysis (PCA) on the image sequences. PCA generates a set of linear, uncorrelated components that reflect the main features of a patient's motion. The list of parameter combinations included 
 \begin{itemize}
@@ -282,28 +305,28 @@ Patriat et al. performed a robust comparison of different regression parameters 
 
 \noindent They found that the features extracted from the image sequence using PCA explained more variance in the image sequence (measured using $R^2$) than the rigid realignment parameters. They showed that increasing the number of regressors increased the amount of variance explained, but with diminishing returns. While their work is promising, their experiment was performed on a simulated data set using healthy subject data and required an accurate estimate of the subject's head motion.
 
+In addition to the positional effects of motion, the spin history and susceptibility effects of motion must be considered. Signals associated with these effects are called nusiance signals. One common nusiance signal is the global signal of the image sequence. Global signal regression (GSR) corrects for variance between temporal signals within a voxel and for the mean BOLD signal across all voxels \cite{Power2014} \cite{Satterthwaite2013} \cite{Yan2013} \cite{Yan2013a}. GSR has been shown to reduce spuriously increased long-distance correlations in functional connectivity studies, but may inadvertently weaken shorter-distance connections \cite{Jo2013} \cite{Power2014}  \cite{Satterthwaite2012}. Other nusiance signals that can be removed via regression are signals white matter and cerebral spinal fluid (CSF) \cite{Power2014} \cite{Satterthwaite2013}. The impact of removing these signals from the image sequence has been shown to be limited: in some cases, removing white matter and CSF signals does not reduce the effects of motion on the BOLD signal \cite{Yan2013a} \cite{Jo2010}.
+
+A third set of signals that may be removed via regression are components identified using principal component analysis (PCA) or independent component analysis (ICA) \cite{Pruim2015} \cite{Salimi-Khorshidi2014} \cite{Behzadi2007}. Though both PCA and ICA decompose a set of data into a list of signals, the properties of the lists are different. PCA produces a list of orthogonal signals that best represent the features of a data set ordered from most representative to least representative. The list of components produced by ICA are assumed to be independent (not just uncorrelated) and combine additively to produce the original signal. Regression of each of these sets of signals has been shown to reduce the effects of motion in the sequence but neither removes them entirely \cite{Power2015} \cite{Parkes2017}. 
+
+
 \subsection{Filtering}
 
-Filtering, which is also referred to as censoring, involves the identification and removal or interpolation of volumes containing high quantities of motion. Two popular techniques are scrubbing and spike regression. Power et al.’s scrubbing technique removes volumes with more than 0.2 mm of FD \cite{Power2012}. Spike regression identifies volumes with large FD and replaces them with interpolated volumes \cite{Satterthwaite2013}. Unfortunately, these filtering techniques ultimately result in the loss of data as volumes are removed from the sequence. A third technique called despiking detects signal spikes at the voxel level and interpolates over the spikes \cite{Jo2013} \cite{Patel2014}. Despiking does not remove volumes, but could accidentally remove valuable signals. 
+Not all patients move in the same ways or at the same rate. In some cases, a patient will perform a large and sudden movement and then settle into a position close to their original position. The volumes containing the motion can be removed from the rs-fMRI sequence to create smaller, motion-free sequences. Several studies have found that subsequences of data of the same patient can be concatenated to produce a longer sequence without impacting the functional connectivity analysis. The process of detecting and removing motion-corrupted volumes has been formalized into several filtering techniques. 
+%Filtering, which is also referred to as censoring, involves the identification and removal or interpolation of volumes containing high quantities of motion. 
+Three popular filtering techniques are scrubbing, spike regression, and despiking. 
+
+During scrubbing, the image sequence is examined for ``high-motion'' volumes. Here, ``high-motion'' is defined as image volumes which have 0.5 mm FD and 0.5\% DVARS difference from their preceeding volume. Volumes containing at least this quantity of motion as well as the preceeding volume and two subsequent volumes are removed from the sequence. As long as the remaining volumes compose a sequence at least 125 frames (approximately 5 minutes) in length, the scrubbed sequence can be used for analysis \cite{Power2012}. Unfortunately, scrubbing results in the loss of data as volumes are removed from the sequence.
+
+Spike regression also identifies volumes containing large quantities of motion \cite{Satterthwaite2013}.
+
+identifies volumes with large FD and replaces them with interpolated volumes . 
+
+Despiking is different from these techniques. It treats the image sequence as a single image volume where each voxel contains an intensity signal. Each intensity signal is examined for sudden changes, or spikes. The value of each detected spike is replaced with an interpolated value calculated using the preceeding and subsequent points in the voxel's signal \cite{Jo2013} \cite{Patel2014}. Despiking does not remove volumes, but could accidentally remove valuable signals if they appear as outliers in the image voxel signals.
 
 \subsection{Spin History Distortion Correction}
 
 A number of post-acquisition methods have been developed specifically to correct for distortions due to the impact of motion on the magnetic field. The usability of these dynamic distortion correction methods has been studied in a few specific cases, but their generalizability has yet to be confirmed in a broader range of fMRI studies \cite{Zaitsev2017}.
-
-\section{Image Usability}
-
-
-%The FD metric only measures the positional effects of motion, not the variations in signal in individual voxels caused by motion. Changes in signal between volumes can be measured using the temporal derivative of the variance in the BOLD signal intensity (DVARS) between neighboring volumes \cite{Power2012} \cite{Smyser2015}. 
-
-Even though the effects of motion on the patient position and the recorded signal can be measured, we still need gold standard criteria to determine whether an image containing motion can be used. Patients move slightly due to breathing and cardiac function, and the BOLD signal naturally fluctuates over time. Some motion is expected; however, we need to know how much motion can be present in the image before it is considered to be corrupted by it. Power et al. established thresholds for FD and DVARS to determine the usability of a pair of images:
-\begin{itemize}
-\item FD less than or equal to 0.2 mm from previous volume, and
-\item DVARS less than or equal to 25 units on a normalized scale of [0, 1000] signal units \cite{Power2014}
-\end{itemize}
-
-Image volumes that meet these criteria are considered to be low-motion.
-
-The time span of low-motion data is highly debated. van Dijk et al. established that approximately five minutes of low-motion data is sufficient for use in functional connectivity analysis \cite{VanDijk2012}. However, a recent study by Laumann et al. suggests that at least 10 minutes of low-motion data is essential for obtaining high-quality results \cite{Laumann2015}. From a practical standpoint, it is difficult to obtain even five minutes of low motion data from certain patient populations, so radiology technicians and neuroimaging study designers are often content with the five minute time standard. 
 
 \section{Summary}
 
