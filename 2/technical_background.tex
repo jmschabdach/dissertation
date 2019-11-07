@@ -5,7 +5,14 @@ This chapter discusses rs-fMRIs and how they are affected by patient motion. Spe
 
 \section{Structure of an rs-fMRI}
 
-A rs-fMRI scan produces a four dimensional image series. The first three dimensions are length, width, and depth and encompass the physical space occupied by the patient's head. The information in these three dimensions is interpreted as a three dimensional, volumetric image. The fourth dimension is time. The temporal dimension interacts with the spatial dimensions such that the contents of that image volume change with time. This concept of a 4D image can be illustrated in two different ways. The first is an ordered list of 3D image volumes. The second is a single 3D image volume where the value of each voxel is a temporal signal. 
+\begin{figure}
+\centering
+\includegraphics[width=.75\textwidth]{2/rsfMRI-views.png}
+\caption{A rs-fMRI can be thought of (a) as a sequence of image volumes or (b) as a single volume where each voxel contains a temporal signal rather than a single numeric value.}
+\label{ch2:fig:rsfmri-views}
+\end{figure}
+
+A rs-fMRI scan produces a four dimensional image series. The first three dimensions are length, width, and depth and encompass the physical space occupied by the patient's head. The information in these three dimensions is interpreted as a three dimensional, volumetric image. The fourth dimension is time. The temporal dimension interacts with the spatial dimensions such that the contents of that image volume change with time. This concept of a 4D image is illustrated in two different ways in Figure \ref{ch2:fig:rsfmri-views}. The first representation is an ordered list of 3D image volumes. The second representation is a single 3D image volume where the value of each voxel is a temporal signal. 
 
 rs-fMRIs are discrete representations of continuous data. A new image volume of the patient's brain is acquired every two to three seconds. The image volume is composed of a three dimensional version of a pixel called a voxel (volume element). Just as the ``distance'' between each image volume encompasses a certain amount of time, each voxel encompasses a small volume of physical space. The transformations between the continuous physical and temporal dimensions and the discrete physical and temporal dimensions are the spatial and temporal resolutions. 
 
@@ -15,8 +22,8 @@ An rs-fMRI is considered to have relatively low spatial resolution but high temp
 
 \begin{figure}
 \centering
-\includegraphics[width=.5\textwidth]{temp-fig.jpeg}
-\caption{The patient's brain activity effectively passes through several filters before an MRI scanner produces a visually interpretable image sequence.}
+\includegraphics[width=.6\textwidth]{2/rsfMRI-signal-filters.png}
+\caption{The patient's brain activity effectively passes through several filters before an MRI scanner produces a visually interpretable image sequence. (The rounded rectangles represent the signal at different stages of recording while the rhombuses represent the filters.)}
 \label{ch2:fig:signal-filters}
 \end{figure}
 
@@ -133,7 +140,7 @@ The time span of low-motion data is highly debated. van Dijk et al. established 
 
 \section{Motion Prevention}
 
-Various techniques and protocols have been developed to prevent patients from moving during the image acquisition process. Not all of these techniques are suitable for all patient populations, and some techniques have been designed specifically for certain populations.
+During an MRI scan, thick foam pads of various sizes and shapes are used to isolate and immobilize the area of interest on the patient. While these pads impede most motion, especially in compliant patients, additional techniques and protocols are often used to prevent patients from moving during the image acquisition process. Not all of these techniques are suitable for all patient populations, and some techniques have been designed specifically for certain populations.
 
 \subsection{Pre-Scan: Education}
 
@@ -154,7 +161,6 @@ These techniques for educating the patient and helping the patient cope with the
 \subsection{During Scan: Sedation}
 
 Sedation can be used to help a patient tolerate an MRI scan. Murphy and Brunberg retrospectively analyzed seven weeks of data from the MR department and found that 14.2\% of their adult patients required some form of sedation \cite{Murphy1997}. In a study about claustrophobia and MR acquisitions, Dewey et al. report that out of 55,734 patients who underwent MRI scans, a total of 1004 patients experienced claustrophobia and 610 of these patients required intravenous sedation before their scans \cite{Dewey2007}. Even though sedation allowed the patients mentioned in this paragraph to undergo an MRI scan, the authors of both studies note that sedation can result in adverse events and advise the reader to avoid patient sedation if possible.
-
 
 Sedation can be used with pediatric patients, though the risks are more significant than with adult patients. Studies have shown that sedation for pediatric imaging can lead to hypoxemia and inappropriate sedation levels during image acquisition \cite{Malviya2000}. Pediatric patients can also expect ``motor imbalance and gastrointestinal effects,'' as well as agitation and restlessness for a period of hours after waking from sedation.
 
@@ -237,13 +243,15 @@ When both cardiac and respiratory motion are considered, the patient's respirati
 %Frauenrath et al, Investigative Radiology 2009,
 %Frauenrath et al J Cardiovascular MR 2010
 
-%Additional sensors complicate the scan setup
+For macro-scale motions, electromagnetically sensitive trackers can be placed on the patient and used to monitor changes in position during the scan. Afacan et al. used a tracker produced by Robin Medical Inc. (Baltimore, MD)
 
 %Detection using RF coils? Changes conductivity and RF power (Buikman et al MRI 1988)
 
 Ultimately, using external sensors to monitor the patient for inherent physiological motion can improve the quality of the obtained MR images. However, the addition of extra sensors complicate the process and set up of a rs-fMRI scan.
 
 \subsection{Image Signal Motion Monitoring}
+
+
 
 Dosenbach et al. have developed a tool to evaluate motion in rs-fMRI sequences as they are acquired \cite{Dosenbach2017}. It registers each volume to the initial volume of the rs-fMRI sequence immediately after the new volume is recorded. The parameters produced by this registration are used to calculate the framewise displacement between pairs of volumes, which is then compared to a set of displacement thresholds associated with the scan quality. The number of volumes that meet each threshold is used to determine how many more volumes are needed to obtain five minutes of low-motion volumes. This method for assessing the quality of a scan in real time is useful for ensuring images are acquired with a sufficient number of low-motion volumes. It can also aid the technologists in determining whether to prematurely terminate a scan, which may be desirable if the amount of time needed to obtain enough low-motion volumes is greater than the amount of time remaining for the patient in the scanner. 
 
@@ -309,20 +317,21 @@ In addition to the positional effects of motion, the spin history and susceptibi
 
 A third set of signals that may be removed via regression are components identified using principal component analysis (PCA) or independent component analysis (ICA) \cite{Pruim2015} \cite{Salimi-Khorshidi2014} \cite{Behzadi2007}. Though both PCA and ICA decompose a set of data into a list of signals, the properties of the lists are different. PCA produces a list of orthogonal signals that best represent the features of a data set ordered from most representative to least representative. The list of components produced by ICA are assumed to be independent (not just uncorrelated) and combine additively to produce the original signal. Regression of each of these sets of signals has been shown to reduce the effects of motion in the sequence but neither removes them entirely \cite{Power2015} \cite{Parkes2017}. 
 
-
 \subsection{Filtering}
 
 Not all patients move in the same ways or at the same rate. In some cases, a patient will perform a large and sudden movement and then settle into a position close to their original position. The volumes containing the motion can be removed from the rs-fMRI sequence to create smaller, motion-free sequences. Several studies have found that subsequences of data of the same patient can be concatenated to produce a longer sequence without impacting the functional connectivity analysis. The process of detecting and removing motion-corrupted volumes has been formalized into several filtering techniques. 
 %Filtering, which is also referred to as censoring, involves the identification and removal or interpolation of volumes containing high quantities of motion. 
 Three popular filtering techniques are scrubbing, spike regression, and despiking. 
 
-During scrubbing, the image sequence is examined for ``high-motion'' volumes. Here, ``high-motion'' is defined as image volumes which have 0.5 mm FD and 0.5\% DVARS difference from their preceeding volume. Volumes containing at least this quantity of motion as well as the preceeding volume and two subsequent volumes are removed from the sequence. As long as the remaining volumes compose a sequence at least 125 frames (approximately 5 minutes) in length, the scrubbed sequence can be used for analysis \cite{Power2012}. Unfortunately, scrubbing results in the loss of data as volumes are removed from the sequence.
+\textbf{Scrubbing} begins by examining the image sequence for ``high-motion'' image volumes \cite{Power2012}. Here, ``high-motion'' is defined as image volumes which have 0.5 mm FD and 0.5\% DVARS difference from their preceeding volume. Volumes containing at least this quantity of motion as well as the preceeding volume and two subsequent volumes are removed from the sequence, resulting in a set of discontinuous subsequences. The discontinuous subsequences can be combined without negatively impacting the functional connectivity analysis of the BOLD signal \cite{Fair2007} \cite{VanDijk2010}. As long as the reconnected subsequences compose a sequence at least 125 frames (approximately 5 minutes) in length, the scrubbed sequence can be used for analysis \cite{Power2012}. Many techniques for temporally filtering high-motion rs-fMRIs have been developed,  though all of them result in the loss of data as volumes are removed from the sequence \cite{Barnes2011} \cite{Fransson2007} \cite{Jones2010} \cite{Kennedy2008} \cite{Smyser2010} \cite{Smyser2011}.  
 
-Spike regression also identifies volumes containing large quantities of motion \cite{Satterthwaite2013}.
+\textbf{Spike regression} also identifies volumes containing large quantities of motion, though it treats them differently than scrubbing does. \cite{Satterthwaite2013}. It identifies spikes in the image sequence and replaces frames effected by the spikes with interpolated volumes.
 
-identifies volumes with large FD and replaces them with interpolated volumes . 
+A spike is defined as a frame in the sequence where the FD or the FD and the DVARS between it and its previous frame surpass a given set of thresholds. The value of the thresholds greatly impacts the cleaned image sequence. A low threshold will identify more spikes and produce a cleaner image sequence but remove more data, while a high threshold will retain more data but contain more motion artifacts. The thresholds used by Satterthwaite et al. on their adolescent data set are .25 mm FD and 1.4\% units DVARS. 
 
-Despiking is different from these techniques. It treats the image sequence as a single image volume where each voxel contains an intensity signal. Each intensity signal is examined for sudden changes, or spikes. The value of each detected spike is replaced with an interpolated value calculated using the preceeding and subsequent points in the voxel's signal \cite{Jo2013} \cite{Patel2014}. Despiking does not remove volumes, but could accidentally remove valuable signals if they appear as outliers in the image voxel signals.
+After identifying the spikes in an image sequence, they are modeled as signals to remove through regression. The simplest model of a spike is as a motion event at a single time point. However, it has been established that patient motion may effect several frames in the image sequence. Satterthwaite et al. examined six combinations of frames around the frame in which the spike was based during their analysis of spike regression. They found that removing spikes identified using just the FD threshold and modeled as only effecting a single frame resulted in the fewest different neural connections in the highest and lowest motion images as well as the lowest correlation between functional connectivity and patient motion \cite{Satterthwaite2013}.
+
+\textbf{Despiking} is different from these techniques. It treats the image sequence as a single image volume where each voxel contains an intensity signal. Each intensity signal is examined for sudden changes, or spikes. The value of each detected spike is replaced with an interpolated value calculated using the preceeding and subsequent points in the voxel's signal \cite{Jo2013} \cite{Patel2014}. Despiking does not remove volumes, but could accidentally remove valuable signals if they appear as outliers in the image voxel signals.
 
 \subsection{Spin History Distortion Correction}
 
