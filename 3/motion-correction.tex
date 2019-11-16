@@ -1,5 +1,5 @@
 \chapter{METHODS: Motion Correction}
-\label{ch4:moco}
+\label{ch3:moco}
 
 In the previous chapter, we discuss several techniques used to retrospectively correct motion. Motion correction pipelines may use denoising and filtering, but all pipelines begin with volume registration. In this chapter, we discuss a different approach to volume registration, how it compares to traditional volume registration, and how volume registration fits into a motion correction pipeline. 
 
@@ -13,12 +13,12 @@ In our proposed framework, we wish to account for these spatiotemporal relations
 
 \begin{figure}
 \centering
-\includegraphics[width=.7\textwidth]{4/dag-chain.png}
+\includegraphics[width=.7\textwidth]{3/dag-chain.png}
 \caption{A rs-fMRI can be viewed as a directed acyclic graph where each volume is a node and the edges connect from each volume $i$ to the following volume $i+1$.}
-\label{ch4:fig:dag-chain}
+\label{ch3:fig:dag-chain}
 \end{figure}
 
-In the case of an rs-fMRI, each volume can be considered a node. The relationship between each pair of temporally neighboring volumes is represented as a directed edge connecting the node for the first volume to the node for the next volume. The acyclic nature of the DAG means that once a patient was in a specific position, he will never return to that exact same position with the exact same neurons firing. The position of the subject and his brain activity as measured by the BOLD signal may be similar in subsequent image volumes, but it will never be precisely the same. The perspectives of an rs-fMRI sequence as a set of images and of the sequence as a DAG can be seen in Figure \ref{ch4:fig:dag-chain}.
+In the case of an rs-fMRI, each volume can be considered a node. The relationship between each pair of temporally neighboring volumes is represented as a directed edge connecting the node for the first volume to the node for the next volume. The acyclic nature of the DAG means that once a patient was in a specific position, he will never return to that exact same position with the exact same neurons firing. The position of the subject and his brain activity as measured by the BOLD signal may be similar in subsequent image volumes, but it will never be precisely the same. The perspectives of an rs-fMRI sequence as a set of images and of the sequence as a DAG can be seen in Figure \ref{ch3:fig:dag-chain}.
 
 The cost of transitioning from one node to the next in our DAG has a parallel representation to the combination of the positional transformation needed to align volume $i$ to volume $i+1$ and the signal change between the volumes. This representation can be written as 
 
@@ -52,12 +52,12 @@ J_{i+2} & = \phi_{i+1,i+2} J_{i+1} + \epsilon^* \\
 
 \begin{figure}
 \centering
-\includegraphics[width=.7\textwidth]{4/dag-registration.png}
+\includegraphics[width=.7\textwidth]{3/dag-registration.png}
 \caption{The traditional approach to volume registration in an rs-fMRI sequence consists of registering all volumes in the sequence to a single reference volume.}
-\label{ch4:fig:dag-reg}
+\label{ch3:fig:dag-reg}
 \end{figure}
 
-\noindent{and calculates $\phi_{i,i+2}$ directly. We argue that this assumption is not true in all cases. Rather than directly calculate $\phi_{0,i}$ and use it to align volume $i$ to the reference volume as the traditional method does, we calculate each component $\phi$ that is a factor of $\phi_{0,i}$. Each component $\phi_{i,i+1}$ is combined with the preceding $\phi_{0,i}$s to recursively align volume $i+1$ to the reference volume without making the large and often inaccurate transformations required by directly calculating $\phi_{0,i+1}$.} This process is outlined in Figure \ref{ch4:fig:dag-reg}.
+\noindent{and calculates $\phi_{i,i+2}$ directly. We argue that this assumption is not true in all cases. Rather than directly calculate $\phi_{0,i}$ and use it to align volume $i$ to the reference volume as the traditional method does, we calculate each component $\phi$ that is a factor of $\phi_{0,i}$. Each component $\phi_{i,i+1}$ is combined with the preceding $\phi_{0,i}$s to recursively align volume $i+1$ to the reference volume without making the large and often inaccurate transformations required by directly calculating $\phi_{0,i+1}$.} This process is outlined in Figure \ref{ch3:fig:dag-reg}.
 
 \section{Independent Component Analysis}
 
@@ -76,7 +76,7 @@ Probabilistic ICA is a linear regression model which performs mixing in the orig
 Probabilistic ICA treats the voxel intensity values in every frame of the image sequence as a matrix of $V$ voxels across $n$ time points. For each voxel $v_i \in V$, the observed signal in that voxel can be modeled as
 
 \begin{equation}
-\label{ch4:eq:ica01}
+\label{ch3:eq:ica01}
 \vec{x_i} = A \vec{s_i} + \mu + \vec{\eta_i}
 \end{equation}
 
@@ -85,7 +85,7 @@ Probabilistic ICA treats the voxel intensity values in every frame of the image 
 With this combination of signals in mind, we can write the covariance matrix of the observed data $x$ as
 
 \begin{equation}
-\label{ch4:eq:cov-01}
+\label{ch3:eq:cov-01}
 R_x = \langle x_i x_i^T \rangle = AA^T + \sigma ^2 I
 \end{equation}
 
@@ -101,7 +101,7 @@ The mixing matrix $A$ can be estimated using maximum likelihood estimation. Beck
 The eigenvectors and eigenvalues can be calculated from $X$, but $\sigma$ and $Q$ remain unknown. As noted earlier, the matrix $Q$ is an orthogonal rotation matrix which, when applied to the whitened data $\tilde{x}$, has the same effect of applying an unmixing matrix to the observed data: 
 
 \begin{equation}
-\label{ch4:eq:unmixing-01}
+\label{ch3:eq:unmixing-01}
 W \vec{x} = Q \tilde{x} = \hat{s}
 \end{equation}
 
@@ -126,11 +126,11 @@ At this point, the standard deviation of the noise $\sigma^2$ and the source sig
 Solving these equations is an iterative process. First, the mixing matrix and source signals are estimated. These estimations are used to calculate the corresponding estimator of the standard deviation of the noise. Then, the residual noise $\hat{\eta}_i$ at each voxel $v_i$ is calculated:
 
 \begin{equation}
-\label{ch4:eq:res-01}
+\label{ch3:eq:res-01}
 \hat{\eta}_i = (I - \hat{W}^T\hat{W}) x_i.
 \end{equation}
 
-\noindent Recalling from Equation \ref{ch4:eq:ica01} how probabilistic ICA views a signal, Equation \ref{ch4:eq:res-01} becomes: 
+\noindent Recalling from Equation \ref{ch3:eq:ica01} how probabilistic ICA views a signal, Equation \ref{ch3:eq:res-01} becomes: 
 
 \begin{equation}
 \hat{\eta}_i = (I - \hat{W}^T\hat{W}) A + (I - \hat{W}^T\hat{W}) \eta
