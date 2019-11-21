@@ -1,15 +1,23 @@
 \chapter{DATA}
 \label{ch5:data}
 
-The data used to test the hypothesis and aims introduced in the previous chapter are drawn from a set of simulated rs-fMRI sequences and four clinical groups. In this chapter, we will first discuss the mechanism built to simulate brain activity, scanner noise, and motion in rs-fMRI sequences. Then we will discuss the clinical images. Because motion causes problems in MR images across all stages of life, we used images from cohorts of healthy and CHD fetal, neonatal, and preadolescent subjects as well as images of aging subjects enrolled in the Alzheimer's Disease Neuroimaging Initiative (ADNI) study.
+The data used to test the hypothesis and aims introduced in the previous chapter are drawn from a set of simulated rs-fMRI sequences and four clinical groups. In this chapter, we will first discuss the mechanism built to simulate brain activity, scanner noise, and motion in rs-fMRI sequences. Then we will discuss the clinical images, which were taken from two studies: a prospective study of congenital heart defects in pediatric patients and a prospective study of Alzheimer's disease in the aging population. Subjects from these two studies were chosen because patient motion causes problems in MR images across all stages of life, though patients may exhibit different types of motion at different stages of life. 
 
 \section{Simulated Sequences}
 
+There are two major barriers in medical imaging research. The first barrier is that it is difficult to obtain enough data from a large number of subjects to perform large-scale 
+
+The second barrier is that there is no true gold standard. In general, gold standards in medical imaging are 
+
+ there is no true gold standard when evaluating novel techniques. 
+
 \subsection{SPECTr: Simulated Phantom Emulating Cranial Transformations}
 
-Every MRI scanner is different, so a stand-in model for an organ or tissue type is often used to calibrate an MRI scanner. The model is designed to have specific physical properties which mimic the physical properties of the organ or tissue. These properties can be accurately measured during the design process of this model so that the radiologist or researcher looking at images of the model can know the ground truth of the model. Because these models mimic true organs and tissues, they are called phantoms. 
+Every MRI scanner is different, even those made by the same manufacturer. To ensure MRI scans obtained from different scanners are comparable.  so a stand-in model for an organ or tissue type is often used to calibrate an MRI scanner. The model is designed to have specific physical properties which mimic the physical properties of the organ or tissue. These properties can be accurately measured during the design process of this model so that the radiologist or researcher looking at images of the model can know the ground truth of the model. Because these models mimic true organs and tissues, they are called phantoms. 
 
-We will generate a simulated phantom image using the rs-fMRI of a healthy adult male. A single volume will be selected from the rs-fMRI sequence. This volume will be duplicated to create a generated image with 150 instances of the same volume. This sequence will be our base phantom sequence. 
+We have developed a technique for generating a simulated phantom image sequence which includes functional connectivity based brain activity, scanner noise, and simulated patient motion. The sequences are 
+
+ single volume will be selected from the rs-fMRI sequence. This volume will be duplicated to create a generated image with 150 instances of the same volume. This sequence will be our base phantom sequence. 
 
 A copy of the base phantom sequence will be made and a subvolume in the same location of every volume will be selected. In the subvolume of each frame, a small amount of noise generated using a normal Gaussian distribution will be added to simulate changes in blood oxygen level-dependent signal over time. The noise will be generated from a normal Gaussian distribution will be added to each frame. This image sequence will be referred to as our BOLD phantom sequence.
 
