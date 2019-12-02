@@ -5,23 +5,52 @@ The data used to test the hypothesis and aims introduced in the previous chapter
 
 \section{Simulated Sequences}
 
-There are two major barriers in medical imaging research. The first barrier is that it is difficult to obtain enough data from a large number of subjects to perform large-scale 
+There are two major barriers in medical imaging research. The first barrier is that it is difficult to obtain enough data from a large number of subjects to perform large-scale studies. The second barrier is the complexity of identifying a gold standard. Specifically, if the gold standard brain signal which motion correction techniques attempt to recover was known, there would be no need for image processing in the first place. We addressed these two barriers by creating a mechanism for generating a simulated image sequence which includes functional connectivity based brain activity, scanner noise, and simulated patient motion. Our mechanism can create large quantities of unique image sequences. The simulated image sequences can also serve as a gold standard for evaluating volume registration and motion correction techniques: the signals and noise sources added to the sequence are known with certainty.
 
-The second barrier is that there is no true gold standard. In general, gold standards in medical imaging are 
-
- there is no true gold standard when evaluating novel techniques. 
+%Every MRI scanner is different, even those made by the same manufacturer. To ensure MRI scans obtained from different scanners are comparable.  so a stand-in model for an organ or tissue type is often used to calibrate an MRI scanner. The model is designed to have specific physical properties which mimic the physical properties of the organ or tissue. These properties can be accurately measured during the design process of this model so that the radiologist or researcher looking at images of the model can know the ground truth of the model. Because these models mimic true organs and tissues, they are called phantoms. 
 
 \subsection{SPECTr: Simulated Phantom Emulating Cranial Transformations}
 
-Every MRI scanner is different, even those made by the same manufacturer. To ensure MRI scans obtained from different scanners are comparable.  so a stand-in model for an organ or tissue type is often used to calibrate an MRI scanner. The model is designed to have specific physical properties which mimic the physical properties of the organ or tissue. These properties can be accurately measured during the design process of this model so that the radiologist or researcher looking at images of the model can know the ground truth of the model. Because these models mimic true organs and tissues, they are called phantoms. 
+Our mechanism is called Simulated Phantom Emulating Cranial Transformations (SPECTr). A phantom is an object designed to have material properties which mimic those of a specific tissue type or organ. Phantoms, either manufactured or healthy human, are used in multicenter studies to obtain images of the same object or person from multiple scanners. These images are used to harmonize the data taken from the different sites. We call our simulated sequence a phantom because the baseline image itself is known as are the signals added to it to simulate brain activity and cranial motion. 
 
-We have developed a technique for generating a simulated phantom image sequence which includes functional connectivity based brain activity, scanner noise, and simulated patient motion. The sequences are 
+The process for generating a simulated sequence using SPECTr has several steps and uses a known rs-fMRI sequence. First, a single image volume is selected from the known rs-fMRI sequence. A mask of this volume is created and will be used later in the SPECTr pipeline. The chosen volume is duplicated to create a sequence with $N$ (default $N=150$) instances of the same volume. This sequence is called the base phantom sequence. 
 
- single volume will be selected from the rs-fMRI sequence. This volume will be duplicated to create a generated image with 150 instances of the same volume. This sequence will be our base phantom sequence. 
+Next, brain signal is added to the base phantom sequence. The location of the brain signals is limited to locations associated with the default mode network (CITATION). Information about healthy default mode networks are used to inform how much simulated BOLD signal could occur in different brain locations over time.
+In areas associated with healthy default mode networks, small signals are added. These signals are mixtures of 3D Gaussian distributions. Each distribution's standard deviation and intensity scaling factor change between image volumes. These simulated BOLD signals are saved in a standalone simulated BOLD signal image file. They are also added to the base phantom sequence to create our BOLD phantom sequence. The BOLD phantom sequence serves as the ground truth for any motion correction pipeline: it contains the known brain orientation and BOLD signal independent from head motion and scanner noise.
 
-A copy of the base phantom sequence will be made and a subvolume in the same location of every volume will be selected. In the subvolume of each frame, a small amount of noise generated using a normal Gaussian distribution will be added to simulate changes in blood oxygen level-dependent signal over time. The noise will be generated from a normal Gaussian distribution will be added to each frame. This image sequence will be referred to as our BOLD phantom sequence.
+Now that the ground truth brain orientation and BOLD signal have been established, patient motion can be added to the BOLD phantom sequence. First, a reasonable range of head rotation about the x-, y-, and z-axes was established. These angle ranges are used to generate rotational transformation matrices for $N-1$ image volumes. The transformations are applied to each image volume after the first volume in the BOLD phantom sequence. The transformed image sequence is referred to as the BOLD phantom sequence with motion and the rotational transformation matrices are saved as the ground truth for the transformations between each image volume and the template volume. 
+
+Finally, scanner noise is added to the BOLD phantom sequence with motion. As discussed in Chapter \ref{ch:mri}, there are several sources of scanner noise caused by combinations of electromagnetic signal changes in the magnetic field and tissue susceptibility due to patient motion. These noise sources are not addressed in this work, but are simulated as part of SPECTr's pipeline. SPECTr models scanner noise as a randomly generated speckle pattern which is applied to each volume in the BOLD phantom sequence. The sequence containing simulated BOLD signal, patient motion, and scanner noise can now be used to evaluate the efficacy of motion correction pipelines in removing motion and scanner noise from rs-fMRI sequences.
 
 \subsection{Simulated Images}
+
+We used a healthy adult male rs-fMRI as the known rs-fMRI sequence for SPECTr and created 100 simulated sequences. The parameters for the BOLD signal, the head rotations, and the speckle patterns are as follows:
+
+\begin{itemize}
+\item \textbf{BOLD Signal}
+	\begin{itemize}
+	\item Standard deviation range: [1, 5] %ELEPHANTS
+	\item Signal scaling range: [1, 5] %ELEPHANTS
+	\end{itemize}
+\item \textbf{Head Rotations (Patient Motion)}
+	\begin{itemize}
+	\item Rotation about z-axis (looking left and right): [$-75^{\circ}$, $75^{\circ}$] assuming looking left is a negative rotation and looking straight forward is $0^{\circ}$ %ELEPHANTS
+	\item Rotation about y-axis (looking up and down): [$45^{\circ}$, $-20^{\circ}$] assuming looking down is a negative rotation and looking straight forward is $0^{\circ}$ %ELEPHANTS
+	\item Rotation about the x-axis (stretching neck by bringing left ear to left shoulder or right ear to right shoulder): [$-60^{\circ}$, $60^{\circ}$] assuming leaning right is a negative rotation and looking straight forward is $0^{\circ}$ %ELEPHANTS
+	\end{itemize}
+\item \textbf{Speckle Patterns (EM Scanner Noise)}
+	\begin{itemize}
+	\item Speckle variance: variance of the uniform distribution used to generate the speckle noise, uses the range [0.05, 1] %ELEPHANTS
+	\end{itemize}
+\end{itemize}
+
+The source code for SPECTr is available on Github. %ELEPHANTS
+
+\subsection{Purpose of Dataset}
+
+The phantom experiments are used to probe the volume registration techniques and the motion correction technique. By applying the DAG-based and traditional registration techniques to the base phantom sequence, we evaluate the degrees of positional and signal change errors each technique may introduce into the registration process. The registered versions of the BOLD phantom sequence are compared to each other and to the original BOLD phantom sequence to determine how well each registration retains the BOLD signal.
+
+This particular experiment will be one of the first to investigate how much true BOLD signal is preserved through motion correction. One of the major drawbacks to existing motion correction pipelines is that they remove signal along with noise. In clinical data, there is no way to know the ground truth signal contained within the image; however, simulated phantom images have a de facto known ground truth signal. The design for this experiment can be used to evaluate how much BOLD signal is recovered by other motion correction pipelines, and how close the recovered signal is to the signal of interest.
 
 \section{Congenital Heart Disease Cohorts}
 
@@ -172,6 +201,16 @@ The segmenters were one of a group of four researchers. While one researcher tra
 %\item What other information is collected about fetus and/or mom?
 %\end{itemize}
 
+\subsection{Purpose of Dataset}
+
+\textbf{Neonatal Cohort.} Our set of neonatal subjects includes a cohort of 74 healthy neonates. Each subject in this cohort underwent an MRI scan, and the rs-fMRIs obtained during this process were compared to Power et al.'s positional and signal change usability thresholds. Of the 74 subjects, 17 of them had rs-fMRIs which did not meet the usability criteria. These high motion images were used to test the feasibility of the DAG-based volume registration framework. 
+
+These images were ideal for the feasibility study for three reasons. First, the neonates were healthy, which eliminates disease status as a confounding variable in the analysis of the registered images. Second, the neonates in this study were scanned using a feed and sleep protocol. Because the neonates were asleep during the scan, they generally did not move very much. The high-motion neonates are an obvious exception to this concept, but many of the high-motion images contained long periods where the subject was stationary. Evaluating the DAG-based framework on data with various patterns of motion and different periods of low and high motion allowed us to explore the effects of the DAG-based algorithm in different combinations of motion features. Third, these images were too corrupted by motion to be used in other analyses. Applying both the DAG-based framework and the traditional registration framework to these images provided the opportunity to compare the performances of both registration frameworks to each other in the context of the usability gold standard thresholds. 
+
+\textbf{Preadolescent Cohort.} The multicenter imaging study of preadolescent subjects provides a unique opportunity to evaluate the efficacy of the DAG-based framework on a large subject cohort containing variable amounts of motion. The outcome of this experiment will be used in the next experiment to determine if there are any site-specific or vendor-specific variables influencing patient motion.
+
+\textbf{Fetal Cohort.} As the fetal subjects have both neurological and placental images, their data will be used to examine the impact of volume registration on different organ types.
+
 \section{Aging Brain Subjects}
 
 The final data set we use is from the Alzheimer's Disease Neuroimaging Initiative (ADNI) database (adni.loni.usc.edu). The ADNI was launched in 2003 as a public-private partnership, led by Principal Investigator Michael W. Weiner, MD. The primary goal of ADNI has been to test whether serial magnetic resonance imaging (MRI), positron emission tomography (PET), other biological markers, and clinical and neuropsychological assessment can be combined to measure the progression of mild cognitive impairment (MCI) and early Alzheimer's disease (AD). For up-to-date information, see www.adni-info.org.
@@ -187,25 +226,12 @@ The final data set we use is from the Alzheimer's Disease Neuroimaging Initiativ
 
 %The second adult cohort comes from the Alzheimer's Disease Neuroimaging Initiative (ADNI) dataset. The ADNI study has been working since 2004 to further Alzheimer's research by gathering, analyzing, and sharing clinical, imaging, genetic, and biochemical biomarkers from the elderly population. The group gathers data from 63 sites in the United States and Canada. During the second phase of the study, sites who have a Philips MRI system gathered resting-state fMRIs from their subjects. This data is freely available to academic researchers through the LONI Image and Data Archive.
 
-\section{Purpose for each cohort}
-
-\subsection{Simulated Phantom}
-
-The phantom experiments will be used to probe the volume registration technique. By applying the DAG-based and traditional registration techniques to the base phantom sequence, we will be able to evaluate the degrees of positional and signal change errors each technique may introduce into the registration process. After determining the baseline error, we will apply both registration techniques to the BOLD phantom sequence. The registered versions of the BOLD phantom sequence will be compared to each other and to the original BOLD phantom sequence to determine how well each registration retains the BOLD signal.
-
-This particular experiment will be one of the first to investigate how much true BOLD signal is preserved through motion correction. One of the major drawbacks to existing motion correction pipelines is that they remove signal along with noise. In clinical data, there is no way to know the ground truth signal contained within the image; however, simulated phantom images have a de facto known ground truth signal. The design for this experiment can be used to evaluate how much BOLD signal is recovered by other motion correction pipelines, and how close the recovered signal is to the signal of interest.
-
-\subsection{Clinical Images}
+\subsection{Purpose of Dataset}
 %For each subject in a cohort of 74 healthy neonatal subjects, at least one rs-fMRI was acquired. The images underwent motion correction using a pipeline developed by Power et al. \cite{Power2014}. The motion corrected image were compared to Power et al.'s thresholds of acceptability for their FD and DVARS metrics \cite{Power2014}. Of the 74 subjects in this cohort, 17 subjects had rs-fMRIs which did not meet Power et al.'s usability criteria. These high motion images were used in our study.
 
-\textbf{Neonatal Cohort.} Our set of neonatal subjects includes a cohort of 74 healthy neonates. Each subject in this cohort underwent an MRI scan, and the rs-fMRIs obtained during this process were compared to Power et al.'s positional and signal change usability thresholds. Of the 74 subjects, 17 of them had rs-fMRIs which did not meet the usability criteria. These high motion images were used to test the feasibility of the DAG-based volume registration framework. 
+The adult cohort encompass many clinical outcomes and a wider age range than the other clinical populations. The adult cohort also allows for another opportunity to study a different type of motion patterns associated with the aging brain rather than the still-developing brain.
 
-These images were ideal for the feasibility study for three reasons. First, the neonates were healthy, which eliminates disease status as a confounding variable in the analysis of the registered images. Second, the neonates in this study were scanned using a feed and sleep protocol. Because the neonates were asleep during the scan, they generally did not move very much. The high-motion neonates are an obvious exception to this concept, but many of the high-motion images contained long periods where the subject was stationary. Evaluating the DAG-based framework on data with various patterns of motion and different periods of low and high motion allowed us to explore the effects of the DAG-based algorithm in different combinations of motion features. Third, these images were too corrupted by motion to be used in other analyses. Applying both the DAG-based framework and the traditional registration framework to these images provided the opportunity to compare the performances of both registration frameworks to each other in the context of the usability gold standard thresholds. 
-
-\textbf{Preadolescent Cohort.} The multicenter imaging study of preadolescent subjects provides a unique opportunity to evaluate the efficacy of the DAG-based framework on a large subject cohort containing variable amounts of motion. The outcome of this experiment will be used in the next experiment to determine if there are any site-specific or vendor-specific variables influencing patient motion.
-
-\textbf{Adult Cohort.} The adult cohort encompass many clinical outcomes and a wider age range than the other clinical populations. 
-
-\textbf{Fetal Cohort.} As the fetal subjects have both neurological and placental images, their data will be used to examine the impact of volume registration on different organ types.
 
 \section{Summary}
+
+In this chapter, we discussed our three major data sets, which are drawn from simulated data, pediatric data, and aging brain data. The simulated data were generated using a rs-fMRI simulation pipeline developed in-house and were used for the purpose of measuring ground truth signal recovered by motion correction techniques. The pediatric data were obtained through prospective studies of CHD and neurodevelopment being conducted at the UPMC Children's Hospital of Pittsburgh. The aging brain images were downloaded from the ADNI study. The pediatric and aging brain images were used to compare the two volume registration techniques in a standalone analysis as well as in the context of a motion correction pipeline. We also used these images to examine patterns of motion unique to different age groups. 
