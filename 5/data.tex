@@ -2,6 +2,7 @@
 \label{ch5:data}
 
 The data used to test the hypothesis and aims introduced in the previous chapter are drawn from four clinical groups and  a set of simulated rs-fMRI sequences. In this chapter, we will first discuss the clinical images, which were taken from several prospective studies of congenital heart defects in pediatric patients as well as a prospective study of Alzheimer's disease in an aging population. Subjects from these studies were chosen because patient motion causes problems in MR images for the entire patient lifespan, though patients may exhibit different types of motion at different stages of life. 
+
 Then we will discuss how we overcame the lack of objective ground truth in medical imaging research by developing a mechanism to simulate brain activity, scanner noise, and motion in rs-fMRI sequences.
 
 \section{Clinical Cohorts}
@@ -174,15 +175,38 @@ The adult cohort encompass many clinical outcomes and a wider age range than the
 
 While we have amassed a large collection of clinical images, an analysis of purely clinical images is not sufficient in determining which volume registration technique recovers more brain signal. In the next section, we elaborate on this limitation and how we chose to address it.
 
-\section{Simulated Sequences}
+\section{Simulated Sequences} % ELEPHANTS should this be its own chapter?
 
-There are two major barriers in medical imaging research. The first barrier is that it is difficult to obtain enough data from a large number of subjects to perform large-scale studies. The second barrier is the complexity of identifying a gold standard. Specifically, if the gold standard brain signal which motion correction techniques attempt to recover was known, there would be no need for image processing in the first place. We addressed these two barriers by creating a mechanism for generating a simulated image sequence which includes functional connectivity based brain activity, scanner noise, and simulated patient motion. Our mechanism can create large quantities of unique image sequences. The simulated image sequences can also serve as a gold standard for evaluating volume registration and motion correction techniques: the signals and noise sources added to the sequence are known with certainty.
+There are two major barriers in research surrounding motion correction in rs-fMRIs: gathering data and measuring the effects of the technique. 
+
+It is difficult to obtain enough data from a large number of subjects to perform large-scale studies. Collaborators can band together to create a larger and more diverse data set by participating in multicenter studies. There are some challenges associated with multicenter studies. Each site will have a different scanner, potentially with different field strengths and from different manufacturers. Even ignoring the challenges of harmonizing data obtained using scanners from different companies, each scanner has its own set of unique inhomogeneities in the primary magnetic field. Additional scans of inanimate or human phantoms may be necessary to characterize the differences between all of the scanners involved.
+
+The second barrier to motion correction in rs-fMRI research is the complexity of identifying a gold standard metric to use when evaluating motion correction techniques. The current gold standard metrics developed by Power et al. evaluate motion correction techniques in terms of the reduction of positional differences and signal differences between neighboring volumes. Unfortunately, this approach does not measure the amount of signal recovered or lost though motion correction. A true gold standard evaluation of motion correction would be able to evaluate the BOLD signal present in the image before and after correction. If the BOLD signal prior to patient motion was known, though, there would be no need for image processing in the first place: we would already have the data we are trying to obtain with motion correction.
+
+We address these two barriers by creating a mechanism for generating simulated image sequences. The generated sequences contain simulated brain signal based in areas of the brain associated with resting-state connectivity, scanner noise, and patient motion. Our mechanism can create large quantities of unique image sequences. The simulated image sequences can also serve as a gold standard for evaluating volume registration and motion correction techniques: the signals and noise sources added to the sequence are known with certainty.
 
 %Every MRI scanner is different, even those made by the same manufacturer. To ensure MRI scans obtained from different scanners are comparable.  so a stand-in model for an organ or tissue type is often used to calibrate an MRI scanner. The model is designed to have specific physical properties which mimic the physical properties of the organ or tissue. These properties can be accurately measured during the design process of this model so that the radiologist or researcher looking at images of the model can know the ground truth of the model. Because these models mimic true organs and tissues, they are called phantoms. 
 
 \subsection{SPECTr: Simulated Phantom Emulating Cranial Transformations}
 
-Our mechanism is called Simulated Phantom Emulating Cranial Transformations (SPECTr). A phantom is an object designed to have material properties which mimic those of a specific tissue type or organ. Phantoms, either manufactured or healthy human, are used in multicenter studies to obtain images of the same object or person from multiple scanners. These images are used to harmonize the data taken from the different sites. We call our simulated sequence a phantom because the baseline image itself is known as are the signals added to it to simulate brain activity and cranial motion. 
+Our mechanism is called Simulated Phantom Emulating Cranial Transformations (SPECTr). A phantom is an object designed to have material properties which mimic those of a specific tissue type or organ. Phantoms, either manufactured objects or healthy humans, are used in multicenter studies to obtain images of the same object or person from multiple scanners. These images are used to harmonize the data taken from the different sites. We call our simulated sequence a phantom because the baseline image itself is known as are the signals added to it to simulate brain activity. 
+
+% ELEPHANTS
+When developing the pipeline for SPECTr, it was important to consider the effects of motion and various impacts they have on the BOLD signal. As discussed in CHAPTER, the three effects of motion are positional, spin history, and susceptibility. For simplicity, we combine the spin history and susceptibility effects into ...
+
+\subsubsection{Materials}
+
+In order to simulate resting-state BOLD signal in an fMRI, two pieces of anatomical information are required. The first is structural information about the brain. The second is the location of functional networks associated with the resting-state BOLD signal.
+
+While it is possible to use clinical images for the structural information, the goal of SPECTr is to be generalizable both for our use and for the use of other researchers. Additionally, clinical images inherently contain some degree of signal from some neuronal processes which could obfuscate the simulated BOLD signal. 
+
+In 1992, the International Consortium for Brain Mapping was formed to develop as set of standards for what is considered a healthy human brain. They used their criteria to develop an initial set of ``average'' brain structural scans based on scans from XXX healthy volunteers. This original set of average brain scans is referred to as the XXX brain. As MRI technology has improved, the scanners used to obtain the images of the healthy volunteers have become outdated. In XXXX, another set of healthy volunteers was recruited to create a version of the average brain scans more compatible with current technology. The new average brain is referred to as the ICBM 152 XXX. This set of scans will be used for the structural information for our simulation.
+
+The functional network information is a two fold challenge. Many resting state networks have been observed, so we must decide which networks to use in the simulation. After choosing the network or networks to simulate, we then need to find a map of their functional regions of interest.
+
+
+
+\subsubsection{Simulation Pipeline}
 
 The process for generating a simulated sequence using SPECTr has several steps and uses a known rs-fMRI sequence. First, a single image volume is selected from the known rs-fMRI sequence. A mask of this volume is created and will be used later in the SPECTr pipeline. The chosen volume is duplicated to create a sequence with $N$ (default $N=150$) instances of the same volume. This sequence is called the base phantom sequence. 
 
