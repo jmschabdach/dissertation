@@ -200,17 +200,70 @@ In order to simulate resting-state BOLD signal in an fMRI, two pieces of anatomi
 
 While it is possible to use clinical images for the structural information, the goal of SPECTr is to be generalizable both for our use and for the use of other researchers. Additionally, clinical images inherently contain some degree of signal from some neuronal processes which could obfuscate the simulated BOLD signal. 
 
-In 1992, the International Consortium for Brain Mapping was formed to develop as set of standards for what is considered a healthy human brain. They used their criteria to develop an initial set of ``average'' brain structural scans based on scans from XXX healthy volunteers. This original set of average brain scans is referred to as the XXX brain. As MRI technology has improved, the scanners used to obtain the images of the healthy volunteers have become outdated. In XXXX, another set of healthy volunteers was recruited to create a version of the average brain scans more compatible with current technology. The new average brain is referred to as the ICBM 152 XXX. This set of scans will be used for the structural information for our simulation.
+In 1992, the International Consortium for Brain Mapping was formed to develop as set of standards for what is considered a healthy human brain. They used their criteria to develop an initial set of ``average'' brain structural scans based on scans from healthy volunteers. This original set of average brain scans incorporates scans from 305 subjects and is referred to as the MNI305 data. As MRI technology has evolved, the spatial resolution capabilities of the MRI scanners has increased. In 2001, another set of 152 healthy volunteers was recruited to create a higher resolution data set. The scans from the new cohort were linearly registered to the MNI305 data to create the new MNI152 images. % ELEPHANTS citations needed
 
-The functional network information is a two fold challenge. Many resting state networks have been observed, so we must decide which networks to use in the simulation. After choosing the network or networks to simulate, we then need to find a map of their functional regions of interest.
+Herein, we use the MNI152 data set as available at the website for the McConnell Brain Imaging Centre at McGill University. This data set contains five images: a T1-weighted scan, a T2-weighted scan, a proton density weighted scan, and two binary masks for the head and the brain. Each of the structural scans was designed to highlight the properties of different tissues in and around the brain. Proton density scans were developed for the purpose of detecting blood-related signal. As BOLD images essentially perform the same purpose over a period of minutes, we choose to use the proton density weighted scan as the structural base for the simulated images. % ELEPHANTS citations needed
 
-
+The functional network information is more difficult to find than structural atlases. The Functional Imaging in Neuropsychiatric Disorders Lab at Stanford has developed two sets of functional atlases. The atlases are divided into regions of interest (ROIs) associated with individual networks. The first set of atlases contains 90 functional ROIs which compose 14 networks. The second set of atlases contains 499 functional ROIs and has more gray matter coverage. For simplicity, we chose to use the original ROIs associated with the dorsal and ventral default mode networks.
 
 \subsubsection{Simulation Pipeline}
 
-The process for generating a simulated sequence using SPECTr has several steps and uses a known rs-fMRI sequence. First, a single image volume is selected from the known rs-fMRI sequence. A mask of this volume is created and will be used later in the SPECTr pipeline. The chosen volume is duplicated to create a sequence with $N$ (default $N=150$) instances of the same volume. This sequence is called the base phantom sequence. 
+\begin{figure}
+\centering
+\includegraphics[width=.5\textwidth]{5/pipeline.png}
+\caption{An overview of the SPECTr simulation pipeline. Using atlas data, a simulated phantom containing brain signal, scanner noise, and patient motion is generated.}
+\label{ch5:spectr_flow}
+\end{figure}
 
-Next, brain signal is added to the base phantom sequence. The location of the brain signals is limited to locations associated with the default mode network (CITATION). Information about healthy default mode networks are used to inform how much simulated BOLD signal could occur in different brain locations over time.
+The process for generating a simulated sequence using the data discussed in the previous section has several steps. An overview of the pipeline can be seen in Figure \ref{ch5:spectr_flow} We cover these steps in detail in this section.
+
+The MNI152 proton density image is a whole head image. To remove the skull, we apply the brain mask to the proton density weighted image. The resulting image contains only brain tissue.
+
+The spatial resolution of the structural brain image is 1 mm$^3$. The spatial resolution for a single volume in a rs-fMRI sequence is less granular at 4mm$^3$. To achieve this resolution, the structural volume must be downsampled. After the downsampling, the size of the structural image is reduced from 181x217x181 voxels to XXxXXxXX voxels. %ELEPHANTS interpolation?
+
+Now that the structural image is the correct spatial resolution, it must be replicated to create the temporal sequence. Part of this step includes creating a new dimension in the data. The affine matrix which represents the resolution of the image has the following structure:
+
+\begin{equation}
+\begin{bmatrix}
+ r_x &  0   &  0   & c_x\\ 
+ 0   &  r_y &  0   & c_y \\ 
+ 0   &  0   &  r_z & c_z \\ 
+ 0   &  0   &  0   & 1 
+\end{bmatrix}
+\end{equation}
+
+\noindent where $r_x, r_y,$ and $r_z$ represent the spatial resolution in the $x, y,$ and $z$ axes, respectively and $c_x, c_y,$ and $c_z$ represent the location of the origin in voxels. To convert the image from a 3D volume to a 4D sequence, we add a row and a column to this matrix so that it now has the structure:
+
+\begin{equation}
+\begin{bmatrix}
+ r_x &  0   &  0   & 0 & c_x\\ 
+ 0   &  r_y &  0   & 0 & c_y \\ 
+ 0   &  0   &  r_z & 0 & c_z \\ 
+ 0   &  0   &  0   & t & 0 \\
+ 0   &  0   &  0   & 0 & 1 
+\end{bmatrix}
+\end{equation}
+
+\noindent where $t$ is the desired temporal resolution. We choose a temporal resolution of 2 seconds for our simulated sequence. The downsampled image volume is replicated and concatenated along the new temporal dimension to create a sequence that is 150 image volumes long. This sequence is referred to as the base phantom sequence as it contains no brain signal, noise, or motion.
+
+The next step in the pipeline is to add BOLD signal to the sequence. % ELEPHANTS (Why brain signal next?) 
+We combine the functional ROIs from the dorsal and ventral default mode networks into a single binary functional ROI image. This image is referred to as the default mode network (DMN) mask. 
+
+For each nonzero voxel in the DMN mask, a temporal signal is generated. We chose to model the BOLD response as a cosine signal following the formula
+
+\begin{equation}
+s(\vec{v}, t) = a*(cos(f_0 * (t-t_{shift})) - a_shift).
+\label{ch5:bold_eq}
+\end{equation}
+
+\noindent This equation is for a scaled cosine function with both temporal and amplitude shifts. The temporal and amplitude shifts, $t_{shift}$ and $a_{shift}$ respectively, are randomly generated for each voxel from uniform distributions. Once chosen, they are consistent across the voxel's generated temporal signal. The other parameters, $a$ and $f_0$, were specified using existing research. 
+
+In 2007, Biswal et al. performed a study evaluating methods to reduce changes in the BOLD signal not directly related to brain activity (i.e., vascularity). They identified a low-frequency spectral amplitude of 0.04 Hz as the highest frequency related to BOLD signal consistent not only through scans of individual patients but in group-wise analyses. Based on their work, we chose the fundamental frequency $f_0$ to be 0.04 Hz. % ELEPHANTS citation
+
+The scaling factor $a$ was chosen based on Power et al.'s usability criteria. As they state that any signal change between volumes above 2.5\% of the maximum voxel value is unlikely to be due to brain activity, we used an amplitude of 20 units on a scaled voxel value range of [0, 1000]. % ELEPHANTS citation
+----- 
+
+The location of the brain signals is limited to locations associated with the default mode network (CITATION). Information about healthy default mode networks are used to inform how much simulated BOLD signal could occur in different brain locations over time.
 In areas associated with healthy default mode networks, small signals are added. These signals are mixtures of 3D Gaussian distributions. Each distribution's standard deviation and intensity scaling factor change between image volumes. These simulated BOLD signals are saved in a standalone simulated BOLD signal image file. They are also added to the base phantom sequence to create our BOLD phantom sequence. The BOLD phantom sequence serves as the ground truth for any motion correction pipeline: it contains the known brain orientation and BOLD signal independent from head motion and scanner noise.
 
 Now that the ground truth brain orientation and BOLD signal have been established, patient motion can be added to the BOLD phantom sequence. First, a reasonable range of head rotation about the x-, y-, and z-axes was established. These angle ranges are used to generate rotational transformation matrices for $N-1$ image volumes. The transformations are applied to each image volume after the first volume in the BOLD phantom sequence. The transformed image sequence is referred to as the BOLD phantom sequence with motion and the rotational transformation matrices are saved as the ground truth for the transformations between each image volume and the template volume. 
