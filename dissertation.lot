@@ -1,0 +1,4 @@
+\contentsline {table}{\numberline {1}{\ignorespaces An example of a truth table for a binary classifier predicting the presence or absence of a condition.}}{66}{table.4.1}
+\contentsline {table}{\numberline {2}{\ignorespaces The mean and standard deviation for each sequence’s correlation ratio matrix for every subject.}}{90}{table.6.2}
+\contentsline {table}{\numberline {3}{\ignorespaces The mean, median, standard deviation, skewness, and kurtosis of the histograms of FD and DVARS values for all image types were calculated. The histograms for the DAG-based method have lower means, medians, and standard deviations than those of the first volume correction method.}}{91}{table.6.3}
+\contentsline {table}{\numberline {4}{\ignorespaces The number of frames recovered by each global volume registration framework for each threshold.}}{91}{table.6.4}

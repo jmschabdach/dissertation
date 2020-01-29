@@ -117,7 +117,7 @@ Neonatal subjects have been recruited as part of a prospective observational stu
 %As the neonates were most often asleep during the scan, they exhibit less motion overall compared to our other clinical cohorts. Applying both the DAG-based framework and the traditional registration framework to these images provided the opportunity to compare the performances of both registration frameworks to each other in the context of the usability gold standard thresholds. 
 
 %LEFT OFF HERE
-The neonates were divided into CHD and non-CHD populations.
+The neonates were divided into CHD and non-CHD populations. An overview of the demographics for both populations can be seen in Figure REF. % ELEPHANTS
 
 \subsubsection{Preadolescent Subject Population and Images}
 
@@ -177,9 +177,11 @@ While we have amassed a large collection of clinical images, an analysis of pure
 
 \section{Simulated Sequences} % ELEPHANTS should this be its own chapter?
 
-There are two major barriers in research surrounding motion correction in rs-fMRIs: gathering data and measuring the effects of the technique. 
+There are two major barriers in research surrounding motion correction in rs-fMRIs: gathering data and measuring the effects of the technique. In this section, we elaborate on a simulation designed to address both of these barriers.
 
-It is difficult to obtain enough data from a large number of subjects to perform large-scale studies. Collaborators can band together to create a larger and more diverse data set by participating in multicenter studies. There are some challenges associated with multicenter studies. Each site will have a different scanner, potentially with different field strengths and from different manufacturers. Even ignoring the challenges of harmonizing data obtained using scanners from different companies, each scanner has its own set of unique inhomogeneities in the primary magnetic field. Additional scans of inanimate or human phantoms may be necessary to characterize the differences between all of the scanners involved.
+\subsection{Background}
+
+Despite the hundreds of images in each of the patient populations described in the previous section, our clinical data would be considered too sparse for ``big data'' analyses. This problem is not unique to our group: it is difficult to obtain enough data from a large number of subjects to perform large-scale studies. Collaborators can band together to create a larger and more diverse data set by participating in multicenter studies. There are some challenges associated with multicenter studies. Each site will have a different scanner, potentially with different field strengths and from different manufacturers. Even ignoring the challenges of harmonizing data obtained using scanners from different companies, each scanner has its own set of unique inhomogeneities in the primary magnetic field. Additional scans of inanimate or human phantoms may be necessary to characterize the differences between all of the scanners involved.
 
 The second barrier to motion correction in rs-fMRI research is the complexity of identifying a gold standard metric to use when evaluating motion correction techniques. The current gold standard metrics developed by Power et al. evaluate motion correction techniques in terms of the reduction of positional differences and signal differences between neighboring volumes. Unfortunately, this approach does not measure the amount of signal recovered or lost though motion correction. A true gold standard evaluation of motion correction would be able to evaluate the BOLD signal present in the image before and after correction. If the BOLD signal prior to patient motion was known, though, there would be no need for image processing in the first place: we would already have the data we are trying to obtain with motion correction.
 
@@ -194,7 +196,7 @@ Our mechanism is called Simulated Phantom Emulating Cranial Transformations (SPE
 % ELEPHANTS
 When developing the pipeline for SPECTr, it was important to consider the effects of motion and various impacts they have on the BOLD signal. As discussed in CHAPTER, the three effects of motion are positional, spin history, and susceptibility. For simplicity, we combine the spin history and susceptibility effects into ...
 
-\subsubsection{Materials}
+\subsection{Materials}
 
 In order to simulate resting-state BOLD signal in an fMRI, two pieces of anatomical information are required. The first is structural information about the brain. The second is the location of functional networks associated with the resting-state BOLD signal.
 
@@ -206,7 +208,9 @@ Herein, we use the MNI152 data set as available at the website for the McConnell
 
 The functional network information is more difficult to find than structural atlases. The Functional Imaging in Neuropsychiatric Disorders Lab at Stanford has developed two sets of functional atlases. The atlases are divided into regions of interest (ROIs) associated with individual networks. The first set of atlases contains 90 functional ROIs which compose 14 networks. The second set of atlases contains 499 functional ROIs and has more gray matter coverage. For simplicity, we chose to use the original ROIs associated with the dorsal and ventral default mode networks.
 
-\subsubsection{Simulation Pipeline}
+\subsection{Simulation Pipeline}
+
+\subsubsection{Baseline Sequence}
 
 \begin{figure}
 \centering
@@ -246,6 +250,8 @@ Now that the structural image is the correct spatial resolution, it must be repl
 
 \noindent where $t$ is the desired temporal resolution. We choose a temporal resolution of 2 seconds for our simulated sequence. The downsampled image volume is replicated and concatenated along the new temporal dimension to create a sequence that is 150 image volumes long. This sequence is referred to as the base phantom sequence as it contains no brain signal, noise, or motion.
 
+\subsubsection{Brain Signal}
+
 The next step in the pipeline is to add BOLD signal to the sequence. % ELEPHANTS (Why brain signal next?) 
 We combine the functional ROIs from the dorsal and ventral default mode networks into a single binary functional ROI image. This image is referred to as the default mode network (DMN) mask. 
 
@@ -261,45 +267,101 @@ s(\vec{v}, t) = a*(cos(f_0 * (t-t_{shift})) - a_shift).
 In 2007, Biswal et al. performed a study evaluating methods to reduce changes in the BOLD signal not directly related to brain activity (i.e., vascularity). They identified a low-frequency spectral amplitude of 0.04 Hz as the highest frequency related to BOLD signal consistent not only through scans of individual patients but in group-wise analyses. Based on their work, we chose the fundamental frequency $f_0$ to be 0.04 Hz. % ELEPHANTS citation
 
 The scaling factor $a$ was chosen based on Power et al.'s usability criteria. As they state that any signal change between volumes above 2.5\% of the maximum voxel value is unlikely to be due to brain activity, we used an amplitude of 20 units on a scaled voxel value range of [0, 1000]. % ELEPHANTS citation
------ 
 
-The location of the brain signals is limited to locations associated with the default mode network (CITATION). Information about healthy default mode networks are used to inform how much simulated BOLD signal could occur in different brain locations over time.
-In areas associated with healthy default mode networks, small signals are added. These signals are mixtures of 3D Gaussian distributions. Each distribution's standard deviation and intensity scaling factor change between image volumes. These simulated BOLD signals are saved in a standalone simulated BOLD signal image file. They are also added to the base phantom sequence to create our BOLD phantom sequence. The BOLD phantom sequence serves as the ground truth for any motion correction pipeline: it contains the known brain orientation and BOLD signal independent from head motion and scanner noise.
+The generated BOLD signals were added to the baseline image sequence, but were also saved in a separate image sequence file for reference during analysis. The generated sequence with only BOLD signal is referred to as the brain signal sequence.
 
-Now that the ground truth brain orientation and BOLD signal have been established, patient motion can be added to the BOLD phantom sequence. First, a reasonable range of head rotation about the x-, y-, and z-axes was established. These angle ranges are used to generate rotational transformation matrices for $N-1$ image volumes. The transformations are applied to each image volume after the first volume in the BOLD phantom sequence. The transformed image sequence is referred to as the BOLD phantom sequence with motion and the rotational transformation matrices are saved as the ground truth for the transformations between each image volume and the template volume. 
+\subsubsection{Scanner Noise}
 
-Finally, scanner noise is added to the BOLD phantom sequence with motion. As discussed in Chapter \ref{ch:mri}, there are several sources of scanner noise caused by combinations of electromagnetic signal changes in the magnetic field and tissue susceptibility due to patient motion. These noise sources are not addressed in this work, but are simulated as part of SPECTr's pipeline. SPECTr models scanner noise as a randomly generated speckle pattern which is applied to each volume in the BOLD phantom sequence. The sequence containing simulated BOLD signal, patient motion, and scanner noise can now be used to evaluate the efficacy of motion correction pipelines in removing motion and scanner noise from rs-fMRI sequences.
+The next step in the pipeline is to add scanner noise to the brain signal sequence. In a regular rs-fMRI of a patient, the noise in the sequence is the result of two factors: the spin history effects of motion and the susceptibility effects of motion. To simplify the simulation, we choose to model the resulting noise rather than the individual sources.
 
-\subsection{Simulated Images}
+Signal acquired by MRI scanners is first recorded as a raw data matrix in k-space. K-space contains spatial frequency information. The coordinate system of k-space differs from the coordinate system of physical space. In k-space, the closer a point is to the center of a zero-centered data matrix, the lower its frequency or phase. The brighter a point in the raw data matrix is, the larger its magnitude. 
 
-We used a healthy adult male rs-fMRI as the known rs-fMRI sequence for SPECTr and created 100 simulated sequences. The parameters for the BOLD signal, the head rotations, and the speckle patterns are as follows:
+While frequency is a continuous spectrum, data is usually divided into low frequency data and high frequency data. Low frequency data in imaging is areas of an image where the pixel or voxel values slowly. In physical space, these areas are the smooth areas that contain content. In Figure REF, the skin on the woman's face would be considered low frequency data. High frequency data represents the areas in an image where the pixel or voxel values change rapidly in a small area. Areas with many edges in them contain higher frequency data. In Figure REF, the feather in the woman's hat would be considered high frequency data. % Need a figure ELEPHANTS 
 
-\begin{itemize}
-\item \textbf{BOLD Signal}
-	\begin{itemize}
-	\item Standard deviation range: [1, 5] %ELEPHANTS
-	\item Signal scaling range: [1, 5] %ELEPHANTS
-	\end{itemize}
-\item \textbf{Head Rotations (Patient Motion)}
-	\begin{itemize}
-	\item Rotation about z-axis (looking left and right): [$-75^{\circ}$, $75^{\circ}$] assuming looking left is a negative rotation and looking straight forward is $0^{\circ}$ %ELEPHANTS
-	\item Rotation about y-axis (looking up and down): [$45^{\circ}$, $-20^{\circ}$] assuming looking down is a negative rotation and looking straight forward is $0^{\circ}$ %ELEPHANTS
-	\item Rotation about the x-axis (stretching neck by bringing left ear to left shoulder or right ear to right shoulder): [$-60^{\circ}$, $60^{\circ}$] assuming leaning right is a negative rotation and looking straight forward is $0^{\circ}$ %ELEPHANTS
-	\end{itemize}
-\item \textbf{Speckle Patterns (EM Scanner Noise)}
-	\begin{itemize}
-	\item Speckle variance: variance of the uniform distribution used to generate the speckle noise, uses the range [0.05, 1] %ELEPHANTS
-	\end{itemize}
-\end{itemize}
+Generally speaking, images contain more low frequency information than high frequency information. We wish to be able to control the amount of noise added to each component independently, so we choose to add noise to the sequence in k-space.
 
-The source code for SPECTr is available on Github. %ELEPHANTS
+When adding scanner noise to the brain signal sequence, we add noise to each image volume independently. The image volume is transformed from physical space into k-space using the fast Fourier transform (FFT). To force the image to be zero-centered, we perform a FFT shift on the Fourier space data. A matrix the same size and shape as the image volume is created. The matrix is then filled with complex Gaussian noise, $n(\vec{l})$ where
 
-\subsection{Purpose of Simulated Data}
+\begin{equation}
+|n(\vec{l})| = w_m * r_m, r_m~N(0,1)
+\end{equation}
 
-The phantom experiments are used to probe the volume registration techniques and the motion correction technique. By applying the DAG-based and traditional registration techniques to the base phantom sequence, we evaluate the degrees of positional and signal change errors each technique may introduce into the registration process. The registered versions of the BOLD phantom sequence are compared to each other and to the original BOLD phantom sequence to determine how well each registration retains the BOLD signal.
+\noindent and
+
+\begin{equation}
+\angle n(\vec{l}) = w_p * r_p, r_p~N(0,1)
+\end{equation}
+
+\noindent In these two equation, $\vec{l}$ is the location of the point in the matrix, $w_*$ represents the weight assigned to the component, $r_*$ represents the noise random variable independently generated from a standard normal distribution, and the subscripts $m$ and $p$ refer to the magnitude and phase components, respectively. The complex noise is weighted so that the magnitude of the noise has a greater contribution than the phase of the noise, that is $w_m > w_p$ 
+
+The matrix of complex noise is added to the zero-centered k-space image volume. The noisy k-space volume is unshifted and undergoes an inverse Fourier transform to change the data back to physical space.
+
+\subsubsection{Patient Movement}
+
+Now that the ground truth brain orientation and BOLD signal have been established, patient motion can be added to the BOLD phantom sequence. One of the aims of this document is to establish that patients from different populations exhibit different motion patterns. As we have not yet established what those motion patterns are, we developed a generic motion model for the simulation.
+
+During an rs-fMRI scan, a patient theoretically has the freedom to rotate his head around three different axes, translate his head along three different axes, or some combination of translations and rotations. Realistically, once a patient has settled in the scanner, it becomes difficult for his head to only undergo translation. It is more likely that he will rotate his head. For the simplicity of the simulation, we assume no head translations occur during the scan.
+
+A rotational transformation can be represented as a matrix. Rotations about a single axis are represented as followed:
+
+\begin{equation}
+R_x(\alpha) = \begin{bmatrix}
+ 1 &  0          & 0     \\ 
+ 0 &  cos\alpha  & sin\alpha \\ 
+ 0 &  -sin\alpha & cos\alpha \\ 
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+R_y(\beta) = \begin{bmatrix}
+ cos\beta &  0 & -sin\beta \\ 
+ 0        &  1 & 0         \\ 
+ sin\beta &  0 & cos\beta  \\ 
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+R_z(\gamma) = \begin{bmatrix}
+ cos\gamma  & sin\gamma  & 0 \\ 
+ -sin\gamma & cos\gamma  & 0 \\ 
+ 0          & 0          & 1 \\ 
+\end{bmatrix}
+\end{equation}
+
+Rotational transforms are applied to the origin of the image. However, the origin of the image is not necessary anatomically significant. Head motion naturally occurs about the base of the neck. We can approximate the location of the base of the neck by calculating the center of mass of the brain. First, the image volume is thresholded to separate the brain from the background. Then the locations of the ``on'' voxels are averaged to calculate the center of mass. 
+
+Motion is added to the noisy image sequence one volume at a time. No motion is applied to the first volume in the sequence, but volume is used to calculate the center of mass of the brain. For each subsequent volume, the angles of rotation about the x-, y-, and z-axes are each randomly generated from a standard normal distribution to create rotational change matrices, $R_{*,\Delta}$ (where the subscript $*$ represents $x$, $y$, or $z$). The new rotations $R_{*,\Delta}$ are added to the rotations from the previous step $R_{*,i-1}$ to create the rotation matrices for the current volume, $R_{*,i}$:
+
+\begin{equation}
+R_{*,i} = R_{*,i-1} + R_{*,\Delta}
+\end{equation}
+
+The three rotational transformations are combined into one matrix via multiplication: 
+
+\begin{equation}
+R_i = R_{x, i}(\alpha) R_{y,i}(\beta) R_{z,i}(\gamma)
+\end{equation}
+
+The compound transformation $R_i$ is then applied to the image at the center of mass calculated from the original image volume. \textit{Note: Since the simulation is constrained by the assumption of no head translations, the center of mass will remain consistent throughout the image sequence.}
+
+After motion has been added to every image volume in the sequence, the sequence with motion is ready to be used in motion correction analyses.
+
+\subsection{Implementation}
+
+SPECTr is implemented in Python (version 3.7.3). The \lstinline{nipy} library (version 0.4.1) was used to load images, save images, and combine the functional ROIs. The \lstinline{numpy} library (version 1.17.4) was used for matrix manipulations involved in the brain signal and noise generation steps. The image processing library \lstinline{skimage} (version 0.14.2) was used to calculate the center of mass. The Python wrapper \lstinline{SimpleITK} (version 1.2.4) of the Insight Toolkit library for image analysis was used to perform the rotational transformations associated with patient motion.
+
+The source code for SPECTr is available on Github at \url{https://github.com/jmschabdach/SPECTr}.
+
+
+%First, a reasonable range of head rotation about the x-, y-, and z-axes was established. These angle ranges are used to generate rotational transformation matrices for $N-1$ image volumes. The transformations are applied to each image volume after the first volume in the BOLD phantom sequence. The transformed image sequence is referred to as the BOLD phantom sequence with motion and the rotational transformation matrices are saved as the ground truth for the transformations between each image volume and the template volume. 
+%The BOLD phantom sequence serves as the ground truth for any motion correction pipeline: it contains the known brain orientation and BOLD signal independent from head motion and scanner noise.
+
+\subsection{Experiments Involving Simulated Images}
+
+We generated 90 image sequences from the MNI152 proton density image and the default mode network functional ROIs using the process described in the previous section. The image sequences were divided into three groups with different degrees of scanner noise. All simulated images underwent both registration techniques described in Chapter \ref{ch:mri}. The registered images also underwent independent component analysis (ICA) using FSL's MELODIC (Multivariate Exploratory Linear Optimized Decomposition into Independent Components) tool. % ELEPHANTS SOURCES
+
+The registered images will undergo the same type of analysis as the clinical images. The ICA technique will be used to determine how much brain signal was recovered by each registration technique.
 
 This particular experiment will be one of the first to investigate how much true BOLD signal is preserved through motion correction. One of the major drawbacks to existing motion correction pipelines is that they remove signal along with noise. In clinical data, there is no way to know the ground truth signal contained within the image; however, simulated phantom images have a de facto known ground truth signal. The design for this experiment can be used to evaluate how much BOLD signal is recovered by other motion correction pipelines, and how close the recovered signal is to the signal of interest.
 
 \section{Summary}
 
-In this chapter, we discussed our three major data sets, which are drawn from simulated data, pediatric data, and aging brain data. The simulated data were generated using a rs-fMRI simulation pipeline developed in-house and were used for the purpose of measuring ground truth signal recovered by motion correction techniques. The pediatric data were obtained through prospective studies of CHD and neurodevelopment being conducted at the UPMC Children's Hospital of Pittsburgh. The aging brain images were downloaded from the ADNI study. The pediatric and aging brain images were used to compare the two volume registration techniques in a standalone analysis as well as in the context of a motion correction pipeline. We also used these images to examine patterns of motion unique to different age groups. 
+In this chapter, we discussed our three major data sets, which are drawn from simulated data, pediatric data, and aging brain data. The simulated data were generated using a rs-fMRI simulation pipeline developed in-house and were used for the purpose of measuring ground truth signal recovered by motion correction techniques. The pediatric data were obtained through prospective studies of CHD and neurodevelopment being conducted at the UPMC Children's Hospital of Pittsburgh. The pediatric and aging brain images were used to compare the two volume registration techniques in a standalone analysis as well as in the context of a motion correction pipeline. We also used these images to examine patterns of motion unique to different age groups. 

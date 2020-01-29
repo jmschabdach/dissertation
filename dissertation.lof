@@ -1,0 +1,15 @@
+\contentsline {figure}{\numberline {1}{\ignorespaces A rs-fMRI can be thought of (a) as a sequence of image volumes or (b) as a single volume where each voxel contains a temporal signal rather than a single numeric value.}}{7}{figure.2.1}
+\contentsline {figure}{\numberline {2}{\ignorespaces The patient's brain activity effectively passes through several filters before an MRI scanner produces a visually interpretable image sequence. (The rounded rectangles represent the signal at different stages of recording while the rhombuses represent the filters.)}}{8}{figure.2.2}
+\contentsline {figure}{\numberline {3}{\ignorespaces The traditional approach to volume registration in an rs-fMRI sequence consists of registering all volumes in the sequence to a single reference volume.}}{27}{figure.2.3}
+\contentsline {figure}{\numberline {4}{\ignorespaces A rs-fMRI can be viewed as a directed acyclic graph where each volume is a node and the edges connect from each volume $i$ to the following volume $i+1$.}}{34}{figure.3.4}
+\contentsline {figure}{\numberline {5}{\ignorespaces The traditional approach to volume registration in an rs-fMRI sequence consists of registering all volumes in the sequence to a single reference volume.}}{35}{figure.3.5}
+\contentsline {figure}{\numberline {6}{\ignorespaces An example of $k$-means clustering performed on the Iris data set. The results of the algorithm are highly dependent on the number of clusters specified.}}{49}{figure.4.6}
+\contentsline {figure}{\numberline {7}{\ignorespaces (a) Two different distributions, a 2D Gaussian density and a thin horizontal rectangle are difficult to separate (b) due to their overlap and the penalties built into the cost function of the spectral clustering algorithm. From \cite {Nadler2007}.}}{53}{figure.4.7}
+\contentsline {figure}{\numberline {8}{\ignorespaces An example of agglomerative clustering on the Iris data set plotted using \textbf {seaborn}'s \textbf {clustermap} function.}}{55}{figure.4.8}
+\contentsline {figure}{\numberline {9}{\ignorespaces Visualization of MNIST data in 3D via TensorFlow Projector as generated using PCA, t-SNE, and UMAP dimensionality reduction techniques.}}{59}{figure.4.9}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PCA}}}{59}{figure.4.9}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {t-SNE}}}{59}{figure.4.9}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {UMAP}}}{59}{figure.4.9}
+\contentsline {figure}{\numberline {10}{\ignorespaces Table of prevalences of congenital heart defects borrowed temporarily from \cite {Mozaffarian2016}.}}{69}{figure.5.10}
+\contentsline {figure}{\numberline {11}{\ignorespaces Estimated CHD burden in World Health Organization (WHO) regions using incidence rates of approximately 12/1000 and 4/1000 in children and adults, respectively \cite {Webb2015}.}}{71}{figure.5.11}
+\contentsline {figure}{\numberline {12}{\ignorespaces An overview of the SPECTr simulation pipeline. Using atlas data, a simulated phantom containing brain signal, scanner noise, and patient motion is generated.}}{81}{figure.5.12}
