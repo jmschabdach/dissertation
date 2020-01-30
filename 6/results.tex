@@ -1,64 +1,24 @@
-\chapter{PRELIMINARY RESULTS}
+\chapter{RESULTS}
 \label{ch:results}
+
+This chapter is divided into two main sections. The first section focuses on the comparison of the two motion correction techniques. The second section focuses on the results of the machine learning algorithms applied to the metrics extracted from the images.
 
 \section{Comparison of Volume Registration Methods}
 
-\subsection{Subject Position Variability in the Registered Images}
+\subsection{Overview}
 
-\begin{table}[t]
-\centering
-\caption{The mean and standard deviation for each sequence’s correlation ratio matrix for every subject.}
-\label{tab:crm-stats}
-\begin{tabular}{|c|c|c|c|c|c|c|}
-\hline
-\multicolumn{1}{|l|}{\textbf{}} & \multicolumn{2}{c|}{\textbf{Original Sequence}}                                        & \multicolumn{2}{c|}{\textbf{Traditional Registration}}                                 & \multicolumn{2}{c|}{\textbf{DAG-based Registration}}                                   \\ \hline
-\textbf{Subject}                & \textbf{Mean} & \textbf{\begin{tabular}[c]{@{}c@{}}Standard \\ Deviation\end{tabular}} & \textbf{Mean} & \textbf{\begin{tabular}[c]{@{}c@{}}Standard \\ Deviation\end{tabular}} & \textbf{Mean} & \textbf{\begin{tabular}[c]{@{}c@{}}Standard \\ Deviation\end{tabular}} \\ \hline
-0                               & 0.04476       & 0.02707                                                                & 0.03842       & 0.01167                                                                & 0.03194       & 0.01082                                                                \\ \hline
-1                               & 0.04339       & 0.02926                                                                & 0.03323       & 0.00771                                                                & 0.03903       & 0.01315                                                                \\ \hline
-2                               & 0.03464       & 0.01773                                                                & 0.04522       & 0.01359                                                                & 0.03768       & 0.00775                                                                \\ \hline
-3                               & 0.03431       & 0.00264                                                                & 0.03203       & 0.01097                                                                & 0.03528       & 0.00289                                                                \\ \hline
-4                               & 0.03288       & 0.00462                                                                & 0.02601       & 0.00981                                                                & 0.03364       & 0.00514                                                                \\ \hline
-5                               & 0.03234       & 0.01376                                                                & 0.02986       & 0.00958                                                                & 0.03390       & 0.00800                                                                \\ \hline
-6                               & 0.03145       & 0.00730                                                                & 0.02691       & 0.00685                                                                & 0.03065       & 0.00496                                                                \\ \hline
-7                               & 0.02970       & 0.03314                                                                & 0.03331       & 0.00736                                                                & 0.03025       & 0.00969                                                                \\ \hline
-8                               & 0.02728       & 0.01044                                                                & 0.03060       & 0.00500                                                                & 0.03359       & 0.00791                                                                \\ \hline
-9                               & 0.02467       & 0.00305                                                                & 0.03354       & 0.00513                                                                & 0.02467       & 0.00303                                                                \\ \hline
-10                              & 0.02446       & 0.00163                                                                & 0.03535       & 0.00293                                                                & 0.02446       & 0.00163                                                                \\ \hline
-11                              & 0.02422       & 0.01161                                                                & 0.02958       & 0.00559                                                                & 0.02617       & 0.00981                                                                \\ \hline
-12                              & 0.02338       & 0.00060                                                                & 0.02467       & 0.00304                                                                & 0.02338       & 0.00060                                                                \\ \hline
-13                              & 0.02280       & 0.00101                                                                & 0.02447       & 0.00163                                                                & 0.02279       & 0.00101                                                                \\ \hline
-14                              & 0.01968       & 0.01040                                                                & 0.02338       & 0.00060                                                                & 0.02740       & 0.00664                                                                \\ \hline
-15                              & 0.01942       & 0.00526                                                                & 0.02279       & 0.00101                                                                & 0.02939       & 0.00548                                                                \\ \hline
-16                              & 0.01414       & 0.00133                                                                & 0.01512       & 0.00178                                                                & 0.01520       & 0.00184                                                                \\ \hline
-\end{tabular}
-\end{table}
+Each of the clinical images underwent volume registration using both registration methods outlined in Chapter \ref{moco}. The FD and DVARs metrics were calculated for every pair of subsequent volumes $i$ and $i+1$ in the original sequences, the traditionally registered sequences, and the DAG-registered sequences. Then the sequences were comprehensively compared to themselves. For every volume in each sequence, the Dice metric, the mutual information, and the correlation ratio were calculated for the volume and every other volume in the sequence.
 
-Each rs-fMRI sequence in the cohort underwent registration using both frameworks. For each sequence, the correlation ratio between every possible pair of volumes was calculated. A set of metrics of the correlation ratio matrices for each sequence can be seen in Table \ref{tab:crm-stats}. This table shows that the original sequences generally have higher average correlation ratios and contain more variation in their correlation ratios than the globally registered images. The registration methods were able to reduce the mean and variability of the correlation ratios across all subjects in the cohort who had original correlation ratio averages of at least 0.035.
+The simulated data underwent the same analyses as the clinical images, with one addition. 
 
-\subsection{Comparison of Motion Correction Methods}
+\subsubsection{Preadolescent Cohort}
 
-%\begin{figure}[th]
-%\centering
-%\includegraphics[width=1.0\textwidth]{figures/histograms-both.png}
-%\caption{Histograms of the FD and DVARS values between all pairs of neighboring image volumes for the DAG-based registration (solid) and the traditional correction (dotted). The vertical red line in each histogram indicates the threshold of acceptance for that metric. The DAG-based registration method’s histograms are distributed closer to the threshold for each criteria than the traditional registrations method’s.}
-%\label{fig:hists}
-%\end{figure}
+% First: FD and DVARs
+Histograms of the distributions of the FD and DVARs metrics forthe original, traditionally registered, and DAG-registered images can be seen in Figure REF.
 
-\begin{table}[th]
-\centering
-\caption{The mean, median, standard deviation, skewness, and kurtosis of the histograms of FD and DVARS values for all image types were calculated. The histograms for the DAG-based method have lower means, medians, and standard deviations than those of the first volume correction method.}
-\label{tab:hists}
-\begin{tabular}{|l|c|c|c|c|c|c|}
-\hline
-                                    & \multicolumn{3}{c|}{\textbf{FD Values (mm)}}                                                                                         & \multicolumn{3}{c|}{\textbf{DVARS Values (units)}}                                                                                   \\ \hline
-\textbf{Statistic}    & \multicolumn{1}{l|}{\textbf{None}}         & \multicolumn{1}{l|}{\textbf{Traditional}}  & \multicolumn{1}{l|}{\textbf{DAG-based}}    & \multicolumn{1}{l|}{\textbf{None}}         & \multicolumn{1}{l|}{\textbf{Traditional}}  & \multicolumn{1}{l|}{\textbf{DAG-based}}    \\ \hline
-Mean                                & 1.07                                       & 2.18                                       & 1.22                                       & 63.14                                      & 135.15                                     & 97.23                                      \\ \hline
-Median                              & 0.30                                       & 1.46                                       & 0.56                                       & 35.19                                      & 133.48                                     & 77.75                                      \\ \hline
-Standard Deviation                  & 1.97                                       & 2.35                                       & 1.61                                       & 70.00                                      & 83.48                                      & 77.14                                      \\ \hline
-Skewness (-)                        & 3.86                                       & 3.08                                       & 3.00                                       & 2.76                                       & 1.13                                       & 1.55                                       \\ \hline
-Kurtosis (-)                        & 23.29                                      & 17.74                                      & 17.12                                      & 14.28                                      & 7.79                                       & 7.44                                       \\ \hline
-\end{tabular}
-\end{table}
+The FD and DVARS values also considered to be distribution functions representing the effects of no registration, traditional registration, and DAG-based registration. These distributions were compared using the Kolmogorov-Smirnov test, which compares the empirical distribution functions of two samples. There were statistically significant differences between the FD and DVARS values of all sequences at $p < 2.2*10^{-16}$. Statistics calculated for the FD and DVARS value histograms of both motion correction methods can be seen in Table \ref{tab:hists}.
+
+%Each rs-fMRI sequence in the cohort underwent registration using both frameworks. For each sequence, the correlation ratio between every possible pair of volumes was calculated. A set of metrics of the correlation ratio matrices for each sequence can be seen in Table \ref{tab:crm-stats}. This table shows that the original sequences generally have higher average correlation ratios and contain more variation in their correlation ratios than the globally registered images. The registration methods were able to reduce the mean and variability of the correlation ratios across all subjects in the cohort who had original correlation ratio averages of at least 0.035.
 
 \begin{table}[th]
 \centering
@@ -75,6 +35,8 @@ Both (\%)          & 24.27\%       & 2.39\%               & 10.11\%            \
 \end{table}
 
 
-The FD and DVARS values were calculated to determine how many volumes in each registered sequence met the FD and DVARS thresholds. The FD and DVARS values also considered to be distribution functions representing the effects of no registration, traditional registration, and DAG-based registration. These distributions were compared using the Kolmogorov-Smirnov test, which compares the empirical distribution functions of two samples. There were statistically significant differences between the FD and DVARS values of all sequences at $p < 2.2*10^{-16}$. Statistics calculated for the FD and DVARS value histograms of both motion correction methods can be seen in Table \ref{tab:hists}.
+The FD and DVARS values were compared to the usability thresholds. 
 
 Power et al.'s usability thresholds were used to determine how many volumes were recovered by each framework \cite{Power2014}. Table \ref{tab:thresholds} shows the number of volumes meeting each threshold, with the traditional and DAG-based frameworks recovering 2\% and 10\% of volumes, respectively. These results show that the DAG-based registration technique produces sequences with lower FD and DVARS value than the traditional global registration method does.
+
+\section{Motion Patterns}
