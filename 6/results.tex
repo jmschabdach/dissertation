@@ -142,9 +142,10 @@ To compare the FD and DVARS values for each type of motion correction, the metri
 By comparing the distributions for the original sequences to the distributions for the registered sequences, we aim to determine if the volume registration had a significant effect on the images themselves. The comparison of the distributions for the two types of registered images is intended to determine if there is a statistically significant difference between the FD and DVARS distributions of the registered images.
 
 \begin{table}[]
-\begin{tabular}{|l|c|c|}
+\centering
 \caption{The KS test statistics and p-values for the KS test comparisons of FD values for the preadolescent cohort.}
 \label{tab:pread-ks-fd}
+\begin{tabular}{|l|c|c|}
 \hline
 \textbf{Pair of Image Types} & \multicolumn{1}{l|}{\textbf{KS Statistic}} & \multicolumn{1}{l|}{\textit{\textbf{p-value}}} \\ \hline
 Original and DAG Registered                 & 0.34707   & 0.0     \\ \hline
@@ -154,8 +155,9 @@ DAG Registered and Traditionally Registered & 0.0023160 & 0.52633 \\ \hline
 \end{table}
 
 \begin{table}[]
-\begin{tabular}{|l|c|c|}
+\centering
 \caption{The KS test statistics and p-values for the KS test comparisons of DVARS values for the preadolescent cohort.}
+\begin{tabular}{|l|c|c|}
 \hline
 \textbf{Pair of Image Types} & \multicolumn{1}{l|}{\textbf{KS Statistic}} & \multicolumn{1}{l|}{\textit{\textbf{p-value}}} \\ \hline
 Original and DAG Registered                 & 0.38692   & 0.0     \\ \hline
@@ -164,22 +166,27 @@ DAG Registered and Traditionally Registered & 0.0024913 & 0.43193 \\ \hline
 \end{tabular}
 \end{table}
 
-There were statistically significant differences between the FD and DVARS values of all sequences at $p < 2.2*10^{-16}$. Statistics calculated for the FD and DVARS value histograms of both motion correction methods can be seen in Table \ref{tab:hists}. 
-%Each rs-fMRI sequence in the cohort underwent registration using both frameworks. For each sequence, the correlation ratio between every possible pair of volumes was calculated. A set of metrics of the correlation ratio matrices for each sequence can be seen in Table \ref{tab:crm-stats}. This table shows that the original sequences generally have higher average correlation ratios and contain more variation in their correlation ratios than the globally registered images. The registration methods were able to reduce the mean and variability of the correlation ratios across all subjects in the cohort who had original correlation ratio averages of at least 0.035.
-
-\begin{table}[th]
+\begin{table}[]
 \centering
-\caption{The number of frames recovered by each global volume registration framework for each threshold.}
-\label{tab:thresholds}
-\begin{tabular}{|l|r|r|r|}
+\caption{The number of and percentage of images from each category which met the FD and DVARS thresholds.}
+\label{tab:pread-powerthresh}
+\begin{tabular}{|c|c|c|c|}
 \hline
-\textbf{Threshold} & \textbf{None} & \textbf{Traditional} & \textbf{DAG-based} \\ \hline
-FD (0.2 mm)        & 966           & 175                  & 569                \\ \hline
-DVARS (25 units)   & 781           & 78                   & 297                \\ \hline
-Both               & 619           & 61                   & 258                \\ \hline
-Both (\%)          & 24.27\%       & 2.39\%               & 10.11\%            \\ \hline
+\textbf{Thresholds Met} &
+  \textbf{Original Images} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}DAG-Registered \\ Images\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally-Registered\\  Images\end{tabular}} \\ \hline
+FD (count)           & 107896 & 28998  & 28761  \\ \hline
+DVARS (count)        & 87169  & 11445  & 11375  \\ \hline
+FD and DVARS (count) & 74112  & 9289   & 9257   \\ \hline
+FD (\%)              & 60.178 & 16.189 & 16.041 \\ \hline
+DVARS (\%)           & 48.618 & 6.389  & 6.344  \\ \hline
+FD and DVARS (\%)    & 41.335 & 5.185  & 5.163  \\ \hline
 \end{tabular}
 \end{table}
+
+There were statistically significant differences between the FD and DVARS values of all sequences at $p < 2.2*10^{-16}$. Statistics calculated for the FD and DVARS value histograms of both motion correction methods can be seen in Table \ref{tab:hists}. 
+%Each rs-fMRI sequence in the cohort underwent registration using both frameworks. For each sequence, the correlation ratio between every possible pair of volumes was calculated. A set of metrics of the correlation ratio matrices for each sequence can be seen in Table \ref{tab:crm-stats}. This table shows that the original sequences generally have higher average correlation ratios and contain more variation in their correlation ratios than the globally registered images. The registration methods were able to reduce the mean and variability of the correlation ratios across all subjects in the cohort who had original correlation ratio averages of at least 0.035.
 
 
 The FD and DVARS values were compared to the usability thresholds. 
