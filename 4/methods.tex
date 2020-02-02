@@ -221,9 +221,21 @@ UMAP was developed under the belief that local structure is more important than 
 
 \begin{figure}
 \centering
-\subfigure[PCA]{\includegraphics[width=.49\textwidth]{4/pca.png}}
-\subfigure[t-SNE]{\includegraphics[width=.49\textwidth]{4/tsne.png}}\\
-\subfigure[UMAP]{\includegraphics[width=.5\textwidth]{4/umap.png}}\\
+\begin{subfigure}{1.0\textwidth}
+\centering
+\includegraphics[width=.49\textwidth]{4/pca.png}
+\caption{PCA}
+\end{subfigure}
+\begin{subfigure}{1.0\textwidth}
+\centering
+\includegraphics[width=.49\textwidth]{4/tsne.png}
+\caption{t-SNE}
+\end{subfigure}
+\begin{subfigure}{1.0\textwidth}
+\centering
+\includegraphics[width=.5\textwidth]{4/umap.png}
+\caption{UMAP}
+\end{subfigure}
 \caption{Visualization of MNIST data in 3D via TensorFlow Projector as generated using PCA, t-SNE, and UMAP dimensionality reduction techniques.}
 \label{ch4:fig:data-viz}
 \end{figure}

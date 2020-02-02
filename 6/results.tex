@@ -9,15 +9,162 @@ This chapter is divided into two main sections. The first section focuses on the
 
 Each of the clinical images underwent volume registration using both registration methods outlined in Chapter \ref{moco}. The FD and DVARs metrics were calculated for every pair of subsequent volumes $i$ and $i+1$ in the original sequences, the traditionally registered sequences, and the DAG-registered sequences. Then the sequences were comprehensively compared to themselves. For every volume in each sequence, the Dice metric, the mutual information, and the correlation ratio were calculated for the volume and every other volume in the sequence.
 
-The simulated data underwent the same analyses as the clinical images, with one addition. 
+The simulated data underwent the same analyses as the clinical images, with one addition. Independent component analysis was performed on the simulated data to identify components contributing to the overall signal in the image. By correlating the components with the simulated signal for each image, the BOLD-related components were identifies. The amount of BOLD signal identified for each image was compared to that image's original BOLD signal.
 
 \subsubsection{Preadolescent Cohort}
 
+% FD 450
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}{0.9\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/pread_fd_all_450_avg.png}
+		\caption{The average FD of all preadolescent images.}
+	\end{subfigure}
+
+	\begin{subfigure}{0.9\textwidth}
+		\centering
+		\includegraphics[width=.4\textwidth]{6/figures/pread-bold-fd-450.png}
+		\caption{The mean and standard deviation of the FD for the original images.}
+	\end{subfigure}
+	
+	\begin{subfigure}{0.9\textwidth}
+		\centering
+		\includegraphics[width=0.4\textwidth]{6/figures/pread-dag-fd-450.png}
+		\caption{The mean and standard deviation of the FD for the DAG-corrected images.}
+	\end{subfigure}
+	
+	\begin{subfigure}{0.9\textwidth}
+		\centering
+		\includegraphics[width=0.4\textwidth]{6/figures/pread-trad-fd-450.png}
+		\caption{The mean and standard deviation of the FD for the DAG-corrected images.}
+	\end{subfigure}
+\caption{The FD distributions for all preadolescent images, with sequence length limited to 450 volumes.}
+\label{fig:pread-fd-450}
+\end{figure}
+
+% FD 150
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{6/figures/pread_fd_all_150_avg.png}
+		\caption{The average FD of all preadolescent images.}
+	\end{subfigure}%
+	\vspace{0.05\textwidth}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{6/figures/pread-bold-fd-150.png}
+		\caption{The mean and standard deviation of the FD for the original images.}
+	\end{subfigure}
+	
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{6/figures/pread-dag-fd-150.png}
+		\caption{The mean and standard deviation of the FD for the DAG-corrected images.}
+	\end{subfigure}%	
+	\vspace{0.05\textwidth}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{6/figures/pread-trad-fd-150.png}
+		\caption{The mean and standard deviation of the FD for the DAG-corrected images.}
+	\end{subfigure}
+\caption{The FD distributions for all preadolescent images, with sequence length limited to the minimum of 150 volumes.}
+\label{fig:pread-fd-150}
+\end{figure}
+
+% DVARS 450
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}{0.9\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/pread_dvars_all_450_avg.png}
+		\caption{The average DVARS of all preadolescent images.}
+	\end{subfigure}
+
+	\begin{subfigure}{0.9\textwidth}
+		\centering
+		\includegraphics[width=.4\textwidth]{6/figures/pread-bold-dvars-450.png}
+		\caption{The mean and standard deviation of the DVARS for the original images.}
+	\end{subfigure}
+	
+	\begin{subfigure}{0.9\textwidth}
+		\centering
+		\includegraphics[width=0.4\textwidth]{6/figures/pread-dag-dvars-450.png}
+		\caption{The mean and standard deviation of the DVARS for the DAG-corrected images.}
+	\end{subfigure}
+	
+	\begin{subfigure}{0.9\textwidth}
+		\centering
+		\includegraphics[width=0.4\textwidth]{6/figures/pread-trad-dvars-450.png}
+		\caption{The mean and standard deviation of the DVARS for the DAG-corrected images.}
+	\end{subfigure}
+\caption{The DVARS distributions for all preadolescent images, with sequence length limited to 450 volumes.}
+\label{fig:pread-dvars-450}
+\end{figure}
+
+% DVARS 150
+\begin{figure}[ht]
+	\centering
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{6/figures/pread_dvars_all_150_avg.png}
+		\caption{The average DVARS of all preadolescent images.}
+	\end{subfigure}%
+	\vspace{0.05\textwidth}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{6/figures/pread-bold-dvars-150.png}
+		\caption{The mean and standard deviation of the DVARS for the original images.}
+	\end{subfigure}
+	
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{6/figures/pread-dag-dvars-150.png}
+		\caption{The mean and standard deviation of the DVARS for the DAG-corrected images.}
+	\end{subfigure}%	
+	\vspace{0.05\textwidth}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{6/figures/pread-trad-dvars-150.png}
+		\caption{The mean and standard deviation of the DVARS for the DAG-corrected images.}
+	\end{subfigure}
+\caption{The DVARS distributions for all preadolescent images, with sequence length limited to the minimum of 150 volumes.}
+\label{fig:pread-dvars-150}
+\end{figure}
+
+
 % First: FD and DVARs
-Histograms of the distributions of the FD and DVARs metrics forthe original, traditionally registered, and DAG-registered images can be seen in Figure REF.
+The averages of the distributions of the FD and DVARs metrics across the whole time period of the sequences for the original, traditionally registered, and DAG-registered images were calculated. The images sequences varied in length from 150 volume to 450 volumes due to the differences in acquisition protocols at different sites. The means and standard deviations of FD and DVARS metrics for the entire set of sequence with their original lengths can be seen in Figures \ref{fig:pread-fd-450} and \ref{fig:pread-dvars-450}. The means and standard deviations of the FD and DVARs metrics for the first 150 volumes in each sequence can be seen in Figures \ref{fig:pread-dvars-150} and \ref{fig:pread-dvars-150}. 
 
-The FD and DVARS values also considered to be distribution functions representing the effects of no registration, traditional registration, and DAG-based registration. These distributions were compared using the Kolmogorov-Smirnov test, which compares the empirical distribution functions of two samples. There were statistically significant differences between the FD and DVARS values of all sequences at $p < 2.2*10^{-16}$. Statistics calculated for the FD and DVARS value histograms of both motion correction methods can be seen in Table \ref{tab:hists}.
+To compare the FD and DVARS values for each type of motion correction, the metrics for each image were considered to be independent samples drawn from an unknown distribution. Pairwise comparisons of these distribution were performed using the Kolmogorov-Smirnov (KS) test. The two-sided KS test measures the distance between the empirical distributions of two distributions. The null hypothesis of the two-sided KS test is that the empirical distributions being compared come from the same underlying distribution. As the KS test is nonparametric, the metrics for all image volumes can be used.
 
+By comparing the distributions for the original sequences to the distributions for the registered sequences, we aim to determine if the volume registration had a significant effect on the images themselves. The comparison of the distributions for the two types of registered images is intended to determine if there is a statistically significant difference between the FD and DVARS distributions of the registered images.
+
+\begin{table}[]
+\begin{tabular}{|l|c|c|}
+\caption{The KS test statistics and p-values for the KS test comparisons of FD values for the preadolescent cohort.}
+\label{tab:pread-ks-fd}
+\hline
+\textbf{Pair of Image Types} & \multicolumn{1}{l|}{\textbf{KS Statistic}} & \multicolumn{1}{l|}{\textit{\textbf{p-value}}} \\ \hline
+Original and DAG Registered                 & 0.34707   & 0.0     \\ \hline
+Original and Traditionally Registered       & 0.34792   & 0.0     \\ \hline
+DAG Registered and Traditionally Registered & 0.0023160 & 0.52633 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\begin{tabular}{|l|c|c|}
+\caption{The KS test statistics and p-values for the KS test comparisons of DVARS values for the preadolescent cohort.}
+\hline
+\textbf{Pair of Image Types} & \multicolumn{1}{l|}{\textbf{KS Statistic}} & \multicolumn{1}{l|}{\textit{\textbf{p-value}}} \\ \hline
+Original and DAG Registered                 & 0.38692   & 0.0     \\ \hline
+Original and Traditionally Registered       & 0.38699   & 0.0     \\ \hline
+DAG Registered and Traditionally Registered & 0.0024913 & 0.43193 \\ \hline
+\end{tabular}
+\end{table}
+
+There were statistically significant differences between the FD and DVARS values of all sequences at $p < 2.2*10^{-16}$. Statistics calculated for the FD and DVARS value histograms of both motion correction methods can be seen in Table \ref{tab:hists}. 
 %Each rs-fMRI sequence in the cohort underwent registration using both frameworks. For each sequence, the correlation ratio between every possible pair of volumes was calculated. A set of metrics of the correlation ratio matrices for each sequence can be seen in Table \ref{tab:crm-stats}. This table shows that the original sequences generally have higher average correlation ratios and contain more variation in their correlation ratios than the globally registered images. The registration methods were able to reduce the mean and variability of the correlation ratios across all subjects in the cohort who had original correlation ratio averages of at least 0.035.
 
 \begin{table}[th]
