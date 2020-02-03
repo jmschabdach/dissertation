@@ -7,14 +7,24 @@ This chapter is divided into two main sections. The first section focuses on the
 
 \subsection{Overview}
 
-Each of the clinical images underwent volume registration using both registration methods outlined in Chapter \ref{moco}. The FD and DVARs metrics were calculated for every pair of subsequent volumes $i$ and $i+1$ in the original sequences, the traditionally registered sequences, and the DAG-registered sequences. Then the sequences were comprehensively compared to themselves. For every volume in each sequence, the Dice metric, the mutual information, and the correlation ratio were calculated for the volume and every other volume in the sequence.
+Each of the clinical images underwent volume registration using both registration methods outlined in Chapter \ref{ch:moco}. The FD and DVARs metrics were calculated for every pair of subsequent volumes $i$ and $i+1$ in the original sequences, the traditionally registered sequences, and the DAG-registered sequences. Then the sequences were comprehensively compared to themselves. For every volume in each sequence, the Dice metric, the mutual information, and the correlation ratio were calculated for the volume and every other volume in the sequence.
 
 The simulated data underwent the same analyses as the clinical images, with one addition. Independent component analysis was performed on the simulated data to identify components contributing to the overall signal in the image. By correlating the components with the simulated signal for each image, the BOLD-related components were identifies. The amount of BOLD signal identified for each image was compared to that image's original BOLD signal.
 
-\subsubsection{Preadolescent Cohort}
+\subsection{Neonatal Cohort}
+
+(Still processing.)
+
+\subsection{Preadolescent Cohort}
+
+
+
+
+% First: FD and DVARs
+The averages of the distributions of the FD and DVARs metrics across the whole time period of the sequences for the original, traditionally registered, and DAG-registered images were calculated. The images sequences varied in length from 150 volume to 450 volumes due to the differences in acquisition protocols at different sites. The means and standard deviations of FD and DVARS metrics for the entire set of sequence with their original lengths can be seen in Figures \ref{fig:pread-fd-450} and \ref{fig:pread-dvars-450}. The means and standard deviations of the FD and DVARs metrics for the first 150 volumes in each sequence can be seen in Figures \ref{fig:pread-dvars-150} and \ref{fig:pread-dvars-150}. 
 
 % FD 450
-\begin{figure}[ht]
+\begin{figure}[t]
 	\centering
 	\begin{subfigure}{0.9\textwidth}
 		\centering
@@ -44,7 +54,7 @@ The simulated data underwent the same analyses as the clinical images, with one 
 \end{figure}
 
 % FD 150
-\begin{figure}[ht]
+\begin{figure}[t]
 	\centering
 	\begin{subfigure}{0.45\textwidth}
 		\centering
@@ -74,7 +84,7 @@ The simulated data underwent the same analyses as the clinical images, with one 
 \end{figure}
 
 % DVARS 450
-\begin{figure}[ht]
+\begin{figure}[t]
 	\centering
 	\begin{subfigure}{0.9\textwidth}
 		\centering
@@ -104,7 +114,7 @@ The simulated data underwent the same analyses as the clinical images, with one 
 \end{figure}
 
 % DVARS 150
-\begin{figure}[ht]
+\begin{figure}[t]
 	\centering
 	\begin{subfigure}{0.45\textwidth}
 		\centering
@@ -133,15 +143,11 @@ The simulated data underwent the same analyses as the clinical images, with one 
 \label{fig:pread-dvars-150}
 \end{figure}
 
-
-% First: FD and DVARs
-The averages of the distributions of the FD and DVARs metrics across the whole time period of the sequences for the original, traditionally registered, and DAG-registered images were calculated. The images sequences varied in length from 150 volume to 450 volumes due to the differences in acquisition protocols at different sites. The means and standard deviations of FD and DVARS metrics for the entire set of sequence with their original lengths can be seen in Figures \ref{fig:pread-fd-450} and \ref{fig:pread-dvars-450}. The means and standard deviations of the FD and DVARs metrics for the first 150 volumes in each sequence can be seen in Figures \ref{fig:pread-dvars-150} and \ref{fig:pread-dvars-150}. 
-
 To compare the FD and DVARS values for each type of motion correction, the metrics for each image were considered to be independent samples drawn from an unknown distribution. Pairwise comparisons of these distribution were performed using the Kolmogorov-Smirnov (KS) test. The two-sided KS test measures the distance between the empirical distributions of two distributions. The null hypothesis of the two-sided KS test is that the empirical distributions being compared come from the same underlying distribution. As the KS test is nonparametric, the metrics for all image volumes can be used.
 
 By comparing the distributions for the original sequences to the distributions for the registered sequences, we aim to determine if the volume registration had a significant effect on the images themselves. The comparison of the distributions for the two types of registered images is intended to determine if there is a statistically significant difference between the FD and DVARS distributions of the registered images.
 
-\begin{table}[]
+\begin{table}[ht]
 \centering
 \caption{The KS test statistics and p-values for the KS test comparisons of FD values for the preadolescent cohort.}
 \label{tab:pread-ks-fd}
@@ -154,9 +160,10 @@ DAG Registered and Traditionally Registered & 0.0023160 & 0.52633 \\ \hline
 \end{tabular}
 \end{table}
 
-\begin{table}[]
+\begin{table}[ht]
 \centering
 \caption{The KS test statistics and p-values for the KS test comparisons of DVARS values for the preadolescent cohort.}
+\label{tab:pread-ks-dvars}
 \begin{tabular}{|l|c|c|}
 \hline
 \textbf{Pair of Image Types} & \multicolumn{1}{l|}{\textbf{KS Statistic}} & \multicolumn{1}{l|}{\textit{\textbf{p-value}}} \\ \hline
@@ -166,7 +173,12 @@ DAG Registered and Traditionally Registered & 0.0024913 & 0.43193 \\ \hline
 \end{tabular}
 \end{table}
 
-\begin{table}[]
+The KS statistic and p-value produced as result of the KS tests can be seen in Table \ref{tab:pread-ks-fd} for the FD metrics and in Table \ref{tab:pread-ks-dvars} for the DVARS metrics.
+
+
+%Each rs-fMRI sequence in the cohort underwent registration using both frameworks. For each sequence, the correlation ratio between every possible pair of volumes was calculated. A set of metrics of the correlation ratio matrices for each sequence can be seen in Table \ref{tab:crm-stats}. This table shows that the original sequences generally have higher average correlation ratios and contain more variation in their correlation ratios than the globally registered images. The registration methods were able to reduce the mean and variability of the correlation ratios across all subjects in the cohort who had original correlation ratio averages of at least 0.035.
+
+\begin{table}[ht]
 \centering
 \caption{The number of and percentage of images from each category which met the FD and DVARS thresholds.}
 \label{tab:pread-powerthresh}
@@ -185,12 +197,32 @@ FD and DVARS (\%)    & 41.335 & 5.185  & 5.163  \\ \hline
 \end{tabular}
 \end{table}
 
-There were statistically significant differences between the FD and DVARS values of all sequences at $p < 2.2*10^{-16}$. Statistics calculated for the FD and DVARS value histograms of both motion correction methods can be seen in Table \ref{tab:hists}. 
-%Each rs-fMRI sequence in the cohort underwent registration using both frameworks. For each sequence, the correlation ratio between every possible pair of volumes was calculated. A set of metrics of the correlation ratio matrices for each sequence can be seen in Table \ref{tab:crm-stats}. This table shows that the original sequences generally have higher average correlation ratios and contain more variation in their correlation ratios than the globally registered images. The registration methods were able to reduce the mean and variability of the correlation ratios across all subjects in the cohort who had original correlation ratio averages of at least 0.035.
+
+The FD and DVARS values were compared to the usability thresholds defined by Power et al. to determine how many volumes were recovered by each framework \cite{Power2014}. Table \ref{tab:pread-powerthresh} shows the number of volumes meeting each threshold, both in terms of the number of volumes in the cohort and the percentage of volumes in the cohort. In the original dataset, almost 42\% of image volumes met both the FD and DVARS thresholds. However, only about 5\% of volumes met both thresholds for each registration type. Looking at the thresholds independently, about 60\% of volumes met the FD threshold before registration and only 16\% of volumes met the threshold after registration. Similarly, about 48\% of volumes met the DVARS threshold before registration and only about 6\% of volumes met the threshold after registration. These results suggest that the registration process introduces some degree of error into the preadolescent images, at least with respect to the established usability criteria.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{6/figures/similarity-mat-sample.png}
+\caption{Examples of the three similarity matrices. Lighter colors represent more desirable values.}
+\label{fig:sim-mat-sample}
+\end{figure}
+
+An example of the three similarity matrices can be seen in Figure \ref{fig:sim-mat-sample}. The element $e_{i,j}$ represents the value of the given metric between the image volumes represented by row $i$ and column $j$. Each metric measures similarity according to slightly different definitions. In this figure, lighter values represent better metric values while darker values indicate lower similarity.
+
+It is important to note the scales for these three metrics vary. The correlation ratio measures the distance between two items. Lower values for the correlation ratio means there is a smaller distance between the given pair of image volumes. The mutual information measures the shared information between two distributions of samples which may or may not be generated from the same underlying distribution. Higher mutual information values mean more shared information and low values mean less shared information. The Dice coefficient measures the overlap of two binary images. High Dice coefficients indicate a large amount of overlap, with a value of 1.0 indicating a perfect overlap.
+
+The correlation ratio matrix in Figure \ref{fig:sim-mat-sample} suggests that the patient remained relatively still for the first 300 volumes of the image, then moved for about 100 volumes, and remained still in a new position for the last 50 frames of the sequence. The colors representing the correlation ratios correspond to very low values, suggesting there is little patient motion overall.
+
+The Dice coefficient matrix has a similar pattern as the mutual information matrix, but leads to a different conclusion. The Dice coefficient was calculated on an Otsu thresholded version of each image volume. As the values of the Dice coefficients are consistently high, the patient likely did not move much. 
+
+The mutual information matrix shows that the shared information throughout the entire image sequence varies. Using the information from the correlation ratio matrix and the Dice coefficient matrix, it is possible that the variations in the mutual information matrix are due to changes in the rs-fMRI signal caused by BOLD signal changes, spin history effects of motion, and susceptibility effects of motion.
 
 
-The FD and DVARS values were compared to the usability thresholds. 
+\subsection{Fetal Cohort}
 
-Power et al.'s usability thresholds were used to determine how many volumes were recovered by each framework \cite{Power2014}. Table \ref{tab:thresholds} shows the number of volumes meeting each threshold, with the traditional and DAG-based frameworks recovering 2\% and 10\% of volumes, respectively. These results show that the DAG-based registration technique produces sequences with lower FD and DVARS value than the traditional global registration method does.
+(Still processing.)
+
+\subsection{Simulated Images}
+
 
 \section{Motion Patterns}
