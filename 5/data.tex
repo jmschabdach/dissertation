@@ -153,7 +153,7 @@ A total of 149 patients were recruited. The average post-conceptual age of the p
 
 \begin{figure}
 \centering
-\includegraphics[width=1.0\textwidth]{5/demo_neonate_subj_cohort.png}
+\includegraphics[width=.75\textwidth]{5/demo_neonate_subj_cohort.png}
 \caption{The breakdown of subject groups contained in the Control and CHD neonatal cohorts.}
 \label{ch5:neonates:cohorts}
 \end{figure}
@@ -164,7 +164,48 @@ As the neonates were most often asleep during the scan, they exhibit less motion
 
 \subsubsection{Preadolescent Subject Population and Images}
 
-As part of a multicenter study of CHD in preadolescents, we collected rs-fMRIs from nine sites throughout the United States. These images were of patients in the age range of 9 to 13 years who either had CHD or were healthy with no neurocognitive impairments. In addition to the MRI scans, subjects who participated in this study were asked to participate in additional testing  either to determine their neurocognitive outcome status or to perform genetic analyses. % (GET DETAILS FROM NANCY).
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{5/demo_pread_scan_age.png}
+\caption{The distribution of preadolescent subject ages at the time of the scan.}
+\label{fig:pread_sites}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{5/demo_pread_subj_cohort.png}
+\caption{The distribution of CHD and healthy subjects between the 12 sites enrolled in the preadolescent study.}
+\label{fig:pread_ages}
+\end{figure}
+
+\begin{table}[]
+\centering
+\caption{The number of CHD and healthy control preadolescent subjects scanned on each scanner type at each site.}
+\label{tab:pread-site-counts}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Site} & \textbf{Scanner} & \textbf{Field Strength} & \textbf{CHD} & \textbf{HEALTHY} \\ \hline
+Site 01 & Skyra   & 3T & 22.0 & 128.0 \\ \hline
+Site 02 & Unknown & Unknown & 24.0 & 0.0   \\ \hline
+Site 03 & Skyra   & 3T & 83.0 & 44.0  \\ \hline
+Site 04 & Unknown & Unknown  & 8.0  & 0.0   \\ \hline
+Site 05 & Prisma  & 3T & 23.0 & 12.0  \\ \hline
+Site 05 & Skyra   & 3T & 50.0 & 26.0  \\ \hline
+Site 06 & Prisma  & 3T & 6.0  & 0.0   \\ \hline
+Site 07 & Trio    & 3T & 14.0 & 0.0   \\ \hline
+Site 08 & Prisma  & 3T & 15.0 & 13.0  \\ \hline
+Site 09 & Ingenia & 3T & 23.0 & 4.0   \\ \hline
+Site 10 & Prisma  & 3T & 14.0 & 0.0   \\ \hline
+Site 11 & Skyra   & 3T & 4.0  & 0.0   \\ \hline
+Site 12 & Skyra   & 3T & 11.0 & 32.0  \\ \hline
+\end{tabular}
+\end{table}
+
+As part of a multicenter study of CHD in preadolescents, we collected rs-fMRIs from twelve sites throughout the United States. The two sites from the neonatal study in the previous section also participated in this study and retained their respective labels. The subjects enrolled in this study were patients in the age range of 6 to 17 years (average age: 11 years) who either had CHD or were healthy with no neurocognitive impairments. The histogram of patient ages at the time of each scan can be seen in Figure \ref{fig:pread_ages}.
+
+The majority of the subjects have CHD, though six sites also recruited healthy patients. The distribution of CHD and healthy subjects between the 12 sites can be seen in Figure \ref{fig:pread_sites} and in more detail in Table \ref{tab:pread-site-counts}.
+
+In addition to the MRI scans, subjects who participated in this study were asked to participate in additional testing  either to determine their neurocognitive outcome status or to perform genetic analyses. % (GET DETAILS FROM NANCY).
 
 
 \begin{itemize}
@@ -392,7 +433,7 @@ After motion has been added to every image volume in the sequence, the sequence 
 
 SPECTr is implemented in Python (version 3.7.3). The \lstinline{nipy} library (version 0.4.1) was used to load images, save images, and combine the functional ROIs. The \lstinline{numpy} library (version 1.17.4) was used for matrix manipulations involved in the brain signal and noise generation steps. The image processing library \lstinline{skimage} (version 0.14.2) was used to calculate the center of mass. The Python wrapper \lstinline{SimpleITK} (version 1.2.4) of the Insight Toolkit library for image analysis was used to perform the rotational transformations associated with patient motion.
 
-The source code for SPECTr is available on Github at \url{https://github.com/jmschabdach/SPECTr}.
+The SPECTr source code is available on Github: \url{https://github.com/jmschabdach/SPECTr}.
 
 
 %First, a reasonable range of head rotation about the x-, y-, and z-axes was established. These angle ranges are used to generate rotational transformation matrices for $N-1$ image volumes. The transformations are applied to each image volume after the first volume in the BOLD phantom sequence. The transformed image sequence is referred to as the BOLD phantom sequence with motion and the rotational transformation matrices are saved as the ground truth for the transformations between each image volume and the template volume. 
