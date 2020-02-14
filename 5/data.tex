@@ -205,40 +205,41 @@ As part of a multicenter study of CHD in preadolescents, we collected rs-fMRIs f
 
 The majority of the subjects have CHD, though six sites also recruited healthy patients. The distribution of CHD and healthy subjects between the 12 sites can be seen in Figure \ref{fig:pread_sites} and in more detail in Table \ref{tab:pread-site-counts}.
 
-In addition to the MRI scans, subjects who participated in this study were asked to participate in additional testing  either to determine their neurocognitive outcome status or to perform genetic analyses. % (GET DETAILS FROM NANCY).
+The subjects underwent neurdevelopmental testing prior to the brain MRI scans. The neurodevelopment testing was scheduled to take between 4.5 and 5 hours. The subject is given breaks to reduce study fatigue. The MRI scans were scheduled to take 60 minutes assuming approximately 50 minutes of actual scan time and no repeat acquisitions. 
 
+As discussed earlier in this document, patient preparation and education before a scan can help reduce the amount of motion in the scan. The process used at Site 1 is partially dependent on the age of the preadolescent subjects. For younger subjects under the age of 8 years old, both the subject and the subject's family are asked whether they believe the subject could remain still for 45 minutes. The subject may also be shown the scanner to help determine his response. If the subject is comfortable being still for 45 minutes, the subject will undergo training with a mock scanner and scan will be scheduled. For subjects older than 8 years, the subject himself determines whether or not he will undergo a brain scan. He also determines if he would like to undergo training with the mock scanner prior to the scan. This process or similar processes may be used at the other sites in the study.
 
-\begin{itemize}
-\item How were the images gathered?
-\item How were the patients recruited?
-\item What are the imaging protocol details?
-\item What other information was collected?
-\end{itemize}
+During the scan itself, the subject is provided with ear protection in the form of earplugs and headphones. A stereotactic marker (vitamin capsule) is taped to the subject's right temple. The patient's head is positioned in a head coil so that his head and neck muscles are relaxed but not causing any head rotation. For comfort and lower body stabilization, his back or legs may be supported with an MR compatible pillow or foam pad. Additional pads or sponges may be used to stabilize and support the head. All subjects are positioned to that the centering crosshairs in the head coil are located at the subject's nasion (between the eyebrows). The patient is given a squeeze ball alarm to use if he becomes distressed during the scan and is reminded to remain still during the scan. 
 
+At Site 1, the research coordinator performs verbal checks on the subjects between every or every other scanning protocol during the same acquisition period. During the rs-fMRI scan, a star is projected onto a screen outside the scanner. The screen is reflected into the subject's line of sight via a mirror attached to the head coil. The subject is instructed to focus on the star during the rs-fMRI scan.
+
+The parameters for the rs-fMRI scans were FOV = 256 mm and TE/TR = 32/650 ms with interplane resolution of 4.0 x 4.0 mm, slice thickness of 4.0 mm and no gap between slices. At the sites using Siemens scanners, the sequences were 470 volumes in length while the sites using Philips scanners had sequences with a length of 380 volumes. Each volume was composes of 36 slices containing 64 x 64 voxels.
 
 The multicenter imaging study of preadolescent subjects provides a unique opportunity to evaluate the efficacy of the DAG-based framework on a large subject cohort containing variable amounts of motion. The outcome of this experiment will be used in the next experiment to determine if there are any site-specific or vendor-specific variables influencing patient motion.
 
 \subsubsection{Fetal Subject Population and Images}
 
+A fetal subject is scanned in vivo. He is suspended in amniotic fluid within his mother. The amniotic fluid has buoyancy that reduces the effects of gravity and allows a fetal subject significant freedom of movement. The fetus can rotate, shift, and flip in ways that can only be accomplished when floating in a body of water. The properties of the uterus constrain the physical space in which a motion could occur, but not as much as the head coil and gravity do to the other patient cohorts. A fetus is not guaranteed to be in any specific position at the start of the scan: the scan begins when the mother is ready, not when the fetus achieves a certain pose. 
+
+The fetal subjects underwent fetal echocardiography scans in a cardiac clinic to determine whether they were healthy or had a form of CHD. Images of the fetal brain and the placenta were obtained for each subject during MRI acquisitions.
+
+The MRI scans are performed when the mother is in her third trimester. Due to the constraints of pregnancy, the mother cannot lay directly on her side or directly on her back. The MRI scans were performed with the mother going feet first into the scanner and laying on an angle on her left or right side (left or right anterior oblique). The side chosen is the mother's preference. Her back is supported by a pillow to maintain her position during the scan. A large flexible coil is positioned on her abdomen to get coverage of the fetus and the placenta. The coil and pillow are secured with a strap. The mother is fitted with earplugs and headphones and given a button to use during the scan if she needs to get the attention of the radiology technician. No vital monitoring occurs as a part of the study.
+
+A total of XX fetal subjects were scanned. The subjects were between XX and XX weeks in post-conceptional age. 
+
+\begin{itemize}
+\item Imaging protocol details?
+\end{itemize} 
+
 %Real goal is to develop a method of registering fetal brain and placental images so that we can further examine the relationship between placental oxygen levels and fetal brain development. Longitudinally, this technique can be used to determine how placental oxygen flow and fetal brain development impact a patient over the course of his or her life. Once the relationship between the placenta and fetal brain development is better understood, we can determine a set of neuroprotective interventions to employ for at-risk patients before they are born.
+
+We are interested in both the fetal brain and placental images for our work because of the relationship between placenta and brain development. However, these organs have very different physical properties. The fetal brain is a rigid structure floating and moving within the amneotic fluid. It undergoes translation and rotation as a single unit due to passive and active maternal and fetal motions. The placenta, on the other hand, is anchored in place on the uterine wall. It may undergo small translations or rotations due to maternal motion, but it will respond differently to fetal motion. Fetal motions cause nonlinear deformations of the pliable placenta that can only be adequately accounted for using nonlinear registration algorithms. Nonlinear registrations have the potential to deform brain images into physically impossible shapes, so the fetal brain and placenta were manually segmented in their respective images so that each organ could undergo independent motion correction. As the fetal subjects have both brain and placenta images, their data will be used to examine the impact of volume registration on different organ types.
 
 Fetal subjects have different constraints on their physical environment than neonates, preadolescents, and adults. As a result, they exhibit unique patterns of motion. The previous subject cohorts discussed in this chapter have the following commonalities: the subject experiences the full effects of gravity, the subject is lying on his back in an MRI scanner, and the subject's head motion is limited by the head coil within the MRI. Any motion in these images is a direct result of the subject himself moving, whether passively (cardiac motion and breathing) or actively (fidgeting or looking around).
 
-A fetal subject is scanned in vivo. He is suspended in amniotic fluid within his mother. The amniotic fluid has buoyancy that reduces the effects of gravity and allows a fetal subject significant freedom of movement. The fetus can rotate, shift, and flip in ways that can only be accomplished when floating in a body of water. The properties of the uterus constrain the physical space in which a motion could occur, but not as much as the head coil and gravity do to the other patient cohorts. A fetus is not guaranteed to be in any specific position at the start of the scan: the scan begins when the mother is ready, not when the fetus achieves a certain pose. 
+Each image was segmented by one of a group of four researchers. To determine the interrater agreement of the researchers, 10 brain and 10 placenta images were segmented by all 4 researchers. The average inter class correlation between the segmentations was XXX. % ELEPHANTS
 
-The fetal subjects underwent fetal echocardiography scans in a cardiac clinic to determine whether they were healthy or had a form of CHD. They were then scanned on an MRI scanner. Images of the fetal brain and the placenta were acquired for each subject.
 
-\begin{itemize}
-\item Fetal patients scanned between XX and XX weeks gestational age. 
-\item Imaging protocol details?
-\item What other information is collected about fetus and/or mom?
-\end{itemize} 
-
-We are interested in both the fetal brain and placental images for our work because of the relationship between placenta and brain development. However, these organs have very different physical properties. The fetal brain is a rigid structure floating and moving within the amneotic fluid. It undergoes translation and rotation as a single unit due to passive and active maternal and fetal motions. The placenta, on the other hand, is anchored in place on the uterine wall. It may undergo small translations or rotations due to maternal motion, but it will respond differently to fetal motion. Fetal motions cause nonlinear deformations of the pliable placenta that can only be adequately accounted for using nonlinear registration algorithms. Nonlinear registrations have the potential to deform brain images into physically impossible shapes, so the fetal brain and placenta were manually segmented in their respective images so that each organ could undergo independent motion correction. 
-
-The segmenters were one of a group of three researchers. One researcher trained the other two group members. The interrater agreement is still being determined. % ELEPHANTS
-
-As the fetal subjects have both neurological and placental images, their data will be used to examine the impact of volume registration on different organ types.
 
 %\subsubsection{Aging Brain Subjects}
 
