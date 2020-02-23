@@ -218,17 +218,17 @@ In this section, we provide a general overview of the impact of CHD on a global 
 
 \subsection{CHD Background}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{5/chd-defects-usa.png}
-\caption{Table of prevalences of congenital heart defects borrowed temporarily from \cite{Mozaffarian2016}.}
-\label{ch5:fig:usa-defects-prev}
-\end{figure}
-
 CHD consists of a variety of defects which can affect any combination of the vessels and chambers of the heart with varying degrees of severity. The defects prevent the cardiopulmonary system as a whole from functioning correctly, but pinpointing and treating the defects effectively can be a complex process. It is important to note that each defect type has a different prevalence, a different treatment plan, and different expected outcomes. A breakdown of prevalence rates of some of the most common lesion types can be seen in Figure \ref{ch5:fig:usa-defects-prev}. % See (16)
 
 % Causes of CHD: genetic syndromes, single gene mutations, environmental exposure, and unknown
 Different presentations of CHD are associated with a number of different genetic and environmental factors \cite{Mozaffarian2016}. Genetic conditions such as Down syndrome, Turner syndrome, 22q11 deletion syndrome, Williams syndrome, and Noonan syndrome are associated with certain CHD presentations. Maternal behaviors such as smoking and binge drinking are known to cause heart problems in the fetus. Other maternal risk factors are obesity, folate deficiency, and living at a high altitude. Paternal exposure to phthalates, anesthesia, sympathomimetic medications, pesticides, and solvents may increase the risk of the fetus for developing CHD. While there are quite a few factors in this list, there are many CHD cases whose causes are unknown.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{5/chd-defects-usa.png}
+\caption{Table of prevalences of congenital heart defects as compiled by \cite{Mozaffarian2016}.}
+\label{ch5:fig:usa-defects-prev}
+\end{figure}
 
 Once a patient is diagnosed with one of these defects or a cause of the CHD is identified, the specific nature of his case must be clearly documented. The documentation of CHD using the International Classification of Diseases, Ninth Revision, Clinical Modification (ICD-9-CM) has 25 high level codes representing various presentations of CHD, but these codes used alone are often not sufficient for describing a patient's true condition \cite{Mozaffarian2016}. Additional ICD-9-CM codes should be used to communicate the finer details of a patient's condition, if they are available. %something about how ICD codes make it easier to
 
@@ -311,7 +311,7 @@ While the purpose of this study is not to focus on CHD patients, we chose to use
 
 The rs-fMRIs used in this study were gathered as part of ongoing studies of the relationship between CHD and neurodevelopment. Data from the CHD/neurodevelopment studies was obtained through studies approved by the IRB at the Children's Hospital of Pittsburgh of UPMC and the University of Pittsburgh. All data is stored and accessed in compliance with HIPPA policies.
 
-The subjects included in this analysis fall into three age groups: neonatal, preadolescent, and fetal. To summarize the cohorts, there were 163 brain rs-fMRIs obtained for the neonatal cohort, 546 brain rs-fMRIs obtained for the preadolescent cohort, and 124 brain rs-fMRIs obtained for the fetal cohort. The fetal cohort also contains 105 rs-fMRIs of the placenta. The race, ethnicity, and gender counts for these three cohorts can be seen in Figures \ref{ch5:clinical:race}, \ref{ch5:clinical:eth}, and \ref{ch5:clinical:gender}, respectively. In the following sections, we describe each cohort in detail. 
+The subjects included in this analysis fall into three age groups: neonatal, preadolescent, and fetal. To summarize the cohorts, there were 124 brain rs-fMRIs obtained for the fetal cohort, 163 brain rs-fMRIs obtained for the neonatal cohort, and 546 brain rs-fMRIs obtained for the preadolescent cohort. The fetal cohort also contains 105 rs-fMRIs of the placenta. The race, ethnicity, and gender counts for these three cohorts can be seen in Figures \ref{ch5:clinical:race}, \ref{ch5:clinical:eth}, and \ref{ch5:clinical:gender}, respectively. The majority of subjects in each cohort were white and male. In the following sections, we describe each cohort in detail. 
 
 \begin{figure}
 \centering
@@ -334,7 +334,61 @@ The subjects included in this analysis fall into three age groups: neonatal, pre
 \label{ch5:clinical:gender}
 \end{figure}
 
-\subsubsection{Neonatal Cohort and Images}
+\subsubsection{Fetal Subject Population and Images}
+
+
+A fetal subject is scanned in vivo. He is suspended in amniotic fluid within his mother. The amniotic fluid has buoyancy that reduces the effects of gravity and allows a fetal subject significant freedom of movement. The fetus can rotate, shift, and flip in ways that can only be accomplished when floating in a body of water. The properties of the uterus constrain the physical space in which a motion could occur, but not as much as the head coil and gravity do to the other patient cohorts. A fetus is not guaranteed to be in any specific position at the start of the scan: the scan begins when the mother is ready, not when the fetus achieves a certain pose. 
+
+The fetal subjects underwent fetal echocardiography scans in a cardiac clinic to determine whether they were healthy or had a form of CHD. Images of the fetal brain and the placenta were obtained for each subject during MRI acquisitions.
+
+The MRI scans are performed when the mother is in her third trimester. Due to the constraints of pregnancy, the mother cannot lay directly on her side or directly on her back. The MRI scans were performed with the mother going feet first into the scanner and laying on an angle on her left or right side (left or right anterior oblique). The side chosen is the mother's preference. Her back is supported by a pillow to maintain her position during the scan. A large flexible coil is positioned on her abdomen to get coverage of the fetus and the placenta. The coil and pillow are secured with a strap. The mother is fitted with earplugs and headphones and given a button to use during the scan if she needs to get the attention of the radiology technician. No vital monitoring occurs as a part of the study.
+
+\begin{figure}
+\centering
+\includegraphics[width=.75\textwidth]{5/demo_fetal_scan_pca.png}
+\caption{The distribution of post-conceptual ages at the time of the scan of all fetal subjects.}
+\label{ch5:fetal:scanpca}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{5/demo_fetal_subj_cohort.png}
+\caption{The outer ring represents the group the subject was assigned to based on the fetal examination while the inner ring represents the group the subject was assigned to after birth.}
+\label{ch5:fetal:cohort}
+\end{figure}
+
+A total of 124 fetal subjects were scanned on a 3T Skyra (Siemans AG, Erlangen, Germany). The subjects were between 23 and 39 weeks in post-conceptional age. The distribution of fetal post-conceptual age at the time of the scan can be seen in Figure \ref{ch5:fetal:scanpca}. Axial rs-fMRI brain scans were acquired for all subjects and placental rs-fMRI scans were acquired for 105 subjects. The subjects were divided into CHD and control groups based on fetal examinations. Some subjects were moved to different groups after birth. A breakdown of these groups before and after birth can be seen in Figure \ref{ch5:fetal:cohort}.
+
+The parameters for the fetal rs-fMRI protocol were FOV = 300 mm and TE/TR = 32/2280 ms with interplane resolution of 4.7 x 4.7 mm, slice thickness of 3.0 mm and no gap between slices. The sequences were 150 volumes in length and each volume was composed of 32 slices containing 64 x 64 voxels. Each brain or placenta image underwent manual segmentation by one of a group of four researchers to remove non-brain or non-placental tissues respectively from the image. %To determine the interrater agreement of the researchers, 10 brain and 10 placenta images were segmented by all 4 researchers. The average inter class correlation between the segmentations was XXX. % ELEPHANTS
+
+
+
+%Real goal is to develop a method of registering fetal brain and placental images so that we can further examine the relationship between placental oxygen levels and fetal brain development. Longitudinally, this technique can be used to determine how placental oxygen flow and fetal brain development impact a patient over the course of his or her life. Once the relationship between the placenta and fetal brain development is better understood, we can determine a set of neuroprotective interventions to employ for at-risk patients before they are born.
+
+We are interested in both the fetal brain and placental images for our work partially because of the relationship between placenta and brain development, but also because these organs have very different physical properties. The fetal brain is a rigid structure floating and moving within the amneotic fluid. It undergoes translation and rotation as a single unit due to passive and active maternal and fetal motions. The placenta, on the other hand, is anchored in place on the uterine wall. It may undergo small translations or rotations due to maternal motion, but it will respond differently to fetal motion. Fetal motions cause nonlinear deformations of the pliable placenta that can only be adequately accounted for using nonlinear registration algorithms. Nonlinear registrations have the potential to deform brain images into physically impossible shapes, so the fetal brain and placenta were manually segmented in their respective images so that each organ could undergo independent motion correction. As the fetal subjects have both brain and placenta images, their data will be used to examine the impact of volume registration on different organ types.
+
+%ELEPHANTS DISCUSSION?
+%Fetal subjects have different constraints on their physical environment than neonates, preadolescents, and adults. As a result, they exhibit unique patterns of motion. The previous subject cohorts discussed in this chapter have the following commonalities: the subject experiences the full effects of gravity, the subject is lying on his back in an MRI scanner, and the subject's head motion is limited by the head coil within the MRI. Any motion in these images is a direct result of the subject himself moving, whether passively (cardiac motion and breathing) or actively (fidgeting or looking around).
+
+
+
+%\subsubsection{Aging Brain Subjects}
+
+%The ADNI study was launched in 2003 as a public-private partnership, led by Principal Investigator Michael W. Weiner, MD. The primary goal of ADNI has been to test whether serial magnetic resonance imaging (MRI), positron emission tomography (PET), other biological markers, and clinical and neuropsychological assessment can be combined to measure the progression of mild cognitive impairment (MCI) and early Alzheimer's disease (AD). For up-to-date information, see www.adni-info.org.
+
+%\begin{itemize}
+%\item How were the images gathered?
+%\item How were the patients recruited?
+%\item What are the imaging protocol details?
+%\item What other information was collected?
+%\end{itemize}
+
+%The second adult cohort comes from the Alzheimer's Disease Neuroimaging Initiative (ADNI) dataset. The ADNI study has been working since 2004 to further Alzheimer's research by gathering, analyzing, and sharing clinical, imaging, genetic, and biochemical biomarkers from the elderly population. The group gathers data from 63 sites in the United States and Canada. During the second phase of the study, sites who have a Philips MRI system gathered resting-state fMRIs from their subjects. This data is freely available to academic researchers through the LONI Image and Data Archive.
+
+%The adult cohort encompass many clinical outcomes and a wider age range than the other clinical populations. The adult cohort also allows for another opportunity to study a different type of motion patterns associated with the aging brain rather than the still-developing brain.
+
+
+\subsubsection{Neonatal Subject Population and Images}
 
 Neonatal subjects have been recruited as part of a prospective observational study. This cohort was scanned at two sites. At Site 1, the subjects were scanned using either a 3T Skyra (Siemans AG, Erlangen, Germany) or a 3T Signa (GE Healthcare, Chicago, Illinois, United States of America). At Site 2, the subjects were scanned using a 3T Achieva (Koninklijke Philips N.V., Amsterdam, Netherlands).
 
@@ -354,7 +408,7 @@ The subjects were unsedated during the scans and a ``feed and bundle'' protocol 
 \label{ch5:neonates:scanpca}
 \end{figure}
 
-Scans from a total of 149 patients are used in this study. The average post-conceptual age of the patients at birth was 39.08 weeks and they were on average 42.64 weeks post-conception at the time of the scan. The distribution of post-conceptual ages of the subjects at birth and at the time of the scan can be seen in Figure \ref{ch5:neonates:birthpca} and Figure \ref{ch5:neonates:scanpca}. 
+Scans from a total of 149 patients were included in this work. The average post-conceptual age of the patients at birth was 39.08 weeks and they were on average 42.64 weeks post-conception at the time of the scan. The distribution of post-conceptual ages of the subjects at birth and at the time of the scan can be seen in Figure \ref{ch5:neonates:birthpca} and Figure \ref{ch5:neonates:scanpca}. 
 
 \begin{figure}
 \centering
@@ -365,6 +419,7 @@ Scans from a total of 149 patients are used in this study. The average post-conc
 
 The subjects were a mix of control subjects and CHD subjects. A comprehensive breakdown description of the subgroups within these two cohorts can be seen in Figure \ref{ch5:neonates:cohorts}. In this figure, the term ``Control'' encompasses both healthy full-term subjects, healthy pre-term subjects, and non-CHD clinical subjects (clinical control and disease control). The CHD group is composed of subjects diagnosed with CHD who were either born full-term or pre-term. Of the entire cohort, 14 subjects underwent two scanning sessions resulting in 163 rs-fMRI scans.
 
+% ELEPHANTS DISCUSSION?
 As the neonates were most often asleep during the scan, they exhibit less motion overall compared to our other clinical cohorts. The high-motion neonates are an obvious exception to this concept, but many of the high-motion images contained long periods where the subject was stationary. Applying both the DAG-based framework and the traditional registration framework to these images provided the opportunity to compare the performances of both registration frameworks to each other in the context of the usability gold standard thresholds. 
 
 \subsubsection{Preadolescent Subject Population and Images}
@@ -406,7 +461,7 @@ Site 12 & Skyra   & 3T & 11.0 & 32.0  \\ \hline
 \end{tabular}
 \end{table}
 
-As part of a multicenter study of CHD in preadolescents, we collected rs-fMRIs from twelve sites throughout the United States. The two sites from the neonatal study in the previous section also participated in this study and retained their respective labels. The subjects enrolled in this study were patients in the age range of 6 to 17 years (average age: 11 years) who either had CHD or were healthy with no neurocognitive impairments. The histogram of patient ages at the time of each scan can be seen in Figure \ref{fig:pread_ages}.
+As part of a multicenter study of CHD in preadolescents, rs-fMRIs have been collected from twelve sites throughout the United States. The two sites from the neonatal study in the previous section also participated in this study and retained their respective labels. The subjects enrolled in this study were patients in the age range of 6 to 17 years (average age: 11 years) who either had CHD or were healthy with no neurocognitive impairments. The histogram of patient ages at the time of each scan can be seen in Figure \ref{fig:pread_ages}.
 
 The majority of the subjects have CHD, though six sites also recruited healthy patients. The distribution of CHD and healthy subjects between the 12 sites can be seen in Figure \ref{fig:pread_sites} and in more detail in Table \ref{tab:pread-site-counts}.
 
@@ -420,64 +475,17 @@ At Site 1, the research coordinator performs verbal checks on the subjects betwe
 
 The parameters for the rs-fMRI scans were FOV = 256 mm and TE/TR = 32/650 ms with interplane resolution of 4.0 x 4.0 mm, slice thickness of 4.0 mm and no gap between slices. At the sites using Siemens scanners, the sequences were 470 volumes in length while the sites using Philips scanners had sequences with a length of 380 volumes. Each volume was composes of 36 slices containing 64 x 64 voxels.
 
-The multicenter imaging study of preadolescent subjects provides a unique opportunity to evaluate the efficacy of the DAG-based framework on a large subject cohort containing variable amounts of motion. The outcome of this experiment will be used in the next experiment to determine if there are any site-specific or vendor-specific variables influencing patient motion.
-
-\subsubsection{Fetal Subject Population and Images}
-
-A fetal subject is scanned in vivo. He is suspended in amniotic fluid within his mother. The amniotic fluid has buoyancy that reduces the effects of gravity and allows a fetal subject significant freedom of movement. The fetus can rotate, shift, and flip in ways that can only be accomplished when floating in a body of water. The properties of the uterus constrain the physical space in which a motion could occur, but not as much as the head coil and gravity do to the other patient cohorts. A fetus is not guaranteed to be in any specific position at the start of the scan: the scan begins when the mother is ready, not when the fetus achieves a certain pose. 
-
-The fetal subjects underwent fetal echocardiography scans in a cardiac clinic to determine whether they were healthy or had a form of CHD. Images of the fetal brain and the placenta were obtained for each subject during MRI acquisitions.
-
-The MRI scans are performed when the mother is in her third trimester. Due to the constraints of pregnancy, the mother cannot lay directly on her side or directly on her back. The MRI scans were performed with the mother going feet first into the scanner and laying on an angle on her left or right side (left or right anterior oblique). The side chosen is the mother's preference. Her back is supported by a pillow to maintain her position during the scan. A large flexible coil is positioned on her abdomen to get coverage of the fetus and the placenta. The coil and pillow are secured with a strap. The mother is fitted with earplugs and headphones and given a button to use during the scan if she needs to get the attention of the radiology technician. No vital monitoring occurs as a part of the study.
-
-\begin{figure}
-\centering
-\includegraphics[width=.75\textwidth]{5/demo_fetal_scan_pca.png}
-\caption{The distribution of post-conceptual ages at the time of the scan of all fetal subjects.}
-\label{ch5:fetal:scanpca}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[width=.9\textwidth]{5/demo_fetal_subj_cohort.png}
-\caption{The outer ring represents the group the subject was assigned to based on the fetal examination while the inner ring represents the group the subject was assigned to after birth.}
-\label{ch5:fetal:cohort}
-\end{figure}
-
-A total of 124 fetal subjects were scanned on a 3T Skyra (Siemans AG, Erlangen, Germany). The subjects were between 23 and 39 weeks in post-conceptional age. The distribution of fetal post-conceptual age at the time of the scan can be seen in Figure \ref{ch5:fetal:scanpca}. Axial rs-fMRI brain scans were acquired for all subjects and placental rs-fMRI scans were acquired for 105 subjects. The subjects were divided into CHD and control groups based on fetal examinations. Some subjects were moved to different groups after birth. A breakdown of these groups before and after birth can be seen in Figure \ref{ch5:fetal:cohort}.
-
-The parameters for the fetal rs-fMRI protocol were FOV = 300 mm and TE/TR = 32/2280 ms with interplane resolution of 4.7 x 4.7 mm, slice thickness of 3.0 mm and no gap between slices. The sequences were 150 volumes in length and each volume was composed of 32 slices containing 64 x 64 voxels. Each brain or placenta image underwent manual segmentation by one of a group of four researchers to remove non-brain or non-placental tissues respectively from the image. %To determine the interrater agreement of the researchers, 10 brain and 10 placenta images were segmented by all 4 researchers. The average inter class correlation between the segmentations was XXX. % ELEPHANTS
-
-
-
-%Real goal is to develop a method of registering fetal brain and placental images so that we can further examine the relationship between placental oxygen levels and fetal brain development. Longitudinally, this technique can be used to determine how placental oxygen flow and fetal brain development impact a patient over the course of his or her life. Once the relationship between the placenta and fetal brain development is better understood, we can determine a set of neuroprotective interventions to employ for at-risk patients before they are born.
-
-We are interested in both the fetal brain and placental images for our work because of the relationship between placenta and brain development. However, these organs have very different physical properties. The fetal brain is a rigid structure floating and moving within the amneotic fluid. It undergoes translation and rotation as a single unit due to passive and active maternal and fetal motions. The placenta, on the other hand, is anchored in place on the uterine wall. It may undergo small translations or rotations due to maternal motion, but it will respond differently to fetal motion. Fetal motions cause nonlinear deformations of the pliable placenta that can only be adequately accounted for using nonlinear registration algorithms. Nonlinear registrations have the potential to deform brain images into physically impossible shapes, so the fetal brain and placenta were manually segmented in their respective images so that each organ could undergo independent motion correction. As the fetal subjects have both brain and placenta images, their data will be used to examine the impact of volume registration on different organ types.
-
-Fetal subjects have different constraints on their physical environment than neonates, preadolescents, and adults. As a result, they exhibit unique patterns of motion. The previous subject cohorts discussed in this chapter have the following commonalities: the subject experiences the full effects of gravity, the subject is lying on his back in an MRI scanner, and the subject's head motion is limited by the head coil within the MRI. Any motion in these images is a direct result of the subject himself moving, whether passively (cardiac motion and breathing) or actively (fidgeting or looking around).
-
-
-
-%\subsubsection{Aging Brain Subjects}
-
-%The ADNI study was launched in 2003 as a public-private partnership, led by Principal Investigator Michael W. Weiner, MD. The primary goal of ADNI has been to test whether serial magnetic resonance imaging (MRI), positron emission tomography (PET), other biological markers, and clinical and neuropsychological assessment can be combined to measure the progression of mild cognitive impairment (MCI) and early Alzheimer's disease (AD). For up-to-date information, see www.adni-info.org.
-
-%\begin{itemize}
-%\item How were the images gathered?
-%\item How were the patients recruited?
-%\item What are the imaging protocol details?
-%\item What other information was collected?
-%\end{itemize}
-
-%The second adult cohort comes from the Alzheimer's Disease Neuroimaging Initiative (ADNI) dataset. The ADNI study has been working since 2004 to further Alzheimer's research by gathering, analyzing, and sharing clinical, imaging, genetic, and biochemical biomarkers from the elderly population. The group gathers data from 63 sites in the United States and Canada. During the second phase of the study, sites who have a Philips MRI system gathered resting-state fMRIs from their subjects. This data is freely available to academic researchers through the LONI Image and Data Archive.
-
-%The adult cohort encompass many clinical outcomes and a wider age range than the other clinical populations. The adult cohort also allows for another opportunity to study a different type of motion patterns associated with the aging brain rather than the still-developing brain.
-
-\subsection{Summary}
-%ELEPHANTS 3-5 sentences about CHD here
-
-While we have amassed a large collection of clinical images, an analysis of purely clinical images is not sufficient in determining which volume registration technique recovers more brain signal. In the next section, we elaborate on this limitation and how we chose to address it.
+The multicenter imaging study of preadolescent subjects provides a unique opportunity to evaluate the efficacy of the DAG-based framework on a large subject cohort containing variable amounts of motion. %The outcome of this experiment will be used in the next experiment to determine if there are any site-specific or vendor-specific variables influencing patient motion.
 
 \section{Summary}
 
-In this chapter, we discussed our three major data sets, which are drawn from simulated data, pediatric data, and aging brain data. The simulated data were generated using a rs-fMRI simulation pipeline developed in-house and were used for the purpose of measuring ground truth signal recovered by motion correction techniques. The pediatric data were obtained through prospective studies of CHD and neurodevelopment being conducted at the UPMC Children's Hospital of Pittsburgh. The pediatric and aging brain images were used to compare the two volume registration techniques in a standalone analysis as well as in the context of a motion correction pipeline. We also used these images to examine patterns of motion unique to different age groups. 
+In this chapter, we discussed our two major data sets, a simulated data set and a clinical data set. 
+
+The simulated data were generated using a rs-fMRI simulation pipeline developed in-house and were used for the purpose of measuring ground truth signal recovered by motion correction techniques. An structural image from the ICBM Average Brain project and a set of functional ROIs associated with resting state networks were used to generate the data. The data was given simulated scanner noise in the form of Guassian noise injected into the k-space of the image. Finally, each image underwent rotation about the center of mass of the brain.
+
+The pediatric data were obtained through prospective studies of CHD and neurodevelopment being conducted at the UPMC Children's Hospital of Pittsburgh. CHD is a complex disease affecting millions of people globally. As the new treatments for CHD and its comorbidities have evolved, the life expectancy of patients with CHD has also increased. 
+
+Some of the comorbidities of CHD are related to a patient's neurological development. As part of three studies of the relationship between CHD and brain development, rs-fMRI sequences of fetal, neonatal, and preadolescent brains have been gathered. A set of placental images were acquired alongside the fetal brain images. The pediatric images were used to compare the two volume registration techniques on a diverse set of clinical data. We also used these images to examine patterns of motion unique to different age groups. 
+
+
+In the next chapter, we examine the results of the registration methods and of the machine learning techniques applied to the motion metrics for the images.
