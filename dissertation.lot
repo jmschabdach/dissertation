@@ -1,5 +1,17 @@
 \contentsline {table}{\numberline {1}{\ignorespaces An example of a truth table for a binary classifier predicting the presence or absence of a condition.\relax }}{68}{table.caption.10}
-\contentsline {table}{\numberline {2}{\ignorespaces The number of CHD and healthy control preadolescent subjects scanned on each scanner type at each site.\relax }}{83}{table.caption.21}
-\contentsline {table}{\numberline {3}{\ignorespaces The KS test statistics and p-values for the KS test comparisons of FD values for the preadolescent cohort.\relax }}{104}{table.caption.27}
-\contentsline {table}{\numberline {4}{\ignorespaces The KS test statistics and p-values for the KS test comparisons of DVARS values for the preadolescent cohort.\relax }}{104}{table.caption.28}
-\contentsline {table}{\numberline {5}{\ignorespaces The number of and percentage of images from each category which met the FD and DVARS thresholds.\relax }}{104}{table.caption.29}
+\contentsline {table}{\numberline {2}{\ignorespaces The number of CHD and healthy control preadolescent subjects scanned on each scanner type at each site.\relax }}{96}{table.caption.25}
+\contentsline {table}{\numberline {3}{\ignorespaces The number and percentage of image volumes across all sequences in the simulated cohort which meet the usability thresholds of FD \textless 0.2 mm and DVARS \textless 2.5\%.\relax }}{107}{table.caption.28}
+\contentsline {table}{\numberline {4}{\ignorespaces Results from the t-tests comparing the counts for the numbers of images meeting the FD, DVARS, and FD and DVARS thresholds for sequence type $S_1$ and sequence type $S_2$.\relax }}{107}{table.caption.29}
+\contentsline {table}{\numberline {5}{\ignorespaces The number of subjects whose sequences of types $S_1$ and $S_2$ had different FD distributions.\relax }}{108}{table.caption.30}
+\contentsline {table}{\numberline {6}{\ignorespaces The number of subjects whose sequences of types $S_1$ and $S_2$ had different DVARS distributions.\relax }}{108}{table.caption.31}
+\contentsline {table}{\numberline {7}{\ignorespaces The number and percentage of image volumes across all sequences in the preadolescent cohort which meet the usability thresholds of FD \textless 0.2 mm and DVARS \textless 2.5\%.\relax }}{109}{table.caption.32}
+\contentsline {table}{\numberline {8}{\ignorespaces Results from the t-tests comparing the counts for the numbers of images meeting the FD, DVARS, and FD and DVARS thresholds for sequence type $S_1$ and sequence type $S_2$.\relax }}{109}{table.caption.33}
+\contentsline {table}{\numberline {9}{\ignorespaces The number of subjects whose sequences of types $S_1$ and $S_2$ had different FD distributions.\relax }}{110}{table.caption.34}
+\contentsline {table}{\numberline {10}{\ignorespaces The number of subjects whose sequences of types $S_1$ and $S_2$ had different DVARS distributions.\relax }}{110}{table.caption.35}
+\contentsline {table}{\numberline {11}{\ignorespaces The number and percentage of image volumes across all sequences in the neonatal cohort which meet the usability thresholds of FD \textless 0.2 mm and DVARS \textless 2.5\%.\relax }}{111}{table.caption.36}
+\contentsline {table}{\numberline {12}{\ignorespaces Results from the t-tests comparing the counts for the numbers of images meeting the FD, DVARS, and FD and DVARS thresholds for sequence type $S_1$ and sequence type $S_2$.\relax }}{111}{table.caption.37}
+\contentsline {table}{\numberline {13}{\ignorespaces The number of subjects whose sequences of types $S_1$ and $S_2$ had different FD distributions.\relax }}{112}{table.caption.38}
+\contentsline {table}{\numberline {14}{\ignorespaces The number of subjects whose sequences of types $S_1$ and $S_2$ had different DVARS distributions.\relax }}{112}{table.caption.39}
+\contentsline {table}{\numberline {15}{\ignorespaces The KS test statistics and p-values for the KS test comparisons of FD values for the preadolescent cohort.\relax }}{117}{table.caption.44}
+\contentsline {table}{\numberline {16}{\ignorespaces The KS test statistics and p-values for the KS test comparisons of DVARS values for the preadolescent cohort.\relax }}{117}{table.caption.45}
+\contentsline {table}{\numberline {17}{\ignorespaces The number of and percentage of images from each category which met the FD and DVARS thresholds.\relax }}{117}{table.caption.46}

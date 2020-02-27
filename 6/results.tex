@@ -3,6 +3,356 @@
 
 This chapter is divided into two main sections. The first section focuses on the comparison of the two motion correction techniques. The second section focuses on the results of the machine learning algorithms applied to the metrics extracted from the images.
 
+
+\section{Simulated Data}
+
+\subsection{Volume Registration: Power Thresholds}
+
+% FD 150
+\begin{figure}[t]
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{6/figures/spectr_fd_all_150_avg.png}
+		\caption{The average FD for all simulated images.}
+	\end{subfigure}%	
+	\vspace{0.1\textwidth}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{6/figures/spectr-bold-fd-150.png}
+		\caption{The mean and standard deviation of the FD for the original simulated images.}
+	\end{subfigure}
+	
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{6/figures/spectr-trad-fd-150.png}
+		\caption{The mean and standard deviation of the FD for the simulated images registered using the traditional registration.}
+	\end{subfigure}%	
+	\vspace{0.1\textwidth}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{6/figures/spectr-dag-fd-150.png}
+		\caption{The mean and standard deviation of the FD for the simulated images registered using the DAG-based registration.}
+	\end{subfigure}
+\caption{The mean and standard deviations of the FD metrics distributions for all simulated images.}
+\label{fig:spectr-fd-150}
+\end{figure}
+
+% DVARS 150
+\begin{figure}[t]
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{6/figures/spectr_dvars_all_150_avg.png}
+		\caption{The average DVARS for all simulated images.}
+	\end{subfigure}%	
+	\vspace{0.1\textwidth}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{6/figures/spectr-bold-dvars-150.png}
+		\caption{The mean and standard deviation of the DVARS for the original simulated images.}
+	\end{subfigure}
+	
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{6/figures/spectr-trad-dvars-150.png}
+		\caption{The mean and standard deviation of the DVARS for the simulated images registered using the traditional registration.}
+	\end{subfigure}%	
+	\vspace{0.1\textwidth}
+	\begin{subfigure}{0.45\textwidth}
+		\centering
+		\includegraphics[width=1\textwidth]{6/figures/spectr-dag-dvars-150.png}
+		\caption{The mean and standard deviation of the DVARS for the simulated images registered using the DAG-based registration.}
+	\end{subfigure}
+\caption{The mean and standard deviations of the DVARS metrics distributions for all simulated images.}
+\label{fig:spectr-dvars-150}
+\end{figure}
+
+The FD and DVARS metrics were calculated between every pair of image volumes $i-1$ and $i$ for the original sequences and both types of registered sequences. The mean of the FD and DVARS metrics for each time point for each sequence type  can be seen in Figures
+
+\begin{table}[]
+\centering
+\caption{The number and percentage of image volumes across all sequences in the simulated cohort which meet the usability thresholds of FD \textless 0.2 mm and DVARS \textless 2.5\%.}
+\label{tab:spectr-power-thresh}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Threshold Met} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Original\\  Sequences\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally Registered \\ Sequences\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}DAG-Registered \\ Sequences\end{tabular}} \\ \hline
+FD (count)    & 98    & 329   & 279   \\ \hline
+DVARS (count) & 54    & 53    & 53    \\ \hline
+Both (count)  & 53    & 46    & 44    \\ \hline
+FD (\%)       & 0.731 & 2.453 & 2.081 \\ \hline
+DVARS(\%)     & 0.403 & 0.395 & 0.395 \\ \hline
+Both (\%)     & 0.395 & 0.343 & 0.328 \\ \hline
+\end{tabular}
+\end{table}
+
+Table \ref{tab:spectr-power-thresh} shows the number of and percentage of image volumes in all simulated image sequences which meet the FD threshold, the DVARS threshold, and both thresholds. Across all 90 image sequences, there were 150 image volumes per sequence bringing the total number of image volumes to 13,410 image volumes. In the original images, less than 1\% of the image volumes met the individual thresholds with only 0.395\% of image volumes meeting both thresholds. After either registration, over 2\% of the image volumes meet the FD threshold.
+
+\begin{table}[]
+\centering
+\caption{Results from the t-tests comparing the counts for the numbers of images meeting the FD, DVARS, and FD and DVARS thresholds for sequence type $S_1$ and sequence type $S_2$.}
+\label{tab:spectr-power-ttest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Sequence Type 1 ($S_1$)} &
+  \textbf{Original} &
+  \textbf{Original} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular}} \\ \hline
+\textbf{Sequence Type 2 ($S_2$)} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ have \\ same FD counts)\end{tabular} &
+  1.05 E -16 &
+  4.49 E -11 &
+  0.127 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ have \\ same DVARS counts)\end{tabular} &
+  0.941 &
+  0.941 &
+  1.0 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ have \\ same FD and DVARS counts)\end{tabular} &
+  0.590 &
+  0.486 &
+  0.872 \\ \hline
+\end{tabular}
+\end{table}
+
+To determine the statistical significance of these differences, a series of independent 2 sample t-tests were performed. For each test, two types of sequences were chosen. The distributions of samples were the numbers of image volumes in each sequence meeting the usability threshold of interest. The null hypotheses for the t-tests were that the number of volumes meeting the threshold for each sequence type were the same and the alternative hypothesis was that this number was different. The results of these tests can be seen in Table \ref{tab:spectr-power-ttest}. The only statistically significant differences were for the number of image volumes meeting the FD threshold. The counts for the registered images each differed from the original images at $p < 0.005$ while the difference between the two registrations was not significant ($p = 0.127$).
+
+\begin{table}[]
+\centering
+\caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different FD distributions.}
+\label{tab:spectr-fd-kstest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences Type 1 \\ ($S_1$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences Type 2 \\ ($S_2$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences where \\ p \textless 0.05\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences where \\ p \textless 0.005\end{tabular}} \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 90 & 90 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 90 & 90 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 40 & 27 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different DVARS distributions.}
+\label{tab:spectr-dvars-kstest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences Type 1 \\ ($S_1$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences Type 2 \\ ($S_2$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences where \\ p \textless 0.05\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences where \\ p \textless 0.005\end{tabular}} \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 90 & 90 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 90 & 90 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 3  & 0  \\ \hline
+\end{tabular}
+\end{table}
+
+For a more general comparison, the FD and DVARS metrics for each subject were compared for each type of registration. These distributions of FD and DVARS values for the original, traditionally registered and DAG-registered sequences underwent pairwise comparisons using the Kolmogorov-Smirnov test which evaluates the difference between two probability distributions. 
+
+Table \ref{tab:spectr-fd-kstest} shows the number of comparisons between each sequence type where the Kolmogorov-Smirnov test produced a p-value less than 0.05 and 0.005 for the FD metrics. This table shows that the all images registered using either type of registration had significantly different FD distributions than the original images. It also shows that the traditionally registered and DAG-registered sequences had significantly different FD distributions with $p < 0.05$ for almost half (40/90) of the sequences and $p < 0.005$ for almost a third (27/90) of the sequences.
+
+Table \ref{tab:spectr-dvars-kstest} shows similar results for the DVARS metrics of the registered and original sequences. However, only 3/90 of the registered image sequences had different DVARS distributions at $p < 0.05$. 
+
+
+
+%Independent 2 sample t-test
+%Null hypothesis: number of Traditional and DAG registered images meeting the FD threshold are the same
+%Alternative hypothesis: number of traditional and dag registered images meeting the FD threshold are different
+%Gather data: get number of images meeting each threshold from each sequence
+
+\subsection{Volume Registration: Sequence Duration Motion}
+
+Motion across the whole sequence was measured by comparing every image volume in the sequence to every other image volume in the sequence. The three metrics used for this comparison were the correlation ratio, the Dice metric, and the mutual information. The calculations for metric on one sequence produced a two dimensional matrix of metric values. 
+
+These matrices were used for two types of analysis. The first analysis was to compare the quantities of motion over the course of an entire sequence. The second analysis was to identify sequences containing similar patterns of motion throughout the duration of the sequence.
+
+For the first analysis, the metrics matrices were compared to each other 
+
+To compare motion patterns, the metrics matrices were normalized for each subject.
+
+
+The differences in the motion patterns embodied by the normalized matrices were different between the original, traditionally registered, and DAG-registered sequences for each simulated subject was significant at $p < 0.005$.
+
+Use t-test to compare the normalized matrices for all simulated subjects across a single registration type. Plot a clustermap based on 2 coordinates and the distance (p-value) between them
+
+\section{Preadolescent Cohort}
+
+\begin{table}[]
+\centering
+\caption{The number and percentage of image volumes across all sequences in the preadolescent cohort which meet the usability thresholds of FD \textless 0.2 mm and DVARS \textless 2.5\%.}
+\label{tab:pread-power-thresh}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Threshold Met} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Original\\  Sequences\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally Registered \\ Sequences\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}DAG-Registered \\ Sequences\end{tabular}} \\ \hline
+FD (count)    & 107879 & 72104 & 72114 \\ \hline
+DVARS (count) & 87169  & 54056 & 53756 \\ \hline
+Both (count)  & 74107  & 45006 & 44682 \\ \hline
+FD (\%)       & 60.17  & 40.22 & 40.26 \\ \hline
+DVARS(\%)     & 48.62  & 30.15 & 30.01 \\ \hline
+Both (\%)     & 41.33  & 25.10 & 24.94 \\ \hline
+\end{tabular}
+\end{table}
+
+Table \ref{tab:pread-power-thresh} contains the number and percentages of image volumes from the whole preadolescent cohort which meet the FD and DVARS thresholds. 
+
+\begin{table}[]
+\centering
+\caption{Results from the t-tests comparing the counts for the numbers of images meeting the FD, DVARS, and FD and DVARS thresholds for sequence type $S_1$ and sequence type $S_2$.}
+\label{tab:pread-power-ttest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Sequence Type 1 ($S_1$)} &
+  \textbf{Original} &
+  \textbf{Original} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular}} \\ \hline
+\textbf{Sequence Type 2 ($S_2$)} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ have \\ same FD counts)\end{tabular} &
+  2.81 E -16 &
+  2.35 E -16 &
+  0.998 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ have \\ same DVARS counts)\end{tabular} &
+  9.43 E -12 &
+  5.30 E -12 &
+  0.950 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ have \\ same FD and DVARS counts)\end{tabular} &
+  1.12 E -11 &
+  5.60 E -12 &
+  0.938 \\ \hline
+\end{tabular}
+\end{table}
+
+Table \ref{tab:pread-power-ttest} shows the results of a set of t-tests which determine if the distribution of metric X for sequence type $S_1$ is the same as the distribution of metric X for sequence type $S_2$.
+
+\begin{table}[]
+\centering
+\caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different FD distributions.}
+\label{tab:power-fd-kstest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences Type 1 \\ ($S_1$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences Type 2 \\ ($S_2$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences where \\ p \textless 0.05\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences where \\ p \textless 0.005\end{tabular}} \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 331 & 326 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 332 & 328 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 19 &17 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different DVARS distributions.}
+\label{tab:power-dvars-kstest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences Type 1 \\ ($S_1$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences Type 2 \\ ($S_2$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences where \\ p \textless 0.05\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences where \\ p \textless 0.005\end{tabular}} \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 334 & 331 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 334 & 333 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 22  & 19  \\ \hline
+\end{tabular}
+\end{table}
+
+%-----------------------------------------------------------------
+\section{Neonatal Cohort}
+
+\begin{table}[]
+\centering
+\caption{The number and percentage of image volumes across all sequences in the neonatal cohort which meet the usability thresholds of FD \textless 0.2 mm and DVARS \textless 2.5\%.}
+\label{tab:neonate-power-thresh}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Threshold Met} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Original\\  Sequences\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally Registered \\ Sequences\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}DAG-Registered \\ Sequences\end{tabular}} \\ \hline
+FD (count)    & 16495  & 14264 & 14173 \\ \hline
+DVARS (count) & 16820  & 13903 & 13752 \\ \hline
+Both (count)  & 15332  & 12837 & 12684 \\ \hline
+FD (\%)       & 69.59  & 60.18 & 59.79 \\ \hline
+DVARS(\%)     & 70.96  & 58.65 & 58.02 \\ \hline
+Both (\%)     & 64.68  & 54.16 & 53.51 \\ \hline
+\end{tabular}
+\end{table}
+
+Table \ref{tab:neonate-power-thresh} contains the number and percentages of image volumes from the whole neonatal cohort which meet the FD and DVARS thresholds. The total number of image volumes in across all sequences of a single type was 23704.
+
+\begin{table}[]
+\centering
+\caption{Results from the t-tests comparing the counts for the numbers of images meeting the FD, DVARS, and FD and DVARS thresholds for sequence type $S_1$ and sequence type $S_2$.}
+\label{tab:neonate-power-ttest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Sequence Type 1 ($S_1$)} &
+  \textbf{Original} &
+  \textbf{Original} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular}} \\ \hline
+\textbf{Sequence Type 2 ($S_2$)} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ have \\ same FD counts)\end{tabular} &
+  0.0110 &
+  0.00813 &
+  0.924 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ have \\ same DVARS counts)\end{tabular} &
+  0.00163 &
+  0.000942 &
+  0.880 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ have \\ same FD and DVARS counts)\end{tabular} &
+  0.00779 &
+  0.00475 &
+  0.879 \\ \hline
+\end{tabular}
+\end{table}
+
+Table \ref{tab:neonate-power-ttest} shows the results of a set of t-tests which determine if the distribution of metric X for sequence type $S_1$ is the same as the distribution of metric X for sequence type $S_2$.
+
+\begin{table}[]
+\centering
+\caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different FD distributions.}
+\label{tab:neonate-fd-kstest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences Type 1 \\ ($S_1$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences Type 2 \\ ($S_2$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences where \\ p \textless 0.05\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences where \\ p \textless 0.005\end{tabular}} \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 36	 & 32 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 42 & 38 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 13 & 5 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different DVARS distributions.}
+\label{tab:neonate-dvars-kstest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences Type 1 \\ ($S_1$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences Type 2 \\ ($S_2$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences where \\ p \textless 0.05\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences where \\ p \textless 0.005\end{tabular}} \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 44 & 39 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 45 & 44 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 11  & 5  \\ \hline
+\end{tabular}
+\end{table}
+
 \section{Comparison of Volume Registration Methods}
 
 \subsection{Overview}

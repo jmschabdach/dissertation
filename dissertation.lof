@@ -7,19 +7,24 @@
 \contentsline {figure}{\numberline {7}{\ignorespaces (a) Two different distributions, a 2D Gaussian density and a thin horizontal rectangle are difficult to separate (b) due to their overlap and the penalties built into the cost function of the spectral clustering algorithm. From \cite {Nadler2007}.\relax }}{55}{figure.caption.7}
 \contentsline {figure}{\numberline {8}{\ignorespaces An example of agglomerative clustering on the Iris data set plotted using \textbf {seaborn}'s \textbf {clustermap} function.\relax }}{57}{figure.caption.8}
 \contentsline {figure}{\numberline {9}{\ignorespaces Visualization of MNIST data in 3D via TensorFlow Projector as generated using PCA, t-SNE, and UMAP dimensionality reduction techniques.\relax }}{61}{figure.caption.9}
-\contentsline {figure}{\numberline {10}{\ignorespaces Table of prevalences of congenital heart defects borrowed temporarily from \cite {Mozaffarian2016}.\relax }}{71}{figure.caption.11}
-\contentsline {figure}{\numberline {11}{\ignorespaces Estimated CHD burden in World Health Organization (WHO) regions using incidence rates of approximately 12/1000 and 4/1000 in children and adults, respectively \cite {Webb2015}.\relax }}{73}{figure.caption.12}
-\contentsline {figure}{\numberline {12}{\ignorespaces Distribution of subject races for all three cohorts.\relax }}{77}{figure.caption.13}
-\contentsline {figure}{\numberline {13}{\ignorespaces Distribution of subject ethnicities for all three cohorts.\relax }}{78}{figure.caption.14}
-\contentsline {figure}{\numberline {14}{\ignorespaces Distribution of subject genders for all three cohorts.\relax }}{78}{figure.caption.15}
-\contentsline {figure}{\numberline {15}{\ignorespaces The distribution of post-conceptual ages at birth of all neonatal subjects.\relax }}{79}{figure.caption.16}
-\contentsline {figure}{\numberline {16}{\ignorespaces The distribution of post-conceptual ages at the time of the scan of all neonatal subjects.\relax }}{80}{figure.caption.17}
-\contentsline {figure}{\numberline {17}{\ignorespaces The breakdown of subject groups contained in the Control and CHD neonatal cohorts.\relax }}{81}{figure.caption.18}
-\contentsline {figure}{\numberline {18}{\ignorespaces The distribution of preadolescent subject ages at the time of the scan.\relax }}{81}{figure.caption.19}
-\contentsline {figure}{\numberline {19}{\ignorespaces The distribution of CHD and healthy subjects between the 12 sites enrolled in the preadolescent study.\relax }}{82}{figure.caption.20}
-\contentsline {figure}{\numberline {20}{\ignorespaces An overview of the SPECTr simulation pipeline. Using atlas data, a simulated phantom containing brain signal, scanner noise, and patient motion is generated.\relax }}{88}{figure.caption.22}
-\contentsline {figure}{\numberline {21}{\ignorespaces The FD distributions for all preadolescent images, with sequence length limited to 450 volumes.\relax }}{100}{figure.caption.23}
-\contentsline {figure}{\numberline {22}{\ignorespaces The FD distributions for all preadolescent images, with sequence length limited to the minimum of 150 volumes.\relax }}{101}{figure.caption.24}
-\contentsline {figure}{\numberline {23}{\ignorespaces The DVARS distributions for all preadolescent images, with sequence length limited to 450 volumes.\relax }}{102}{figure.caption.25}
-\contentsline {figure}{\numberline {24}{\ignorespaces The DVARS distributions for all preadolescent images, with sequence length limited to the minimum of 150 volumes.\relax }}{103}{figure.caption.26}
-\contentsline {figure}{\numberline {25}{\ignorespaces Examples of the three similarity matrices. Lighter colors represent more desirable values.\relax }}{105}{figure.caption.30}
+\contentsline {figure}{\numberline {10}{\ignorespaces An overview of the SPECTr simulation pipeline. Using atlas data, a simulated phantom containing brain signal, scanner noise, and patient motion is generated.\relax }}{74}{figure.caption.11}
+\contentsline {figure}{\numberline {11}{\ignorespaces An example of the magnitude and phase of an image in k-space.\relax }}{77}{figure.caption.12}
+\contentsline {figure}{\numberline {12}{\ignorespaces Table of prevalences of congenital heart defects as compiled by \cite {Mozaffarian2016}.\relax }}{82}{figure.caption.13}
+\contentsline {figure}{\numberline {13}{\ignorespaces Estimated CHD burden in World Health Organization (WHO) regions using incidence rates of approximately 12/1000 and 4/1000 in children and adults, respectively \cite {Webb2015}.\relax }}{84}{figure.caption.14}
+\contentsline {figure}{\numberline {14}{\ignorespaces Distribution of subject races for all three cohorts.\relax }}{87}{figure.caption.15}
+\contentsline {figure}{\numberline {15}{\ignorespaces Distribution of subject ethnicities for all three cohorts.\relax }}{87}{figure.caption.16}
+\contentsline {figure}{\numberline {16}{\ignorespaces Distribution of subject genders for all three cohorts.\relax }}{88}{figure.caption.17}
+\contentsline {figure}{\numberline {17}{\ignorespaces The distribution of post-conceptual ages at the time of the scan of all fetal subjects.\relax }}{89}{figure.caption.18}
+\contentsline {figure}{\numberline {18}{\ignorespaces The outer ring represents the group the subject was assigned to based on the fetal examination while the inner ring represents the group the subject was assigned to after birth.\relax }}{90}{figure.caption.19}
+\contentsline {figure}{\numberline {19}{\ignorespaces The distribution of post-conceptual ages at birth of all neonatal subjects.\relax }}{92}{figure.caption.20}
+\contentsline {figure}{\numberline {20}{\ignorespaces The distribution of post-conceptual ages at the time of the scan of all neonatal subjects.\relax }}{92}{figure.caption.21}
+\contentsline {figure}{\numberline {21}{\ignorespaces The breakdown of subject groups contained in the Control and CHD neonatal cohorts.\relax }}{93}{figure.caption.22}
+\contentsline {figure}{\numberline {22}{\ignorespaces The distribution of preadolescent subject ages at the time of the scan.\relax }}{94}{figure.caption.23}
+\contentsline {figure}{\numberline {23}{\ignorespaces The distribution of CHD and healthy subjects between the 12 sites enrolled in the preadolescent study.\relax }}{95}{figure.caption.24}
+\contentsline {figure}{\numberline {24}{\ignorespaces The mean and standard deviations of the FD metrics distributions for all simulated images.\relax }}{105}{figure.caption.26}
+\contentsline {figure}{\numberline {25}{\ignorespaces The mean and standard deviations of the DVARS metrics distributions for all simulated images.\relax }}{106}{figure.caption.27}
+\contentsline {figure}{\numberline {26}{\ignorespaces The FD distributions for all preadolescent images, with sequence length limited to 450 volumes.\relax }}{113}{figure.caption.40}
+\contentsline {figure}{\numberline {27}{\ignorespaces The FD distributions for all preadolescent images, with sequence length limited to the minimum of 150 volumes.\relax }}{114}{figure.caption.41}
+\contentsline {figure}{\numberline {28}{\ignorespaces The DVARS distributions for all preadolescent images, with sequence length limited to 450 volumes.\relax }}{115}{figure.caption.42}
+\contentsline {figure}{\numberline {29}{\ignorespaces The DVARS distributions for all preadolescent images, with sequence length limited to the minimum of 150 volumes.\relax }}{116}{figure.caption.43}
+\contentsline {figure}{\numberline {30}{\ignorespaces Examples of the three similarity matrices. Lighter colors represent more desirable values.\relax }}{118}{figure.caption.47}
