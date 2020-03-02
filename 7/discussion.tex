@@ -1,25 +1,33 @@
 \chapter{DISCUSSION}
 \label{ch:discussion}
 
-\section{Comparison of Volume Registration Methods}
+\section{Cohort-Level Analysis}
 
 Resting-state BOLD MR images are used to evaluate the functional architecture of a patient's brain. Because resting-state BOLD images are highly susceptible to motion, development of strong post-acquisition motion correction techniques is vital. Current pipelines for mitigating motion after sequence acquisition vary in terms of efficacy and effectiveness, but all begin with global volume registration. In this study, we compared the corrective performance of two global volume registration methods, the traditional framework and a novel DAG-based framework, on a set of 17 neonatal rs-fMRIs. 
 
 The correlation ratio matrices, FD, and DVARS values were calculated for each sequence. The decrease in the mean and standard deviations of the correlation ratio matrices for the registered sequences indicate that global volume registration reduces some effects of motion in rs-fMRIs. The histograms of the FD and DVARS values in the registered sequences show that the DAG-based method was better able to correct volumes to meet Power et al’s thresholds than the traditional registration method. These results indicate that the DAG-based global registration method is better able to reduce the effects of motion than the traditional global registration method when correcting motion in neonatal images. While no entire sequences were recovered, some high-motion volumes within each sequence were recovered by the DAG-based registration method that were not recovered by the traditional registration method. 
 
-\subsection{Relation to Existing Work}
-To the best of our knowledge, the only other study that has used a variant of the DAG-based method was performed by Liao et al \cite{Liao2016}. Liao et al’s dataset consisted of 10 fetal rs-fMRIs. In each of these sequences, the fetal brain, fetal liver, and placenta were manually segmented in the first volume of the sequence as well as in five other randomly chosen volumes. These overlap of these manual segmentations before and after registration as measured using the Dice coefficient was used to quantify the amount of motion in each sequence. Even though the Dice coefficients increase more in each sequence after Liao et al.’s registration than after traditional registration, their measure of positional change fails to quantify any changes in position between any other pairs of volumes that do not have manual segmentations. 
+\subsection{Simulated Cohort}
 
+\subsection{Preadolescent Cohort}
 
-\section{Aim 2: Describing Motion}
+\subsection{Neonatal Cohort}
 
-Satterthwaite et al. note that motion is often correlated with patient age in adolescent populations and specifically designed a study of adolescents ages 8-23 such that patient age and motion were uncorrelated (Satterthwaite 2012a?).
+\subsection{Fetal Cohort}
 
-\section{Limitations}
-
-\textbf{Fetal Scans.} The fetal scans were manually segmented, the masks used in the segmentation were created to be uniform across the whole sequence. The intention behind this process is to remove all voxel values not associated with the organ of interest. However, fetal motion is highly variable. It is possible for a subject to rotate in any direction. The subject may drastically change position in the middle of the scan, possibly several times. The masks created by the annotators were created using  SOFTWARE, which allows masks to be applied to an entire sequence. The masks were forced to be created to ensure the fetal brain or placenta would be inside the masked area at all times. The masks may cover some area that does not belong to the organ of interest.
+The fetal scans were manually segmented, the masks used in the segmentation were created to be uniform across the whole sequence. The intention behind this process is to remove all voxel values not associated with the organ of interest. However, fetal motion is highly variable. It is possible for a subject to rotate in any direction. The subject may drastically change position in the middle of the scan, possibly several times. The manually created masks were developed using a software tool which allows 3D image masks to be applied to an entire 4D image sequence. The masks were required to be created to ensure the fetal brain or placenta would be inside the masked area at all times. The masks may cover some area that does not belong to the organ of interest.
 
 This limitation is unique to the fetal images. Existing pre-processing pipelines exist for skull stripping for neonatal and preadolescent images. Development of a similar pipeline for fetal images, while a challenge, would make research surrounding fetal rs-fMRIs more accessible to the medical imaging community.
 
+Alternatively, the field of computer vision offers some SOMETHING.
+
+\section{Lifespan Analysis}
+
 \textbf{Registration fixes positional effects of motion, not spin history or susceptibility effects}
 Subject motion during rs-MRI scans affects both the recorded position and orientation of the subject as well as the established magnetic spin gradients within the skull. The DAG-based technique can correct the positional effects of motion, but it cannot correct the effects of the motion that disrupt the magnetic spin gradients. Methods for prospectively estimating subject motion exist and can be used to change slice positions in each volume during acquisition. Retrospective techniques to correct for this effect will require shot-to-shot modeling of macroscopic $B_0$ fields and are beyond the scope of the present research.
+
+\section{Relation to Existing Work}
+
+To the best of our knowledge, the only other study that has used a variant of the DAG-based method was performed by Liao et al \cite{Liao2016}. Liao et al’s dataset consisted of 10 fetal rs-fMRIs. In each of these sequences, the fetal brain, fetal liver, and placenta were manually segmented in the first volume of the sequence as well as in five other randomly chosen volumes. These overlap of these manual segmentations before and after registration as measured using the Dice coefficient was used to quantify the amount of motion in each sequence. Even though the Dice coefficients increase more in each sequence after Liao et al.’s registration than after traditional registration, their measure of positional change fails to quantify any changes in position between any other pairs of volumes that do not have manual segmentations. 
+
+Satterthwaite et al. note that motion is often correlated with patient age in adolescent populations and specifically designed a study of adolescents ages 8-23 such that patient age and motion were uncorrelated (Satterthwaite 2012a?).

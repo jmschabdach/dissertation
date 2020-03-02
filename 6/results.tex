@@ -55,7 +55,7 @@ The simulated data underwent the same analyses as the clinical images, with one 
 
 The FD and DVARS metrics were calculated between every pair of image volumes $i-1$ and $i$ for the original sequences and both types of registered sequences. The mean of the FD and DVARS metrics for each time point for each sequence type  can be seen in Figures
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
 \caption{The number and percentage of image volumes across all sequences in the simulated cohort which meet the usability thresholds of FD \textless 0.2 mm and DVARS \textless 2.5\%.}
 \label{tab:spectr-power-thresh}
@@ -76,7 +76,7 @@ Both (\%)     & 0.395 & 0.343 & 0.328 \\ \hline
 
 Table \ref{tab:spectr-power-thresh} shows the number of and percentage of image volumes in all simulated image sequences which meet the FD threshold, the DVARS threshold, and both thresholds. Across all 90 image sequences, there were 150 image volumes per sequence bringing the total number of image volumes to 13,410 image volumes. In the original images, less than 1\% of the image volumes met the individual thresholds with only 0.395\% of image volumes meeting both thresholds. After either registration, over 2\% of the image volumes meet the FD threshold.
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
 \caption{Results from the t-tests comparing the counts for the numbers of images meeting the FD, DVARS, and FD and DVARS thresholds for sequence type $S_1$ and sequence type $S_2$.}
 \label{tab:spectr-power-ttest}
@@ -107,7 +107,7 @@ Table \ref{tab:spectr-power-thresh} shows the number of and percentage of image 
 
 To determine the statistical significance of these differences, a series of independent 2 sample t-tests were performed. For each test, two types of sequences were chosen. The distributions of samples were the numbers of image volumes in each sequence meeting the usability threshold of interest. The null hypotheses for the t-tests were that the number of volumes meeting the threshold for each sequence type were the same and the alternative hypothesis was that this number was different. The results of these tests can be seen in Table \ref{tab:spectr-power-ttest}. The only statistically significant differences were for the number of image volumes meeting the FD threshold. The counts for the registered images each differed from the original images at $p < 0.005$ while the difference between the two registrations was not significant ($p = 0.127$).
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
 \caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different FD distributions.}
 \label{tab:spectr-fd-kstest}
@@ -123,7 +123,7 @@ Original                                                            & \begin{tab
 \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
 \caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different DVARS distributions.}
 \label{tab:spectr-dvars-kstest}
@@ -157,7 +157,7 @@ Table \ref{tab:spectr-dvars-kstest} shows similar results for the DVARS metrics 
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{6/figures/spectr-cr-box.png}
-\caption{Boxplots of the values of all correlation ratio matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the simulated data.}
+\caption{Boxplots of the values of all CR matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the simulated data.}
 \label{fig:spectr-cr-box}
 \end{figure}
 
@@ -197,6 +197,8 @@ Table \ref{tab:spectr-dvars-kstest} shows similar results for the DVARS metrics 
   0.4068 \\ \hline
 \end{tabular}
 \end{table}
+
+\clearpage
 
 \begin{figure}
 \centering
@@ -242,10 +244,12 @@ Table \ref{tab:spectr-dvars-kstest} shows similar results for the DVARS metrics 
 \end{tabular}
 \end{table}
 
+\clearpage
+
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{6/figures/spectr-mi-box.png}
-\caption{Boxplots of the values of all mutual information matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the simulated data.}
+\caption{Boxplots of the values of all MI matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the simulated data.}
 \label{fig:spectr-mi-box}
 \end{figure}
 
@@ -285,6 +289,8 @@ Table \ref{tab:spectr-dvars-kstest} shows similar results for the DVARS metrics 
   0.8761 \\ \hline
 \end{tabular}
 \end{table}
+
+\clearpage
 
 Motion across the whole sequence was measured by comparing every image volume in the sequence to every other image volume in the sequence. The three metrics used for this comparison were the correlation ratio, the Dice metric, and the mutual information metric. The calculations for a single metric on one sequence produced a two dimensional matrix of metric values. 
 
@@ -351,7 +357,7 @@ Use t-test to compare the normalized matrices for all simulated subjects across 
 \label{fig:pread-power-dists}
 \end{figure}
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
 \caption{The number and percentage of image volumes across all sequences in the preadolescent cohort which meet the usability thresholds of FD \textless 0.2 mm and DVARS \textless 2.5\%.}
 \label{tab:pread-power-thresh}
@@ -372,7 +378,7 @@ Both (\%)     & 41.33  & 25.10 & 24.94 \\ \hline
 
 Table \ref{tab:pread-power-thresh} contains the number and percentages of image volumes from the whole preadolescent cohort which meet the FD and DVARS thresholds. 
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
 \caption{Results from the t-tests comparing the counts for the numbers of images meeting the FD, DVARS, and FD and DVARS thresholds for sequence type $S_1$ and sequence type $S_2$.}
 \label{tab:pread-power-ttest}
@@ -403,7 +409,7 @@ Table \ref{tab:pread-power-thresh} contains the number and percentages of image 
 
 Table \ref{tab:pread-power-ttest} shows the results of a set of t-tests which determine if the distribution of metric X for sequence type $S_1$ is the same as the distribution of metric X for sequence type $S_2$.
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
 \caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different FD distributions.}
 \label{tab:pread-fd-kstest}
@@ -419,7 +425,7 @@ Original                                                            & \begin{tab
 \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
 \caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different DVARS distributions.}
 \label{tab:pread-dvars-kstest}
@@ -470,51 +476,7 @@ The Dice coefficient matrix has a similar pattern as the mutual information matr
 
 The mutual information matrix shows that the shared information throughout the entire image sequence varies. Using the information from the correlation ratio matrix and the Dice coefficient matrix, it is possible that the variations in the mutual information matrix are due to changes in the rs-fMRI signal caused by BOLD signal changes, spin history effects of motion, and susceptibility effects of motion.
 
-\subsection{*Volume Registration: Sequence Duration Motion}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{6/figures/spectr-cr-box.png}
-\caption{Boxplots of the values of all correlation ratio matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the SIMULATED cohort.}
-\label{fig:pread-cr-box}
-\end{figure}
-
-\begin{table}[]
-\centering
-\caption{Results of t-tests comparing the descriptive statistics of the correlation ratio matrices for the SIMULATED data.}
-\label{tab:pread-cr-ttest}
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{Sequence Type 1 ($S_1$)} &
-  \textbf{Original} &
-  \textbf{Original} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular}} \\ \hline
-\textbf{Sequence Type 2 ($S_2$)} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular}} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} \\ \hline
-\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same minimums)\end{tabular} &
-  0.3487 &
-  0.3407 &
-  0.9821 \\ \hline
-\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same 1st quartile)\end{tabular} &
-  9.750 E -113 &
-  1.246 E -112 &
-  0.8019 \\ \hline
-\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same medians)\end{tabular} &
-  5.288 E -88 &
-  5.409 E -88 &
-  0.9997 \\ \hline
-\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same 3rd quartiles)\end{tabular} &
-  6.534 E -81 &
-  6.730 E -81 &
-  0.9577 \\ \hline
-\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same maximums)\end{tabular} &
-  2.536 E -98 &
-  6.180 E -103 &
-  0.4068 \\ \hline
-\end{tabular}
-\end{table}
+\subsection{Volume Registration: Sequence Duration Motion}
 
 \begin{figure}
 \centering
@@ -560,10 +522,12 @@ The mutual information matrix shows that the shared information throughout the e
 \end{tabular}
 \end{table}
 
+\clearpage
+
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{6/figures/preads-mi-box.png}
-\caption{Boxplots of the values of all mutual information matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the preadolescent cohort.}
+\caption{Boxplots of the values of all MI matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the preadolescent cohort.}
 \label{fig:preads-mi-box}
 \end{figure}
 
@@ -604,7 +568,41 @@ The mutual information matrix shows that the shared information throughout the e
 \end{tabular}
 \end{table}
 
+\clearpage
+
 The distributions of the metrics matrices were compared to each other using the Kolmogorov-Smirnov test for each sequence type. The metrics for the Dice matrices and the mutual information matrices were determined to be from different distributions for each sequence type at p < 0.005.
+
+\begin{table}[]
+\centering
+\caption{The number of preadolescent subjects whose sequences of types $S_1$ and $S_2$ had different MI distributions.}
+\label{tab:preads-mi-kstest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 1 ($S_1$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 2 ($S_2$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.05\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.005\end{tabular}} \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 189 & 187 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 189 & 185 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 84  & 69 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{The number of preadolescent subjects whose sequences of types $S_1$ and $S_2$ had different Dice distributions.}
+\label{tab:preads-dice-kstest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 1 ($S_1$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 2 ($S_2$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.05\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.005\end{tabular}} \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 188 & 185 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 187 & 185 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 83  & 75  \\ \hline
+\end{tabular}
+\end{table}
 
 %-----------------------------------------------------------------
 \section{Neonatal Cohort}
@@ -652,7 +650,7 @@ The distributions of the metrics matrices were compared to each other using the 
 \label{fig:neonate-power-dists}
 \end{figure}
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
 \caption{The number and percentage of image volumes across all sequences in the neonatal cohort which meet the usability thresholds of FD \textless 0.2 mm and DVARS \textless 2.5\%.}
 \label{tab:neonate-power-thresh}
@@ -673,7 +671,7 @@ Both (\%)     & 64.68  & 54.16 & 53.51 \\ \hline
 
 Table \ref{tab:neonate-power-thresh} contains the number and percentages of image volumes from the whole neonatal cohort which meet the FD and DVARS thresholds. The total number of image volumes in across all sequences of a single type was 23704.
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
 \caption{Results from the t-tests comparing the counts for the numbers of images meeting the FD, DVARS, and FD and DVARS thresholds for sequence type $S_1$ and sequence type $S_2$.}
 \label{tab:neonate-power-ttest}
@@ -704,7 +702,7 @@ Table \ref{tab:neonate-power-thresh} contains the number and percentages of imag
 
 Table \ref{tab:neonate-power-ttest} shows the results of a set of t-tests which determine if the distribution of metric X for sequence type $S_1$ is the same as the distribution of metric X for sequence type $S_2$.
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
 \caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different FD distributions.}
 \label{tab:neonate-fd-kstest}
@@ -720,7 +718,7 @@ Original                                                            & \begin{tab
 \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
 \caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different DVARS distributions.}
 \label{tab:neonate-dvars-kstest}
@@ -736,51 +734,7 @@ Original                                                            & \begin{tab
 \end{tabular}
 \end{table}
 
-\subsection{*Volume Registration: Sequence Duration Motion}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{6/figures/spectr-cr-box.png}
-\caption{Boxplots of the values of all correlation ratio matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the SIMULATED cohort.}
-\label{fig:neonates-cr-box}
-\end{figure}
-
-\begin{table}[]
-\centering
-\caption{Results of t-tests comparing the descriptive statistics of the correlation ratio matrices for the SIMULATED data.}
-\label{tab:neonates-cr-ttest}
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{Sequence Type 1 ($S_1$)} &
-  \textbf{Original} &
-  \textbf{Original} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular}} \\ \hline
-\textbf{Sequence Type 2 ($S_2$)} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular}} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} \\ \hline
-\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same minimums)\end{tabular} &
-  0.3487 &
-  0.3407 &
-  0.9821 \\ \hline
-\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same 1st quartile)\end{tabular} &
-  9.750 E -113 &
-  1.246 E -112 &
-  0.8019 \\ \hline
-\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same medians)\end{tabular} &
-  5.288 E -88 &
-  5.409 E -88 &
-  0.9997 \\ \hline
-\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same 3rd quartiles)\end{tabular} &
-  6.534 E -81 &
-  6.730 E -81 &
-  0.9577 \\ \hline
-\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same maximums)\end{tabular} &
-  2.536 E -98 &
-  6.180 E -103 &
-  0.4068 \\ \hline
-\end{tabular}
-\end{table}
+\subsection{Volume Registration: Sequence Duration Motion}
 
 \begin{figure}
 \centering
@@ -826,10 +780,12 @@ Original                                                            & \begin{tab
 \end{tabular}
 \end{table}
 
+\clearpage
+
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{6/figures/neonates-mi-box.png}
-\caption{Boxplots of the values of all mutual information matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the neonatal cohort.}
+\caption{Boxplots of the values of all MI matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the neonatal cohort.}
 \label{fig:neonates-mi-box}
 \end{figure}
 
@@ -870,9 +826,43 @@ Original                                                            & \begin{tab
 \end{tabular}
 \end{table}
 
+\clearpage
+
 The distributions of the metrics matrices were compared to each other using the Kolmogorov-Smirnov test for each sequence type. The metrics for the Dice matrices and the mutual information matrices were determined to be from different distributions for each sequence type at p < 0.005.
 
-\section{*Fetal Cohort}
+\begin{table}[]
+\centering
+\caption{The number of neonatal subjects whose sequences of types $S_1$ and $S_2$ had different MI distributions.}
+\label{tab:neonates-mi-kstest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 1 ($S_1$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 2 ($S_2$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.05\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.005\end{tabular}} \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 66 & 64 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 71 & 69 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 64 & 64  \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{The number of neonatal subjects whose sequences of types $S_1$ and $S_2$ had different Dice distributions.}
+\label{tab:neonates-dice-kstest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 1 ($S_1$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 2 ($S_2$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.05\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.005\end{tabular}} \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 67 & 66 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 71 & 69 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 68 & 64  \\ \hline
+\end{tabular}
+\end{table}
+
+\section{Fetal Cohort}
 
 \subsection{Brain}
 
@@ -920,7 +910,7 @@ The distributions of the metrics matrices were compared to each other using the 
 \label{fig:fetal-brain-power-dists}
 \end{figure}
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
 \caption{The number and percentage of image volumes across all sequences in the fetal brain image data set which meet the usability thresholds of FD \textless 0.2 mm and DVARS \textless 2.5\%.}
 \label{tab:fetal-brain-power-thresh}
@@ -930,10 +920,10 @@ The distributions of the metrics matrices were compared to each other using the 
   \textbf{\begin{tabular}[c]{@{}c@{}}Original\\  Sequences\end{tabular}} &
   \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally Registered \\ Sequences\end{tabular}} &
   \textbf{\begin{tabular}[c]{@{}c@{}}DAG-Registered \\ Sequences\end{tabular}} \\ \hline
-FD (count)    & 575    & 539   & 561 \\ \hline
+FD (count)    & 575    & 581   & 561 \\ \hline
 DVARS (count) & 7      & 84    & 7 \\ \hline
 Both (count)  & 7      & 80    & 7 \\ \hline
-FD (\%)       & 4.775  & 4.503 & 4.659 \\ \hline
+FD (\%)       & 4.775  & 4.854 & 4.659 \\ \hline
 DVARS(\%)     & 0.058  & 0.702 & 0.058 \\ \hline
 Both (\%)     & 0.058  & 0.668 & 0.058 \\ \hline
 \end{tabular}
@@ -941,7 +931,7 @@ Both (\%)     & 0.058  & 0.668 & 0.058 \\ \hline
 
 Table \ref{tab:fetal-brain-power-thresh} contains the number and percentages of image volumes from the whole neonatal cohort which meet the FD and DVARS thresholds. The total number of image volumes in across all sequences of a single type was 12041.
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
 \caption{Results from the t-tests comparing the counts for the numbers of images meeting the FD, DVARS, and FD and DVARS thresholds for fetal brain sequence type $S_1$ and sequence type $S_2$.}
 \label{tab:fetal-brain-power-ttest}
@@ -972,7 +962,7 @@ Table \ref{tab:fetal-brain-power-thresh} contains the number and percentages of 
 
 Table \ref{tab:fetal-brain-power-ttest} shows the results of a set of t-tests which determine if the distribution of metric X for sequence type $S_1$ is the same as the distribution of metric X for sequence type $S_2$. Fetal brain.
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
 \caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different FD distributions according to the Kolmogorov-Smirnov test.}
 \label{tab:fetal-brain-fd-kstest}
@@ -988,7 +978,7 @@ Original                                                            & \begin{tab
 \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
 \caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different DVARS distributions according to the Kolmogorov-Smirnov test.}
 \label{tab:fetal-brain-dvars-kstest}
@@ -1004,27 +994,178 @@ Original                                                            & \begin{tab
 \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\subsubsection{Volume Registration: Sequence Duration Motion}
+
+\begin{figure}
 \centering
-\caption{Comparing the FD and DVARS distributions for all image volumes for sequence types $S_1$ and $S_2$ for the fetal brain images.}
-\label{tab:fetal-brain-ks-all}
+\includegraphics[width=0.5\textwidth]{6/figures/fetal-brain-dice-box.png}
+\caption{Boxplots of the values of all Dice matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the fetal-brain images.}
+\label{fig:fetal-brain-dice-box}
+\end{figure}
+
+\begin{table}[]
+\centering
+\caption{Results of t-tests comparing the descriptive statistics of the Dice matrices for the fetal brain data.}
+\label{tab:fetal-brain-dice-ttest}
 \begin{tabular}{|c|c|c|c|}
 \hline
-\textbf{Sequence Type 1} & \textbf{Sequence Type 2}                                           & \textbf{FD p-value} & \textbf{DVARS p-value} \\ \hline
-Original                 & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 2.712 E -10         & 8.019 E -6             \\ \hline
-Original                 & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 0.703               & 0.934                  \\ \hline
-\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular} & 4.88 E -8 & 0.000380 \\ \hline
+\textbf{Sequence Type 1 ($S_1$)} &
+  \textbf{Original} &
+  \textbf{Original} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular}} \\ \hline
+\textbf{Sequence Type 2 ($S_2$)} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same minimums)\end{tabular} &
+  0.259 &
+  0.932 &
+  0.289 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same 1st quartile)\end{tabular} &
+  0.254 &
+  0.996 &
+  0.252 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same medians)\end{tabular} &
+  0.658 &
+  0.970 &
+  0.686 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same 3rd quartiles)\end{tabular} &
+  0.973 &
+  0.921 &
+  0.896 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same maximums)\end{tabular} &
+  1.0 &
+  1.0 &
+  1.0 \\ \hline
 \end{tabular}
 \end{table}
 
-\subsubsection{Volume Registration: Sequence Duration Motion}
+\clearpage
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{6/figures/fetal-brain-mi-box.png}
+\caption{Boxplots of the values of all MI matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the fetal brain images.}
+\label{fig:fetal-brain-mi-box}
+\end{figure}
+
+\begin{table}[]
+\centering
+\caption{Results of t-tests comparing the descriptive statistics of the MI matrices for the fetal brain data.}
+\label{tab:fetal-brain-mi-ttest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Sequence Type 1 ($S_1$)} &
+  \textbf{Original} &
+  \textbf{Original} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular}} \\ \hline
+\textbf{Sequence Type 2 ($S_2$)} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same minimums)\end{tabular} &
+  0.673 &
+  0.845 &
+  0.816 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same 1st quartile)\end{tabular} &
+  0.765 &
+  0.963 &
+  0.798 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same medians)\end{tabular} &
+  0.764 &
+  0.963 &
+  0.798 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same 3rd quartiles)\end{tabular} &
+  0.760 &
+  0.959 &
+  0.797 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same maximums)\end{tabular} &
+  0.539 &
+  0.999 &
+  0.539 \\ \hline
+\end{tabular}
+\end{table}
+
+\clearpage
+
+\begin{table}[]
+\centering
+\caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different MI distributions.}
+\label{tab:fetal-brain-mi-kstest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 1 ($S_1$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 2 ($S_2$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.05\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.005\end{tabular}} \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 13 & 10 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 12 & 9 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 14 & 9  \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different Dice distributions.}
+\label{tab:fetal-brain-dice-kstest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 1 ($S_1$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 2 ($S_2$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.05\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.005\end{tabular}} \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 11 & 9 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 7 & 7 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 10  & 8  \\ \hline
+\end{tabular}
+\end{table}
 
 \subsection{Placenta}
 
 \subsubsection{Volume Registration: Power Thresholds}
 
+\begin{figure}[t]
+	\centering
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/fetal-placenta-bold-fd-150.png}
+		\caption{FD of Original Sequences.}
+	\end{subfigure}
+	\hspace{0.05\textwidth}
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/fetal-placenta-bold-dvars-150.png}
+		\caption{DVARS of Original Sequences.}
+	\end{subfigure}
+	
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/fetal-placenta-trad-fd-150.png}
+		\caption{FD of Traditionally Registered Sequences.}
+	\end{subfigure}
+	\hspace{0.05\textwidth}
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/fetal-placenta-trad-dvars-150.png}
+		\caption{DVARS of Traditionally Registered Sequences.}
+	\end{subfigure}
+	
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/fetal-placenta-dag-fd-150.png}
+		\caption{FD of DAG-Registered Sequences.}
+	\end{subfigure}
+	\hspace{0.05\textwidth}
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/fetal-placenta-dag-dvars-150.png}
+		\caption{DVARS of DAG-Registered Sequences.}
+	\end{subfigure}
+\caption{The means and standard deviations of the FD and DVARS metrics for all placenta images both before and after registration.}
+\label{fig:fetal-placenta-power-dists}
+\end{figure}
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
 \caption{The number and percentage of image volumes across all sequences in the fetal placenta image data set which meet the usability thresholds of FD \textless 0.2 mm and DVARS \textless 2.5\%.}
 \label{tab:fetal-placenta-power-thresh}
@@ -1034,21 +1175,21 @@ Original                 & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabul
   \textbf{\begin{tabular}[c]{@{}c@{}}Original\\  Sequences\end{tabular}} &
   \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally Registered \\ Sequences\end{tabular}} &
   \textbf{\begin{tabular}[c]{@{}c@{}}DAG-Registered \\ Sequences\end{tabular}} \\ \hline
-FD (count)    & 575    & 539   & 561 \\ \hline
-DVARS (count) & 7      & 84    & 7 \\ \hline
-Both (count)  & 7      & 80    & 7 \\ \hline
-FD (\%)       & 4.775  & 4.503 & 4.659 \\ \hline
-DVARS(\%)     & 0.058  & 0.702 & 0.058 \\ \hline
-Both (\%)     & 0.058  & 0.668 & 0.058 \\ \hline
+FD (count)    & 10017  & 4113   & 4005   \\ \hline
+DVARS (count) & 17     & 1056   & 1624   \\ \hline
+Both (count)  & 17     & 599    & 996    \\ \hline
+FD (\%)       & 43.646 & 44.245 & 45.020 \\ \hline
+DVARS(\%)     & 0.170  & 11.36  & 18.255 \\ \hline
+Both (\%)     & 0.170  & 6.444  & 11.196 \\ \hline
 \end{tabular}
 \end{table}
 
-Table \ref{tab:fetal-brain-power-thresh} contains the number and percentages of image volumes from the whole neonatal cohort which meet the FD and DVARS thresholds. The total number of image volumes in across all sequences of a single type was 12041.
+Table \ref{tab:fetal-placenta-power-thresh} contains the number and percentages of image volumes from the whole neonatal cohort which meet the FD and DVARS thresholds. The total number of image volumes in across the original sequences was 10017, the traditionally registered images was 9296, and the DAG-registered images was 8896.
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
-\caption{Results from the t-tests comparing the counts for the numbers of images meeting the FD, DVARS, and FD and DVARS thresholds for fetal brain sequence type $S_1$ and sequence type $S_2$.}
-\label{tab:fetal-brain-power-ttest}
+\caption{Results from the t-tests comparing the counts for the numbers of images meeting the FD, DVARS, and FD and DVARS thresholds for fetal placenta sequence type $S_1$ and sequence type $S_2$.}
+\label{tab:fetal-placenta-power-ttest}
 \begin{tabular}{|c|c|c|c|}
 \hline
 \textbf{Sequence Type 1 ($S_1$)} &
@@ -1060,68 +1201,179 @@ Table \ref{tab:fetal-brain-power-thresh} contains the number and percentages of 
   \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} &
   \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} \\ \hline
 \begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ have \\ same FD counts)\end{tabular} &
-  0.811 &
-  0.926 &
-  0.883 \\ \hline
+  0.519 &
+  0.350 &
+  0.775 \\ \hline
 \begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ have \\ same DVARS counts)\end{tabular} &
-  0.159 &
-  1.0 &
-  0.159 \\ \hline
+  5.38 E -6 &
+  5.65 E -9 &
+  0.101 \\ \hline
 \begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ have \\ same FD and DVARS counts)\end{tabular} &
-  0.159 &
-  1.0 &
-  0.159 \\ \hline
+  5.18 E -6 &
+  1.92 E -8 &
+  0.0571 \\ \hline
 \end{tabular}
 \end{table}
 
-Table \ref{tab:fetal-brain-power-ttest} shows the results of a set of t-tests which determine if the distribution of metric X for sequence type $S_1$ is the same as the distribution of metric X for sequence type $S_2$. Fetal brain.
+Table \ref{tab:fetal-placenta-power-ttest} shows the results of a set of t-tests which determine if the distribution of metric X for sequence type $S_1$ is the same as the distribution of metric X for sequence type $S_2$. Fetal placenta.
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
-\caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different FD distributions according to the Kolmogorov-Smirnov test.}
-\label{tab:fetal-brain-fd-kstest}
+\caption{The number of placental images whose sequences of types $S_1$ and $S_2$ had different FD distributions according to the Kolmogorov-Smirnov test.}
+\label{tab:fetal-placenta-fd-kstest}
 \begin{tabular}{|c|c|c|c|}
 \hline
 \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 1 ($S_1$)\end{tabular}} &
   \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 2 ($S_2$)\end{tabular}} &
   \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.05\end{tabular}} &
   \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.005\end{tabular}} \\ \hline
-Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 14 & 9 \\ \hline
-Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 2  & 2 \\ \hline
-\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 13 & 9 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 21 & 21 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 32 & 30 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 31 & 20 \\ \hline
 \end{tabular}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[]
 \centering
-\caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different DVARS distributions according to the Kolmogorov-Smirnov test.}
-\label{tab:fetal-brain-dvars-kstest}
+\caption{The number of placental images whose sequences of types $S_1$ and $S_2$ had different DVARS distributions according to the Kolmogorov-Smirnov test.}
+\label{tab:fetal-placenta-dvars-kstest}
 \begin{tabular}{|c|c|c|c|}
 \hline
 \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 1 ($S_1$)\end{tabular}} &
   \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 2 ($S_2$)\end{tabular}} &
   \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.05\end{tabular}} &
   \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.005\end{tabular}} \\ \hline
-Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 3 & 3 \\ \hline
-Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 2 & 1 \\ \hline
-\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 2  & 2  \\ \hline
-\end{tabular}
-\end{table}
-
-\begin{table}[h!]
-\centering
-\caption{Comparing the FD and DVARS distributions for all image volumes for sequence types $S_1$ and $S_2$ for the fetal brain images.}
-\label{tab:fetal-brain-ks-all}
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{Sequence Type 1} & \textbf{Sequence Type 2}                                           & \textbf{FD p-value} & \textbf{DVARS p-value} \\ \hline
-Original                 & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 2.712 E -10         & 8.019 E -6             \\ \hline
-Original                 & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 0.703               & 0.934                  \\ \hline
-\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular} & 4.88 E -8 & 0.000380 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 20 & 20 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 29 & 29 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 19 & 19  \\ \hline
 \end{tabular}
 \end{table}
 
 \subsubsection{Volume Registration: Sequence Duration Motion}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{6/figures/fetal-placenta-dice-box.png}
+\caption{Boxplots of the values of all Dice matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the placenta images.}
+\label{fig:fetal-placenta-dice-box}
+\end{figure}
+
+\begin{table}[]
+\centering
+\caption{Results of t-tests comparing the descriptive statistics of the Dice matrices for the fetal placenta data.}
+\label{tab:fetal-placenta-dice-ttest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Sequence Type 1 ($S_1$)} &
+  \textbf{Original} &
+  \textbf{Original} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular}} \\ \hline
+\textbf{Sequence Type 2 ($S_2$)} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same minimums)\end{tabular} &
+  6.39 E -5 &
+  3.43 E -7 &
+  0.257 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same 1st quartile)\end{tabular} &
+  6.54 E -5 &
+  2.35 E -6 &
+  0.257 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same medians)\end{tabular} &
+  0.000310 &
+  9.46 E -5 &
+  0.816 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same 3rd quartiles)\end{tabular} &
+  0.096 &
+  0.104 &
+  0.902 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same maximums)\end{tabular} &
+  1.0 &
+  1.0 &
+  1.0 \\ \hline
+\end{tabular}
+\end{table}
+
+\clearpage
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{6/figures/fetal-placenta-mi-box.png}
+\caption{Boxplots of the values of all MI matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the placenta images.}
+\label{fig:fetal-placenta-mi-box}
+\end{figure}
+
+\begin{table}[]
+\centering
+\caption{Results of t-tests comparing the descriptive statistics of the MI matrices for the fetal placenta data.}
+\label{tab:fetal-placenta-mi-ttest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Sequence Type 1 ($S_1$)} &
+  \textbf{Original} &
+  \textbf{Original} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular}} \\ \hline
+\textbf{Sequence Type 2 ($S_2$)} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}} \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same minimums)\end{tabular} &
+  0.00980 &
+  0.00168 &
+  0.536 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same 1st quartile)\end{tabular} &
+  0.00742 &
+  0.00132 &
+  0.548 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same medians)\end{tabular} &
+  0.00713 &
+  0.00116 &
+  0.535 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same 3rd quartiles)\end{tabular} &
+  0.00807 &
+  0.00118 &
+  0.506 \\ \hline
+\begin{tabular}[c]{@{}c@{}}P($S_1$ and $S_2$ \\ have same maximums)\end{tabular} &
+  0.00145 &
+  8.28 E -6 &
+  0.212 \\ \hline
+\end{tabular}
+\end{table}
+
+\clearpage
+
+\begin{table}[]
+\centering
+\caption{The number of subjects whose placenta sequences of types $S_1$ and $S_2$ had different MI distributions.}
+\label{tab:fetal-placenta-mi-kstest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 1 ($S_1$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 2 ($S_2$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.05\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.005\end{tabular}} \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 22 & 22 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 39 & 39 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 38 & 38  \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{The number of subjects whose placenta sequences of types $S_1$ and $S_2$ had different Dice distributions.}
+\label{tab:fetal-placenta-dice-kstest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 1 ($S_1$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 2 ($S_2$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.05\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.005\end{tabular}} \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 22 & 22 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 39 & 39 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 30 & 30  \\ \hline
+\end{tabular}
+\end{table}
 
 \section{Motion Patterns}
 
