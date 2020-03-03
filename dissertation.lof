@@ -38,3 +38,5 @@
 \contentsline {figure}{\numberline {38}{\ignorespaces The means and standard deviations of the FD and DVARS metrics for all placenta images both before and after registration.\relax }}{134}{figure.caption.71}
 \contentsline {figure}{\numberline {39}{\ignorespaces Boxplots of the values of all Dice matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the placenta images.\relax }}{137}{figure.caption.76}
 \contentsline {figure}{\numberline {40}{\ignorespaces Boxplots of the values of all MI matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the placenta images.\relax }}{138}{figure.caption.78}
+\contentsline {figure}{\numberline {41}{\ignorespaces The preadolescent, neonatal, and fetal images clustered by each metric using agglomerative clustering and labeled by age group.\relax }}{141}{figure.caption.82}
+\contentsline {figure}{\numberline {42}{\ignorespaces The preadolescent, neonatal, and fetal images clustered by each metric using agglomerative clustering and labeled by CHD/Control status.\relax }}{143}{figure.caption.83}

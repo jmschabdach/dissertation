@@ -50,7 +50,7 @@ The simulated data underwent the same analyses as the clinical images, with one 
 		\caption{DVARS of DAG-Registered Sequences.}
 	\end{subfigure}
 \caption{The means and standard deviations of the FD and DVARS metrics for all simulated images both before and after registration.}
-\label{fig:neonate-power-dists}
+\label{fig:spectr-power-dists}
 \end{figure}
 
 The FD and DVARS metrics were calculated between every pair of image volumes $i-1$ and $i$ for the original sequences and both types of registered sequences. The mean of the FD and DVARS metrics for each time point for each sequence type  can be seen in Figures
@@ -1375,10 +1375,66 @@ Original                                                            & \begin{tab
 \end{tabular}
 \end{table}
 
-\section{Motion Patterns}
+\clearpage
+
+\section{Characterizing Motion}
 
 \subsection{Age Groups}
 
+\begin{figure}[t]
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/agegroup-bold-fd-sns-agg.png}
+		\caption{FD}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/agegroup-bold-dvars-sns-agg.png}
+		\caption{DVARS}
+	\end{subfigure}
+	
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/agegroup-bold-dice-sns-agg.png}
+		\caption{Dice}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/agegroup-bold-mi-sns-agg.png}
+		\caption{MI}
+	\end{subfigure}
+\caption{The preadolescent, neonatal, and fetal images clustered by each metric using agglomerative clustering and labeled by age group.}
+\label{fig:mochar-ages-sns-agg}
+\end{figure}
+
+\clearpage
+
 \subsection{CHD and Control}
 
-\subsection{Preadolescents: Comparing Sites}
+\begin{figure}[t]
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/cohort-bold-fd-sns-agg.png}
+		\caption{FD}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/cohort-bold-dvars-sns-agg.png}
+		\caption{DVARS}
+	\end{subfigure}
+	
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/cohort-bold-dice-sns-agg.png}
+		\caption{Dice}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/cohort-bold-mi-sns-agg.png}
+		\caption{MI}
+	\end{subfigure}
+\caption{The preadolescent, neonatal, and fetal images clustered by each metric using agglomerative clustering and labeled by CHD/Control status.}
+\label{fig:mochar-cohorts-sns-agg}
+\end{figure}
