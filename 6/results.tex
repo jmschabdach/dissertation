@@ -106,6 +106,7 @@ Overall, the primary finding in the comparison of the registration techniques fo
 \label{fig:spectr-mi-box}
 \end{figure}
 
+\clearpage
 
 The FD and DVARS metrics measure motion with respect to an pair of usability standards, but they offer a limited perspective about the motion present throughout an image sequence. Motion across the entire image was measured by calculating a similarity metric between every image volume $i$ and every other image volume $j$. The 
 
@@ -150,58 +151,146 @@ To determine the accuracy of the BOLD-related components, the component image vo
 
 \subsection{Volume Registration: Power Thresholds}
 
-% First: FD and DVARs
-The averages of the distributions of the FD and DVARs metrics across the whole time period of the sequences for the original, traditionally registered, and DAG-registered images were calculated. The images sequences varied in length from 150 volume to 450 volumes due to the differences in acquisition protocols at different sites. The means and standard deviations of FD and DVARS metrics for the entire set of sequence with their original lengths can be seen in Figures \ref{fig:pread-fd-450} and \ref{fig:pread-dvars-450}. The means and standard deviations of the FD and DVARs metrics for the first 150 volumes in each sequence can be seen in Figures \ref{fig:pread-dvars-150} and \ref{fig:pread-dvars-150}. 
-
-
-To compare the FD and DVARS values for each type of motion correction, the metrics for each image were considered to be independent samples drawn from an unknown distribution. Pairwise comparisons of these distribution were performed using the Kolmogorov-Smirnov (KS) test. The two-sided KS test measures the distance between the empirical distributions of two distributions. The null hypothesis of the two-sided KS test is that the empirical distributions being compared come from the same underlying distribution. As the KS test is nonparametric, the metrics for all image volumes can be used.
-
-By comparing the distributions for the original sequences to the distributions for the registered sequences, we aim to determine if the volume registration had a significant effect on the images themselves. The comparison of the distributions for the two types of registered images is intended to determine if there is a statistically significant difference between the FD and DVARS distributions of the registered images.
-
-
-The KS statistic and p-value produced as result of the KS tests can be seen in Table \ref{tab:pread-ks-fd} for the FD metrics and in Table \ref{tab:pread-ks-dvars} for the DVARS metrics.
-
-
-%Each rs-fMRI sequence in the cohort underwent registration using both frameworks. For each sequence, the correlation ratio between every possible pair of volumes was calculated. A set of metrics of the correlation ratio matrices for each sequence can be seen in Table \ref{tab:crm-stats}. This table shows that the original sequences generally have higher average correlation ratios and contain more variation in their correlation ratios than the globally registered images. The registration methods were able to reduce the mean and variability of the correlation ratios across all subjects in the cohort who had original correlation ratio averages of at least 0.035.
-
-
-
-The FD and DVARS values were compared to the usability thresholds defined by Power et al. to determine how many volumes were recovered by each framework \cite{Power2014}. Table \ref{tab:pread-powerthresh} shows the number of volumes meeting each threshold, both in terms of the number of volumes in the cohort and the percentage of volumes in the cohort. In the original dataset, almost 42\% of image volumes met both the FD and DVARS thresholds. However, only about 5\% of volumes met both thresholds for each registration type. Looking at the thresholds independently, about 60\% of volumes met the FD threshold before registration and only 16\% of volumes met the threshold after registration. Similarly, about 48\% of volumes met the DVARS threshold before registration and only about 6\% of volumes met the threshold after registration. These results suggest that the registration process introduces some degree of error into the preadolescent images, at least with respect to the established usability criteria.
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=1\textwidth]{6/figures/similarity-mat-sample.png}
-\caption{Examples of the three similarity matrices. Lighter colors represent more desirable values.}
-\label{fig:sim-mat-sample}
+\begin{figure}[t]
+	\centering
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/preads-bold-fd-150.png}
+		\caption{FD of Original Sequences.}
+	\end{subfigure}
+	\hspace{0.05\textwidth}
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/preads-bold-dvars-150.png}
+		\caption{DVARS of Original Sequences.}
+	\end{subfigure}
+	
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/preads-trad-fd-150.png}
+		\caption{FD of Traditionally Registered Sequences.}
+	\end{subfigure}
+	\hspace{0.05\textwidth}
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/preads-trad-dvars-150.png}
+		\caption{DVARS of Traditionally Registered Sequences.}
+	\end{subfigure}
+	
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/preads-dag-fd-150.png}
+		\caption{FD of DAG-Registered Sequences.}
+	\end{subfigure}
+	\hspace{0.05\textwidth}
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/preads-dag-dvars-150.png}
+		\caption{DVARS of DAG-Registered Sequences.}
+	\end{subfigure}
+\caption{The means and standard deviations of the FD and DVARS metrics for all preadolescent images both before and after registration.}
+\label{fig:pread-power-dists}
 \end{figure}
 
-An example of the three similarity matrices can be seen in Figure \ref{fig:sim-mat-sample}. The element $e_{i,j}$ represents the value of the given metric between the image volumes represented by row $i$ and column $j$. Each metric measures similarity according to slightly different definitions. In this figure, lighter values represent better metric values while darker values indicate lower similarity.
+% First: FD and DVARs
+The FD and DVARs were calculated for each original and registered preadolescent image sequence. The images sequences varied in length from 150 volume to 450 volumes due to the differences in acquisition protocols at different sites. The number of image volumes used in this analysis were limited to the first 150 to avoid the challenges of comparing data with missing values.
 
-It is important to note the scales for these three metrics vary. The correlation ratio measures the distance between two items. Lower values for the correlation ratio means there is a smaller distance between the given pair of image volumes. The mutual information measures the shared information between two distributions of samples which may or may not be generated from the same underlying distribution. Higher mutual information values mean more shared information and low values mean less shared information. The Dice coefficient measures the overlap of two binary images. High Dice coefficients indicate a large amount of overlap, with a value of 1.0 indicating a perfect overlap.
+The means and stand deviations of the FD and DVARS for each registration type can be seen in Figure \ref{fig:pread-power-dists}. The mean and standard deviation of the FD for the original sequences were 1.61 mm and 10.06 mm. The means of the FD increased to 1.83 mm for the traditionally registered sequences and 2.85 mm for the DAG-registered sequences. The standard deviation of the FD decreased to 7.74 mm for the traditionally registered sequences but increased to 15.4 mm for the DAG-registered sequences. The DVARS metrics followed a similar pattern: the mean of 60.5 units for the original sequences increased to 81.5 units and 92.5 units for the traditionally and DAG-registered sequences respectively while the standard deviation of the DVARS decreased from 197 units in the original sequences to 175 units in the traditionally registered sequences and increased to 284 units in the DAG-registered sequences.
 
-The correlation ratio matrix in Figure \ref{fig:sim-mat-sample} suggests that the patient remained relatively still for the first 300 volumes of the image, then moved for about 100 volumes, and remained still in a new position for the last 50 frames of the sequence. The colors representing the correlation ratios correspond to very low values, suggesting there is little patient motion overall.
+\begin{table}[]
+\centering
+\caption{The number and percentage of image volumes across all sequences in the preadolescent cohort which meet the usability thresholds of FD \textless 0.2 mm and DVARS \textless 2.5\%.}
+\label{tab:pread-power-thresh}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Threshold Met} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Original\\  Sequences\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally Registered \\ Sequences\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}DAG-Registered \\ Sequences\end{tabular}} \\ \hline
+FD (count)    & 107879 & 72104 & 72114 \\ \hline
+DVARS (count) & 87169  & 54056 & 53756 \\ \hline
+Both (count)  & 74107  & 45006 & 44682 \\ \hline
+FD (\%)       & 60.17  & 40.22 & 40.26 \\ \hline
+DVARS(\%)     & 48.62  & 30.15 & 30.01 \\ \hline
+Both (\%)     & 41.33  & 25.10 & 24.94 \\ \hline
+\end{tabular}
+\end{table}
 
-The Dice coefficient matrix has a similar pattern as the mutual information matrix, but leads to a different conclusion. The Dice coefficient was calculated on an Otsu thresholded version of each image volume. As the values of the Dice coefficients are consistently high, the patient likely did not move much. 
+The number of image volumes from each sequence type which met the FD and DVARS usability thresholds was calculated. The counts and percentages for each sequence type can be seen in Table \ref{tab:pread-power-thresh}. In the original image sequences, 60\% of image volumes met the FD threshold, 49\% of image volumes met the DVARS threshold, and 41\% of image volumes met both thresholds. After either registration, 40\% of image volumes met the FD threshold, 30\% of image volumes met the DVARS threshold, and about 25\% of image volumes met both thresholds.
 
-The mutual information matrix shows that the shared information throughout the entire image sequence varies. Using the information from the correlation ratio matrix and the Dice coefficient matrix, it is possible that the variations in the mutual information matrix are due to changes in the rs-fMRI signal caused by BOLD signal changes, spin history effects of motion, and susceptibility effects of motion.
+The statistical significance of the number of image volumes meeting each threshold was calculated using two-sample t-tests. Three comparison pairs were used: the original sequence and the traditionally registered sequence, the original sequence and the DAG-registered sequence, and the two registered sequence types. The null hypothesis of the t-tests were that the number of image volumes meeting the threshold being tested were the same for both sequence types. The complete set of results can be seen in Table \ref{tab:pread-power-ttest}. The original image sequences were statistically significantly different from both types of registered image sequences with respect to the distributions of volumes meeting the FD threshold, the DVARS threshold, and both thresholds. The distributions for the registered image sequences were statistically similar for all three thresholds. 
+
+\begin{table}[]
+\centering
+\caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different FD distributions.}
+\label{tab:pread-fd-kstest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 1 ($S_1$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 2 ($S_2$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.05\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.005\end{tabular}} \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 331 & 326 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 332 & 328 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 19 &17 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different DVARS distributions.}
+\label{tab:pread-dvars-kstest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 1 ($S_1$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 2 ($S_2$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.05\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.005\end{tabular}} \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 334 & 331 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 334 & 333 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 22  & 19  \\ \hline
+\end{tabular}
+\end{table}
+
+The distributions of the FD and DVARS values were compared for each sequence type for each subject. For each subject, the distributions of each metric for the the original and traditionally registered, the original and DAG-registered, and the traditionally and DAG-registered sequence were compared using the Kolmogorov-Smirnov test. The results of these tests can be seen in Tables \ref{tab:pread-fd-kstest} and \ref{tab:pread-dvars-kstest}. Out of 545 images, approximately 330 had FD and DVARS distributions that were statistically significantly different between the original sequences and both types of registered sequences for $p < 0.005$. Between the two types of registered sequences, 19 and 17 had statistically significant differences in their FD distributions at $p < 0.05$ and $p < 0.005$, respectively. Similarly, 22 and 19 registered sequences had statistically significant differences in their DVARS distributions at $p < 0.05$ and $p < 0.005$. 
+
+The comparison of the preadolescent sequences to the usability thresholds shows that either registration type increases the mean FD and DVARS metrics. The traditional registration method was shown to decrease the variance of the FD and DVARS metrics, but the DAG-based registration was shown to increase the variance of the FD and DVARS metrics. However, both registration types produced image sequences with similar numbers of image volumes meeting the FD threshold, the DVARS threshold, and both thresholds. The distributions of the FD and DVARS metrics were not statistically different for the two registration methods, but were statistically significantly different between the original sequences and the registered sequences.
+
+
+%The two-sided KS test measures the distance between the empirical distributions of two distributions. The null hypothesis of the two-sided KS test is that the empirical distributions being compared come from the same underlying distribution. As the KS test is nonparametric, the metrics for all image volumes can be used.
+
+%By comparing the distributions for the original sequences to the distributions for the registered sequences, we aim to determine if the volume registration had a significant effect on the images themselves. The comparison of the distributions for the two types of registered images is intended to determine if there is a statistically significant difference between the FD and DVARS distributions of the registered images.
+
+
+%An example of the three similarity matrices can be seen in Figure \ref{fig:sim-mat-sample}. The element $e_{i,j}$ represents the value of the given metric between the image volumes represented by row $i$ and column $j$. Each metric measures similarity according to slightly different definitions. In this figure, lighter values represent better metric values while darker values indicate lower similarity.
+%
+%It is important to note the scales for these three metrics vary. The correlation ratio measures the distance between two items. Lower values for the correlation ratio means there is a smaller distance between the given pair of image volumes. The mutual information measures the shared information between two distributions of samples which may or may not be generated from the same underlying distribution. Higher mutual information values mean more shared information and low values mean less shared information. The Dice coefficient measures the overlap of two binary images. High Dice coefficients indicate a large amount of overlap, with a value of 1.0 indicating a perfect overlap.
+
+%The correlation ratio matrix in Figure \ref{fig:sim-mat-sample} suggests that the patient remained relatively still for the first 300 volumes of the image, then moved for about 100 volumes, and remained still in a new position for the last 50 frames of the sequence. The colors representing the correlation ratios correspond to very low values, suggesting there is little patient motion overall.
+
+%The Dice coefficient matrix has a similar pattern as the mutual information matrix, but leads to a different conclusion. The Dice coefficient was calculated on an Otsu thresholded version of each image volume. As the values of the Dice coefficients are consistently high, the patient likely did not move much. 
+%
+%The mutual information matrix shows that the shared information throughout the entire image sequence varies. Using the information from the correlation ratio matrix and the Dice coefficient matrix, it is possible that the variations in the mutual information matrix are due to changes in the rs-fMRI signal caused by BOLD signal changes, spin history effects of motion, and susceptibility effects of motion.
+
+\clearpage
 
 \subsection{Volume Registration: Sequence Duration Motion}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.5\textwidth]{6/figures/preads-dice-box.png}
+\includegraphics[height=0.3\textheight]{6/figures/preads-dice-box.png}
 \caption{Boxplots of the values of all Dice matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the preadolescent cohort.}
 \label{fig:preads-dice-box}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.5\textwidth]{6/figures/preads-mi-box.png}
+\includegraphics[height=0.3\textheight]{6/figures/preads-mi-box.png}
 \caption{Boxplots of the values of all MI matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the preadolescent cohort.}
 \label{fig:preads-mi-box}
 \end{figure}
 
-The distributions of the metrics matrices were compared to each other using the Kolmogorov-Smirnov test for each sequence type. The metrics for the Dice matrices and the mutual information matrices were determined to be from different distributions for each sequence type at p < 0.005.
+For the preadolescent cohort, the Dice and MI matrices were calculated for the original, traditionally registered, and DAG-registered sequences. The distributions of the metric values for all matrices for each sequence can be seen in Figure \ref{fig:preads-dice-box} for the Dice matrices and in Figure \ref{fig:preads-mi-box}. The minimums, first quantiles, medians, third quantiles, and maximums for each metric distribution were calculated. These descriptive statistics were compared to each other using the two-sample t-test for each sequence type. The full results of these comparisons can be seen in Table \ref{appendix:results}.\ref{tab:preads-dice-ttest} for the Dice matrices and Table \ref{appendix:results}.\ref{tab:preads-mi-ttest} for the MI matrices. The only statistically significant difference in descriptive statistics for the Dice matrices was the difference between the third quartiles of the original sequences and both types of registered sequences at $p < 0.005$. There were no statistically significant differences between the descriptive statistics for the MI matrices even at $p < 0.05$.
 
 \begin{table}[]
 \centering
@@ -234,6 +323,14 @@ Original                                                            & \begin{tab
 \begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 83  & 75  \\ \hline
 \end{tabular}
 \end{table}
+
+\clearpage
+
+The distributions of the Dice and MI matrices across all three sequence types for each subject were compared using the Kolmogorov-Smirnov test. For the Dice metrics, the original sequences and the registered sequences had approximately 190 significantly different sequences at $p < 0.05$ and about 185 at $p < 0.005$. The traditionally registered and DAG-registered sequences had 84 sequences that were statistically different at $p < 0.05$ and 69 at $p < 0.005$. In the comparison of MI metrics for the original sequences and the traditionally registered sequences, 188 and 185 had statistically significant differences at $p < 0.05$ and $p < 0.005$. The original sequences and the DAG-registered sequences had similar differences at 187 and 185 significantly different sequences at $p < 0.05$ and $p < 0.005$. The traditionally registered and DAG-registered sequences had 83 and 75 statistically significantly different sequences at $p < 0.05$ and $p < 0.005$.
+
+%Examining motion throughout the duration of the sequence showed that the two registration methods produced some image sequences with statistically different motion distributions 
+
+Overall, the motion patterns embodied by the Dice and MI matrices were fairly similar for each metric across all three sequence types. A subset of images had statistically significant differences between the original sequences and the registered sequences for both the Dice and MI matrices, and a smaller subset had statistically significant differences between the two registration types. 
 
 %-----------------------------------------------------------------
 \section{Neonatal Cohort}

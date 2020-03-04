@@ -66,16 +66,9 @@ Original                                                            & \begin{tab
 \end{tabular}
 \end{table}
 
-\clearpage
+
 
 \subsection{Volume Registration: Sequence Duration Motion}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{6/figures/spectr-cr-box.png}
-\caption{Boxplots of the values of all CR matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the simulated data.}
-\label{fig:spectr-cr-box}
-\end{figure}
 
 \begin{table}[]
 \centering
@@ -113,15 +106,6 @@ Original                                                            & \begin{tab
   0.4068 \\ \hline
 \end{tabular}
 \end{table}
-
-\clearpage
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{6/figures/spectr-dice-box.png}
-\caption{Boxplots of the values of all Dice matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the simulated data.}
-\label{fig:spectr-dice-box}
-\end{figure}
 
 \begin{table}[]
 \centering
@@ -162,13 +146,6 @@ Original                                                            & \begin{tab
 
 \clearpage
 
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{6/figures/spectr-mi-box.png}
-\caption{Boxplots of the values of all MI matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the simulated data.}
-\label{fig:spectr-mi-box}
-\end{figure}
-
 \begin{table}[]
 \centering
 \caption{Results of t-tests comparing the descriptive statistics of the MI matrices for the simulated data.}
@@ -208,102 +185,9 @@ Original                                                            & \begin{tab
 
 \clearpage
 
-\subsection{Volume Registration: Recovered Signal}
-
-
-\begin{table}[]
-\centering
-\caption{The average true and false rates for both positive and negative voxels when comparing the IC component with the largest correlation to the DMN ROI over each simulated image.}
-\label{tab:spectr-avg-rates}
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{Average Value} & \textbf{Traditionally Registered} & \textbf{DAG-Registered} \\ \hline
-TPR                    & 0.587                             & 0.623                   \\ \hline
-FPR                    & 0.104                             & 0.00996                 \\ \hline
-TNR                    & 0.990                             & 0.990                   \\ \hline
-FNR                    & 0.413                             & 0.377                   \\ \hline
-\end{tabular}
-\end{table}
-
-\begin{table}[]
-\centering
-\caption{The p-values determining whether the true and false rates for both positive and negative voxels differ between the traditionally registered and DAG-registered simulated sequences as calculated using the two-sided t-test.}
-\label{tab:spectr-ttest-rates}
-\begin{tabular}{|c|c|}
-\hline
-\textbf{Rate} & \textbf{2 Sided t-test p-value} \\ \hline
-TPR           & 0.441                           \\ \hline
-FPR           & 0.729                           \\ \hline
-TNR           & 0.729                           \\ \hline
-FNR           & 0.441                           \\ \hline
-\end{tabular}
-\end{table}
-
-\clearpage
-
 \section{Preadolescent Cohort}
 
 \subsection{Volume Registration: Power Thresholds}
-
-\begin{figure}[t]
-	\centering
-	\begin{subfigure}{0.4\textwidth}
-		\centering
-		\includegraphics[width=1.0\textwidth]{6/figures/preads-bold-fd-150.png}
-		\caption{FD of Original Sequences.}
-	\end{subfigure}
-	\hspace{0.05\textwidth}
-	\begin{subfigure}{0.4\textwidth}
-		\centering
-		\includegraphics[width=1.0\textwidth]{6/figures/preads-bold-dvars-150.png}
-		\caption{DVARS of Original Sequences.}
-	\end{subfigure}
-	
-	\begin{subfigure}{0.4\textwidth}
-		\centering
-		\includegraphics[width=1.0\textwidth]{6/figures/preads-trad-fd-150.png}
-		\caption{FD of Traditionally Registered Sequences.}
-	\end{subfigure}
-	\hspace{0.05\textwidth}
-	\begin{subfigure}{0.4\textwidth}
-		\centering
-		\includegraphics[width=1.0\textwidth]{6/figures/preads-trad-dvars-150.png}
-		\caption{DVARS of Traditionally Registered Sequences.}
-	\end{subfigure}
-	
-	\begin{subfigure}{0.4\textwidth}
-		\centering
-		\includegraphics[width=1.0\textwidth]{6/figures/preads-dag-fd-150.png}
-		\caption{FD of DAG-Registered Sequences.}
-	\end{subfigure}
-	\hspace{0.05\textwidth}
-	\begin{subfigure}{0.4\textwidth}
-		\centering
-		\includegraphics[width=1.0\textwidth]{6/figures/preads-dag-dvars-150.png}
-		\caption{DVARS of DAG-Registered Sequences.}
-	\end{subfigure}
-\caption{The means and standard deviations of the FD and DVARS metrics for all preadolescent images both before and after registration.}
-\label{fig:pread-power-dists}
-\end{figure}
-
-\begin{table}[]
-\centering
-\caption{The number and percentage of image volumes across all sequences in the preadolescent cohort which meet the usability thresholds of FD \textless 0.2 mm and DVARS \textless 2.5\%.}
-\label{tab:pread-power-thresh}
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{Threshold Met} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}Original\\  Sequences\end{tabular}} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}Traditionally Registered \\ Sequences\end{tabular}} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}DAG-Registered \\ Sequences\end{tabular}} \\ \hline
-FD (count)    & 107879 & 72104 & 72114 \\ \hline
-DVARS (count) & 87169  & 54056 & 53756 \\ \hline
-Both (count)  & 74107  & 45006 & 44682 \\ \hline
-FD (\%)       & 60.17  & 40.22 & 40.26 \\ \hline
-DVARS(\%)     & 48.62  & 30.15 & 30.01 \\ \hline
-Both (\%)     & 41.33  & 25.10 & 24.94 \\ \hline
-\end{tabular}
-\end{table}
 
 \begin{table}[]
 \centering
@@ -334,55 +218,18 @@ Both (\%)     & 41.33  & 25.10 & 24.94 \\ \hline
 \end{tabular}
 \end{table}
 
-\begin{table}[]
-\centering
-\caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different FD distributions.}
-\label{tab:pread-fd-kstest}
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 1 ($S_1$)\end{tabular}} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 2 ($S_2$)\end{tabular}} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.05\end{tabular}} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.005\end{tabular}} \\ \hline
-Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 331 & 326 \\ \hline
-Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 332 & 328 \\ \hline
-\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 19 &17 \\ \hline
-\end{tabular}
-\end{table}
 
-\begin{table}[]
-\centering
-\caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different DVARS distributions.}
-\label{tab:pread-dvars-kstest}
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 1 ($S_1$)\end{tabular}} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 2 ($S_2$)\end{tabular}} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.05\end{tabular}} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.005\end{tabular}} \\ \hline
-Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 334 & 331 \\ \hline
-Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 334 & 333 \\ \hline
-\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 22  & 19  \\ \hline
-\end{tabular}
-\end{table}
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=1\textwidth]{6/figures/similarity-mat-sample.png}
-\caption{Examples of the three similarity matrices. Lighter colors represent more desirable values.}
-\label{fig:sim-mat-sample}
-\end{figure}
+%\begin{figure}[ht]
+%\centering
+%\includegraphics[width=1\textwidth]{6/figures/similarity-mat-sample.png}
+%\caption{Examples of the three similarity matrices. Lighter colors represent more desirable values.}
+%\label{fig:sim-mat-sample}
+%\end{figure}
 
 \clearpage
 
 \subsection{Volume Registration: Sequence Duration Motion}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{6/figures/preads-dice-box.png}
-\caption{Boxplots of the values of all Dice matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the preadolescent cohort.}
-\label{fig:preads-dice-box}
-\end{figure}
 
 \begin{table}[]
 \centering
@@ -423,13 +270,6 @@ Original                                                            & \begin{tab
 
 \clearpage
 
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{6/figures/preads-mi-box.png}
-\caption{Boxplots of the values of all MI matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the preadolescent cohort.}
-\label{fig:preads-mi-box}
-\end{figure}
-
 \begin{table}[]
 \centering
 \caption{Results of t-tests comparing the descriptive statistics of the MI matrices for the preadolescent data.}
@@ -464,40 +304,6 @@ Original                                                            & \begin{tab
   0.946 &
   0.932 &
   0.987 \\ \hline
-\end{tabular}
-\end{table}
-
-\clearpage
-
-\begin{table}[]
-\centering
-\caption{The number of preadolescent subjects whose sequences of types $S_1$ and $S_2$ had different MI distributions.}
-\label{tab:preads-mi-kstest}
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 1 ($S_1$)\end{tabular}} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 2 ($S_2$)\end{tabular}} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.05\end{tabular}} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.005\end{tabular}} \\ \hline
-Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 189 & 187 \\ \hline
-Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 189 & 185 \\ \hline
-\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 84  & 69 \\ \hline
-\end{tabular}
-\end{table}
-
-\begin{table}[]
-\centering
-\caption{The number of preadolescent subjects whose sequences of types $S_1$ and $S_2$ had different Dice distributions.}
-\label{tab:preads-dice-kstest}
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 1 ($S_1$)\end{tabular}} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 2 ($S_2$)\end{tabular}} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.05\end{tabular}} &
-  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.005\end{tabular}} \\ \hline
-Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 188 & 185 \\ \hline
-Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 187 & 185 \\ \hline
-\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 83  & 75  \\ \hline
 \end{tabular}
 \end{table}
 
