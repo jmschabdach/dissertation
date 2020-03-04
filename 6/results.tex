@@ -107,28 +107,28 @@ Overall, the primary finding in the comparison of the registration techniques fo
 \end{figure}
 
 
-Motion across the whole sequence was measured by comparing every image volume in the sequence to every other image volume in the sequence. The three metrics used for this comparison were the correlation ratio, the Dice metric, and the mutual information metric. The calculations for a single metric on one sequence produced a two dimensional matrix of metric values. 
+The FD and DVARS metrics measure motion with respect to an pair of usability standards, but they offer a limited perspective about the motion present throughout an image sequence. Motion across the entire image was measured by calculating a similarity metric between every image volume $i$ and every other image volume $j$. The 
 
-These matrices were used to compare the quantities of motion over the course of an entire sequence. For a population level comparison, the minimum, first quartile, median, third quartile, and maximum values of each matrix were computed for each sequence. The distribution of these values for sequences of one sequence type were compared to the distributions for a second sequence type using t-tests. The p-values that each metric comes from a different distribution can be seen in Table \ref{tab:spectr-cr-ttest} for the correlation ratio matrices, Table \ref{tab:spectr-dice-ttest} for the Dice matrices, and Table \ref{tab:spectr-mi-ttest} for the MI matrices. 
+Motion across the whole sequence was measured by comparing every image volume in the sequence to every other image volume in the sequence. The three metrics used for this comparison were the correlation ratio (CR), the Dice metric, and mutual information (MI). The calculations for a single metric on one sequence produce a two dimensional matrix of metric values. 
 
-More generally, all matrix values for each sequence type were compared using the Kolmogorov-Smirnov test. The distributions for the correlation ratio metrics for the original, the traditionally registered, and the DAG-registered sequences differed at p < 0.005. The distributions for the Dice metrics and the mutual information metrics were also found to be from different distributions for each sequence type at p < 0.005. 
+These matrices were used to compare the quantities of motion over the course of an entire sequence. 
 
-Figures HMM show boxplots of the distributions of each metric over the three sequence types. 
+Box and whisker plots show the distributions of the metrics across the simulated data cohort for the correlation ratio matrices, the Dice matrices, and the mutual information matrices in Figures \ref{fig:spectr-cr-box}, \ref{fig:spectr-dice-box}, and \ref{fig:spectr-mi-box}, respectively. To describe the distribution of the similarity metrics matrices for the original sequence and each registered sequence, the minimum, first quartile, median, third quartile, and maximum values of each matrix were computed. The distributions of these five values were compared between registration types using two sample t-tests. 
 
-For the first analysis, the metrics matrices were compared to each other 
+The t-tests showed that for the CR matrices, the original have statistically significantly different first quartiles, medians, third quartiles, and maximum values from the registered sequences at $p < 0.005$. The minimum values of the CR distributions were not significantly different. Similar minimum values in the CR distributions were expected: the CR measures the distance between a pair of distributions and the minimum distance has a low valued asymptote. The Dice metric and MI matrices showed similar statistical differences, though these metrics have upper bound instead of a lower bound. The original sequences have statistically significantly different minimums, first quartiles, medians, and third quartiles from the registered sequences at $p < 0.005$ and similar maximum values. The p-values for these calculations can be seen in Table \ref{tab:spectr-cr-ttest} for the correlation ratio matrices, Table \ref{tab:spectr-dice-ttest} for the Dice matrices, and Table \ref{tab:spectr-mi-ttest} for the MI matrices. 
 
-To compare motion patterns, the metrics matrices were normalized for each subject.
+The distributions of all matrix values for the same similarity metric were compared using the Kolmogorov-Smirnov test. Three Kolmogorov-Smirnov tests were performed for each metric type to compare the distributions for the original and traditionally registered sequences, the original and DAG-registered sequences, and the traditionally registered and DAG-registered sequences. The tests showed that each pair of distributions for each metric type differed with a statistical significance of $p < 0.005$.
 
-
-The differences in the motion patterns embodied by the normalized matrices were different between the original, traditionally registered, and DAG-registered sequences for each simulated subject was significant at $p < 0.005$.
-
-Use t-test to compare the normalized matrices for all simulated subjects across a single registration type. Plot a clustermap based on 2 coordinates and the distance (p-value) between them
-
+The analysis of sequence level motion was performed using three metrics to measure the similarity of the volumes across each sequence. The matrices were compared to each other with respect to five descriptive statistics and with respect to the distribution of the entired set of s imilarity matrices for the original image sequences and each registration type. The distributions of the similarity metrics were found to be statistically significantly different, implying that each type of sequence contains different motion patterns.
 
 
 \subsection{Volume Registration: Recovered Signal}
 
-The average correlations between the best matching components and the DMN ROI were 8122.41 for the traditionally registered sequences and 8039.52 for the DAG-registered sequences. Neither the Kolmogorov-Smirnov test nor the t-test estimated a statistical significance between the correlation distributions between the best matching component and the DMN ROI for the registered sequences (KS p-value = 0.999; t-test p-value 0.807).
+One of the benefits of creating simulated data is that the signal and noise added to each image is known. 
+
+The registered images underwent independent component analysis (ICA) to identify signal components which contribute to the image as a whole. Traditionally, ICA is used to identify signal components correlated with patient motion so that they can be regressed out of the image sequence. Since the BOLD signal added to each simulated image is known, ICA can be used to determine how much BOLD signal is retained after volume registration.
+
+ICA was applied to all registered sequences to identify the signal components. For each sequence, the components were compared to the DMN ROI. The components with the largest correlation to the DMN ROI were categorized as the BOLD-related components. The average correlations between the BOLD-related components and the DMN ROI were 8122.41 for the traditionally registered sequences and 8039.52 for the DAG-registered sequences. The correlations for the traditionally registered sequences and the DAG-registered sequences were compared using the Kolmogorov-Smirnov test and a two-sample t-test. Neither the test estimated a statistical significance between the correlation distributions for the registered sequences (KS p-value = 0.999; t-test p-value 0.807).
 
 \begin{table}[]
 \centering
@@ -144,19 +144,7 @@ FNR                    & 0.413                             & 0.377              
 \end{tabular}
 \end{table}
 
-\begin{table}[]
-\centering
-\caption{The p-values determining whether the true and false rates for both positive and negative voxels differ between the traditionally registered and DAG-registered simulated sequences as calculated using the two-sided t-test.}
-\label{tab:spectr-ttest-rates}
-\begin{tabular}{|c|c|}
-\hline
-\textbf{Rate} & \textbf{2 Sided t-test p-value} \\ \hline
-TPR           & 0.441                           \\ \hline
-FPR           & 0.729                           \\ \hline
-TNR           & 0.729                           \\ \hline
-FNR           & 0.441                           \\ \hline
-\end{tabular}
-\end{table}
+To determine the accuracy of the BOLD-related components, the component image volumes were compared to the DMN ROI on a voxel level. The absolute value of each component image volume was taken and thresholded at 10\% of the maximum absolute value. The thresholded component image volumes were compared to DMN ROI. The counts of voxels which were true positive, false positive, true negative, and false negative were calculated, where the DMN ROI was treated as the ground truth. The average true positive rates, false positive rates, true negative rates, and false negative rates for each registration type were calculated. These values can be seen in Table \ref{tab:spectr-avg-rates}. The rates were compared for the traditionally registered and DAG-registered sequences. While none of the rates were statistically significant at even $ p < 0.05$, the rates were better for the DAG-registered sequences than for the traditionally registered sequences. 
 
 \section{Preadolescent Cohort}
 
