@@ -96,7 +96,39 @@ The FD and DVARS metrics for each image volume were compared to the usability cr
 
 To determine the statistical significance of the differences in the number of image volumes meeting each threshold, a series of independent 2 sample t-tests were performed. For each test, two types of sequences were chosen. The distributions of samples were the numbers of image volumes in each sequence meeting the usability threshold of interest. The null hypotheses for the t-tests were that the number of volumes meeting the threshold for each sequence type were the same and the alternative hypothesis was that this number was different. The complete set of results can be seen in Table \ref{tab:spectr-power-ttest}. The only statistically significant differences in usability counts were for the number of image volumes meeting the FD threshold. The numbers of registered image volumes meeting the FD threshold for both registration types were significantly different from the counts for the original image sequences at $p < 0.005$. The difference between the two registration types was not significant ($p = 0.127$).
 
-The distributions of the FD and DVARS metrics underwent pairwise comparison via sequence type for each subject. The pairwise comparisons were performed using the Kolmogorov-Smirnov test. The Kolmogorov-Smirnov test evaluates the difference between a pair of probability distributions. The FD and DVARS distributions were significantly different between the original and traditionally registered sequences and the original and DAG-registered sequences at $p < 0.005$. Between the traditionally registered and DAG-registered sequences, 40 sequences (44.4\%) had different FD distributions at $p < 0.05$ and 27 sequences (30.0\%) had different FD at $p < 0.005$. The two types of registrations only had 3 sequences (3.33\%) with different DVARS distributions at $p < 0.05$. This information can be found in table format in Tables \ref{tab:spectr-fd-kstest} and \ref{tab:spectr-dvars-kstest}.
+\begin{table}[]
+\centering
+\caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different FD distributions.}
+\label{tab:spectr-fd-kstest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 1 ($S_1$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 2 ($S_2$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.05\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.005\end{tabular}} \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 90 & 90 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 90 & 90 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 40 & 27 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had different DVARS distributions.}
+\label{tab:spectr-dvars-kstest}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 1 ($S_1$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ Type 2 ($S_2$)\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.05\end{tabular}} &
+  \textbf{\begin{tabular}[c]{@{}c@{}}\# Sequences \\ p \textless 0.005\end{tabular}} \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}Traditionally\\ Registered\end{tabular} & 90 & 90 \\ \hline
+Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 90 & 90 \\ \hline
+\begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 3  & 0  \\ \hline
+\end{tabular}
+\end{table}
+
+The distributions of the FD and DVARS metrics underwent pairwise comparison via sequence type for each subject. The pairwise comparisons were performed using the Kolmogorov-Smirnov test. The Kolmogorov-Smirnov test evaluates the difference between a pair of probability distributions. The results of these comparisons can be found in Tables \ref{tab:spectr-fd-kstest} and \ref{tab:spectr-dvars-kstest}. The FD and DVARS distributions were significantly different between the original and traditionally registered sequences and the original and DAG-registered sequences at $p < 0.005$. Between the traditionally registered and DAG-registered sequences, 40 sequences (44.4\%) had different FD distributions at $p < 0.05$ and 27 sequences (30.0\%) had different FD at $p < 0.005$. The two types of registrations only had 3 sequences (3.33\%) with different DVARS distributions at $p < 0.05$. 
 
 Overall, the primary finding in the comparison of the registration techniques for the simulated data is the statistically significant decrease in FD by both registration types. There was also a decrease in the DVARS values for both registration types, but not a statistically significant one.
 
@@ -677,7 +709,7 @@ Overall, the distributions of the similarity metric matrices between the three s
 
 \subsubsection{Volume Registration: Power Thresholds}
 
-\begin{figure}[t]
+\begin{figure}[]
 	\centering
 	\begin{subfigure}{0.4\textwidth}
 		\centering
@@ -829,8 +861,6 @@ The FD distributions were not significantly different for the original and regis
 \end{tabular}
 \end{table}
 
-\clearpage
-
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{6/figures/fetal-placenta-mi-box.png}
@@ -875,8 +905,6 @@ The FD distributions were not significantly different for the original and regis
 \end{tabular}
 \end{table}
 
-\clearpage
-
 The image volumes across each sequence were compared by calculating the similarity between volume $i$ to volume $j$ and storing the results in row $i$ column $j$ of a 2D matrix for that sequence's similarity metric. The similarity metrics used for these comparisons were the Dice metric and the MI metric. The distributions of the values of each metric for each sequence type can be seen in Figure \ref{fig:fetal-placenta-dice-box} and Figure \ref{fig:fetal-placenta-mi-box} for the Dice and MI matrices, respectively. These distributions were compared by performing two-sample t-tests on the minimum, first quartile, median, third quartile, and maximum values for each sequence type. 
 
 Table \ref{tab:fetal-placenta-dice-ttest} shows the results of the t-tests comparing the descriptive statistics for the Dice matrices. The minimum values, first quartiles, and medians were statistically different at $p < 0.005$ for the original and traditionally registered sequences as well as for the original and DAG-registered sequences. There was no significant difference between the third quartiles and the maximum values between the original and registered sequences. Additionally, there was no significant difference between the descriptive statistics for the traditionally and DAG-registered sequences.
@@ -920,11 +948,64 @@ The distributions of the matrix values were compared on a subject level. These c
 
 The similarity matrices for the placenta images suggest that the two registration types produce sequences which have similarity distributions which are different from those of the original sequences. Based on the Kolmorgov-Smirnov tests of the distributions of the similarity matrices, these differences are more significant for the DAG-based registration than for the traditional registration. The two registration types differ in the metric distributions for some images, but over a population these differences are not significant.
 
-\section{Characterizing Motion}
+\section{Characterizing Motion Across Clinical Groups}
+
+Between the preadolescent, neonatal, and fetal brain images, we have a fairly large set of images. The images come from a population which is diverse and well represented in two areas: disease status and general patient age group. In this section, we compare groups of images identified using only the metrics discussed earlier in this chapter to these two groups of interest. 
+
+As the goal of this analysis is to characterize patient motion, only the metrics for the original, unregistered sequences were used. These metrics exist in high dimensional spaces. In the high dimensional space, outlier vectors more than three standard deviations from the mean vector were removed. The remaining feature vectors were clustered in the high dimensional spaces and then projected into 2D spaces for visualization purposes.
+
+\subsection{CHD and Control}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{6/figures/bold-2d-all-cohort.png}
+\caption{The data for the four metrics used to evaluate motion in the clinical brain images projected using different methods into 2D space labeled by CHD/Control status.}
+\label{fig:mocha-cohorts-data-2d}
+\end{figure}
+
+\begin{figure}[]
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/cohort-bold-fd-sns-agg.png}
+		\caption{FD}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/cohort-bold-dvars-sns-agg.png}
+		\caption{DVARS}
+	\end{subfigure}
+	
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/cohort-bold-dice-sns-agg.png}
+		\caption{Dice}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/cohort-bold-mi-sns-agg.png}
+		\caption{MI}
+	\end{subfigure}
+\caption{The original preadolescent, neonatal, and fetal images clustered by each metric using agglomerative clustering and labeled by disease status.}
+\label{fig:mocha-cohorts-sns-agg}
+\end{figure}
+
+The FD, DVARS, Dice matrices, and MI matrices for the original clinical brain images were projected into 2D space and labeled using each subject's disease status. The projections of this data can be seen in Figure \ref{fig:mocha-ages-data-2d}. In this figure, each column represents a different dimensionality reduction technique and each row represents a different metric type. The different dimensionality reduction techniques offer different views on the same data, though the relationships between these views is not always clear. It is very difficult to see any distinct groups of CHD or control labels in any of these views.
+
+The FD, DVARS, Dice matrices, and MI matrices were then each clustered using agglomerative clustering. Heatmaps of these clustering results can be seen in Figure \ref{fig:mocha-cohorts-sns-agg}. The columns of the heatmaps show the feature vectors used to represent each image sequence. The colorbars to the left of the heatmaps show the range of values present in each heatmap. In all four heatmaps, darker colors represent lower values. At the top of each heatmap is a row of colored labels where the blue labels indicate subjects who have CHD and the orange labels indicate control subjects. Above the row of labels is a dendrogram. The dendrogram explicitly shows the distances between the feature vectors. Each vertical bars in a dendrogram represents the distance between that feature vector and the feature vector or group of feature vectors most similar to it. The horizontal bars indicate connections between feature vectors or groups of feature vectors which are the next closest to each other.
+
+The heatmaps for the clustering results generated using the FD, DVARS, and MI metrics each show several distinct vertical bands representing clusters of similar feature vectors. The heatmap for the Dice metrics is less interpretable as most of the values in the heatmap are close to 1.0. In all four sets of clustering results, there are no distinguishable clusters which are mostly composed of either CHD or control subjects.
 
 \subsection{Age Groups}
 
-\begin{figure}[t]
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{6/figures/bold-2d-all-agegroup.png}
+\caption{The data for the four metrics used to evaluate motion in the clinical brain images projected using different methods into 2D space and labeled by age group.}
+\label{fig:mocha-ages-data-2d}
+\end{figure}
+
+\begin{figure}[]
 	\centering
 	\begin{subfigure}{0.49\textwidth}
 		\centering
@@ -948,36 +1029,78 @@ The similarity matrices for the placenta images suggest that the two registratio
 		\caption{MI}
 	\end{subfigure}
 \caption{The preadolescent, neonatal, and fetal images clustered by each metric using agglomerative clustering and labeled by age group.}
-\label{fig:mochar-ages-sns-agg}
+\label{fig:mocha-ages-sns-agg}
 \end{figure}
 
-\clearpage
+The three age groups of interest were preadolescent, neonatal, and fetal. Figure \ref{fig:mocha-ages-data-2d} shows the motion metrics projected into 2D and labeled with the correct age groups. The blue labels indicate preadolesent subjects, the orange labels indicate neonatal subjects, and the green labels indicate fetal subjects. In this figure, the first three rows of the first column (PCA of FD, DVARS, and Dice) show highly concentrated groups of subjects with some sparse, distant outliers. In the first three rows of the second and third columns (t-SNE and UMAP for FD, DVARS, and Dice), the preadolescent and fetal groups are mostly separate and the neonatal subjects span these groups. In the last row of all three columns (PCA, t-SNE, and UMAP for MI), groups of subjects from the different age groups are clearly visible despite some overlap. 
 
-\subsection{CHD and Control}
+The four types of metrics were clustered using agglomerative clustering. The agglomerative clustering results labeled using the age groups can be seen in Figure \ref{fig:mocha-ages-sns-agg}. The same clusters present in the heatmaps of Figure \ref{fig:mocha-cohorts-sns-agg} can be seen in these heatmaps, but the age group labels are more clearly related to the clusters in the DVARS and MI heatmaps.
 
-\begin{figure}[t]
-	\centering
-	\begin{subfigure}{0.49\textwidth}
-		\centering
-		\includegraphics[width=1.0\textwidth]{6/figures/cohort-bold-fd-sns-agg.png}
-		\caption{FD}
-	\end{subfigure}
-	\begin{subfigure}{0.49\textwidth}
-		\centering
-		\includegraphics[width=1.0\textwidth]{6/figures/cohort-bold-dvars-sns-agg.png}
-		\caption{DVARS}
-	\end{subfigure}
-	
-	\begin{subfigure}{0.49\textwidth}
-		\centering
-		\includegraphics[width=1.0\textwidth]{6/figures/cohort-bold-dice-sns-agg.png}
-		\caption{Dice}
-	\end{subfigure}
-	\begin{subfigure}{0.49\textwidth}
-		\centering
-		\includegraphics[width=1.0\textwidth]{6/figures/cohort-bold-mi-sns-agg.png}
-		\caption{MI}
-	\end{subfigure}
-\caption{The preadolescent, neonatal, and fetal images clustered by each metric using agglomerative clustering and labeled by CHD/Control status.}
-\label{fig:mochar-cohorts-sns-agg}
+In the heatmap for clustering performed with DVARS feature vectors, the brightest uniform band mostly consists of fetal subjects. The darker, more variable band next to the group of fetal subjects is primarily composed of neonatal subjects. Groups of preadolescent subjects can also be easily identified. 
+
+Clusters of subjects from the same age group can also be clearly identified in the heatmap for the MI feature vectors. The bright, wide vertical band encompassing the left half of the heatmap consists of subjects mostly from the preadolescent cohort. The darkest vertical bands on the right of the heatmap are made of almost exclusively fetal subjects. The clusters between the preadolescent group and the neonatal group comprise the neonatal subjects and some preadolescent subjects. 
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{6/figures/bold-mi-agegroup.png}
+\caption{The results of clustering the clinical images using the MI matrices and the age group labels.}
+\label{fig:mocha-ages-mi-bold}
 \end{figure}
+
+The MI feature vectors were used to perform k-means clustering and spectral clustering in addition to the agglomerative clustering. Figure \ref{fig:mocha-ages-mi-bold} shows a grid of scatter plots of the original data and the clustering results. The feature vectors in the first column are labeled with the true age group labels of the data. The vectors in the second, third, and fourth columns are labeled using the labels produced by k-means, spectral, and agglomerative clustering, respectively, where the number of clusters is three. 
+
+\begin{table}[]
+\centering
+\caption{The composition of age groups in each cluster produced using the MI feature vectors and k-means clustering.}
+\label{tab:mocha-mi-kmeans}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Label} & \multicolumn{1}{l|}{\textbf{Cluster 1}} & \multicolumn{1}{l|}{\textbf{Cluster 2}} & \multicolumn{1}{l|}{\textbf{Cluster 3}} \\ \hline
+\textbf{Preadolescent} & 271 & 3   & 28  \\ \hline
+\textbf{Neonatal}      & 45  & 8   & 86  \\ \hline
+\textbf{Fetal}         & 0   & 122 & 1   \\ \hline
+\textbf{Total}         & 316 & 133 & 115 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{The composition of age groups in each cluster produced using the MI feature vectors and spectral clustering.}
+\label{tab:mocha-mi-spectral}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Label} & \multicolumn{1}{l|}{\textbf{Cluster 1}} & \multicolumn{1}{l|}{\textbf{Cluster 2}} & \multicolumn{1}{l|}{\textbf{Cluster 3}} \\ \hline
+\textbf{Preadolescent} & 300 & 1 & 1 \\ \hline
+\textbf{Neonatal}      & 139 & 0 & 0 \\ \hline
+\textbf{Fetal}         & 123 & 0 & 0 \\ \hline
+\textbf{Total}         & 562 & 1 & 1 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{The composition of age groups in each cluster produced using the MI feature vectors and agglomerative clustering.}
+\label{tab:mocha-mi-agg}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Label} & \multicolumn{1}{l|}{\textbf{Cluster 1}} & \multicolumn{1}{l|}{\textbf{Cluster 2}} & \multicolumn{1}{l|}{\textbf{Cluster 3}} \\ \hline
+\textbf{Preadolescent} & 282 & 19 & 1   \\ \hline
+\textbf{Neonatal}      & 58  & 76 & 5   \\ \hline
+\textbf{Fetal}         & 0   & 1  & 122 \\ \hline
+\textbf{Total}         & 340 & 96 & 128 \\ \hline
+\end{tabular}
+\end{table}
+
+The composition of the clusters produced by each type of clustering can be seen in Tables \ref{tab:mocha-mi-kmeans}, \ref{tab:mocha-mi-spectral}, and \ref{tab:mocha-mi-agg}. Table \ref{tab:mocha-mi-spectral} shows that spectral clustering was not able to identify three meaningful clinical groups using the MI feature vectors. The frequency counts in Tables \ref{tab:mocha-mi-kmeans} and \ref{tab:mocha-mi-agg} were comparable despite the different clustering methods. The results of this cluster analysis suggest that there are detectable differences in the rs-fMRIs of different age groups of patients from different age groups.
+
+\section{Summary}
+
+In this chapter, we first compared the rs-fMRIs before and after registration for the simulated and clinical images. Comparing the FD and DVARS metrics for the simulated, preadolescent, neonatal, and fetal brain images to the usability threshold did showed that the two registration types had comparable effects with respect to recovering image volumes to the usability standards. Between these four data sets, there were slightly different impacts of each registration type on each cohort, but the registration techniques did not recover statistically significantly different numbers of image volumes. The placenta images, however, demonstrated a statisticially significant increase in the number of image volumes meeting the DVARS threshold and the pair of thresholds after registration.
+
+The FD and DVARS metrics for the placenta images exhibited an increase in FD values but a decrease of DVARS values after registration. While both registration types demonstrated this behavior, the decrease in DVARS metrics after DAG-based registration was greater than the decrease after traditional registration.
+
+The rs-fMRIs were also compared using matrices of similarity metrics where the value at every row $i$ and column $j$ was the similarity between volumes $i$ and $j$ in the same image sequence. The purpose of these matrices was to better characterize the positional and signal changes due to motion throughout the image sequence. Analysis of the sequence duration motion in the simulated data set showed that the DAG-based registration was better at improving the range and quartile values of each similarity  metric from the original sequences than the traditional registration was.
+
+One additional analysis on the simulated images was used to compare the traditional and DAG-based registration techniques. The registered images underwent independent component analysis. The components for each image were compared to the DMN ROI to identify the component which correlated best with the simulated BOLD signal. The best matching components were compared voxelwise to the DMN ROI to determine the number true positive, false positive, true negative, and false negative identifications of component voxels as belonging to the DMN ROI. The DAG-based registration had a higher true positive rate and a lower false positive rate (0.623 and 0.00996) than the traditional registration did (0.587 and 0.104).
+
+After analyzing the volume registration techniques, the patterns of motion in the clinical brain images were characterized for two categories of interest. No detectable groups were identified when the metrics for the original image sequences were clustered and labeled according to disease status. However, analysis of the clusters labeled according to age group suggests that there may be detectable differences in the patterns of motion between subjects from different age groups.

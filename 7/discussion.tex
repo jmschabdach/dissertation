@@ -1,11 +1,7 @@
 \chapter{DISCUSSION}
 \label{ch:discussion}
 
-\section{Cohort-Level Analysis}
-
-Resting-state BOLD MR images are used to evaluate the functional architecture of a patient's brain. Because resting-state BOLD images are highly susceptible to motion, development of strong post-acquisition motion correction techniques is vital. Current pipelines for mitigating motion after sequence acquisition vary in terms of efficacy and effectiveness, but all begin with global volume registration. In this study, we compared the corrective performance of two global volume registration methods, the traditional framework and a novel DAG-based framework, on a set of 17 neonatal rs-fMRIs. 
-
-The correlation ratio matrices, FD, and DVARS values were calculated for each sequence. The decrease in the mean and standard deviations of the correlation ratio matrices for the registered sequences indicate that global volume registration reduces some effects of motion in rs-fMRIs. The histograms of the FD and DVARS values in the registered sequences show that the DAG-based method was better able to correct volumes to meet Power et al’s thresholds than the traditional registration method. These results indicate that the DAG-based global registration method is better able to reduce the effects of motion than the traditional global registration method when correcting motion in neonatal images. While no entire sequences were recovered, some high-motion volumes within each sequence were recovered by the DAG-based registration method that were not recovered by the traditional registration method. 
+\section{Volume Registration}
 
 \subsection{Simulated Cohort}
 
@@ -21,10 +17,20 @@ This limitation is unique to the fetal images. Existing pre-processing pipelines
 
 Alternatively, the field of computer vision offers some SOMETHING.
 
-\section{Lifespan Analysis}
-
 \textbf{Registration fixes positional effects of motion, not spin history or susceptibility effects}
 Subject motion during rs-MRI scans affects both the recorded position and orientation of the subject as well as the established magnetic spin gradients within the skull. The DAG-based technique can correct the positional effects of motion, but it cannot correct the effects of the motion that disrupt the magnetic spin gradients. Methods for prospectively estimating subject motion exist and can be used to change slice positions in each volume during acquisition. Retrospective techniques to correct for this effect will require shot-to-shot modeling of macroscopic $B_0$ fields and are beyond the scope of the present research.
+
+\section{Characterizing Motion}
+
+The models used to characterize motion were able to identify the differences between general patient age group based on the metrics used to measure motion in the original sequences.
+
+\subsection{Limitations}
+
+\subsection{Future Work}
+
+Additional analyses could be performed to further evaluate the computer detectable differences in patient groups. The models presented in the previous chapter were generated each using a single metric type. Each metric only measures one property of the image volumes. It is possible that combinations of metrics measuring different properties could be used to better separate patient groups. For example, the combination of the FD values which measure the positional changes due to motion and the DVARS values which measure overall signal changes could be combined to comprehensively categorize subjects based on the effects of motion, BOLD signal change, and background noise.
+
+
 
 \section{Relation to Existing Work}
 

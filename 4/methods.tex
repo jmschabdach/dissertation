@@ -242,176 +242,176 @@ UMAP was developed under the belief that local structure is more important than 
 
 We performed a preliminary comparison of PCA, t-SNE, and UMAP for visualizing high dimensional data using TensorFlow's Projector tool \cite{TFProjector}. This tool is a web interface for visualizing high dimensional data from either built-in data sets or data sets uploaded by the user. It supports all three of the dimensionality reduction methods discussed previously in this section as well as a customizable projection of the entire data set to two or three feature vectors. The PCA, t-SNE, and UMAP visualizations of the popular MNIST handwriting data set can be seen in Figure \ref{ch4:fig:data-viz}. 
 
-\section{Predicting Patient Outcomes Using Motion Patterns}
+%\section{Predicting Patient Outcomes Using Motion Patterns}
+%
+%In addition to examining the patterns of patient motion using unsupervised machine learning techniques, these patterns will also be used with supervised machine learning techniques to determine the relationship between motion types and clinical outcomes. In this section, we first present several supervised machine learning methods and then discuss more generally the limitations of supervised machine learning and the metrics we will use to evaluate our models.
+%
+%\subsection{Regression}
+%
+%The first supervised machine learning method we discuss is regression. In general, regression maps a set of features to a set of outcomes. Each feature is weighted based on its contribution to the outcome. Features which are more relevant to the outcome have larger weights, while less important features have smaller weights. 
+%
+%The simplest version of regression is linear regression. Linear regression is used when the outcome being predicted has continuous values: a common example would be using the size of a house to predict its cost. The cost, $y$, would be modeled as
+%
+%\begin{equation}
+%y = w_0 + w*x
+%\end{equation}
+%
+%\noindent where $w$ is the weight assigned to the feature $x$, which is the size of the house, and $w_0$ is the weight for the bias in the model. As more features are added to the model, this equation generalizes to 
+%
+%\begin{equation}
+%y = w_0 + \sum_{i \in N} w_i*x_i
+%\end{equation}
+%
+%\noindent where $w_i$ is the weight for feature $i$, $x_i$ in the set of $N$ features. 
+%
+%Alternatively, if the goal was to predict whether a house was owned or rented, linear regression would be a poor model choice. The goal of this problem is to identify a nominal class, not a value in a continuous interval. This type of problem is better suited for logistic regression.
+%
+%Logistic regression takes the equation for linear regression and passes it through the logistic function to map it to a range of $[0, 1]$. The logistic function is 
+%
+%\begin{equation}
+%f(\pi) = \frac{1}{1+e^{\pi}}
+%\end{equation}
+%
+%\noindent which means that a logistic regression models takes the form
+%
+%\begin{equation}
+%y = \frac{1}{1+e^{(w_0 + \sum_{i \in N} w_i*x_i)}}
+%\end{equation}
+%
+%This form of a logistic regression model is for binary, nominal outcomes, though multinomial logistic regression can model three or more outcomes and ordinal logistic regression can model ordered, discrete outcomes. For the purposes of this document, when we say logistic regression, we mean the form which models binary, nominal outcomes. 
+%
+%%\textbf{STRENGTHS AND WEAKNESSES} 
+%The greatest strength and weakness of regression models is that they model linear relationships well. Linear models are fairly interpretable: the weights assigned to each feature in the linear model shows the importance the model believes that feature is. Interpretability is an important aspect of machine learning because people are more likely to trust a model if they can understand how it reached its conclusions. Unfortunately, it does not matter how interpretable the model is if the model is ill-suited for the data set. In particular, regression may have difficulty fitting data with nonlinear relationships.
+%
+%\subsection{Support Vector Machine}
+%
+%The mathematical framework for support vector machines (SVMs) was developed in 1963. In its original form, it could only be used to classify linearly separable data. SVMs treat data samples with $n$ features as points in $n$-dimensional space. The SVM is composed of a collection of binary hyperplane classifiers. Binary hyperplane classifiers label data as belonging to a class or not belonging to that class depending on which side of the hyperplane the data is located. For a single binary hyperplane, the ideal location and alignment of the hyperplane is calculated using the following equation
+%
+%\begin{equation}
+%\vec{w}\cdot\vec{x}+b = 0
+%\end{equation}
+%
+%\noindent where $\vec{w}$ is the vector of weights assigned to the features in $\vec{x}$ and the variable $b$ is a bias factor. This equation defines the hyperplane itself, but there are many hyperplanes that could satisfy this equation. The optimal hyperplane is determined using the support vectors. 
+%
+%The support vectors are the data points closest to the hyperplane. They define the location and orientation of the hyperplane. The space between the points on opposite sides of the hyperplane is called the margin, $d$. The optimal hyperplane is defined as the hyperplane whose $\vec{w}$ and $b$ result in the largest $d$.
+%
+%The largest $d$ occurs when the weights for the data samples are minimized. The weights indicate how important a data sample is in defining the hyperplane. Data samples which do not increase the size of $d$ (are not support vectors) should not contribute to the model. These samples should be assigned weights of $0$.
+%
+%When the ideal $\vec{w}$ and $b$ parameters have been determined, data on one side of the hyperplane is labeled as belonging to one class while the data on the other side of the hyperplane does not belong to that class. In a two class scenario, data that does not belong to one class clearly must belong to the other class. As more classes are added to a data set, the number of hyperplanes must also increase. Instead of optimizing a single hyperplane, the entire collection of hyperplanes must be optimized together.
+%
+%In some cases, data with $n$ dimensions may not be separable in $n$-dimensional space. In 1992, it was proposed that the original data could be mapped to a higher dimensional space where it would be linearly separable. The SVM could be built in that space and would still function as a linear classifier, even though it would appear to be a nonlinear classifier in the original space. Different kernel functions have been developed. 
+%
+%After a SVM model has been trained, the kernel used to map the data from $n$-dimensional space to the higher dimensional space is used to map new data to that space. The new data is assigned labels depending on where it lies in the higher dimensional space.  
+%
+%SVMs are versatile supervised learning techniques that perform well in classifying both linearly and nonlinearly separable data. By their very nature, they find the globally optimal solution. However, finding the optimal parameters for a SVM model can be a computationally expensive and complex process depending on the characteristics of the data samples.
+%
+%\subsection{LSTM Recurrent Neural Network}
+%
+%% And of course I would be remiss if I left out neural networks, the current sin du jour of supervised machine learning
+%
+%One of the most popular supervised learning algorithms is the artificial neural network. A basic artificial neural network is composed of connected layers of units modeled after neurons in a biological brain. Every artificial neural network has at least two layers: an input layer and an output layer. The number of neurons in the input layer is the same as the number of features in the data being fed to the network. The input layer is connected to the output layer by weighted edges. For a network with $n$ features in the input layer and one neuron in the output layer, the value predicted by the network 
+%for data point $\vec{x}$ is given as
+%
+%\begin{equation}
+%\label{ch4:eq:nn_01}
+%f(\vec{x}) = \vec{w} \cdot \vec{x} + b
+%\end{equation}
+%
+%\noindent where $\vec{w}$ is the weight assigned to the edge connecting each input neuron to the output neuron, $\vec{x}$ is the values of the input vector, and $b$ is an offset factor.
+%
+%Layers can be added between the input layer and the output layer to model more complex relationships. These layers are called hidden layers because they are not seen at the data input or model output. The value of each neuron in each layer can be calculated using the values of the neurons in the previous layer, which means that for two layers, Equation \ref{ch4:eq:nn_01} expands to
+%
+%\begin{equation}
+%f(\vec{x}) = \vec{w_2} (\vec{w_1} \cdot \vec{x} + b_1) + b_2
+%\end{equation}
+%
+%More generally, Equation \ref{ch4:eq:nn_01} can be written as
+%
+%\begin{equation}
+%\label{ch4:eq:nn_02}
+%f_n(\vec{x}) = \vec{w_n} f_{n-1}(\vec{x})+ b_n
+%\end{equation}
+%
+%\noindent where the dot product of the weights of the current layer $w_n$ and the output $f_{n-1}(\vec{x})$ of the previous hidden layer $n-1$ are offset by some bias factor $b_n$ to produce the output $f_n(\vec{x})$ of the current layer. For the first layer of the network, the output is calculated using Equation \ref{ch4:eq:nn_01}.
+%
+%To model nonlinear relationships in data, this equation must be generalized further to allow for activation functions. Activation functions are intended to represent the action potential firing in a biological neuron. A biological neuron is either activated or not activated, but the activation function of a neuron in an artificial neural network is not limited to binary states. For example, the output of a rectified linear unit (ReLU) is in the range $[0, \inf)$, a sigmoid function's output is in the range $(0, 1)$, and a hyperbolic tangent produces a value in the range $(-1, 1)$. Different activation functions are used for different application depending on the desired behavior of the model.
+%
+%We represent the activation function generically as $g_n(\cdot)$ and rewrite Equation \ref{ch4:eq:nn_02} as
+%
+%\begin{equation}
+%\label{ch4:eq:nn_03}
+%f_n(\vec{x}) = g_c \left( \vec{w_n} f_{n-1}(\vec{x})+ b_n \right)
+%\end{equation}
+%
+%Until this point, we have been describing feed-forward neural networks. All of the connections flow in a single direction from the input nodes to the output nodes. Networks built using a feed-forward paradigm are often used for pattern recognition or other cases where a given input is associated with a known output. However, neural networks can also have connections that skip layers, link back to previous layers, or connect to other neurons in the same layer. This type of network is called a recurrent neural network.
+%
+%One particularly interesting type of recurrent neural network is a long short-term memory (LSTM) network. LSTM networks have more complex unit structure than basic neural networks. LSTM units are composed of a memory component and three types of gates: an input gate, an output gate, and a forget gate. The memory component tracks the current value of the unit. The input gate dictates how much data being passed to the cell impacts the memory component, the forget gate dictates how long a value is stored in the memory component, and the output gate dictates the impact of the value in the memory component is used to produce the output activation of the unit. Due to the nature of the LSTM units, networks made of LSTM units have an advantage over feed-forward networks when working with time-series data. 
+%
+%One of the major drawbacks of both regression and SVMs is that the data used to train these models must be in feature vector form. Neural networks have the ability to work with more complex input data. They have been used for tasks as complex as speech recognition and video processing using the audio or video itself as input. Their ability to work with data directly is a key strength of this type of technique. However, sequential data requires more memory than feature vectors. Similarly, the structure of artificial neurons needed to process and learn from these sequences is more complex and computationally expensive than regression, SVMs, or smaller and simpler neural network structures.
+%
+%
+%\subsection{Application of Supervised Machine Learning}
+%
+%Generally, the outcomes of interest when applying supervised machine learning to medical data are some definition of normal and abnormal. We choose to perform two different analyses bases on two definitions of normal. 
+%
+%The first definition of normal is that enough motion can be removed from the image that the image is usable. The abnormal label is that the image cannot be recovered based on the patient's motion patterns.
+%
+%The second definition of normal is that the patient is functioning typically. We choose to identify the opposite of this label as ``the patient \textbf{may} not be functioning typically'' because of the heterogeneity of our data. CHD is a heterogeneous disease with many presentation types, and the neurodevelopmental disorders add another degree of granularity and complexity to a subject's clinical diagnosis. While it would be impressive to be able to build a clinical decision support tool that can diagnose a patient as having a particular form of CHD accompanied by a specific neurocognitive disorder, this goal is not the purpose of this project.
+%
+%If a machine learning model reaches 100\% accuracy on both training and test data sets, data scientists should immediately assume something has gone wrong either with the model itself or with the training and testing data. Current machine learning models suffer from the difficulty of balancing two sources of error: bias and variance. Bias is the degree to which the machine learning model matches the underlying model of the training data. Variance is the breadth of the distribution of the data from the population of interest covered by the training data. Models with low bias and high variance overfit the training data: they model the training data well but generalize poorly to new data. Conversely, models with high bias and low variance underfit the training data: they fit the training data poorly, possibly because they learned noise in the training data rather than the signal. Underfitted models fail to capture the important signals from the training data and perform poorly overall.
 
-In addition to examining the patterns of patient motion using unsupervised machine learning techniques, these patterns will also be used with supervised machine learning techniques to determine the relationship between motion types and clinical outcomes. In this section, we first present several supervised machine learning methods and then discuss more generally the limitations of supervised machine learning and the metrics we will use to evaluate our models.
+%A good model neither overfits nor underfits the training data. It has low bias and low variance, and the challenge of balancing these two sources of error has been discussed elsewhere but is important to address here to set realistic expectations about the training and testing classifications of a model. Ideally, the model will classify both training and testing data well, but it is not possible with current techniques and data availability for a model to have perfect classification of every data sample. 
 
-\subsection{Regression}
+%The ``wellness''/``goodness'' of a binary classification model is determined using a truth table. A truth table is a $2*2$ table filled with the number of occurrences where data was classified correctly and incorrectly as belonging to each class. An example table can be seen in Table \ref{ch4:tab:truthtable}.
+%
+%% Please add the following required packages to your document preamble:
+%% \usepackage{multirow}
+%\begin{table}[]
+%\caption{An example of a truth table for a binary classifier predicting the presence or absence of a condition.}
+%\label{ch4:tab:truthtable}
+%\begin{tabular}{cc|c|c|}
+%\cline{3-4}
+%\multicolumn{2}{c}{\multirow{2}{*}{}}                                                & \multicolumn{2}{|c|}{\textit{Actual}}               \\ \cline{3-4} 
+%\multicolumn{2}{c|}{}                                                                 & \textbf{Condition True} & \textbf{Condition False} \\ \hline
+%\multicolumn{1}{|c|}{\multirow{2}{*}{\textit{Predicted}}} & \textbf{Condition True}  & True Positive (TP)      & False Positive (FP)      \\ \cline{2-4} 
+%\multicolumn{1}{|c|}{}                                    & \textbf{Condition False} & False Negative (FN)     & True Negative (TN)       \\ \hline
+%\end{tabular}
+%\end{table}
 
-The first supervised machine learning method we discuss is regression. In general, regression maps a set of features to a set of outcomes. Each feature is weighted based on its contribution to the outcome. Features which are more relevant to the outcome have larger weights, while less important features have smaller weights. 
+%Various metrics can be calculated from the truth table, such as sensitivity and precision. Sensitivity measures how well the model performed at correctly identifying actually true data samples:
+%
+%\begin{equation}
+%sensitivity = TPR = \frac{TP}{TP+FN}
+%\end{equation}
+%
+%\noindent Precision measures the ratio of positive predictions to actually true data:
+%
+%\begin{equation}
+%specificity = PPV = \frac{TP}{TP+FP}
+%\end{equation}
+%
+%These metrics are also known as the true positive rate and the positive predictive value, respectively.
+%
+%These metrics are independently informative about different aspects of the model, but during training only one metric is used to evaluate a model's performance. Accuracy, for example, is a measure of how many data samples were classified correctly:
+%
+%\begin{equation}
+%A = \frac{TP+TN}{TP+TN+FP+FN}
+%\end{equation}
+%
+%We choose to use the balanced F1 score to evaluate the success of our supervised learning models. The balanced F1 score is calculated as:
+%
+%\begin{equation}
+%\begin{split}
+%F1 & = \frac{2 \cdot TPR \cdot PPV}{TPR+PPV} \\
+%& = \frac{2 \cdot TP}{2 \cdot TP + FP + FN}
+%\end{split}
+%\end{equation}
+%
+%The balanced F1 score places equal value on a model correctly identifying actually true data compared to false data as well as identifying as much actually true data as possible. Accuracy only accounts for the number of correctly classified data samples. In cases where all classes in a data set are not evenly represented, the balanced F1 score produces a more robust model than accuracy. 
 
-The simplest version of regression is linear regression. Linear regression is used when the outcome being predicted has continuous values: a common example would be using the size of a house to predict its cost. The cost, $y$, would be modeled as
-
-\begin{equation}
-y = w_0 + w*x
-\end{equation}
-
-\noindent where $w$ is the weight assigned to the feature $x$, which is the size of the house, and $w_0$ is the weight for the bias in the model. As more features are added to the model, this equation generalizes to 
-
-\begin{equation}
-y = w_0 + \sum_{i \in N} w_i*x_i
-\end{equation}
-
-\noindent where $w_i$ is the weight for feature $i$, $x_i$ in the set of $N$ features. 
-
-Alternatively, if the goal was to predict whether a house was owned or rented, linear regression would be a poor model choice. The goal of this problem is to identify a nominal class, not a value in a continuous interval. This type of problem is better suited for logistic regression.
-
-Logistic regression takes the equation for linear regression and passes it through the logistic function to map it to a range of $[0, 1]$. The logistic function is 
-
-\begin{equation}
-f(\pi) = \frac{1}{1+e^{\pi}}
-\end{equation}
-
-\noindent which means that a logistic regression models takes the form
-
-\begin{equation}
-y = \frac{1}{1+e^{(w_0 + \sum_{i \in N} w_i*x_i)}}
-\end{equation}
-
-This form of a logistic regression model is for binary, nominal outcomes, though multinomial logistic regression can model three or more outcomes and ordinal logistic regression can model ordered, discrete outcomes. For the purposes of this document, when we say logistic regression, we mean the form which models binary, nominal outcomes. 
-
-%\textbf{STRENGTHS AND WEAKNESSES} 
-The greatest strength and weakness of regression models is that they model linear relationships well. Linear models are fairly interpretable: the weights assigned to each feature in the linear model shows the importance the model believes that feature is. Interpretability is an important aspect of machine learning because people are more likely to trust a model if they can understand how it reached its conclusions. Unfortunately, it does not matter how interpretable the model is if the model is ill-suited for the data set. In particular, regression may have difficulty fitting data with nonlinear relationships.
-
-\subsection{Support Vector Machine}
-
-The mathematical framework for support vector machines (SVMs) was developed in 1963. In its original form, it could only be used to classify linearly separable data. SVMs treat data samples with $n$ features as points in $n$-dimensional space. The SVM is composed of a collection of binary hyperplane classifiers. Binary hyperplane classifiers label data as belonging to a class or not belonging to that class depending on which side of the hyperplane the data is located. For a single binary hyperplane, the ideal location and alignment of the hyperplane is calculated using the following equation
-
-\begin{equation}
-\vec{w}\cdot\vec{x}+b = 0
-\end{equation}
-
-\noindent where $\vec{w}$ is the vector of weights assigned to the features in $\vec{x}$ and the variable $b$ is a bias factor. This equation defines the hyperplane itself, but there are many hyperplanes that could satisfy this equation. The optimal hyperplane is determined using the support vectors. 
-
-The support vectors are the data points closest to the hyperplane. They define the location and orientation of the hyperplane. The space between the points on opposite sides of the hyperplane is called the margin, $d$. The optimal hyperplane is defined as the hyperplane whose $\vec{w}$ and $b$ result in the largest $d$.
-
-The largest $d$ occurs when the weights for the data samples are minimized. The weights indicate how important a data sample is in defining the hyperplane. Data samples which do not increase the size of $d$ (are not support vectors) should not contribute to the model. These samples should be assigned weights of $0$.
-
-When the ideal $\vec{w}$ and $b$ parameters have been determined, data on one side of the hyperplane is labeled as belonging to one class while the data on the other side of the hyperplane does not belong to that class. In a two class scenario, data that does not belong to one class clearly must belong to the other class. As more classes are added to a data set, the number of hyperplanes must also increase. Instead of optimizing a single hyperplane, the entire collection of hyperplanes must be optimized together.
-
-In some cases, data with $n$ dimensions may not be separable in $n$-dimensional space. In 1992, it was proposed that the original data could be mapped to a higher dimensional space where it would be linearly separable. The SVM could be built in that space and would still function as a linear classifier, even though it would appear to be a nonlinear classifier in the original space. Different kernel functions have been developed. 
-
-After a SVM model has been trained, the kernel used to map the data from $n$-dimensional space to the higher dimensional space is used to map new data to that space. The new data is assigned labels depending on where it lies in the higher dimensional space.  
-
-SVMs are versatile supervised learning techniques that perform well in classifying both linearly and nonlinearly separable data. By their very nature, they find the globally optimal solution. However, finding the optimal parameters for a SVM model can be a computationally expensive and complex process depending on the characteristics of the data samples.
-
-\subsection{LSTM Recurrent Neural Network}
-
-% And of course I would be remiss if I left out neural networks, the current sin du jour of supervised machine learning
-
-One of the most popular supervised learning algorithms is the artificial neural network. A basic artificial neural network is composed of connected layers of units modeled after neurons in a biological brain. Every artificial neural network has at least two layers: an input layer and an output layer. The number of neurons in the input layer is the same as the number of features in the data being fed to the network. The input layer is connected to the output layer by weighted edges. For a network with $n$ features in the input layer and one neuron in the output layer, the value predicted by the network 
-for data point $\vec{x}$ is given as
-
-\begin{equation}
-\label{ch4:eq:nn_01}
-f(\vec{x}) = \vec{w} \cdot \vec{x} + b
-\end{equation}
-
-\noindent where $\vec{w}$ is the weight assigned to the edge connecting each input neuron to the output neuron, $\vec{x}$ is the values of the input vector, and $b$ is an offset factor.
-
-Layers can be added between the input layer and the output layer to model more complex relationships. These layers are called hidden layers because they are not seen at the data input or model output. The value of each neuron in each layer can be calculated using the values of the neurons in the previous layer, which means that for two layers, Equation \ref{ch4:eq:nn_01} expands to
-
-\begin{equation}
-f(\vec{x}) = \vec{w_2} (\vec{w_1} \cdot \vec{x} + b_1) + b_2
-\end{equation}
-
-More generally, Equation \ref{ch4:eq:nn_01} can be written as
-
-\begin{equation}
-\label{ch4:eq:nn_02}
-f_n(\vec{x}) = \vec{w_n} f_{n-1}(\vec{x})+ b_n
-\end{equation}
-
-\noindent where the dot product of the weights of the current layer $w_n$ and the output $f_{n-1}(\vec{x})$ of the previous hidden layer $n-1$ are offset by some bias factor $b_n$ to produce the output $f_n(\vec{x})$ of the current layer. For the first layer of the network, the output is calculated using Equation \ref{ch4:eq:nn_01}.
-
-To model nonlinear relationships in data, this equation must be generalized further to allow for activation functions. Activation functions are intended to represent the action potential firing in a biological neuron. A biological neuron is either activated or not activated, but the activation function of a neuron in an artificial neural network is not limited to binary states. For example, the output of a rectified linear unit (ReLU) is in the range $[0, \inf)$, a sigmoid function's output is in the range $(0, 1)$, and a hyperbolic tangent produces a value in the range $(-1, 1)$. Different activation functions are used for different application depending on the desired behavior of the model.
-
-We represent the activation function generically as $g_n(\cdot)$ and rewrite Equation \ref{ch4:eq:nn_02} as
-
-\begin{equation}
-\label{ch4:eq:nn_03}
-f_n(\vec{x}) = g_c \left( \vec{w_n} f_{n-1}(\vec{x})+ b_n \right)
-\end{equation}
-
-Until this point, we have been describing feed-forward neural networks. All of the connections flow in a single direction from the input nodes to the output nodes. Networks built using a feed-forward paradigm are often used for pattern recognition or other cases where a given input is associated with a known output. However, neural networks can also have connections that skip layers, link back to previous layers, or connect to other neurons in the same layer. This type of network is called a recurrent neural network.
-
-One particularly interesting type of recurrent neural network is a long short-term memory (LSTM) network. LSTM networks have more complex unit structure than basic neural networks. LSTM units are composed of a memory component and three types of gates: an input gate, an output gate, and a forget gate. The memory component tracks the current value of the unit. The input gate dictates how much data being passed to the cell impacts the memory component, the forget gate dictates how long a value is stored in the memory component, and the output gate dictates the impact of the value in the memory component is used to produce the output activation of the unit. Due to the nature of the LSTM units, networks made of LSTM units have an advantage over feed-forward networks when working with time-series data. 
-
-One of the major drawbacks of both regression and SVMs is that the data used to train these models must be in feature vector form. Neural networks have the ability to work with more complex input data. They have been used for tasks as complex as speech recognition and video processing using the audio or video itself as input. Their ability to work with data directly is a key strength of this type of technique. However, sequential data requires more memory than feature vectors. Similarly, the structure of artificial neurons needed to process and learn from these sequences is more complex and computationally expensive than regression, SVMs, or smaller and simpler neural network structures.
-
-
-\subsection{Application of Supervised Machine Learning}
-
-Generally, the outcomes of interest when applying supervised machine learning to medical data are some definition of normal and abnormal. We choose to perform two different analyses bases on two definitions of normal. 
-
-The first definition of normal is that enough motion can be removed from the image that the image is usable. The abnormal label is that the image cannot be recovered based on the patient's motion patterns.
-
-The second definition of normal is that the patient is functioning typically. We choose to identify the opposite of this label as ``the patient \textbf{may} not be functioning typically'' because of the heterogeneity of our data. CHD is a heterogeneous disease with many presentation types, and the neurodevelopmental disorders add another degree of granularity and complexity to a subject's clinical diagnosis. While it would be impressive to be able to build a clinical decision support tool that can diagnose a patient as having a particular form of CHD accompanied by a specific neurocognitive disorder, this goal is not the purpose of this project.
-
-If a machine learning model reaches 100\% accuracy on both training and test data sets, data scientists should immediately assume something has gone wrong either with the model itself or with the training and testing data. Current machine learning models suffer from the difficulty of balancing two sources of error: bias and variance. Bias is the degree to which the machine learning model matches the underlying model of the training data. Variance is the breadth of the distribution of the data from the population of interest covered by the training data. Models with low bias and high variance overfit the training data: they model the training data well but generalize poorly to new data. Conversely, models with high bias and low variance underfit the training data: they fit the training data poorly, possibly because they learned noise in the training data rather than the signal. Underfitted models fail to capture the important signals from the training data and perform poorly overall.
-
-A good model neither overfits nor underfits the training data. It has low bias and low variance, and the challenge of balancing these two sources of error has been discussed elsewhere but is important to address here to set realistic expectations about the training and testing classifications of a model. Ideally, the model will classify both training and testing data well, but it is not possible with current techniques and data availability for a model to have perfect classification of every data sample. 
-
-The ``wellness''/``goodness'' of a binary classification model is determined using a truth table. A truth table is a $2*2$ table filled with the number of occurrences where data was classified correctly and incorrectly as belonging to each class. An example table can be seen in Table \ref{ch4:tab:truthtable}.
-
-% Please add the following required packages to your document preamble:
-% \usepackage{multirow}
-\begin{table}[]
-\caption{An example of a truth table for a binary classifier predicting the presence or absence of a condition.}
-\label{ch4:tab:truthtable}
-\begin{tabular}{cc|c|c|}
-\cline{3-4}
-\multicolumn{2}{c}{\multirow{2}{*}{}}                                                & \multicolumn{2}{|c|}{\textit{Actual}}               \\ \cline{3-4} 
-\multicolumn{2}{c|}{}                                                                 & \textbf{Condition True} & \textbf{Condition False} \\ \hline
-\multicolumn{1}{|c|}{\multirow{2}{*}{\textit{Predicted}}} & \textbf{Condition True}  & True Positive (TP)      & False Positive (FP)      \\ \cline{2-4} 
-\multicolumn{1}{|c|}{}                                    & \textbf{Condition False} & False Negative (FN)     & True Negative (TN)       \\ \hline
-\end{tabular}
-\end{table}
-
-Various metrics can be calculated from the truth table, such as sensitivity and precision. Sensitivity measures how well the model performed at correctly identifying actually true data samples:
-
-\begin{equation}
-sensitivity = TPR = \frac{TP}{TP+FN}
-\end{equation}
-
-\noindent Precision measures the ratio of positive predictions to actually true data:
-
-\begin{equation}
-specificity = PPV = \frac{TP}{TP+FP}
-\end{equation}
-
-These metrics are also known as the true positive rate and the positive predictive value, respectively.
-
-These metrics are independently informative about different aspects of the model, but during training only one metric is used to evaluate a model's performance. Accuracy, for example, is a measure of how many data samples were classified correctly:
-
-\begin{equation}
-A = \frac{TP+TN}{TP+TN+FP+FN}
-\end{equation}
-
-We choose to use the balanced F1 score to evaluate the success of our supervised learning models. The balanced F1 score is calculated as:
-
-\begin{equation}
-\begin{split}
-F1 & = \frac{2 \cdot TPR \cdot PPV}{TPR+PPV} \\
-& = \frac{2 \cdot TP}{2 \cdot TP + FP + FN}
-\end{split}
-\end{equation}
-
-The balanced F1 score places equal value on a model correctly identifying actually true data compared to false data as well as identifying as much actually true data as possible. Accuracy only accounts for the number of correctly classified data samples. In cases where all classes in a data set are not evenly represented, the balanced F1 score produces a more robust model than accuracy. 
-
-\section{Describing Motion Patterns}
-
-In previous sections we describe practical knowledge about how fetal, neonatal, preadolescent, and adult patients move in different ways during MRI scans. We wish to quantify these movement patterns using the metrics described earlier in this chapter and identify appropriate terminology that can be used to describe them.
+%\section{Describing Motion Patterns}
+%
+%In previous sections we describe practical knowledge about how fetal, neonatal, preadolescent, and adult patients move in different ways during MRI scans. We wish to quantify these movement patterns using the metrics described earlier in this chapter and identify appropriate terminology that can be used to describe them.
 
 
 %\subsection{Demographic-Related Motion Patterns} % in different populations to formally describe age-group or clinical status related motion patterns.
