@@ -62,3 +62,45 @@ In our study, patient age was described only as fetal, neonatal, or preadolescen
 In the fetal cohort, there may be motion characteristics linked to post-conceptual age. As a fetus grows, the amount of room in the uterus in which it can move decreases. However, as the fetal brain develops, the fetus may begin to move in different ways to test its biological systems. 
 
 Studies involving neonatal cohorts often track two ages for the subjects: the post-conceptual age and the age since birth. The relationship between these two ages and a neonate's brain development could impact the amount of motion exhibited during a scan.
+
+
+\section{Limitations}
+
+\subsection{Spin History and Susceptibility Effects of Motion}
+
+\subsection{Runtime}
+\hl{
+One topic we have not yet addressed in this work is the amount of time needed to perform the registrations and motion measurements. Herein, we compare the amount of time needed to run each registration framework. Assuming each operation for the same initial sequence is performed on the same computing hardware, the operations are limited by the number of image volumes in the rs-fMRI, $N$. We define $r$ as the maximum amount of time to perform one pairwise volume registration.}
+
+\hl{In traditional registration, the contents of a 4D image sequence containing $N$ image volumes are all aligned to the contents of a single image volume. At face value, the runtime $R$ of the registration is $r*N$. However, there are no dependencies of the registration of one volume in the registration of another volume. Therefore, all registrations can theoretically be performed at the same time in parallel. Parallelizing the registrations for a single sequence means that the expected runtime of the sequence registration should decrease to }
+
+\begin{equation}
+R_{trad} = \frac{r*N}{h*p}
+\end{equation} 
+
+\hl{\noindent where $h$ is a factor specific to the hardware properties of the computer being used and $p$ is the degree to which the registration can be parallelized. In a scenario where the computer has enough power and resources to run all $N$ pairwise volume registrations in parallel, the runtime decreases to $\frac{r}{h}$. 
+
+This decrease due to parallelization is only an option for the traditional registration framework. For the DAG-based registration framework, each pairwise volume registration is dependent on the affine transformation produced by the previous volume's registration. While this dependency accounts for the important temporal relationships between subsequent image volumes, it means that the image volume registrations must be performed in series, not in parallel. As a result, the runtime for the DAG-based registration is}
+
+\begin{equation}
+R_{dag} = \frac{r*N}{h}.
+\end{equation}
+
+\begin{table}[]
+\centering
+\caption{The statistics for the runtimes of the registrations of 17 healthy neonatal subjects demonstrate that runtime of registration is not a trivial concern.}
+\label{tab:runtime-example}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Registration Framework} & \textbf{Traditional} & \textbf{DAG-based} \\ \hline
+\textit{Average (HH:MM:SS)}     & 00:41:55.25          & 01:38:20.02        \\ \hline
+\textit{Median (HH:MM:SS)}      & 00:44:44.20          & 01:38:42.63        \\ \hline
+\textit{Maximum (HH:MM:SS)}     & 01:21:46.95          & 03:02:36.10        \\ \hline
+\end{tabular}
+\end{table}
+
+\hl{An example of the power of parallelization can be seen in} Table \ref{tab:runtime-example}. \hl{This table shows the average, median, and maximum runtimes for both registration types for a subset of high-motion sequences belonging to healthy neonatal subjects on a desktop computer with 8 cores. Each of the runtime statistics for the DAG-based registration is almost twice as much as the corresponding runtime statistic for the traditional registration.}
+
+\hl{There are at least two occasions where the runtime of the registration frameworks may suggest the use of the traditional registration over the DAG-based registration. The first occasion is when the registered image is needed urgently. The second is when there are many registrations to perform. Access to computational clusters may help decrease the registration time, but this decrease could be expected for both frameworks.}
+
+\hl{One of the areas being considered for future work is the development of a hybrid registration framework. In this hybrid framework, a sequence would undergo both traditional and DAG-based registration independently. Then, the corresponding traditional and DAG-based results would be compared for each image volume. The registered version of the image volume that either is more similar to the stationary image volume or has less motion compared to the previous image volume will be used in the sequence of registered image volumes.}
