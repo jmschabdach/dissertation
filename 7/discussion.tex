@@ -75,15 +75,15 @@ One topic we have not yet addressed in this work is the amount of time needed to
 \hl{In traditional registration, the contents of a 4D image sequence containing $N$ image volumes are all aligned to the contents of a single image volume. At face value, the runtime $R$ of the registration is $r*N$. However, there are no dependencies of the registration of one volume in the registration of another volume. Therefore, all registrations can theoretically be performed at the same time in parallel. Parallelizing the registrations for a single sequence means that the expected runtime of the sequence registration should decrease to }
 
 \begin{equation}
-R_{trad} = \frac{r*N}{h*p}
+R_{trad} = \frac{hrN}{p}
 \end{equation} 
 
-\hl{\noindent where $h$ is a factor specific to the hardware properties of the computer being used and $p$ is the degree to which the registration can be parallelized. In a scenario where the computer has enough power and resources to run all $N$ pairwise volume registrations in parallel, the runtime decreases to $\frac{r}{h}$. 
+\hl{\noindent where $h$ is a factor specific to the hardware properties of the computer being used and $p$ is the degree to which the registration can be parallelized. In a scenario where the computer has enough power and resources to run all $N$ pairwise volume registrations in parallel, the runtime decreases to $hr$. 
 
 This decrease due to parallelization is only an option for the traditional registration framework. For the DAG-based registration framework, each pairwise volume registration is dependent on the affine transformation produced by the previous volume's registration. While this dependency accounts for the important temporal relationships between subsequent image volumes, it means that the image volume registrations must be performed in series, not in parallel. As a result, the runtime for the DAG-based registration is}
 
 \begin{equation}
-R_{dag} = \frac{r*N}{h}.
+R_{dag} = hrN.
 \end{equation}
 
 \begin{table}[]
@@ -102,5 +102,13 @@ R_{dag} = \frac{r*N}{h}.
 \hl{An example of the power of parallelization can be seen in} Table \ref{tab:runtime-example}. \hl{This table shows the average, median, and maximum runtimes for both registration types for a subset of high-motion sequences belonging to healthy neonatal subjects on a desktop computer with 8 cores. Each of the runtime statistics for the DAG-based registration is almost twice as much as the corresponding runtime statistic for the traditional registration.}
 
 \hl{There are at least two occasions where the runtime of the registration frameworks may suggest the use of the traditional registration over the DAG-based registration. The first occasion is when the registered image is needed urgently. The second is when there are many registrations to perform. Access to computational clusters may help decrease the registration time, but this decrease could be expected for both frameworks.}
+
+section{Future Work}
+
+This study focused on the motion of CHD and healthy pediatric subjects. As the prognosis for patients with CHD improves, their life expectancy also increases. The aging CHD population presents new questions about the connection between CHD and neurocognitive challenges associated with aging. As patients age, there is an expectation that their images will contain less motion for a time. If a patient begins to show signs of cognitive impairment due to aging, it can be expected that their images will begin to contain more motion as their neurocognitive state deteriorates. 
+
+We would like to evaluate the impact of the two types of registration on a cohort of older adult subjects. The Alzheimer's Disease Neuroimaging Initiative has been collecting medical imaging, cognitive testing, genetic, and other types of data from adult subjects enrolled in their multisite study of Alzheimer's disease. Their subjects range from elderly controls with healthy brains, subjects with mild cognitive impairments, and Alzheimer's disease patients. Of these groups, we expect that healthy controls would exhibit different motion patterns than subjects with different degrees of cognitive impairments. The effects of different motion patterns of the adult cohorts may be more easily recovered using the DAG-based registration than the traditional registration.
+
+In the current data set, there may be groups of subjects within each pediatric population who exhibit more similar motion patterns than other members of that population. Specifically, we are interested in the differences in motion between subjects who have neurodevelopmental concerns and subjects who do not. The distribution of neurodevelopmental problems is varied: it includes autism, ADHD, and neurodevelopmental delays. If motion patterns could be identified for subjects with similar cognitive abilities, the development of motion prevention protocols and post-acquisition motion correction techniques could be targeted more precisely to each group. The ability to either successfully complete scans or successfully recover scans for subjects in these groups would significantly aid in neurodevelopmental research.
 
 \hl{One of the areas being considered for future work is the development of a hybrid registration framework. In this hybrid framework, a sequence would undergo both traditional and DAG-based registration independently. Then, the corresponding traditional and DAG-based results would be compared for each image volume. The registered version of the image volume that either is more similar to the stationary image volume or has less motion compared to the previous image volume will be used in the sequence of registered image volumes.}

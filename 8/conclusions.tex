@@ -1,8 +1,6 @@
 \chapter{Conclusions}
 \label{ch:fin}
 
-\section{Summary}
-
 The two primary goals of this work were to compare two volume registration techniques and to characterize motion in different clinical groups. Five sets of images were used for these experiments: a simulated data set, brain images from three clinical cohorts, and a set of placenta images. 
 
 An rs-fMRI simulation tool was developed to generate data with a known BOLD signal, background signal noise, and patient motion. The base for the structural information in the simulated sequences was the proton density image from the MNI average brain data, while the regions of interest used to generate the simulated BOLD signal were taken from the 90 functional ROI atlases created by Shirer et al. \cite{Shirer2012}. 
@@ -20,12 +18,3 @@ The rs-fMRIs were also compared using matrices of similarity metrics where the v
 One additional analysis on the simulated images was used to compare the traditional and DAG-based registration techniques. The registered images underwent independent component analysis. The components for each image were compared to the DMN ROI to identify the component which correlated best with the simulated BOLD signal. The best matching components were compared voxelwise to the DMN ROI to determine the number of true positive, false positive, true negative, and false negative identifications of component voxels as belonging to the DMN ROI. The DAG-based registration had a higher true positive rate and a lower false positive rate (0.623 and 0.00996) than the traditional registration did (0.587 and 0.104).
 
 After analyzing the volume registration techniques, the patterns of motion in the clinical brain images were characterized into two categories of interest. No detectable groups were identified when the metrics for the original image sequences were clustered and labeled according to disease status. However, analysis of the clusters labeled according to age group suggests that there are detectable differences in the patterns of motion between subjects from different age groups.
-
-\section{Future Work}
-
-This study focused on the motion of CHD and healthy pediatric subjects. As the prognosis for patients with CHD improves, their life expectancy also increases. The aging CHD population presents new questions about the connection between CHD and neurocognitive challenges associated with aging. As patients age, there is an expectation that their images will contain less motion for a time. If a patient begins to show signs of cognitive impairment due to aging, it can be expected that their images will begin to contain more motion as their neurocognitive state deteriorates. 
-
-We would like to evaluate the impact of the two types of registration on a cohort of older adult subjects. The Alzheimer's Disease Neuroimaging Initiative has been collecting medical imaging, cognitive testing, genetic, and other types of data from adult subjects enrolled in their multisite study of Alzheimer's disease. Their subjects range from elderly controls with healthy brains, subjects with mild cognitive impairments, and Alzheimer's disease patients. Of these groups, we expect that healthy controls would exhibit different motion patterns than subjects with different degrees of cognitive impairments. The effects of different motion patterns of the adult cohorts may be more easily recovered using the DAG-based registration than the traditional registration.
-
-In the current data set, there may be groups of subjects within each pediatric population who exhibit more similar motion patterns than other members of that population. Specifically, we are interested in the differences in motion between subjects who have neurodevelopmental concerns and subjects who do not. The distribution of neurodevelopmental problems is varied: it includes autism, ADHD, and neurodevelopmental delays. If motion patterns could be identified for subjects with similar cognitive abilities, the development of motion prevention protocols and post-acquisition motion correction techniques could be targeted more precisely to each group. The ability to either successfully complete scans or successfully recover scans for subjects in these groups would significantly aid in neurodevelopmental research.
-

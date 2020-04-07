@@ -1,5 +1,14 @@
-\documentclass[pdftex,final]{pittetd}
-%final, makes pittetd's warnings (about things that might go against the Format Guidelines) into error messages. 
+\documentclass[pdflatex,final]{pittetd}%   If you want to use dvipdfm. The file is to be normally processed (LaTeX), and 
+%                                   then the program dvipdfm applied to it. This will create the PDF file with bookmarks
+%                                   and links. It will also try to convert any PS graphics included.
+%\documentclass[pdftex]{pittetd}    If you want to use PDFLaTeX instead. This will create the PDF file directly.
+%                                   Processing time can be longer. No PS graphics conversion will take place 
+%                                   automatically.
+%
+%Other options: ma, ms, for Master's. 
+%11pt, 10pt, font size (12pt is default). 
+%final, makes pittetd's warnings (about things that might go against the Format Guidelines) 
+%into error messages. 
 %Option 'sectionletters' numbers the chapters with Roman numerals (I, II, etc.), sections with 
 %letters (A, B), subsections with numbers (1, 2), and subsubsections with lowercase letters (a, b). 
 %The four levels of the enumerate environment receive the same treatment. Within the
@@ -10,10 +19,10 @@
 % auto use this package and check for patches
 \usewithpatch{graphicx} 
 % manually use these packages
-\usepackage{amsmath}
-% manually check for patches
-\patch{amsmath}
-%\patch{amsthm}
+\usepackage{amsmath,amsthm}%        But you can't use \usewithpatch for several packages as in this line. The search for
+%                                   patches has to be then forced through:
+\patch{amsmatch}
+\patch{amsthm}
 
 % Jenna's commonly used packages
 \usepackage{amssymb}
@@ -31,13 +40,15 @@
 \usepackage{listings}
 \usepackage{apalike}
 \usepackage{soul}
+\usepackage{color}
 
 \lstset{
+  language=Python,
   basicstyle=\ttfamily,
-  columns=fullflexible,
-  frame=single,
-  breaklines=true,
-  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+  numbers=left,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  showstringspaces=false,
 }
 
 \def\sectionautorefname{Section}
@@ -52,16 +63,15 @@
 \author{Jenna Marie Schabdach}
 \degree{B. S. Electrical Engineering, Drexel University, 2016\\M. S. Electrical Engineering, Drexel University, 2016\\M. S. Biomedical Informatics, University of Pittsburgh, 2018}
 \date{March 31, 2020}%             This date is the date of the thesis defense. Default is \today
+\year{2020}
 % pittetd will use the current year unless otherwise indicated. So this command is not necessary.
-\keywords{\LaTeX, pittetd, theses, format}% This list appears in the field 'Keywords' of Acrobat Reader's Document Info
+\keywords{resting-state fMRI, medical imaging, motion correction}% This list appears in the field 'Keywords' of Acrobat Reader's Document Info
 %                                   dialog box, and also, optionally, after the abstract.
-\subject{Schabdach Biomedical Informatics Dissertation}%              This fills in the 'Subject' field in Acrobat Reader's Document Info dialog box.
-\school{Department of Biomedical Informatics}%    The name of the school will be preceeded by 'the' unless otherwise specified, as in:
-%\school[certain]{department}
+\subject{J Schabdach Biomedical Informatics Dissertation}%              This fills in the 'Subject' field in Acrobat Reader's Document Info dialog box.
+\school[School of Medicine]{Department of Biomedical Informatics}
 
 \begin{document}
-
-\year{2020}  
+  
 %\chapterfloats%                    Un-comment this to get figures and tables numbered within chapters.
 \maketitle
 %
@@ -76,7 +86,9 @@
 % etc., as many as needed. For master's theses, the committee may be omitted, naming only the advisor.
 \school{School of Medicine}
 \makecommittee
-%\copyrightpage                     Uncomment this to get a copyright page.
+
+\copyrightpage                     
+
 \begin{abstract}
 Approximately 1.35 million children are diagnoses with a congenital heart defect (CHD) annually. As the process of diagnosing and treating CHD has improved, the expected lifespan of CHD patients has increased: at least 12 to 34 million adults worldwide have CHD. A larger population living with CHD means that clinicials are learning more about conditions which CHD patients are at increased risk of getting. Some of these conditions affect the patient's neurodevelopment and neurocognitive status. Diagnosis of the neurocognitive conditions is performed using surveys, but examining the structure and function of the brain could offer more objective diagnoses. 
 
@@ -84,14 +96,31 @@ One tool useful for examining a patient's brain is magnetic resonance imaging (M
 
 We devised a novel approach to volume registration, which is the first step in motion correction. We compare it to traditional volume registration in the context of a complete motion correction pipeline. The registration techniques and pipeline were applied to neurological rs-fMRIs of fetal, neonatal, preadolescent, and adult patients with CHD as well as several phantom images. We identified different motion patterns specific to different demographic groups, and discovered relationships between certain motion patterns and clinical outcomes associated with CHD and different neurodevelopmental conditions.
 \end{abstract}
+
 % If you say \begin{abstract}[Keywords:] instead of the simple \begin{abstract}, a list of the keywords is appended.
 % The list comes from the \keywords command above.
 % The starred version \begin{abstract*} typesets the word `ABSTRACT' on the top of the page
 \tableofcontents
-\listoftables                      % Pittetd will complain if you tell it to create a list of tables when there are no
-%                                   tables (as in this sample file). Uncomment this command if you have tables.
-\listoffigures                     % Obvious analogous for figures.
-%\preface
+\listoftables                     
+\listoffigures                     
+
+\preface
+
+\section{DEDICATION}
+To the patients being treated in children's hospitals all over the world, their families, and the people working to help them.         
+
+\clearpage
+
+\section{ACKNOWLEDGEMENTS}
+
+This project would not have been possible without the assistance and support of many people. First, to my committee members: Dr. Doug Landsittal, Dr. Ashok Panigrahy, Dr. Greg Cooper, and Dr. Rafael Ceschin. Your guidance and suggestions were truly invaluable. Second, to the members of PIRC, especially: Julia Wallace, Vince Lee, and Nancy Beluk, for helping wrangle the data and answering questions about behavioral techniques used during pediatric scans; Dr. Vincent Schmithorst, for the many conversations about the intricacies of MR physics; Billy Reynolds, for the fetal data and for pulling the occasional perfect figure seemingly out of thin air; and Samuel Cho, for helping me develop the data simulation and aptly naming it ``SPECTr''. Third, this document would not be the same without the Writing Accountability Groups organized and run by Dr. Moriah Kirdy through the Pitt Writing Center. Moriah's dedication and organization is (thankfully) contagious. 
+
+A successful dissertation is only partly made up of the research and writing. The rest is managing people, places, and paperwork. Many thanks to Toni Porterfield and Tami Robinson for helping me keep my administrative ducks in a row and to Barbara Karnbauer for helping coordinate schedules. 
+
+Of course, I would like to thank my friends and family. Ryan, for keeping me grounded, and for rock climbing, burritos, and ice cream. My friends in and around Philadelphia and Pittsburgh, for the laughs, game sessions, and more rock climbing. Mom and Dad, thanks for supporting me the way you always do. Jonathan and David, I'm over the moon you were able to make my defense. 
+
+Finally, special thanks to everyone involved with Extra Life, a charity that raises money for kids being helped my Children's Miracle Network Hospitals. As promised, here is the shout out to those who donated to my page, especially to Leo Chan, Elliot Guiso, Bonnie Young, John Maloney, Justine White, and Mike West.
+
 % This is the text of the preface, with acknowledgments, dedication, etc. It is optional, and you create, as shown, by 
 % just saying \preface and starting the preface's actual text. Note that 'foreword' is no longer acceptable as title
 % for this preliminary.
