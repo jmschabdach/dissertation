@@ -31,6 +31,32 @@ Additional analyses could be performed to evaluate the computer-detectable diffe
 
 \section{Expectations vs. Outcomes}
 
+\hl{In Chapter} \ref{ch:data}, \hl{we outlined the expected differences in motion patterns between the clinical groups, the expected effects of the registration technique on data from each clinical group, and the expected groups that could be identified via clustering. }
+
+\begin{figure}[]
+	\centering
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{7/figures/orig-avg-fd.png}
+		\caption{Average FD of Original Sequences.}
+	\end{subfigure}
+	\hspace{0.05\textwidth}
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{7/figures/orig-avg-dvars.png}
+		\caption{Average DVARS of Original Sequences.}
+	\end{subfigure}
+	
+\caption{The average local motion metrics for all original sequences show that the neonatal subjects move the least, though differences between fetal and preadolescent motion is more clear in (b).}
+\label{fig:orig-local-motion}
+\end{figure}
+
+\hl{We predicted that the neonatal subjects would demonstrate the least motion and the fetal subjects would demonstrate the most motion out of the clinical cohorts. Comparing the FD and DVARS of the original image sequences confirms that the neonatal subjects demonstrated the least motion, but the comparison between the preadolescent and fetal subject motion is slightly more complicated. Figure} \ref{fig:orig-local-motion} \hl{shows a direct comparison between the average local motion metrics for the original sequences. It is only in comparing both the FD and DVARS that we can see that the fetal subjects do move more than the preadolescent subjects.
+
+Due to the physical constraints on subjects from each population during the scan, we expected the registration frameworks to have different effects on the clinical cohorts. We expected that the DAG-based registration would have the best performance on the fetal subjects, but it was difficult to develop more granular hypotheses about each framework's effects on each clinical group. In general, we saw a comparable performance between the registration types for the neonatal cohort. The DAG-based framework was less effective at reducing motion in the preadolescent cohort than the traditional framework was. We also saw the DAG-based registration preserve the local motion in the fetal images while the traditional registration increased local motion.  Out of these three sets of effects, the DAG-registration did indeed perform best on the fetal cohort. 
+
+Finally, we expected to see different patterns of motion dependent on clinical and age groups. In our clustering analysis of the population-wide motion patterns, we did not see distinct groups of healthy and CHD subjects based on their motion parameters. We did, however, see a relationship between age group and motion metrics. These results do not mean that there are no relationships between CHD disease status and motion: rather, they suggest that disease and motion relationships may occur on an age-group level rather than a lifespan level.}
+
 \section{Relation to Existing Work}
 
 \subsection{MRI Simulations} 
