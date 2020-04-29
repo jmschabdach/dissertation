@@ -1,4 +1,4 @@
-\chapter{METHODS: Evaluating Motion Patterns}
+\chapter{Methods: Evaluating Motion Patterns}
 \label{ch:mopa}
 
 In the previous chapter, we described the methods we use to mitigate the positional effects of motion in rs-fMRI sequences. We briefly discuss how the registered sequences were evaluated with respect to gold standard usability criteria. Here, we expand on our analysis of the motion extracted from the sequences.
@@ -154,9 +154,9 @@ Uneven distributions of data classes can severely impact spectral clustering res
 
 \subsection{Agglomerative Clustering}
 
-\begin{figure}
+\begin{figure}[t]
 \centering
-\includegraphics[width=.9\textwidth]{4/clustermap-example.png}
+\includegraphics[width=.5\textwidth]{4/clustermap-example.png}
 \caption{An example of agglomerative clustering on the Iris data set plotted using \textbf{seaborn}'s \textbf{clustermap} function.}
 \label{ch4:fig:agg}
 \end{figure}
@@ -187,20 +187,22 @@ UMAP was developed under the belief that local structure is more important than 
 
 \begin{figure}
 \centering
-\begin{subfigure}{1.0\textwidth}
-\centering
-\includegraphics[width=.49\textwidth]{4/pca.png}
-\caption{PCA}
+\begin{subfigure}{0.3\textwidth}
+  \centering
+  \includegraphics[width=1.0\textwidth]{4/pca.png}
+  \caption{PCA}
 \end{subfigure}
-\begin{subfigure}{1.0\textwidth}
-\centering
-\includegraphics[width=.49\textwidth]{4/tsne.png}
-\caption{t-SNE}
+\hspace{0.02\textwidth}
+\begin{subfigure}{0.3\textwidth}
+  \centering
+  \includegraphics[width=1.\textwidth]{4/tsne.png}
+  \caption{t-SNE}
 \end{subfigure}
-\begin{subfigure}{1.0\textwidth}
-\centering
-\includegraphics[width=.5\textwidth]{4/umap.png}
-\caption{UMAP}
+\hspace{0.02\textwidth}
+\begin{subfigure}{0.3\textwidth}
+  \centering
+  \includegraphics[width=1.0\textwidth]{4/umap.png}
+  \caption{UMAP}
 \end{subfigure}
 \caption{Visualization of MNIST data in 3D via TensorFlow Projector as generated using PCA, t-SNE, and UMAP dimensionality reduction techniques.}
 \label{ch4:fig:data-viz}

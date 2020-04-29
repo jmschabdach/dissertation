@@ -1,19 +1,4 @@
-\documentclass[pdflatex,final]{pittetd}%   If you want to use dvipdfm. The file is to be normally processed (LaTeX), and 
-%                                   then the program dvipdfm applied to it. This will create the PDF file with bookmarks
-%                                   and links. It will also try to convert any PS graphics included.
-%\documentclass[pdftex]{pittetd}    If you want to use PDFLaTeX instead. This will create the PDF file directly.
-%                                   Processing time can be longer. No PS graphics conversion will take place 
-%                                   automatically.
-%
-%Other options: ma, ms, for Master's. 
-%11pt, 10pt, font size (12pt is default). 
-%final, makes pittetd's warnings (about things that might go against the Format Guidelines) 
-%into error messages. 
-%Option 'sectionletters' numbers the chapters with Roman numerals (I, II, etc.), sections with 
-%letters (A, B), subsections with numbers (1, 2), and subsubsections with lowercase letters (a, b). 
-%The four levels of the enumerate environment receive the same treatment. Within the
-%text, however, cross references (\ref} produce `the whole thing,' something like I.A.1 
-%instead of only 1.
+\documentclass[hidelinks,pdflatex,final]{pittetd}
 
 % Packages included in PittETD Template
 % auto use this package and check for patches
@@ -25,8 +10,6 @@
 \patch{amsthm}
 
 % Jenna's commonly used packages
-\usepackage{amssymb}
-\usepackage{amsmath}
 %\usepackage{amsthm}
 \usepackage{graphics} % for improved inclusion of graphics
 %\usepackage{wrapfig} % to include figure with text wrapping around it
@@ -61,14 +44,14 @@
 % The optional argument is the 
 % version of the title that will appear in Acrobat Reader's Document Info dialog box.
 \author{Jenna Marie Schabdach}
-\degree{B. S. Electrical Engineering, Drexel University, 2016\\M. S. Electrical Engineering, Drexel University, 2016\\M. S. Biomedical Informatics, University of Pittsburgh, 2018}
+\degree{B. S., Drexel University, 2016\\M. S., Drexel University, 2016\\M. S., University of Pittsburgh, 2018}
 \date{March 31, 2020}%             This date is the date of the thesis defense. Default is \today
 \year{2020}
 % pittetd will use the current year unless otherwise indicated. So this command is not necessary.
 \keywords{resting-state fMRI, medical imaging, motion correction}% This list appears in the field 'Keywords' of Acrobat Reader's Document Info
 %                                   dialog box, and also, optionally, after the abstract.
 \subject{J Schabdach Biomedical Informatics Dissertation}%              This fills in the 'Subject' field in Acrobat Reader's Document Info dialog box.
-\school[School of Medicine]{Department of Biomedical Informatics}
+\school{School of Medicine}
 
 \begin{document}
   
@@ -81,7 +64,7 @@
 %\coadvisor{Second advisor, Dept. Aff.}%         This is used if there are two advisors.
 \committeemember{Dr. Ashok Panigrahy, Department of Biomedical Informatics}
 \committeemember{Dr. Gregory Cooper, Department of Biomedical Informatics}
-\committeemember{Dr. Rafael Ceschin, Department of Pediatric Radiology, Children's Hospital of Pittsburgh of UPMC}
+\committeemember{Dr. Rafael Ceschin, Department of Pediatric Radiology,\\ Children's Hospital of Pittsburgh of UPMC}
 
 % etc., as many as needed. For master's theses, the committee may be omitted, naming only the advisor.
 \school{School of Medicine}
@@ -90,15 +73,14 @@
 \copyrightpage                     
 
 \begin{abstract}
-There are many scenarios, for both clinical and research applications, in which we would like to examine a patient's neurodevelopmental status. Generally, neurodevelopmental evaluations can be performed through psychological testing or in-person assessment with a psychologist. However, these approaches are not applicable in all cases, particularly for many pediatric populations. Researchers are beginning to turn to medical imaging approaches for objectively quantifying a patient's neurodevelopmental status.
+Understanding a patient’s neurodevelopmental status is valuable for many research and clinical applications. Neurodevelopmental evaluations can be performed through psychological testing or individual assessments with a psychologist. However, these approaches are not applicable in all cases. Resting-state functional magnetic resonance images (rs-fMRIs) can be used to study neuronal networks that are active when the patient is in a task-free state. These image sequences are highly sensitive to motion. Techniques have been developed to prevent patients from moving, monitor motion during the scan, and correct motion after the scan. We focus on the first step of retrospective motion correction: volume registration.
 
-Resting-state functional magnetic resonance images (rs-fMRIs) can be used to study neuronal networks that are active even when a person is not performing a specific task or reacting to particular stimuli. These image sequences are highly sensitive to motion. Techniques have been developed to prevent patients from moving as well as monitor motion during the scan and correct for the patient's movement after the scan. We focus on the first step of retrospective motion correction: volume registration. 
+The purpose of volume registration is to align the contents of all of the image volumes in the image sequence to those of a single volume. Traditionally, all image volumes are directly registered to the chosen stationary image volume, but this approach does not account for significant differences in patient position across the sequence. We developed a registration framework based on directed acyclic graphs (DAG). We treat the volumes in the sequence as nodes in a graph where pairs of subsequent volumes are connected via directed edges. This perspective better models the relationships between volumes and accounts for them during registration.
 
-The purpose of volume registration is to align the contents of all of the image volumes in the image sequence to the contents of a single volume. Traditionally, all image volumes are directly registered to the chosen stationary image volume. However, this approach does not account for significant differences in patient position between the stationary volume and the other volumes in the sequence.  We developed a registration framework based on the concept of a directed acyclic graph. We treat the volumes in the sequence as nodes in a graph where pairs of subsequent volumes are connected via directed edges. This perspective allows us to model the relationships between subsequent volumes and account for them during registration. 
+We applied both registration frameworks to a set of simulated images as well as neurological rs-fMRIs from three clinical populations of patients who are healthy or have congenital heart disease (CHD). The original and registered sequences were compared with respect to their local and global motion. These motion parameters were used to determine how many sequences had statistically significant differences in their motion distributions before and after registration. The metrics of the original sequences were clustered to identify age group-specific motion patterns.
 
-We applied both registration frameworks to a set of simulated images as well as neurological rs-fMRIs from three clinical populations. The clinical populations were preadolescent, neonatal, and fetal subjects who either were healthy or had congenital heart disease (CHD). The original and registered sequences were compared with respect to their local and global motion. The local motion was measured between every pair of image volumes $i$ and $i+1$ in each sequence using the framewise displacement (FD) and the derivative of the root mean square variance of the signal (DVARS). The global motion across each sequence was measured by calculating the similarity between every pair of image volumes in each sequence. The local motion parameters were compared to a pair of gold standard usability thresholds to determine how each registration framework impacted the usability of every image volume. Both the local and global motion parameters were used to determine how many sequences had statistically significant differences in their motion distributions before and after registration. Additionally, the local and global metrics of the original sequences were clustered to determine if a computer could identify groups of subjects based on their motion parameters.
+The registration frameworks had different effects on each age group. We found that the neonatal subjects contained the least amount of motion, while the fetal subjects contained the most motion. The DAG-based registration was most effective at reducing motion in the fetal images. Our clustering analysis showed that the different age groups have different global motion parameters, though patterns related to CHD status could not be detected.
 
-The registration frameworks had different effects on each age group of subjects. We found that the neonatal subjects contained the least amount of motion, while the fetal subjects contained the most motion. The DAG-based registration was most effective at reducing motion in the fetal images. Our clustering analysis showed that the different age groups have different global motion parameters, though lifespan-level patterns related to CHD status could not be detected. 
 
 \end{abstract}
 
@@ -111,12 +93,12 @@ The registration frameworks had different effects on each age group of subjects.
 
 \preface
 
-\section{DEDICATION}
+\section{Dedication}
 To the patients being treated in children's hospitals all over the world, their families, and the people working to help them.         
 
 \clearpage
 
-\section{ACKNOWLEDGEMENTS}
+\section{Acknowledgements}
 
 This project would not have been possible without the assistance and support of many people. First, to my committee members: Dr. Doug Landsittal, Dr. Ashok Panigrahy, Dr. Greg Cooper, and Dr. Rafael Ceschin. Your guidance and suggestions were truly invaluable. Second, to the members of PIRC, especially: Julia Wallace, Vince Lee, and Nancy Beluk, for helping wrangle the data and answering questions about behavioral techniques used during pediatric scans; Dr. Vincent Schmithorst, for the many conversations about the intricacies of MR physics; Billy Reynolds, for the fetal data and for pulling the occasional perfect figure seemingly out of thin air; and Samuel Cho, for helping me develop the data simulation and aptly naming it ``SPECTr''. Third, this document would not be the same without the Writing Accountability Groups organized and run by Dr. Moriah Kirdy through the Pitt Writing Center. Moriah's dedication and organization is (thankfully) contagious. 
 

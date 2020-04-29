@@ -1,4 +1,4 @@
-\chapter{DATA}
+\chapter{Data}
 \label{ch:data}
 
 The data used to test the hypothesis and aims introduced in the previous chapter are drawn from a set of simulated rs-fMRI sequences and three clinical groups. In this chapter, we will first discuss the need for simulated sequences and the processes used to generate them for our work. Then, we will discuss the clinical images which were taken from several prospective studies of congenital heart defects in three age groups of pediatric patients. These groups were chosen because congenital heart disease (CHD) affects patients throughout their lifespans, and different characteristics in motion patterns have been observed in patients of different ages with and without CHD.
@@ -23,7 +23,7 @@ We address these two barriers by creating a mechanism for generating simulated i
 
 \subsection{SPECTr: Simulated Phantom Emulating Cranial Transformations}
 
-Our mechanism is called Simulated Phantom Emulating Cranial Transformations (SPECTr). A phantom is an object designed to have material properties that mimic those of a specific tissue type or organ. Phantoms, either manufactured objects or healthy humans, are used in multicenter studies to obtain images of the same object or person from multiple scanners. These images are used to harmonize the data taken from different sites. We call our simulated sequence a phantom because the baseline image itself is known as are the signals added to it to simulate brain activity. 
+Our mechanism is called Simulated Phantom Emulating Cranial Transformations \\(SPECTr). A phantom is an object designed to have material properties that mimic those of a specific tissue type or organ. Phantoms, either manufactured objects or healthy humans, are used in multi-center studies to obtain images of the same object or person from multiple scanners. These images are used to harmonize the data taken from different sites. We call our simulated sequence a phantom because the baseline image itself is known as are the signals added to it to simulate brain activity. 
 
 When developing the pipeline for SPECTr, it was important to consider the multiple facets of rs-fMRI sequences. The BOLD signal must be present in areas of the brain associated with resting-state neuronal networks. The effects of motion and various impacts they have on the BOLD signal must also be present. As discussed in Chapter \ref{ch:mri}, the three effects of motion are positional, spin history, and susceptibility. The positional effects of motion are straightforward to implement. For simplicity, we model the spin history and susceptibility effects as a single source of in-scanner noise. 
 
@@ -43,9 +43,9 @@ The functional network information is more difficult to find than structural atl
 
 \subsubsection{Baseline Sequence}
 
-\begin{figure}
+\begin{figure}[t]
 \centering
-\includegraphics[width=.6\textwidth]{5/pipeline.png}
+\includegraphics[width=.5\textwidth]{5/pipeline.png}
 \caption{An overview of the SPECTr simulation pipeline. Using atlas data, a simulated phantom containing brain signal, scanner noise, and patient motion is generated.}
 \label{ch5:spectr_flow}
 \end{figure}
@@ -299,7 +299,7 @@ The MRI scans are performed when the mother is in her third trimester. Due to th
 
 \begin{figure}
 \centering
-\includegraphics[width=.9\textwidth]{5/demo_fetal_subj_cohort.png}
+\includegraphics[width=.6\textwidth]{5/demo_fetal_subj_cohort.png}
 \caption{The outer ring represents the group the subject was assigned to based on the fetal examination while the inner ring represents the group the subject was assigned to after birth.}
 \label{ch5:fetal:cohort}
 \end{figure}
@@ -340,7 +340,7 @@ Scans from a total of 149 patients were included in this work. The average post-
 
 \begin{figure}
 \centering
-\includegraphics[width=.75\textwidth]{5/demo_neonate_subj_cohort.png}
+\includegraphics[width=.6\textwidth]{5/demo_neonate_subj_cohort.png}
 \caption{The breakdown of subject groups contained in the Control and CHD neonatal cohorts.}
 \label{ch5:neonates:cohorts}
 \end{figure}
@@ -366,7 +366,7 @@ As the neonates were most often asleep during the scan, they exhibit less motion
 \label{fig:pread_ages}
 \end{figure}
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The number of CHD and healthy control preadolescent subjects scanned on each scanner type at each site.}
 \label{tab:pread-site-counts}
@@ -407,7 +407,7 @@ The multicenter imaging study of preadolescent subjects provides a unique opport
 
 \section{Hypothesis}
 
-\hl{At this point, we have described the methods we used to register image volumes within rs-fMRI sequences as well as the simulated data set and clinical cohorts which we used to test our methods. 
+At this point, we have described the methods we used to register image volumes within rs-fMRI sequences as well as the simulated data set and clinical cohorts which we used to test our methods. 
 
 We expect that the two registration frameworks will have different performances on the different clinical age groups because we expect that the clinical age groups exhibit different types of motion. 
 
@@ -415,7 +415,7 @@ Overall, we expect that neonatal subjects exhibit the least amount of motion. Th
 
 We expect the DAG-based registration framework to be most effective at reducing the effects of motion for the fetal images. While the fetus does have full range of motion, it likely cannot move quickly around such a confined space. As a result, fetal motion is expected to be smoother than neonatal or preadolescent motion.
 
-We also expect to see different patterns of motion between subjects who are healthy and subjects who have CHD. This expectation is based on the knowledge that neurodevelopmental disorders co-occur with CHD. Subjects with neurodevelopmental disorders are expected to have a more difficult time remaining still for the duration of a scan than the healthy subjects.}
+We also expect to see different patterns of motion between subjects who are healthy and subjects who have CHD. This expectation is based on the knowledge that neurodevelopmental disorders co-occur with CHD. Subjects with neurodevelopmental disorders are expected to have a more difficult time remaining still for the duration of a scan than the healthy subjects.
 
 \section{Summary}
 
@@ -426,6 +426,5 @@ The simulated data were generated using an rs-fMRI simulation pipeline developed
 The pediatric data were obtained through prospective studies of CHD and neurodevelopment being conducted at the UPMC Children's Hospital of Pittsburgh. CHD is a complex disease affecting millions of people globally. As the new treatments for CHD and its comorbidities have evolved, the life expectancy of patients with CHD has also increased. 
 
 Some of the comorbidities of CHD are related to a patient's neurological development. As part of three studies of the relationship between CHD and brain development, rs-fMRI sequences of fetal, neonatal, and preadolescent brains have been gathered. A set of placental images was acquired alongside the fetal neurological images. The pediatric images were used to compare the two volume registration techniques on a diverse set of clinical data. We also used these images to examine patterns of motion unique to different age groups. 
-
 
 In the next chapter, we examine the results of the registration methods and of the machine learning techniques applied to the motion metrics for the images.

@@ -23,7 +23,7 @@ An rs-fMRI is considered to have a relatively low spatial resolution but high te
 \begin{figure}
 \centering
 \includegraphics[width=.6\textwidth]{2/rsfMRI-signal-filters.png}
-\caption{The patient's brain activity is effected by several factors before an MRI scanner produces a visually interpretable image sequence. (The rounded rectangles represent the signal at different stages of recording while the rhombuses represent the primary factors.)}
+\caption{The patient's brain activity is affected by several factors before an MRI scanner produces a visually interpretable image sequence. (The rounded rectangles represent the signal at different stages of recording while the rhombuses represent the primary factors.)}
 \label{ch2:fig:signal-filters}
 \end{figure}
 
@@ -36,7 +36,7 @@ During every medical imaging scan, the patient will naturally perform small, aut
 
 Other motions occur on a larger and more conscious scale. It is important to note that different populations may exhibit more of certain macro-motions than others. The patient may fidget or shift his gaze when he becomes bored in the scanner. If the patient falls asleep during a scan, there may be slight movement as the body relaxes and re-tenses if the patient wakes. Certain MRI protocols are known to produce loud sounds: during one of these protocols, the patient may become surprised and react by jumping. Additionally, claustrophobic patients or patients who feel secure around specific people that are not allowed in the scanner room may become agitated. 
 
-Both the small-scale, automatic motions and the large-scale, reflexive motions corrupt the BOLD signal. These effects of patient motion will be discussed in-depth in the next section.
+Both the small-scale, automatic motions and the large-scale, reflexive motions corrupt the BOLD signal. These effects of patient motion will be discussed in-depth in the next~section.
 
 The third factor in Figure \ref{ch2:fig:signal-filters} is the unique properties of the scanner. The acquired image sequence will vary slightly even in machines made by the same company because each scanner has a unique primary magnetic field, $B_0$. The $B_0$ inhomogeneities can be measured using a primary field map. These field maps can be used to correct signals displaced by the $B_0$ field, though they cannot be used to recover signals corrupted by the field.
 
@@ -220,7 +220,7 @@ As mentioned earlier in this chapter, respiration and cardiac activity are sourc
 
 In cases where only respiration is taken into account, gating prevents an image from being acquired unless the patient is in the specified state. In the case of respiration, the specified state is either complete inhalation or exhalation. The state of a patient's respiration can be tracked using respiration bellows. After acquiring the MRI sequence, volumes in the sequence can be grouped depending on when they were recorded in the breathing cycle. By only using volumes recorded during the same stage of the breathing cycle, the effects of respiratory motion can be mitigated. This approach to gating will increase the amount of scanner time needed.
 
-When both cardiac and respiratory motions are considered, the patient's respiration is monitored through a bellows or pressure belt, and their cardiac activity is monitored on a delay during the scan through a pulse oximeter on the patient's finger \cite{Hu1995}. The cardiac and respiratory data are synchronized with the acquired image after the scan. The synchronized signals are then used to remove changes in the image associated with physiological motion, which ``substantially reduces image-to-image fluctuations'' \cite{Hu199}.
+When both cardiac and respiratory motions are considered, the patient's respiration is monitored through a bellows or pressure belt, and their cardiac activity is monitored on a delay during the scan through a pulse oximeter on the patient's finger \cite{Hu1995}. The cardiac and respiratory data are synchronized with the acquired image after the scan. The synchronized signals are then used to remove changes in the image associated with physiological motion, which ``substantially reduces image-to-image fluctuations'' \cite{Hu1995}.
 
 For macro-scale motions, electromagnetically sensitive trackers can be placed on the patient and used to monitor changes in position during the scan. Afacan et al. used a tracker produced by Robin Medical Inc. (Baltimore, MD) to measure the position and orientation of subjects relative to the center of the scanner bore \cite{Afacan2016}. The tracker consisted of two sensors that were attached to the patient's forehead. The sensors recorded their $x$, $y$, and $z$ coordinates as well as two vectors indicating their orientations at every magnetic activation. These measurements were processed and displayed for a technician in real-time during each scan.
 
@@ -314,5 +314,3 @@ Many post-acquisition methods have been developed specifically to correct for di
 \section{Summary}
 
 Resting-state fMRIs are four-dimensional images that record the BOLD signal in active areas of the brain. The BOLD signal can be used to evaluate the functional connectivity of different underlying networks in a patient's brain. Since rs-fMRIs are highly sensitive to motion, clinicians and psychologists have devised techniques to inform patients about what they can expect during an MRI scan as well as different coping mechanisms to help them remain calm during the scan. These techniques do not prevent the patient from moving, but approaches that do are not always appropriate to use during an rs-fMRI scan. Techniques and algorithms to prospectively and retrospectively remove motion from rs-fMRIs have also been developed, though they are not always successful in removing the effects of motion. Ultimately, the amount of motion present in the rs-fMRI sequence dictates whether or not the sequence can be used in clinical or research applications.
-
-In the next chapter, we will discuss rs-fMRIs in the context of our chosen population of CHD patients.

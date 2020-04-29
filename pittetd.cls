@@ -69,7 +69,7 @@
 \DeclareOption{phd}{\renewcommand{\t@or@d}{phd}%
     \renewcommand\@this{Dissertation}%
     \renewcommand\@@@degree{PhD}%
-    \def\@degreesought{\textbf{Doctor of Philosophy}}%
+    \def\@degreesought{Doctor of Philosophy}%
     \def\@advisor{Director}}
 \DeclareOption{ma}{\renewcommand{\t@or@d}{ma}%
     \renewcommand\@this{Thesis}%
@@ -355,7 +355,7 @@
 \newcommand\@@school{\relax}
 \newcommand{\degree}[1]{\gdef\@degree{#1}}
 \let\previousdegree\degree
-\newcommand\school[2][the]{\gdef\@school{#1\ #2}%
+\newcommand\school[2][]{\gdef\@school{#1\ #2}%
     \gdef\@@school{\uppercase{#2}}}
 \newcommand\degreesought[1]{\def\@degreesought{#1}}
 \newtoks\subject
@@ -613,8 +613,7 @@
     \typeout{Preface}%
     \phantomsection
     \addcontentsline{toc}{chapter}{\bfseries Preface}
-    {\normalfont\bfseries\centering
-        Preface\par}
+    {}
     \par\vspace{1.5\@singleline}
     \@enable{conv}{the first chapter}%
     \@afterheading}

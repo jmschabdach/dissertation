@@ -1,4 +1,4 @@
-\chapter{RESULTS}
+\chapter{Results}
 \label{ch:results}
 
 This chapter is divided into two sections. The first section focuses on the comparison of the two motion correction techniques. The second section focuses on the results of the machine learning algorithms applied to the metrics extracted from the images.
@@ -27,7 +27,7 @@ For brevity, several tables of p-values have been moved to Appendix \ref{appendi
 
 \subsubsection{Volume Registration: Power Thresholds}
 
-\begin{figure}[]
+\begin{figure}
 	\centering
 	\begin{subfigure}{0.4\textwidth}
 		\centering
@@ -68,7 +68,7 @@ For brevity, several tables of p-values have been moved to Appendix \ref{appendi
 \label{fig:spectr-power-dists}
 \end{figure}
 
-\begin{figure}[]
+\begin{figure}
 	\centering	
 	\begin{subfigure}{0.4\textwidth}
 		\centering
@@ -87,7 +87,7 @@ For brevity, several tables of p-values have been moved to Appendix \ref{appendi
 
 The FD and DVARS metrics were calculated between every pair of image volumes $i$ and $i+1$ for the original sequences and both types of registered sequences. The mean and standard deviation of the FD and DVARS metrics for each time point for each sequence type can be seen in Figure \ref{fig:spectr-power-dists}. Figure \ref{fig:spectr-power-means} shows the means of the FD and DVARS metrics for each time point for all sequence types on the same axes. The mean of the FD metrics decreased from 2.45 mm in the original sequences to 1.07 mm and 1.08 mm in the traditionally and DAG-registered sequences. The standard deviations of the FD slightly increased from 0.084 mm in the original sequences to 0.265 mm and 0.173 mm, respectively. Similarly, the mean DVARS of the original sequences decreased from 142 units to 107 units and 107 units in the registered images. The standard deviation of the DVARS also increased from 3.66 units in the original sequences to 4.77 units and 4.73 units in the registered sequences.
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The counts and percentages of image volumes across each type of sequence in the simulated cohort which meet the usability thresholds of FD $<$ 0.2 mm and DVARS $<$ 2.5\%.}
 \label{tab:spectr-power-thresh}
@@ -107,7 +107,7 @@ The FD and DVARS metrics for each image volume were compared to the usability cr
 
 The statistical significance of the difference in the counts of image volumes meeting each usability threshold was calculated. The only statistically significant differences in usability counts were for the number of image volumes meeting the FD threshold. The count of registered image volumes meeting the FD threshold for both registration types were significantly different from the counts for the original image sequences at $p < 0.005$. The difference between the counts of the two registration types was not significant ($p = 0.127$). The complete set of results can be seen in Table \ref{tab:spectr-power-ttest}. 
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had statistically different FD distributions.}
 \label{tab:spectr-fd-kstest}
@@ -123,7 +123,7 @@ Original                                                            & \begin{tab
 \end{tabular}
 \end{table}
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had statistically different DVARS distributions.}
 \label{tab:spectr-dvars-kstest}
@@ -175,7 +175,7 @@ The registered images underwent independent component analysis (ICA) to identify
 
 ICA was applied to all registered sequences to identify the signal components. For each sequence, the components were compared to the DMN ROI. The components with the most significant correlation to the DMN ROI were categorized as the BOLD-related components. The average correlations between the BOLD-related components and the DMN ROI were 8122 for the traditionally registered sequences and 8040 for the DAG-registered sequences. The correlations for the two types of registered sequences were compared using both the Kolmogorov-Smirnov test and a two-sample t-test. Neither the test estimated a statistical significance between the correlation distributions for the registered sequences (KS p-value = 0.999; t-test p-value 0.807).
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The average rates and their confidence intervals for the classifications of component voxels as belonging to the DMN ROI for both types of registration.}
 \label{tab:spectr-avg-rates}
@@ -187,6 +187,7 @@ FPR                    & 0.104 $\pm$ 0.00188               & 0.00996 $\pm$ 0.001
 TNR                    & 0.990 $\pm$ 0.00188               & 0.990 $\pm$ 0.00180     \\ \hline
 FNR                    & 0.413 $\pm$ 0.0697                & 0.377 $\pm$ 0.0620      \\ \hline
 \end{tabular}
+\vspace{0.05\textwidth}
 \end{table}
 
 The accuracy of the BOLD-related components was determined by comparing the component image volumes to the DMN ROI on a voxel level. The absolute value of each BOLD-related component image volume was taken and thresholded at 10\% of the maximum absolute value. The thresholded BOLD-related component image volumes were compared to DMN ROI. With the DMN ROI used as ground truth, the counts of voxels, which were true positive, false positive, true negative, and false negative rates were calculated for each registration type. These values can be seen in Table \ref{tab:spectr-avg-rates}. The rates were compared for the traditionally registered and DAG-registered sequences. While none of the rates were statistically significant at even $ p < 0.05$, the rates were better for the DAG-registered sequences than for the traditionally registered sequences. 
@@ -195,7 +196,7 @@ The accuracy of the BOLD-related components was determined by comparing the comp
 
 \subsubsection{Volume Registration: Power Thresholds}
 
-\begin{figure}[]
+\begin{figure}
 	\centering
 	\begin{subfigure}{0.4\textwidth}
 		\centering
@@ -241,7 +242,7 @@ The FD and DVARs were calculated for each original and registered preadolescent 
 
 The means and stand deviations of the FD and DVARS at each timepoint for each registration type can be seen in Figure \ref{fig:pread-power-dists}. The mean and standard deviation of the FD for the original sequences were 1.61 mm and 10.06 mm. The means of the FD increased to 1.83 mm for the traditionally registered sequences and 2.85 mm for the DAG-registered sequences. The standard deviation of the FD decreased to 7.74 mm for the traditionally registered sequences but increased to 15.4 mm for the DAG-registered sequences. The DVARS metrics followed a similar pattern: the mean of 60.5 units for the original sequences increased to 81.5 units and 92.5 units for the traditionally and DAG-registered sequences respectively while the standard deviation of the DVARS decreased from 197 units in the original sequences to 175 units in the traditionally registered sequences and increased to 284 units in the DAG-registered sequences.
 
-\begin{table}[h]
+\begin{table}[t!][!ht]
 \centering
 \caption{The counts and percentages of image volumes across each type of sequence in the preadolescent cohort which meet the usability thresholds of FD $<$ 0.2 mm and DVARS $<$ 2.5\%.}
 \label{tab:pread-power-thresh}
@@ -255,13 +256,14 @@ FD     & 107879 (60.17\%) & 72104 (40.22\%) & 72114 (40.26\%) \\ \hline
 DVARS  & 87169 (48.62\%) & 54056 (30.15\%) & 53756 (30.01\%) \\ \hline
 Both   & 74107 (41.33\%) & 45006 (25.10\%) & 44682 (24.94\%) \\ \hline
 \end{tabular}
+\vspace{0.05\textwidth}
 \end{table}
 
 The number of image volumes from each sequence type that met the FD and DVARS usability thresholds was calculated. The counts and percentages for each sequence type can be seen in Table \ref{tab:pread-power-thresh}. In the original image sequences, 60\% of image volumes met the FD threshold, 49\% of image volumes met the DVARS threshold, and 41\% of image volumes met both thresholds. After either registration, 40\% of image volumes met the FD threshold, 30\% of image volumes met the DVARS threshold, and about 25\% of image volumes met both thresholds.
 
 The complete set of results can be seen in Table \ref{tab:pread-power-ttest}. The original image sequences were statistically significantly different from both types of registered image sequences with respect to the distributions of volumes meeting the FD threshold, the DVARS threshold, and both thresholds. The distributions for the registered image sequences were statistically similar for all three thresholds. 
 
-\begin{table}[h]
+\begin{table}[t!][!ht]
 \centering
 \caption{The number of preadolescent subjects whose sequences of types $S_1$ and $S_2$ had statistically different FD distributions.}
 \label{tab:pread-fd-kstest}
@@ -275,9 +277,10 @@ Original                                                            & \begin{tab
 Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 332 & 328 \\ \hline
 \begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 19 &17 \\ \hline
 \end{tabular}
+\vspace{0.05\textwidth}
 \end{table}
 
-\begin{table}[h]
+\begin{table}[t!][!ht]
 \centering
 \caption{The number of preadolescent subjects whose sequences of types $S_1$ and $S_2$ had statistically different DVARS distributions.}
 \label{tab:pread-dvars-kstest}
@@ -291,6 +294,7 @@ Original                                                            & \begin{tab
 Original                                                            & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 334 & 333 \\ \hline
 \begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 22  & 19  \\ \hline
 \end{tabular}
+\vspace{0.05\textwidth}
 \end{table}
 
 The distributions of the FD and DVARS values were compared for each sequence type for each subject. For each subject, the distributions of each metric for the original and traditionally registered, the original and DAG-registered, and the traditional and DAG-registered sequences were compared using the Kolmogorov-Smirnov test. The results of these tests can be seen in Tables \ref{tab:pread-fd-kstest} and \ref{tab:pread-dvars-kstest}. Out of 545 images, approximately 330 had FD and DVARS distributions that were statistically significantly different between the original sequences and both types of registered sequences for $p < 0.005$. Between the two types of registered sequences, 19 and 17 had statistically significant differences in their FD distributions at $p < 0.05$ and $p < 0.005$, respectively. Similarly, 22 and 19 registered sequences had statistically significant differences in their DVARS distributions at $p < 0.05$ and $p < 0.005$. 
@@ -315,14 +319,14 @@ The comparison of the preadolescent sequences to the usability thresholds shows 
 
 \subsubsection{Volume Registration: Sequence Duration Motion}
 
-\begin{figure}[]
+\begin{figure}[t!]
 \centering
 \includegraphics[height=0.3\textheight]{6/figures/preads-dice-box.png}
 \caption{Boxplots of the values of all Dice matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the preadolescent cohort.}
 \label{fig:preads-dice-box}
 \end{figure}
 
-\begin{figure}[]
+\begin{figure}[t!]
 \centering
 \includegraphics[height=0.3\textheight]{6/figures/preads-mi-box.png}
 \caption{Boxplots of the values of all MI matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the preadolescent cohort.}
@@ -331,7 +335,7 @@ The comparison of the preadolescent sequences to the usability thresholds shows 
 
 For the preadolescent cohort, the Dice and MI matrices were calculated for the original, traditionally registered, and DAG-registered sequences. The distributions of the metric values for all matrices for each sequence can be seen in Figure \ref{fig:preads-dice-box} for the Dice matrices and in Figure \ref{fig:preads-mi-box} for the MI matrices. The minimums, first quantiles, medians, third quantiles, and maximums for each metric distribution were calculated. These descriptive statistics were compared to each other using the two-sample t-test for each sequence type. The only statistically significant difference in descriptive statistics for the Dice matrices was the difference between the third quartiles of the original sequences and both types of registered sequences at $p < 0.005$. There were no statistically significant differences between the descriptive statistics for the MI matrices, even at $p < 0.05$. The full results of these comparisons can be seen in Table \ref{appendix:results}.\ref{tab:preads-dice-ttest} for the Dice matrices and Table \ref{appendix:results}.\ref{tab:preads-mi-ttest} for the MI matrices.
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The number of preadolescent subjects whose sequences of types $S_1$ and $S_2$ had statistically different Dice distributions.}
 \label{tab:preads-dice-kstest}
@@ -347,7 +351,7 @@ Original                                                            & \begin{tab
 \end{tabular}
 \end{table}
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The number of preadolescent subjects whose sequences of types $S_1$ and $S_2$ had statistically different MI distributions.}
 \label{tab:preads-mi-kstest}
@@ -374,7 +378,7 @@ Overall, the motion patterns embodied by the Dice and MI matrices were fairly si
 
 \subsubsection{Volume Registration: Power Thresholds}
 
-\begin{figure}[]
+\begin{figure}[t!]
 	\centering
 	\begin{subfigure}{0.4\textwidth}
 		\centering
@@ -415,7 +419,7 @@ Overall, the motion patterns embodied by the Dice and MI matrices were fairly si
 \label{fig:neonate-power-dists}
 \end{figure}
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The counts and percentages of image volumes across each type of sequence in the neonatal cohort which meet the usability thresholds of FD $<$ 0.2 mm and DVARS $<$ 2.5\%.}
 \label{tab:neonate-power-thresh}
@@ -441,7 +445,7 @@ For each sequence, the number of image volumes which met the FD, DVARS, and join
 
 The statistical significance of the number of image volumes meeting each threshold was determined using two-sample t-tests. The three comparison pairs used were the original and traditionally registered sequences, the original and DAG-registered sequences, and the two types of registered sequences. The two types of registration did not have statistically significant differences in the number of image volumes meeting each threshold or the joint thresholds. The traditional registration had statistically significant differences from the number of image volumes in the original sequences in the number of image volumes meeting the FD threshold at $p < 0.05$ and the DVARS and joint thresholds at $p < 0.005$. The volume counts for the DAG-registered sequences significantly differed from the volume counts for the original sequences for the individual and joint thresholds at $p < 0.005$. A complete set of the precise p-values can be seen in Table \ref{appendix:results}.\ref{tab:neonate-power-ttest}.
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The number of neonatal subjects whose sequences of types $S_1$ and $S_2$ had statistically different FD distributions.}
 \label{tab:neonate-fd-kstest}
@@ -457,7 +461,7 @@ Original                                                            & \begin{tab
 \end{tabular}
 \end{table}
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The number of neonatal subjects whose sequences of types $S_1$ and $S_2$ had statistically different DVARS distributions.}
 \label{tab:neonate-dvars-kstest}
@@ -479,23 +483,23 @@ By comparing the FD and DVARS metrics of the original and registered sequences i
 
 \subsubsection{Volume Registration: Sequence Duration Motion}
 
-\begin{figure}
+\begin{figure}[t!]
 \centering
 \includegraphics[width=0.5\textwidth]{6/figures/neonates-dice-box.png}
 \caption{Boxplots of the values of all Dice matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the neonatal cohort.}
 \label{fig:neonates-dice-box}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[t!]
 \centering
 \includegraphics[width=0.5\textwidth]{6/figures/neonates-mi-box.png}
 \caption{Boxplots of the values of all MI matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the neonatal cohort.}
 \label{fig:neonates-mi-box}
 \end{figure}
 
-Similarity matrices were computed to characterize patient motion throughout the duration of the image sequence. The value of each matrix at row $i$ column $j$ contains the similarity (either Dice or MI) between image volume $i$ and image volume $j$ in that sequence. The distributions of values for each metric type across the three sequence types can be seen in Figures \ref{fig:neonates-dice-box} and \ref{fig:neonates-mi-box}. The values of the minimum, first quartile, median, third quartile, and maximum were computed for each distribution. These values were compared using two-sample t-tests. No statistically significant difference was found between the original, traditionally registered, or DAG-registered sequences for either metric (complete values can be found in Tables \ref{appendix:results}.\ref{tab:neonates-dice-ttest} and \ref{appendix:results}.\ref{tab:neonates-mi-ttest}, respectively).
+The similarity matrices were computed to characterize patient motion throughout the duration of the image sequence. The value of each matrix at row $i$ column $j$ contains the similarity (either Dice or MI) between image volume $i$ and image volume $j$ in that sequence. The distributions of values for each metric type across the three sequence types can be seen in Figures \ref{fig:neonates-dice-box} and \ref{fig:neonates-mi-box}. The values of the minimum, first quartile, median, third quartile, and maximum were computed for each distribution. These values were compared using two-sample t-tests. No statistically significant difference was found between the original, traditionally registered, or DAG-registered sequences for either metric (complete values can be found in Tables \ref{appendix:results}.\ref{tab:neonates-dice-ttest} and \ref{appendix:results}.\ref{tab:neonates-mi-ttest}, respectively).
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The number of neonatal subjects whose sequences of types $S_1$ and $S_2$ had statistically different Dice distributions.}
 \label{tab:neonates-dice-kstest}
@@ -511,7 +515,7 @@ Original                                                            & \begin{tab
 \end{tabular}
 \end{table}
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The number of neonatal subjects whose sequences of types $S_1$ and $S_2$ had statistically different MI distributions.}
 \label{tab:neonates-mi-kstest}
@@ -527,7 +531,7 @@ Original                                                            & \begin{tab
 \end{tabular}
 \end{table}
 
-The distributions of the metrics matrices were compared to each other using the Kolmogorov-Smirnov test for each pair of sequence types. The number of image sequences with statistically significantly different distributions can be seen in Table \ref{tab:neonates-dice-kstest} for the Dice metric and Table \ref{tab:neonates-mi-kstest} for the MI metric. For both metrics, about 70 image sequences differed at both $p < 0.05$ and $p < 0.005$ for all three pairs of sequence types.
+The distributions of the metrics matrices were compared using the Kolmogorov-Smirnov test for each pair of sequence types. The number of image sequences with statistically significantly different distributions can be seen in Table \ref{tab:neonates-dice-kstest} for the Dice metric and Table \ref{tab:neonates-mi-kstest} for the MI metric. For both metrics, about 70 image sequences differed at both $p < 0.05$ and $p < 0.005$ for all three pairs of sequence types.
 
 The distributions of the similarity matrices were fairly similar across the whole neonatal cohort. However, the neonatal images have a greater number of statistically significantly different image sequences across all three sequence types than the simulated or the preadolescent images. There is also a higher statistical significance in the different images: at most, two image sequences had significant differences of $p < 0.05$ and greater than $p > 0.005$ for both metrics across all three sequence types.
 
@@ -539,7 +543,7 @@ The analyses for the fetal cohort are divided into two groups: analyses for the 
 
 \subsubsection{Volume Registration: Power Thresholds, Fetal Brain}
 
-\begin{figure}[]
+\begin{figure}[t!]
 	\centering
 	\begin{subfigure}{0.4\textwidth}
 		\centering
@@ -580,9 +584,9 @@ The analyses for the fetal cohort are divided into two groups: analyses for the 
 \label{fig:fetal-brain-power-dists}
 \end{figure}
 
-The FD and DVARS metrics were calculated for the fetal brain images. The averages and standard deviations of the FD and DVARS values across each point in time can be seen in Figure \ref{fig:fetal-brain-power-dists}. The FD for the original image sequences had an average of 1.61 mm and a standard deviation of 1.33 mm. These values increased for the traditionally registered image sequences to an average of 1.81 mm and a standard deviation of 1.90 mm. However, the average and standard deviation of the DAG-registered sequences were close to those of the original image sequences at an average of 1.64 mm and a standard deviation of 1.38 mm. The DVARS metrics for all three sequence types had similar distributions with averages of 167 units, 168 units, and 169 units and standard deviations of 74 units, 75 units, and 75 units, respectively.
+Both the FD and DVARS metrics were calculated for the fetal brain images. The averages and standard deviations of the FD and DVARS values across each point in time can be seen in Figure \ref{fig:fetal-brain-power-dists}. The FD for the original image sequences had an average of 1.61 mm and a standard deviation of 1.33 mm. These values increased for the traditionally registered image sequences to an average of 1.81 mm and a standard deviation of 1.90 mm. However, the average and standard deviation of the DAG-registered sequences were close to those of the original image sequences at an average of 1.64 mm and a standard deviation of 1.38 mm. The DVARS metrics for all three sequence types had similar distributions with averages of 167 units, 168 units, and 169 units and standard deviations of 74 units, 75 units, and 75 units, respectively.
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The count of and percentage of image volumes across each type of sequence in the fetal brain image data set which meet the usability thresholds of FD $<$ 0.2 mm and DVARS $<$ 2.5\%.}
 \label{tab:fetal-brain-power-thresh}
@@ -600,7 +604,7 @@ Both   & 7 (0.058\%)    & 80 (0.668\%)  & 7 (0.058\%) \\ \hline
 
 The FD and DVARS values for each image of each sequence type were compared to the usability thresholds. Table \ref{tab:fetal-brain-power-thresh} contains the number and percentages of image volumes that meet the FD threshold, the DVARS threshold, and the joint thresholds. Of the 12041 original image volumes, only 575 (4.78\%) met the FD threshold, and only 7 (0.058\%) met the DVARS and joint thresholds. For the traditionally registered image volumes, of which there were 11969, 581 (4.85\%) met the FD threshold, 84 (0.702\%) met the DVARS threshold, and 80 (0.668\%) met both thresholds. Again, the DAG-registered images closely followed the original images: of the 12041 image volumes, 561 (4.66\%) met the FD threshold, and 7 (0.058\%) met the DVARS and the joint thresholds. There was no statistically significant difference in the number of images meeting the thresholds between the three sequence types (complete set of p-values can be seen in Table \ref{appendix:results}.\ref{tab:fetal-brain-power-ttest}).
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had statistically different FD distributions according to the Kolmogorov-Smirnov test.}
 \label{tab:fetal-brain-fd-kstest}
@@ -616,7 +620,7 @@ Original                                                            & \begin{tab
 \end{tabular}
 \end{table}
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The number of subjects whose sequences of types $S_1$ and $S_2$ had statistically different DVARS distributions according to the Kolmogorov-Smirnov test.}
 \label{tab:fetal-brain-dvars-kstest}
@@ -638,25 +642,25 @@ The FD and DVARS metrics suggest two concepts. First, the DAG-based registration
 
 \subsubsection{Volume Registration: Sequence Duration Motion, Fetal Brain}
 
-\begin{figure}
+\begin{figure}[t!]
 \centering
 \includegraphics[width=0.5\textwidth]{6/figures/fetal-brain-dice-box.png}
 \caption{Boxplots of the values of all Dice matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the fetal-brain images.}
 \label{fig:fetal-brain-dice-box}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[t!]
 \centering
 \includegraphics[width=0.5\textwidth]{6/figures/fetal-brain-mi-box.png}
 \caption{Boxplots of the values of all MI matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the fetal brain images.}
 \label{fig:fetal-brain-mi-box}
 \end{figure}
 
-The changes in fetal brain position across the duration of the image sequences were measured using the similarity matrices. For each possible pair of image volumes $i$ and $j$, the value of the matrix at row $i$ column $j$ is the similarity of the two volumes. The two similarity metrics used were the Dice metric and the MI metric. The distributions of all values for every image of each sequence type can be seen in Figure \ref{fig:fetal-brain-dice-box} for the Dice metric and in Figure \ref{fig:fetal-brain-mi-box} for the MI metric.
+Changes in fetal brain position across the duration of the image sequences were measured using the similarity matrices. For each possible pair of image volumes $i$ and $j$, the value of the matrix at row $i$ column $j$ is the similarity of the two volumes. The two similarity metrics used were the Dice metric and the MI metric. The distributions of all values for every image of each sequence type can be seen in Figure \ref{fig:fetal-brain-dice-box} for the Dice metric and in Figure \ref{fig:fetal-brain-mi-box} for the MI metric.
 
 The minimum, first quartile, median, third quartile, and maximum values for each distribution were calculated. These values were then compared using the two-sample t-test. No statistically significant difference was found between these values for any pair of sequence types for either the Dice matrices or the MI matrices. (For a complete list of p-values, see Tables \ref{appendix:results}.\ref{tab:fetal-brain-dice-ttest} and \ref{appendix:results}.\ref{tab:fetal-brain-mi-ttest}.
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The number of fetal brain images whose sequences of types $S_1$ and $S_2$ had statistically different Dice distributions.}
 \label{tab:fetal-brain-dice-kstest}
@@ -672,7 +676,7 @@ Original                                                            & \begin{tab
 \end{tabular}
 \end{table}
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The number of fetal brain images whose sequences of types $S_1$ and $S_2$ had statistically different MI distributions.}
 \label{tab:fetal-brain-mi-kstest}
@@ -694,7 +698,7 @@ Overall, the distributions of the similarity metric matrices between the three s
 
 \subsubsection{Volume Registration: Power Thresholds, Placenta}
 
-\begin{figure}[]
+\begin{figure}[t!]
 	\centering
 	\begin{subfigure}{0.4\textwidth}
 		\centering
@@ -737,7 +741,7 @@ Overall, the distributions of the similarity metric matrices between the three s
 
 The FD and DVARS values for the placental images were calculated. The averages and standard deviations for the metric values at each time point in the sequence can be seen in Figure \ref{fig:fetal-placenta-power-dists}. The original sequences had an average FD of 0.341 mm with a standard deviation of 0.382 mm and an average DVARS of 163 units with a standard deviation of 73.8 units. The FD values increased after registration: the traditionally registered images had an average FD of 4.17 mm with a standard deviation of 8.67 mm, and the DAG-registered images had an average FD of 5.12 mm with a standard deviation of 9.14 mm. Registration had a different effect on the DVARS values. The average DVARS values decreased to 140 units for the traditionally registered sequences and to 127 units for the DAG-registered sequences. The standard deviation of the DVARS values increased, though, to 85.7 units for the traditionally registered images and to 91.9 units for the DAG-registered images. 
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The count of and percentage of image volumes across each type of sequence in the fetal placenta image data set which meet the usability thresholds of FD $<$ 0.2 mm and DVARS $<$ 2.5\%.}
 \label{tab:fetal-placenta-power-thresh}
@@ -757,7 +761,7 @@ The FD and DVARS values were compared to the usability thresholds. Table \ref{ta
 
 Of the original image volumes, 10017 (43.6\%) met the FD threshold. Only 17 (0.170\%) original image volumes met the DVARS threshold and the FD and DVARS thresholds. Both registration techniques reduced the number of image volumes, which met the FD thresholds to 4113 (44.245\%) volumes for the traditionally registered sequences and 4005 (45.1\%) for the DAG-registered sequences. The registration techniques increased the number of image volumes which met the DVARS threshold and the FD and DVARS thresholds. After traditional registration, 1056 (11.4\%) volumes met the DVARS threshold and 599 (6.44\%) met both thresholds. After DAG-based registration, 1624 (18.3\%) volumes met the DVARS threshold and 996 (11.2\%) volumes met both thresholds. Two-sample t-tests, the results of which can be found in Table \ref{appendix:results}.\ref{tab:fetal-placenta-power-ttest}, showed that the differences in the number of image volumes meeting the DVARS thresholds and the joint thresholds between the original sequences and the registered sequences are statistically significant at $p < 0.005$.
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The number of placental images whose sequences of types $S_1$ and $S_2$ had statistically different FD distributions according to the Kolmogorov-Smirnov test.}
 \label{tab:fetal-placenta-fd-kstest}
@@ -773,7 +777,7 @@ Original                                                            & \begin{tab
 \end{tabular}
 \end{table}
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The number of placental images whose sequences of types $S_1$ and $S_2$ had statistically different DVARS distributions according to the Kolmogorov-Smirnov test.}
 \label{tab:fetal-placenta-dvars-kstest}
@@ -799,14 +803,14 @@ The FD distributions were not significantly different for the original and regis
 
 \subsubsection{Volume Registration: Sequence Duration Motion, Placenta}
 
-\begin{figure}
+\begin{figure}[t!]
 \centering
 \includegraphics[width=0.5\textwidth]{6/figures/fetal-placenta-dice-box.png}
 \caption{Boxplots of the values of all Dice matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the placenta images.}
 \label{fig:fetal-placenta-dice-box}
 \end{figure}
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{Results of t-tests comparing the descriptive statistics of the Dice matrices for the fetal placenta data.}
 \label{tab:fetal-placenta-dice-ttest}
@@ -843,14 +847,14 @@ The FD distributions were not significantly different for the original and regis
 \end{tabular}
 \end{table}
 
-\begin{figure}
+\begin{figure}[t!]
 \centering
 \includegraphics[width=0.5\textwidth]{6/figures/fetal-placenta-mi-box.png}
 \caption{Boxplots of the values of all MI matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the placenta images.}
 \label{fig:fetal-placenta-mi-box}
 \end{figure}
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{Results of t-tests comparing the descriptive statistics of the MI matrices for the fetal placenta data.}
 \label{tab:fetal-placenta-mi-ttest}
@@ -893,7 +897,7 @@ Table \ref{tab:fetal-placenta-dice-ttest} shows the results of the t-tests compa
 
 The results of the t-tests comparing the descriptive statistics for the MI matrices can be seen in Table \ref{tab:fetal-placenta-mi-ttest}. The differences in all five statistics between the original sequences and the traditionally registered sequences were significant at $p < 0.05$. The differences between the original and DAG-registered sequences for all five statistics were significant at $p < 0.005$. There was no significant difference in the descriptive statistics for the MI matrix distributions between the traditionally registered and DAG-registered sequences.
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The number of subjects whose placenta sequences of types $S_1$ and $S_2$ had statistically different Dice distributions.}
 \label{tab:fetal-placenta-dice-kstest}
@@ -909,7 +913,7 @@ Original                                                            & \begin{tab
 \end{tabular}
 \end{table}
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The number of subjects whose placenta sequences of types $S_1$ and $S_2$ had statistically different MI distributions.}
 \label{tab:fetal-placenta-mi-kstest}
@@ -938,32 +942,32 @@ As the goal of this analysis is to characterize patient motion, only the metrics
 
 \subsection{CHD and Control}
 
-\begin{figure}
+\begin{figure}[t!]
 \centering
-\includegraphics[width=1.0\textwidth]{6/figures/bold-2d-all-cohort.png}
+\includegraphics[width=.9\textwidth]{6/figures/bold-2d-all-cohort.png}
 \caption{The data for the four metrics used to evaluate motion in the clinical brain images projected using different methods into 2D space labeled by CHD/Control status.}
 \label{fig:mocha-cohorts-data-2d}
 \end{figure}
 
-\begin{figure}[]
+\begin{figure}[t!]
 	\centering
-	\begin{subfigure}{0.49\textwidth}
+	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\includegraphics[width=1.0\textwidth]{6/figures/cohort-bold-fd-sns-agg.png}
 		\caption{FD}
 	\end{subfigure}
-	\begin{subfigure}{0.49\textwidth}
+	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\includegraphics[width=1.0\textwidth]{6/figures/cohort-bold-dvars-sns-agg.png}
 		\caption{DVARS}
 	\end{subfigure}
 	
-	\begin{subfigure}{0.49\textwidth}
+	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\includegraphics[width=1.0\textwidth]{6/figures/cohort-bold-dice-sns-agg.png}
 		\caption{Dice}
 	\end{subfigure}
-	\begin{subfigure}{0.49\textwidth}
+	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\includegraphics[width=1.0\textwidth]{6/figures/cohort-bold-mi-sns-agg.png}
 		\caption{MI}
@@ -981,32 +985,32 @@ The heatmaps for the clustering results generated using the FD, DVARS, and MI me
 
 \subsection{Age Groups}
 
-\begin{figure}
+\begin{figure}[t!]
 \centering
 \includegraphics[width=1.0\textwidth]{6/figures/bold-2d-all-agegroup.png}
 \caption{The data for the four metrics used to evaluate motion in the clinical brain images projected using different methods into 2D space and labeled by age group.}
 \label{fig:mocha-ages-data-2d}
 \end{figure}
 
-\begin{figure}[]
+\begin{figure}[t!]
 	\centering
-	\begin{subfigure}{0.49\textwidth}
+	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\includegraphics[width=1.0\textwidth]{6/figures/agegroup-bold-fd-sns-agg.png}
 		\caption{FD}
 	\end{subfigure}
-	\begin{subfigure}{0.49\textwidth}
+	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\includegraphics[width=1.0\textwidth]{6/figures/agegroup-bold-dvars-sns-agg.png}
 		\caption{DVARS}
 	\end{subfigure}
 	
-	\begin{subfigure}{0.49\textwidth}
+	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\includegraphics[width=1.0\textwidth]{6/figures/agegroup-bold-dice-sns-agg.png}
 		\caption{Dice}
 	\end{subfigure}
-	\begin{subfigure}{0.49\textwidth}
+	\begin{subfigure}{0.45\textwidth}
 		\centering
 		\includegraphics[width=1.0\textwidth]{6/figures/agegroup-bold-mi-sns-agg.png}
 		\caption{MI}
@@ -1024,7 +1028,7 @@ In the heatmap for clustering performed with DVARS feature vectors, the brightes
 
 Clusters of subjects from the same age group can also be clearly identified in the heatmap for the MI feature vectors. The bright, wide vertical band encompassing the left half of the heatmap consists of subjects mostly from the preadolescent cohort. The darkest vertical bands on the right of the heatmap are made of almost exclusively fetal subjects. The clusters between the preadolescent group and the neonatal group comprise the neonatal subjects and some preadolescent subjects. 
 
-\begin{figure}
+\begin{figure}[t!]
 \centering
 \includegraphics[width=1.0\textwidth]{6/figures/bold-mi-agegroup.png}
 \caption{The results of clustering the clinical images using the MI matrices and the age group labels.}
@@ -1033,7 +1037,7 @@ Clusters of subjects from the same age group can also be clearly identified in t
 
 The MI feature vectors were used to perform k-means clustering and spectral clustering in addition to the agglomerative clustering. Figure \ref{fig:mocha-ages-mi-bold} shows a grid of scatter plots of the original data and the clustering results. The feature vectors in the first column are labeled with the true age group labels of the data. The vectors in the second, third, and fourth columns are labeled using the labels produced by k-means, spectral, and agglomerative clustering, respectively, where the number of clusters is three. 
 
-\begin{figure}
+\begin{figure}[t!]
 \centering
 \includegraphics[width=0.9\textwidth]{6/figures/spectral-revised.png}
 \caption{Iteratively removing clusters containing less than 10\% of the data in the data set and repeating the spectral clustering process produced meaningful clusters similar to those produced by the k-means and agglomerative methods.}
@@ -1042,7 +1046,7 @@ The MI feature vectors were used to perform k-means clustering and spectral clus
 
 Initially, the spectral clustering results essentially identified a pair of outliers in the data set. The outliers were removed and the clustering was redone, but another pair of outliers was identified in this second iteration. We performed several iterations of identifying data belonging to outlier clusters, which we defined as clusters containing less than 10\% of the total data in the data set, and repeating the clustering. This process reduced the number of samples in the data set from 564 to 545 but did produce meaningful clusters. The results of spectral clustering the reduced data set can be seen in Figure \ref{fig:spectral-revised}. 
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The composition of age groups in each cluster produced using the MI feature vectors and k-means clustering.}
 \label{tab:mocha-mi-kmeans}
@@ -1056,7 +1060,7 @@ Initially, the spectral clustering results essentially identified a pair of outl
 \end{tabular}
 \end{table}
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The composition of age groups in each cluster produced using the MI feature vectors and spectral clustering.}
 \label{tab:mocha-mi-spectral}
@@ -1070,7 +1074,7 @@ Initially, the spectral clustering results essentially identified a pair of outl
 \end{tabular}
 \end{table}
 
-\begin{table}[]
+\begin{table}[t!]
 \centering
 \caption{The composition of age groups in each cluster produced using the MI feature vectors and agglomerative clustering.}
 \label{tab:mocha-mi-agg}
@@ -1086,15 +1090,9 @@ Initially, the spectral clustering results essentially identified a pair of outl
 
 The composition of the clusters produced by each type of clustering can be seen in Tables \ref{tab:mocha-mi-kmeans}, \ref{tab:mocha-mi-spectral}, and \ref{tab:mocha-mi-agg}. The frequency counts in Tables \ref{tab:mocha-mi-kmeans} and \ref{tab:mocha-mi-agg} were comparable despite the different clustering methods. The contents of table \ref{tab:mocha-mi-spectral} were calculated using the reduced set of data that produced interpretable (non-outlier based) clustering results. These results mirror those in Tables \ref{tab:mocha-mi-kmeans} and \ref{tab:mocha-mi-agg}. The results of our cluster analysis suggest that there are detectable differences in the rs-fMRIs of different age groups of patients from different age groups.
 
+\vspace{-0.05\textwidth}
 \section{Summary}
 
 In this chapter, we compared the rs-fMRIs before and after registration for the simulated and clinical images. These comparisons were performed using four metrics: FD, DVARS, Dice, and MI. The FD and DVARS metrics showed that both registration types had statistically significant impacts on these metrics at the population level. These impacts varied between populations. The Dice and MI metrics were used to compare all volumes in a single sequence to each other. These metrics demonstrated the impact of volume registration on the image sequences as a whole. 
 
 The motion patterns of the original image sequences characterized by the four metrics were used to characterize motion in the clinical brain images. No clear relationship between motion and disease status was found, but clustering showed a relationship between motion and age group.
-
-
-
-
-
-
-
