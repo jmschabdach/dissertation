@@ -43,6 +43,12 @@ The functional network information is more difficult to find than structural atl
 
 \subsubsection{Baseline Sequence}
 
+The process for generating a simulated sequence using the data discussed in the previous section has several steps. An overview of the pipeline can be seen in Figure \ref{ch5:spectr_flow} We cover these steps in detail in this section.
+
+The MNI152 proton density image is a whole head image. To remove the skull, we apply the brain mask to the proton density-weighted image. The resulting image contains only brain tissue.
+
+The spatial resolution of the structural brain image is 1 mm$^3$, but the spatial resolution for a single volume in an rs-fMRI sequence is less granular at 4mm$^3$. In order to achieve this resolution, the structural volume must be downsampled. After the downsampling, the size of the structural image is reduced from 181x217x181 voxels to 45x54x45 voxels. 
+
 \begin{figure}[t]
 \centering
 \includegraphics[width=.5\textwidth]{5/pipeline.png}
@@ -50,11 +56,6 @@ The functional network information is more difficult to find than structural atl
 \label{ch5:spectr_flow}
 \end{figure}
 
-The process for generating a simulated sequence using the data discussed in the previous section has several steps. An overview of the pipeline can be seen in Figure \ref{ch5:spectr_flow} We cover these steps in detail in this section.
-
-The MNI152 proton density image is a whole head image. To remove the skull, we apply the brain mask to the proton density-weighted image. The resulting image contains only brain tissue.
-
-The spatial resolution of the structural brain image is 1 mm$^3$, but the spatial resolution for a single volume in an rs-fMRI sequence is less granular at 4mm$^3$. In order to achieve this resolution, the structural volume must be downsampled. After the downsampling, the size of the structural image is reduced from 181x217x181 voxels to 45x54x45 voxels. 
 
 Now that the structural image is the correct spatial resolution, it must be replicated to create the temporal sequence. Part of this step includes creating a new dimension in the data. The affine matrix which represents the resolution of the image has the following structure:
 
@@ -103,14 +104,14 @@ The generated BOLD signals were added to the baseline image sequence but were al
 
 \subsubsection{Scanner Noise}
 
+The next step in our pipeline is to add scanner noise to the brain signal sequence. In a regular rs-fMRI of a patient, the noise in the sequence is the result of two factors: the spin history effects of motion and the susceptibility effects of motion. To simplify the simulation, we choose to model the resulting noise rather than the individual sources.
+
 \begin{figure}
 \centering
 \includegraphics[width=.9\textwidth]{5/fft_example.png}
 \caption{An example of the magnitude and phase of an image in k-space.}
 \label{ch5:fft_example}
 \end{figure}
-
-The next step in our pipeline is to add scanner noise to the brain signal sequence. In a regular rs-fMRI of a patient, the noise in the sequence is the result of two factors: the spin history effects of motion and the susceptibility effects of motion. To simplify the simulation, we choose to model the resulting noise rather than the individual sources.
 
 Signal acquired by MRI scanners is first recorded as a raw data matrix in k-space. K-space contains spatial frequency information. The coordinate system of k-space differs from the coordinate system of physical space. In k-space, the closer a point is to the center of a zero-centered data matrix, the lower its frequency or phase. The brighter a point in the raw data matrix is, the larger its magnitude. An example of the magnitude and phase of an image in k-space can be seen in Figure \ref{ch5:fft_example}.
 
@@ -352,6 +353,8 @@ As the neonates were most often asleep during the scan, they exhibit less motion
 
 \subsubsection{Preadolescent Subject Population and Images}
 
+As part of a multicenter study of CHD in preadolescents, rs-fMRIs have been collected from twelve sites throughout the United States. The two sites from the neonatal study in the previous section also participated in this study and retained their respective labels. The subjects enrolled in this study were patients in the age range of 6 to 17 years (average age: 11 years) who either had CHD or were healthy with no neurocognitive impairments. The histogram of patient ages at the time of each scan can be seen in Figure \ref{fig:pread_ages}.
+
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{5/demo_pread_scan_age.png}
@@ -388,8 +391,6 @@ Site 11 & Skyra   & 3T & 4.0  & 0.0   \\ \hline
 Site 12 & Skyra   & 3T & 11.0 & 32.0  \\ \hline
 \end{tabular}
 \end{table}
-
-As part of a multicenter study of CHD in preadolescents, rs-fMRIs have been collected from twelve sites throughout the United States. The two sites from the neonatal study in the previous section also participated in this study and retained their respective labels. The subjects enrolled in this study were patients in the age range of 6 to 17 years (average age: 11 years) who either had CHD or were healthy with no neurocognitive impairments. The histogram of patient ages at the time of each scan can be seen in Figure \ref{fig:pread_ages}.
 
 The majority of the subjects have CHD, though six sites also recruited healthy patients. The distribution of CHD and healthy subjects between the 12 sites can be seen in Figure \ref{fig:pread_sites} and in more detail in Table \ref{tab:pread-site-counts}.
 

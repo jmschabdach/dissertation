@@ -1,4 +1,4 @@
-\documentclass[hidelinks,pdflatex,final]{pittetd}
+\documentclass[hidelinks,final]{pittetd}
 
 % Packages included in PittETD Template
 % auto use this package and check for patches
@@ -15,15 +15,23 @@
 %\usepackage{wrapfig} % to include figure with text wrapping around it
 \usepackage{subcaption} % fit multiple graphics in one figure
 %\usepackage[margin=10pt,font=small,labelfont=bf]{caption}
+\usepackage{caption}
 \usepackage{algorithm}
 %\usepackage{algorithmic}
 \usepackage{algpseudocode}
-\usepackage{hyperref}
 \usepackage{multirow}
 \usepackage{listings}
 \usepackage{apalike}
 \usepackage{soul}
 \usepackage{color}
+\usepackage{hyperref}
+
+%\usepackage{bookmark}
+%\DeclareCaptionTextFormat{bookmarkf}{\belowpdfbookmark{Figure \thefigure: #1}{\thefigure}#1}
+%\captionsetup[figure]{textformat=bookmarkf}
+%\captionsetup[sub]{textformat=simple}
+%\DeclareCaptionTextFormat{bookmarkt}{\belowpdfbookmark{Table \thetable: #1}{\thetable}#1}
+%\captionsetup[table]{textformat=bookmarkt}
 
 \lstset{
   language=Python,
@@ -60,11 +68,11 @@
 %
 % For the committee membership page, you have to provide the names and affiliations of the members. The first one will 
 % be treated by pittetd as the committee chair (thesis/dissertation advisor).
-\committeemember{Dr. Douglas Landsittal, Department of Biomedical Informatics}
+\coadvisor{Douglas Landsittal, Professor, Department of Biomedical Informatics}
 %\coadvisor{Second advisor, Dept. Aff.}%         This is used if there are two advisors.
-\committeemember{Dr. Ashok Panigrahy, Department of Biomedical Informatics}
-\committeemember{Dr. Gregory Cooper, Department of Biomedical Informatics}
-\committeemember{Dr. Rafael Ceschin, Department of Pediatric Radiology,\\ Children's Hospital of Pittsburgh of UPMC}
+\committeemember{Ashok Panigrahy, Professor, Department of Biomedical Informatics}
+\committeemember{Gregory Cooper, Professor, Department of Biomedical Informatics}
+\committeemember{Rafael Ceschin, Professor, Department of Radiology}
 
 % etc., as many as needed. For master's theses, the committee may be omitted, naming only the advisor.
 \school{School of Medicine}
@@ -113,6 +121,10 @@ Finally, special thanks to everyone involved with Extra Life, a charity that rai
 % for this preliminary.
 %
 %Conventions, such as notation (nomenclature) and abbreviations, don't receive their own preliminary page. They can be included as an appendix, or as part of the introduction.
+
+\makeatletter
+\setlength{\@fptop}{0pt} % Force floats to top of page, set floatpage top vertical spacing to 0
+\makeatother
 
 
 % Add in chapters here

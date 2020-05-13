@@ -141,6 +141,7 @@ The Laplacian matrix can be used to explore many properties of a graph. In parti
 Several steps are used to determine the number of clusters in the graph. First, the eigenvalues of the Laplacian matrix are sorted in increasing order. The number of zero-valued eigenvalues is the number of connected components in the graph. Eigenvalues close to zero suggest weak edges preventing some connected components from being two separate components. Manually examining these eigenvalues before performing spectral clustering can be informative about the number of clusters to create: the number of values below the first large gap between the eigenvalues is the number of clusters, $k$. The eigenvectors associated with these $k$ eigenvalues are used as a lower-dimensional representation of the data in the graph. Performing $k$-means clustering on this data produces the labels for the clusters within the data that are not linearly separable otherwise.
 
 \begin{figure}
+\centering
 \includegraphics[width=.75\textwidth]{4/spectral_clustering_limitation.png}
 \caption{(a) Two different distributions, a 2D Gaussian density and a thin horizontal rectangle are difficult to separate (b) due to their overlap and the penalties built into the cost function of the spectral clustering algorithm. From \cite{Nadler2007}.}
 \label{ch4:fig:spect-clust-lim-01}
@@ -154,7 +155,7 @@ Uneven distributions of data classes can severely impact spectral clustering res
 
 \subsection{Agglomerative Clustering}
 
-\begin{figure}[t]
+\begin{figure}
 \centering
 \includegraphics[width=.5\textwidth]{4/clustermap-example.png}
 \caption{An example of agglomerative clustering on the Iris data set plotted using \textbf{seaborn}'s \textbf{clustermap} function.}

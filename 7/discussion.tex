@@ -33,6 +33,8 @@ Additional analyses could be performed to evaluate the computer-detectable diffe
 
 In Chapter \ref{ch:data}, we outlined the expected differences in motion patterns between the clinical groups, the expected effects of the registration technique on data from each clinical group, and the expected groups that could be identified via clustering.
 
+We predicted that the neonatal subjects would demonstrate the least motion and the fetal subjects would demonstrate the most motion out of the clinical cohorts. Comparing the FD and DVARS of the original image sequences confirms that the neonatal subjects demonstrated the least motion, but the comparison between the preadolescent and fetal subject motion is slightly more complicated. Figure \ref{fig:orig-local-motion} shows a direct comparison between the average local motion metrics for the original sequences. It is only in comparing both the FD and DVARS that we can see that the fetal subjects do move more than the preadolescent subjects.
+
 \begin{figure}
 	\centering
 	\begin{subfigure}{0.4\textwidth}
@@ -51,8 +53,6 @@ In Chapter \ref{ch:data}, we outlined the expected differences in motion pattern
 \label{fig:orig-local-motion}
 \end{figure}
 
-We predicted that the neonatal subjects would demonstrate the least motion and the fetal subjects would demonstrate the most motion out of the clinical cohorts. Comparing the FD and DVARS of the original image sequences confirms that the neonatal subjects demonstrated the least motion, but the comparison between the preadolescent and fetal subject motion is slightly more complicated. Figure \ref{fig:orig-local-motion} shows a direct comparison between the average local motion metrics for the original sequences. It is only in comparing both the FD and DVARS that we can see that the fetal subjects do move more than the preadolescent subjects.
-
 Due to the physical constraints on subjects from each population during the scan, we expected the registration frameworks to have different effects on the clinical cohorts. We expected that the DAG-based registration would have the best performance on the fetal subjects, but it was difficult to develop more granular hypotheses about each framework's effects on each clinical group. In general, we saw a comparable performance between the registration types for the neonatal cohort. The DAG-based framework was less effective at reducing motion in the preadolescent cohort than the traditional framework was. We also saw the DAG-based registration preserve the local motion in the fetal images while the traditional registration increased local motion.  Out of these three sets of effects, the DAG-registration did indeed perform best on the fetal cohort. 
 
 Finally, we expected to see different patterns of motion dependent on clinical and age groups. In our clustering analysis of the population-wide motion patterns, we did not see distinct groups of healthy and CHD subjects based on their motion parameters. We did, however, see a relationship between age group and motion metrics. These results do not mean that there are no relationships between CHD disease status and motion: rather, they suggest that disease and motion relationships may occur on an age-group level rather than a lifespan level.
@@ -65,6 +65,8 @@ The idea of simulated MRIs originated in the 1980s. Bobman et al. suggested a pr
 
 The FMRIB group developed a simulation tool called \href{https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/POSSUM}{POSSUM} (Physics-Oriented Simulated Scanner for Understanding MRI) \cite{Drobnjak2006} \cite{Drobnjak2010}. POSSUM offers a realistic, physics-based simulation of structural, functional, and diffusion tensor images. It requires a gradient echo pulse sequence and a segmented object with known tissue properties as inputs for the simulation. It allows the user a high degree of control over the physical properties to be simulated. The user can specify the pulse sequence information, the method for generating brain signal, the addition of motion and noise, and the method for image reconstruction. Both a GUI and a command-line interface are available for POSSUM. 
 
+The biggest drawback to POSSUM is the degree of MR physics knowledge needed to use it effectively. For MR physicists, specifying the details of a pulse sequence may be trivial. For researchers from other fields, customizing pulse sequence parameters, an example of which can be seen in Figure \ref{fig:possum}, can be a challenging task. These customizations may even be unnecessary depending on the goals a researcher hopes to achieve using the simulated data.
+
 \begin{figure}
 \centering
 \includegraphics[width=.6\textwidth]{7/possum-gui.png}
@@ -72,7 +74,6 @@ The FMRIB group developed a simulation tool called \href{https://fsl.fmrib.ox.ac
 \label{fig:possum}
 \end{figure}
 
-The biggest drawback to POSSUM is the degree of MR physics knowledge needed to use it effectively. For MR physicists, specifying the details of a pulse sequence may be trivial. For researchers from other fields, customizing pulse sequence parameters, an example of which can be seen in Figure \ref{fig:possum}, can be a challenging task. These customizations may even be unnecessary depending on the goals a researcher hopes to achieve using the simulated data.
 
 If a researcher's goal is to test the impact of a new MRI processing technique on known signals in an image, the BrainWeb MRI simulator might be a better option than POSSUM. BrainWeb was created and is actively developed by the \href{mcgill.ca/bic/}{McConnell Brain Imaging Centre} at McGill University to assist in validation computer-aided MRI analysis tools \cite{kwan1999mri} \cite{collins1998design} \cite{cocosco1997brainweb} \cite{kwan1996extensible}. A set of simulated images have been generated using BrainWeb and can be found in the BrainWeb Simulated Brain Database (SBD). The SBD contains simulated images for healthy subjects and for subjects who have lesions due to multiple sclerosis.
 
@@ -96,7 +97,6 @@ In our study, patient age was described only as fetal, neonatal, or preadolescen
 In the fetal cohort, there may be motion characteristics linked to post-conceptual age. As a fetus grows, the amount of room in the uterus in which it can move decreases. However, as the fetal brain develops, the fetus may begin to move in different ways to test its biological systems. 
 
 Studies involving neonatal cohorts often track two ages for the subjects: the post-conceptual age and the age since birth. The relationship between these two ages and a neonate's brain development could impact the amount of motion exhibited during a scan.
-
 
 \section{Limitations}
 

@@ -304,7 +304,7 @@
     \newcommand\acro[1]{\textSMC{#1}\@}}{}
 \if@hyper@ref
     \AtEndOfClass{%
-        \usepackage[bookmarks,hyperindex=false]{hyperref}%
+        \usepackage[bookmarks,pdfview=Fit]{hyperref}%
         \def\@pdfcreator{LaTeX, pittetd class, hyperref package}}
     \AtBeginDocument{%
         \hypersetup{bookmarksnumbered,%
@@ -463,7 +463,7 @@
             must be included. For the moment, I will typeset only
             the advisor.}\fi
             \vfill\fi
-        \@this\ \@advisor: \the\@committee\the\@coadv
+        \@this\ \@advisor: \the\@coadv
         \vfill
         \newpage}
         \renewcommand\committeemember[1]{\ClassError{pittetd}{%
@@ -479,8 +479,8 @@
     \@enable{abstract}{\begin{abstract}}}
 \def\@getadvisor#1\@commline#2\relax{\@committee{#1}}
 \newcommand\coadvisor[1]{%
-    \renewcommand\@advisor{Advisors}%
-    \@coadv{,\\#1}}
+    \renewcommand\@advisor{Director}%
+    \@coadv{#1}}
 \newcommand\copyrightpage{\clearpage\@copyrightmessage
     \null\vfill
     {\centering\normalsize Copyright
@@ -559,7 +559,7 @@
     \fi\@disable{preface}}
 \def\prepare@bookmarks#1{%
     \def\@prelim{#1}%
-    \def\numberline##1{##1. }
+    \def\numberline##1{##1.}
     \let\\\relax
     \def\contentsline##1##2##3##4{%
        \pdfstringdef\@tempcsa{##2}%
