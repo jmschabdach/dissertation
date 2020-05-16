@@ -30,6 +30,24 @@ For brevity, several tables of p-values have been moved to Appendix \ref{appendi
 The FD and DVARS metrics were calculated between every pair of image volumes $i$ and $i+1$ for the original sequences and both types of registered sequences. The mean and standard deviation of the FD and DVARS metrics for each time point for each sequence type can be seen in Figure \ref{fig:spectr-power-dists}. Figure \ref{fig:spectr-power-means} shows the means of the FD and DVARS metrics for each time point for all sequence types on the same axes. The mean of the FD metrics decreased from 2.45 mm in the original sequences to 1.07 mm and 1.08 mm in the traditionally and DAG-registered sequences. The standard deviations of the FD slightly increased from 0.084 mm in the original sequences to 0.265 mm and 0.173 mm, respectively. Similarly, the mean DVARS of the original sequences decreased from 142 units to 107 units and 107 units in the registered images. The standard deviation of the DVARS also increased from 3.66 units in the original sequences to 4.77 units and 4.73 units in the registered sequences.
 
 \begin{figure}
+	\centering	
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/spectr_fd_all_150_avg.png}
+		\caption{Average FD}
+	\end{subfigure}
+	\hspace{0.05\textwidth}
+	\begin{subfigure}{0.4\textwidth}
+		\centering
+		\includegraphics[width=1.0\textwidth]{6/figures/spectr_dvars_all_150_avg.png}
+		\caption{Average DVARS}
+	\end{subfigure}
+\caption{The means of the FD and DVARS metrics for all simulated images before and after both registrations.}
+\label{fig:spectr-power-means}
+\end{figure}
+
+
+\begin{figure}
 	\centering
 	\begin{subfigure}{0.4\textwidth}
 		\centering
@@ -68,23 +86,6 @@ The FD and DVARS metrics were calculated between every pair of image volumes $i$
 	\end{subfigure}
 \caption{The means and standard deviations of the FD and DVARS metrics for all simulated images before and after each type of registration.}
 \label{fig:spectr-power-dists}
-\end{figure}
-
-\begin{figure}
-	\centering	
-	\begin{subfigure}{0.4\textwidth}
-		\centering
-		\includegraphics[width=1.0\textwidth]{6/figures/spectr_fd_all_150_avg.png}
-		\caption{Average FD}
-	\end{subfigure}
-	\hspace{0.05\textwidth}
-	\begin{subfigure}{0.4\textwidth}
-		\centering
-		\includegraphics[width=1.0\textwidth]{6/figures/spectr_dvars_all_150_avg.png}
-		\caption{Average DVARS}
-	\end{subfigure}
-\caption{The means of the FD and DVARS metrics for all simulated images before and after both registrations.}
-\label{fig:spectr-power-means}
 \end{figure}
 
 \begin{table}
@@ -143,9 +144,16 @@ The distributions of the FD and DVARS metrics were compared for each sequence ty
 
 Overall, the primary finding in the comparison of the registration techniques for the simulated data is the statistically significant decrease in FD by both registration types. There was also a decrease in the DVARS values for both registration types, but not a statistically significant one.
 
+
 \subsubsection{Volume Registration: Sequence Duration Motion}
 
 The Dice and MI similarity matrices were calculated for each sequence. Box and whisker plots show the distributions of the metrics across the simulated data cohort for the Dice matrices and the mutual information matrices in Figures \ref{fig:spectr-dice-box} and \ref{fig:spectr-mi-box}, respectively.  
+
+The Dice metric and MI matrices showed similar statistical differences, though these metrics have upper bound instead of a lower bound. The original sequences have statistically significantly different minimums, first quartiles, medians, and third quartiles from the registered sequences at $p < 0.005$ and similar maximum values. The p-values for these calculations can be seen in Table \ref{tab:spectr-dice-ttest} for the Dice matrices and Table \ref{tab:spectr-mi-ttest} for the MI matrices. 
+
+The Kolmogorov-Smirnov test was used to compare the distributions for each metric. The tests showed that each pair of distributions for each metric type differed with a statistical significance of $p < 0.005$.
+
+The analysis of sequence-level motion was performed using three metrics to measure the similarity of the volumes across each sequence. The matrices were compared to each other with respect to five descriptive statistics and with respect to the distribution of the entire set of similarity matrices for the original image sequences and each registration type. The distributions of the similarity metrics were found to be statistically significantly different, implying that each type of sequence contains different motion patterns.
 
 \begin{figure}
 \centering
@@ -160,12 +168,6 @@ The Dice and MI similarity matrices were calculated for each sequence. Box and w
 \caption{Boxplots of the values of all MI matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the simulated data.}
 \label{fig:spectr-mi-box}
 \end{figure}
-
-The Dice metric and MI matrices showed similar statistical differences, though these metrics have upper bound instead of a lower bound. The original sequences have statistically significantly different minimums, first quartiles, medians, and third quartiles from the registered sequences at $p < 0.005$ and similar maximum values. The p-values for these calculations can be seen in Table \ref{tab:spectr-dice-ttest} for the Dice matrices and Table \ref{tab:spectr-mi-ttest} for the MI matrices. 
-
-The Kolmogorov-Smirnov test was used to compare the distributions for each metric. The tests showed that each pair of distributions for each metric type differed with a statistical significance of $p < 0.005$.
-
-The analysis of sequence-level motion was performed using three metrics to measure the similarity of the volumes across each sequence. The matrices were compared to each other with respect to five descriptive statistics and with respect to the distribution of the entire set of similarity matrices for the original image sequences and each registration type. The distributions of the similarity metrics were found to be statistically significantly different, implying that each type of sequence contains different motion patterns.
 
 
 \subsubsection{Volume Registration: Recovered Signal}
@@ -646,16 +648,20 @@ Changes in fetal brain position across the duration of the image sequences were 
 
 The minimum, first quartile, median, third quartile, and maximum values for each distribution were calculated. These values were then compared using the two-sample t-test. No statistically significant difference was found between these values for any pair of sequence types for either the Dice matrices or the MI matrices. (For a complete list of p-values, see Tables \ref{appendix:results}.\ref{tab:fetal-brain-dice-ttest} and \ref{appendix:results}.\ref{tab:fetal-brain-mi-ttest}.
 
+The distributions of values in each matrix for each subject were compared to each other using the Kolmogorov-Smirnov test. The number of sequence comparisons that were statistically significant for the Dice metrics can be seen in Table \ref{tab:fetal-brain-dice-kstest}. Very few sequences had significantly different Dice distributions: between the three sequence types, only 7 to 11 sequences were statistically different at $p < 0.05$, and only 7 to 9 sequences were different at $p < 0.005$. The number of sequence comparisons that were statistically significant for the MI metrics can be seen in Table \ref{tab:fetal-brain-mi-kstest}. Similar to the Dice metrics, only 12 to 14 sequences were different at $p < 0.05$ and only 9 to 10 sequences were different at $p < 0.005$.
+
+Overall, the distributions of the similarity metric matrices between the three sequences types were not statistically different.
+
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{6/figures/fetal-brain-dice-box.png}
+\includegraphics[width=0.6\textwidth]{6/figures/fetal-brain-dice-box.png}
 \caption{Boxplots of the values of all Dice matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the fetal-brain images.}
 \label{fig:fetal-brain-dice-box}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
 \centering
-\includegraphics[width=0.5\textwidth]{6/figures/fetal-brain-mi-box.png}
+\includegraphics[width=0.6\textwidth]{6/figures/fetal-brain-mi-box.png}
 \caption{Boxplots of the values of all MI matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the fetal brain images.}
 \label{fig:fetal-brain-mi-box}
 \end{figure}
@@ -691,10 +697,6 @@ Original                                                            & \begin{tab
 \begin{tabular}[c]{@{}c@{}}Traditionally \\ Registered\end{tabular} & \begin{tabular}[c]{@{}c@{}}DAG\\ Registered\end{tabular}           & 14 & 9  \\ \hline
 \end{tabular}
 \end{table}
-
-The distributions of values in each matrix for each subject were compared to each other using the Kolmogorov-Smirnov test. The number of sequence comparisons that were statistically significant for the Dice metrics can be seen in Table \ref{tab:fetal-brain-dice-kstest}. Very few sequences had significantly different Dice distributions: between the three sequence types, only 7 to 11 sequences were statistically different at $p < 0.05$, and only 7 to 9 sequences were different at $p < 0.005$. The number of sequence comparisons that were statistically significant for the MI metrics can be seen in Table \ref{tab:fetal-brain-mi-kstest}. Similar to the Dice metrics, only 12 to 14 sequences were different at $p < 0.05$ and only 9 to 10 sequences were different at $p < 0.005$.
-
-Overall, the distributions of the similarity metric matrices between the three sequences types were not statistically different.
 
 \subsubsection{Volume Registration: Power Thresholds, Placenta}
 
@@ -805,11 +807,23 @@ The FD distributions were not significantly different for the original and regis
 
 The image volumes across each sequence were compared by calculating the similarity between volume $i$ to volume $j$ and storing the results in row $i$ column $j$ of a 2D matrix for that sequence's similarity metric. The similarity metrics used for these comparisons were the Dice metric and the MI metric. The distributions of the values of each metric for each sequence type can be seen in Figure \ref{fig:fetal-placenta-dice-box} and Figure \ref{fig:fetal-placenta-mi-box} for the Dice and MI matrices, respectively. These distributions were compared by performing two-sample t-tests on the minimum, first quartile, median, third quartile, and maximum values for each sequence type. 
 
+Table \ref{tab:fetal-placenta-dice-ttest} shows the results of the t-tests comparing the descriptive statistics for the Dice matrices. The minimum values, first quartiles, and medians were statistically different at $p < 0.005$ for the original and traditionally registered sequences as well as for the original and DAG-registered sequences. There was no significant difference between the third quartiles and the maximum values between the original and registered sequences. Additionally, there was no significant difference between the descriptive statistics for the traditionally and DAG-registered sequences.
+
+The results of the t-tests comparing the descriptive statistics for the MI matrices can be seen in Table \ref{tab:fetal-placenta-mi-ttest}. The differences in all five statistics between the original sequences and the traditionally registered sequences were significant at $p < 0.05$. The differences between the original and DAG-registered sequences for all five statistics were significant at $p < 0.005$. There was no significant difference in the descriptive statistics for the MI matrix distributions between the traditionally registered and DAG-registered sequences.
+
+
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{6/figures/fetal-placenta-dice-box.png}
 \caption{Boxplots of the values of all Dice matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the placenta images.}
 \label{fig:fetal-placenta-dice-box}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{6/figures/fetal-placenta-mi-box.png}
+\caption{Boxplots of the values of all MI matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the placenta images.}
+\label{fig:fetal-placenta-mi-box}
 \end{figure}
 
 \begin{table}
@@ -849,13 +863,6 @@ The image volumes across each sequence were compared by calculating the similari
 \end{tabular}
 \end{table}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{6/figures/fetal-placenta-mi-box.png}
-\caption{Boxplots of the values of all MI matrices for the original sequences, the traditionally registered sequences, and the DAG-registered sequences for the placenta images.}
-\label{fig:fetal-placenta-mi-box}
-\end{figure}
-
 \begin{table}
 \centering
 \caption{Results of t-tests comparing the descriptive statistics of the MI matrices for the fetal placenta data.}
@@ -892,10 +899,6 @@ The image volumes across each sequence were compared by calculating the similari
   0.212 \\ \hline
 \end{tabular}
 \end{table}
-
-Table \ref{tab:fetal-placenta-dice-ttest} shows the results of the t-tests comparing the descriptive statistics for the Dice matrices. The minimum values, first quartiles, and medians were statistically different at $p < 0.005$ for the original and traditionally registered sequences as well as for the original and DAG-registered sequences. There was no significant difference between the third quartiles and the maximum values between the original and registered sequences. Additionally, there was no significant difference between the descriptive statistics for the traditionally and DAG-registered sequences.
-
-The results of the t-tests comparing the descriptive statistics for the MI matrices can be seen in Table \ref{tab:fetal-placenta-mi-ttest}. The differences in all five statistics between the original sequences and the traditionally registered sequences were significant at $p < 0.05$. The differences between the original and DAG-registered sequences for all five statistics were significant at $p < 0.005$. There was no significant difference in the descriptive statistics for the MI matrix distributions between the traditionally registered and DAG-registered sequences.
 
 \begin{table}
 \centering
@@ -942,6 +945,11 @@ As the goal of this analysis is to characterize patient motion, only the metrics
 
 \subsection{CHD and Control}
 
+The FD, DVARS, Dice matrices, and MI matrices for the original clinical brain images were projected into 2D space and labeled using each subject's disease status. The projections of this data can be seen in Figure \ref{fig:mocha-ages-data-2d}. In this figure, each column represents a different dimensionality reduction technique, and each row represents a different metric type. The different dimensionality reduction techniques offer different views on the same data, though the relationships between these views are not always clear. It is very difficult to see any distinct groups of CHD or control labels in any of these views.
+
+The FD, DVARS, Dice matrices, and MI matrices were then each clustered using agglomerative clustering. Heatmaps of these clustering results can be seen in Figure \ref{fig:mocha-cohorts-sns-agg}. The columns of the heatmaps show the feature vectors used to represent each image sequence. The colorbars to the left of the heatmaps show the range of values present in each heatmap. In all four heatmaps, darker colors represent lower values. At the top of each heatmap is a row of colored labels where the blue labels indicate subjects who have CHD and the orange labels indicate control subjects. Above the row of labels is a dendrogram. The dendrogram explicitly shows the distances between the feature vectors. Each vertical bar in a dendrogram represents the distance between that feature vector and the feature vector or group of feature vectors most similar to it. The horizontal bars indicate connections between feature vectors or groups of feature vectors which are the next closest to each other.
+
+
 \begin{figure}
 \centering
 \includegraphics[width=.9\textwidth]{6/figures/bold-2d-all-cohort.png}
@@ -976,10 +984,6 @@ As the goal of this analysis is to characterize patient motion, only the metrics
 \caption{The original preadolescent, neonatal, and fetal images clustered by each metric using agglomerative clustering and labeled by disease status.}
 \label{fig:mocha-cohorts-sns-agg}
 \end{figure}
-
-The FD, DVARS, Dice matrices, and MI matrices for the original clinical brain images were projected into 2D space and labeled using each subject's disease status. The projections of this data can be seen in Figure \ref{fig:mocha-ages-data-2d}. In this figure, each column represents a different dimensionality reduction technique, and each row represents a different metric type. The different dimensionality reduction techniques offer different views on the same data, though the relationships between these views are not always clear. It is very difficult to see any distinct groups of CHD or control labels in any of these views.
-
-The FD, DVARS, Dice matrices, and MI matrices were then each clustered using agglomerative clustering. Heatmaps of these clustering results can be seen in Figure \ref{fig:mocha-cohorts-sns-agg}. The columns of the heatmaps show the feature vectors used to represent each image sequence. The colorbars to the left of the heatmaps show the range of values present in each heatmap. In all four heatmaps, darker colors represent lower values. At the top of each heatmap is a row of colored labels where the blue labels indicate subjects who have CHD and the orange labels indicate control subjects. Above the row of labels is a dendrogram. The dendrogram explicitly shows the distances between the feature vectors. Each vertical bar in a dendrogram represents the distance between that feature vector and the feature vector or group of feature vectors most similar to it. The horizontal bars indicate connections between feature vectors or groups of feature vectors which are the next closest to each other.
 
 The heatmaps for the clustering results generated using the FD, DVARS, and MI metrics each show several distinct vertical bands representing clusters of similar feature vectors. The heatmap for the Dice metrics is less interpretable as most of the values in the heatmap are close to 1.0. In all four sets of clustering results, there are no distinguishable clusters which are mostly composed of either CHD or control subjects.
 
@@ -1030,21 +1034,25 @@ Clusters of subjects from the same age group can also be clearly identified in t
 
 \begin{figure}
 \centering
-\includegraphics[width=1.0\textwidth]{6/figures/bold-mi-agegroup.png}
+\includegraphics[width=0.8\textwidth]{6/figures/bold-mi-agegroup.png}
 \caption{The results of clustering the clinical images using the MI matrices and the age group labels.}
 \label{fig:mocha-ages-mi-bold}
 \end{figure}
 
-The MI feature vectors were used to perform k-means clustering and spectral clustering in addition to the agglomerative clustering. Figure \ref{fig:mocha-ages-mi-bold} shows a grid of scatter plots of the original data and the clustering results. The feature vectors in the first column are labeled with the true age group labels of the data. The vectors in the second, third, and fourth columns are labeled using the labels produced by k-means, spectral, and agglomerative clustering, respectively, where the number of clusters is three. 
-
 \begin{figure}
 \centering
-\includegraphics[width=0.9\textwidth]{6/figures/spectral-revised.png}
-\caption{Iteratively removing clusters containing less than 10\% of the data in the data set and repeating the spectral clustering process produced meaningful clusters similar to those produced by the k-means and agglomerative methods.}
+\includegraphics[width=0.8\textwidth]{6/figures/spectral-revised.png}
+\caption{Iteratively removing clusters containing less than 10\% of the data in the data set and repeating spectral clustering produced more structured clusters.}
 \label{fig:spectral-revised}
 \end{figure}
 
+The MI feature vectors were used to perform k-means clustering and spectral clustering in addition to the agglomerative clustering. Figure \ref{fig:mocha-ages-mi-bold} shows a grid of scatter plots of the original data and the clustering results. The feature vectors in the first column are labeled with the true age group labels of the data. The vectors in the second, third, and fourth columns are labeled using the labels produced by k-means, spectral, and agglomerative clustering, respectively, where the number of clusters is three. 
+
 Initially, the spectral clustering results essentially identified a pair of outliers in the data set. The outliers were removed and the clustering was redone, but another pair of outliers was identified in this second iteration. We performed several iterations of identifying data belonging to outlier clusters, which we defined as clusters containing less than 10\% of the total data in the data set, and repeating the clustering. This process reduced the number of samples in the data set from 564 to 545 but did produce meaningful clusters. The results of spectral clustering the reduced data set can be seen in Figure \ref{fig:spectral-revised}. 
+
+The composition of the clusters produced by each type of clustering can be seen in Tables \ref{tab:mocha-mi-kmeans}, \ref{tab:mocha-mi-spectral}, and \ref{tab:mocha-mi-agg}. The frequency counts in Tables \ref{tab:mocha-mi-kmeans} and \ref{tab:mocha-mi-agg} were comparable despite the different clustering methods. The contents of table \ref{tab:mocha-mi-spectral} were calculated using the reduced set of data that produced interpretable (non-outlier based) clustering results. These results mirror those in Tables \ref{tab:mocha-mi-kmeans} and \ref{tab:mocha-mi-agg}. The results of our cluster analysis suggest that there are detectable differences in the rs-fMRIs of different age groups of patients from different age groups.
+
+\clearpage
 
 \begin{table}
 \centering
@@ -1088,9 +1096,8 @@ Initially, the spectral clustering results essentially identified a pair of outl
 \end{tabular}
 \end{table}
 
-The composition of the clusters produced by each type of clustering can be seen in Tables \ref{tab:mocha-mi-kmeans}, \ref{tab:mocha-mi-spectral}, and \ref{tab:mocha-mi-agg}. The frequency counts in Tables \ref{tab:mocha-mi-kmeans} and \ref{tab:mocha-mi-agg} were comparable despite the different clustering methods. The contents of table \ref{tab:mocha-mi-spectral} were calculated using the reduced set of data that produced interpretable (non-outlier based) clustering results. These results mirror those in Tables \ref{tab:mocha-mi-kmeans} and \ref{tab:mocha-mi-agg}. The results of our cluster analysis suggest that there are detectable differences in the rs-fMRIs of different age groups of patients from different age groups.
-
 \clearpage
+
 \section{Summary}
 
 In this chapter, we compared the rs-fMRIs before and after registration for the simulated and clinical images. These comparisons were performed using four metrics: FD, DVARS, Dice, and MI. The FD and DVARS metrics showed that both registration types had statistically significant impacts on these metrics at the population level. These impacts varied between populations. The Dice and MI metrics were used to compare all volumes in a single sequence to each other. These metrics demonstrated the impact of volume registration on the image sequences as a whole. 

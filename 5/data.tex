@@ -106,13 +106,6 @@ The generated BOLD signals were added to the baseline image sequence but were al
 
 The next step in our pipeline is to add scanner noise to the brain signal sequence. In a regular rs-fMRI of a patient, the noise in the sequence is the result of two factors: the spin history effects of motion and the susceptibility effects of motion. To simplify the simulation, we choose to model the resulting noise rather than the individual sources.
 
-\begin{figure}
-\centering
-\includegraphics[width=.9\textwidth]{5/fft_example.png}
-\caption{An example of the magnitude and phase of an image in k-space.}
-\label{ch5:fft_example}
-\end{figure}
-
 Signal acquired by MRI scanners is first recorded as a raw data matrix in k-space. K-space contains spatial frequency information. The coordinate system of k-space differs from the coordinate system of physical space. In k-space, the closer a point is to the center of a zero-centered data matrix, the lower its frequency or phase. The brighter a point in the raw data matrix is, the larger its magnitude. An example of the magnitude and phase of an image in k-space can be seen in Figure \ref{ch5:fft_example}.
 
 Generally speaking, images contain more low-frequency information than high-frequency information. We wish to be able to control the amount of noise added to the magnitude and phase components independently, so we choose to add noise to the sequence in k-space.
@@ -132,6 +125,15 @@ When adding scanner noise to the brain signal sequence, we add noise to each ima
 \noindent In these two equations, $\vec{l}$ is the location of the point in the matrix, $w_*$ represents the weight assigned to the component, $r_*$ represents the random noise variable independently generated from a standard normal distribution, and the subscripts $m$ and $p$ refer to the magnitude and phase components, respectively. The complex noise is weighted so that the magnitude of the noise has a greater contribution than the phase of the noise, that is $w_m > w_p$ 
 
 The matrix of complex noise is added to the zero-centered k-space image volume. The noisy k-space volume is unshifted and undergoes an inverse Fourier transform to change the data back to physical space. This sequence containing both brain signal and scanner noise is referred to as the noisy sequence.
+
+\begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{5/fft_example.png}
+\caption{An example of the magnitude and phase of an image in k-space.}
+\label{ch5:fft_example}
+\end{figure}
+
+\clearpage
 
 \subsubsection{Patient Movement}
 
@@ -231,7 +233,7 @@ Currently, the process of detecting and diagnosing CHD can begin before birth. A
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth]{5/CHD-burden-webb.png}
+\includegraphics[width=0.5\textwidth]{5/CHD-burden-webb.png}
 \caption{Estimated CHD burden in World Health Organization (WHO) regions using incidence rates of approximately 12/1000 and 4/1000 in children and adults, respectively \cite{Webb2015}.}
 \label{ch5:fig:CHD-burden}
 \end{figure}
@@ -263,27 +265,29 @@ The subjects included in this analysis fall into three age groups: neonatal, pre
 
 \begin{figure}
 \centering
-\includegraphics[width=.75\textwidth]{5/demo_clinical_subj_race.png}
-\caption{Distribution of subject races for all three cohorts.}
-\label{ch5:clinical:race}
-\end{figure}%
-%
-\begin{figure}
-\centering
-\includegraphics[width=.75\textwidth]{5/demo_clinical_subj_ethnicity.png}
-\caption{Distribution of subject ethnicities for all three cohorts.}
-\label{ch5:clinical:eth}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[width=.75\textwidth]{5/demo_clinical_subj_gender.png}
-\caption{Distribution of subject genders for all three cohorts.}
-\label{ch5:clinical:gender}
+  \begin{subfigure}{.45\textwidth}
+    \centering
+    \includegraphics[width=1.0\textwidth]{5/demo_clinical_subj_race.png}
+    \caption{Subject races.}
+    \label{ch5:clinical:race}
+  \end{subfigure}%
+  \hspace{0.05\textwidth}
+  \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.0\textwidth]{5/demo_clinical_subj_ethnicity.png}
+    \caption{Subject ethnicities.}
+    \label{ch5:clinical:eth}
+  \end{subfigure}
+  \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.0\textwidth]{5/demo_clinical_subj_gender.png}
+    \caption{Subject genders.}
+    \label{ch5:clinical:gender}
+  \end{subfigure}
+  \caption{Distributions of demographic characteristics of all three subject cohorts.}
 \end{figure}
 
 \subsubsection{Fetal Subject Population and Images}
-
 
 A fetal subject is scanned in vivo. He is suspended in amniotic fluid within his mother. The amniotic fluid has a buoyancy that reduces the effects of gravity and allows a fetal subject significant freedom of movement. The fetus can rotate, shift, and flip in ways that can only be accomplished when floating in a body of water. The properties of the uterus constrain the physical space in which motion could occur, but not as much as the head coil and gravity do to the other patient cohorts. A fetus is not guaranteed to be in any specific position at the start of the scan: the scan begins when the mother is ready, not when the fetus achieves a certain pose. 
 
@@ -293,7 +297,7 @@ The MRI scans are performed when the mother is in her third trimester. Due to th
 
 \begin{figure}
 \centering
-\includegraphics[width=.75\textwidth]{5/demo_fetal_scan_pca.png}
+\includegraphics[width=.6\textwidth]{5/demo_fetal_scan_pca.png}
 \caption{The distribution of post-conceptual ages at the time of the scan of all fetal subjects.}
 \label{ch5:fetal:scanpca}
 \end{figure}
@@ -325,14 +329,14 @@ The subjects were unsedated during the scans, and a ``feed and bundle'' protocol
 
 \begin{figure}
 \centering
-\includegraphics[width=.75\textwidth]{5/demo_neonate_subj_pca.png}
+\includegraphics[width=.6\textwidth]{5/demo_neonate_subj_pca.png}
 \caption{The distribution of post-conceptual ages at birth of all neonatal subjects.}
 \label{ch5:neonates:birthpca}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=.75\textwidth]{5/demo_neonate_scan_pca.png}
+\includegraphics[width=.6\textwidth]{5/demo_neonate_scan_pca.png}
 \caption{The distribution of post-conceptual ages at the time of the scan of all neonatal subjects.}
 \label{ch5:neonates:scanpca}
 \end{figure}

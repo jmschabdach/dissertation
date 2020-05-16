@@ -5,6 +5,11 @@ This chapter discusses rs-fMRIs and how they are affected by patient motion. Spe
 
 \section{Structure of an rs-fMRI}
 
+rs-fMRIs are discrete representations of continuous data. A new image volume of the patient's brain is acquired every two to three seconds. The image volume is composed of a three-dimensional version of a pixel called a voxel (volume element). Just as the ``distance'' between each image volume encompasses a certain amount of time, each voxel encompasses a small volume of physical space. The transformations between the continuous physical and temporal dimensions and the discrete physical and temporal dimensions are the spatial and temporal resolutions. 
+The concept of a 4D rs-fMR image is illustrated in two different ways in Figure \ref{ch2:fig:rsfmri-views}. The first representation is an ordered list of 3D image volumes where each voxel contains a single numeric value. The second representation is a single 3D image volume, where the value of each voxel is a temporal signal.
+
+An rs-fMRI is considered to have a relatively low spatial resolution but high temporal resolution. The physical size of a single voxel seems small at about 4 mm$^3$, but this resolution is not granular enough to capture details about activity within small structures of the brain. The activity information recorded during an rs-fMRI must be combined with the detailed anatomic information from a structural MRI to know precisely which areas of the brain are active at each point in time. A structural MRI volume takes much longer to acquire than an rs-fMRI volume, which can be obtained every two to three seconds. Unfortunately, the patient's position and neural activity can change faster than the image volume can be acquired. As a result, a temporal resolution of two to three seconds is not fast enough to actively compensate for sources of noise which confound the BOLD signal. 
+
 \begin{figure}
 \centering
 \includegraphics[width=.75\textwidth]{2/rsfMRI-views.png}
@@ -12,20 +17,9 @@ This chapter discusses rs-fMRIs and how they are affected by patient motion. Spe
 \label{ch2:fig:rsfmri-views}
 \end{figure}
 
-
-rs-fMRIs are discrete representations of continuous data. A new image volume of the patient's brain is acquired every two to three seconds. The image volume is composed of a three-dimensional version of a pixel called a voxel (volume element). Just as the ``distance'' between each image volume encompasses a certain amount of time, each voxel encompasses a small volume of physical space. The transformations between the continuous physical and temporal dimensions and the discrete physical and temporal dimensions are the spatial and temporal resolutions. 
-The concept of a 4D rs-fMR image is illustrated in two different ways in Figure \ref{ch2:fig:rsfmri-views}. The first representation is an ordered list of 3D image volumes where each voxel contains a single numeric value. The second representation is a single 3D image volume, where the value of each voxel is a temporal signal.
-
-An rs-fMRI is considered to have a relatively low spatial resolution but high temporal resolution. The physical size of a single voxel seems small at about 4 mm$^3$, but this resolution is not granular enough to capture details about activity within small structures of the brain. The activity information recorded during an rs-fMRI must be combined with the detailed anatomic information from a structural MRI to know precisely which areas of the brain are active at each point in time. A structural MRI volume takes much longer to acquire than an rs-fMRI volume, which can be obtained every two to three seconds. Unfortunately, the patient's position and neural activity can change faster than the image volume can be acquired. As a result, a temporal resolution of two to three seconds is not fast enough to actively compensate for sources of noise which confound the BOLD signal. 
+\clearpage
 
 \section{Factors Impacting rs-fMRIs}
-
-\begin{figure}
-\centering
-\includegraphics[width=.6\textwidth]{2/rsfMRI-signal-filters.png}
-\caption{The patient's brain activity is affected by several factors before an MRI scanner produces a visually interpretable image sequence. (The rounded rectangles represent the signal at different stages of recording while the rhombuses represent the primary factors.)}
-\label{ch2:fig:signal-filters}
-\end{figure}
 
 The BOLD signal present inside a patient's brain is not recorded with complete accuracy by an MRI scanner. Even if the same patient exhibited precisely the same BOLD signal during two different scans, the recorded image sequences would vary slightly. Several factors impact the image sequence viewed by a radiologist, and we give an overview of them in Figure \ref{ch2:fig:signal-filters}. 
 
@@ -33,6 +27,13 @@ The first factor in Figure \ref{ch2:fig:signal-filters} is the patient's physiol
 
 The second factor in Figure \ref{ch2:fig:signal-filters} represents the changes to the signal that occur due to patient motion.
 During every medical imaging scan, the patient will naturally perform small, automatic movements due to regular bodily functions. Minuscule movements caused by cardiac activity may disrupt scans with high spatial resolution or with high sensitivity to the movement of blood molecules. More significant movements caused by respiration result in motion artifacts in images of the thoracic and abdominal cavities. 
+
+\begin{figure}
+\centering
+\includegraphics[width=.6\textwidth]{2/rsfMRI-signal-filters.png}
+\caption{The patient's brain activity is affected by several factors before an MRI scanner produces a visually interpretable image sequence. (The rounded rectangles represent the signal at different stages of recording while the rhombuses represent the primary factors.)}
+\label{ch2:fig:signal-filters}
+\end{figure}
 
 Other motions occur on a larger and more conscious scale. It is important to note that different populations may exhibit more of certain macro-motions than others. The patient may fidget or shift his gaze when he becomes bored in the scanner. If the patient falls asleep during a scan, there may be slight movement as the body relaxes and re-tenses if the patient wakes. Certain MRI protocols are known to produce loud sounds: during one of these protocols, the patient may become surprised and react by jumping. Additionally, claustrophobic patients or patients who feel secure around specific people that are not allowed in the scanner room may become agitated. 
 
@@ -83,16 +84,16 @@ In rigid volume registration, one volume is chosen as the reference volume and t
 
 The moving volume can undergo linear or nonlinear transformations. Linear transformations include translation, rotation, and affine transformations along all three spatial dimensions as well as a scaling transformation. These transformations move the image volume as a whole: all voxels in the moving image remain in the same location relative to their neighbors. On the other hand, nonlinear transformations can warp the contents of the moving volume so that it better matches the contents of the reference volume. Nonlinear transformations are more complex than linear transformation. They involve additional image processing steps such as smoothing and voxel interpolation.
 
+\begin{figure}
+\centering
+\includegraphics[width=.6\textwidth]{2/pitch_roll_yaw.png}
+\caption{The pitch, roll, and yaw rotations describe rotations or an object about three orthogonal axes whose origin is in the object's center of mass.}
+\label{fig:pry}
+\end{figure} 
+
 Even in cases when nonlinear transformations are used, the registration process begins with the translation and rotation transformations. The three translation and three rotation parameters used to achieve the best alignment are used to calculate the positional change between the image volumes. The positional change between temporally neighboring volumes is called the framewise displacement (FD).  
 
 Several researchers have proposed slightly different methods for calculating the FD. Power et al., Jenkinson et al., and Dosenbach et al. each propose a slightly different method for calculating the FD \cite{Power2012} \cite{Jenkinson2002} \cite{Dosenbach2017}. All three FD calculations produce correlated metrics: the FD metric proposed by Power et al. produces measurements approximately twice as large as the metric proposed by Jenkinson et al., and Dosenbach et al. reported a high correlation between their FD and Power’s FD \cite{Yan2013a} \cite{Dosenbach2017}. 
-
-\begin{figure}
-\centering
-\includegraphics[width=.5\textwidth]{2/pitch_roll_yaw.png}
-\caption{The pitch, roll, and yaw rotations describe rotations or an object about three orthogonal axes whose origin is in the object's center of mass.}
-\label{fig:pry}
-\end{figure}
 
 In the remainder of this document, the abbreviation FD refers to Power et al.'s version of the FD metric, which is calculated as:
 

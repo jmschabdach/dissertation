@@ -304,7 +304,7 @@
     \newcommand\acro[1]{\textSMC{#1}\@}}{}
 \if@hyper@ref
     \AtEndOfClass{%
-        \usepackage[bookmarks,pdfview=Fit]{hyperref}%
+        \usepackage[bookmarks]{hyperref}%
         \def\@pdfcreator{LaTeX, pittetd class, hyperref package}}
     \AtBeginDocument{%
         \hypersetup{bookmarksnumbered,%
