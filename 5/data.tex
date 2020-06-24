@@ -54,6 +54,7 @@ The spatial resolution of the structural brain image is 1 mm$^3$, but the spatia
 \includegraphics[width=.5\textwidth]{5/pipeline.png}
 \caption{An overview of the SPECTr simulation pipeline. Using atlas data, a simulated phantom containing brain signal, scanner noise, and patient motion is generated.}
 \label{ch5:spectr_flow}
+\vspace{20pt}
 \end{figure}
 
 
@@ -68,7 +69,11 @@ Now that the structural image is the correct spatial resolution, it must be repl
 \end{bmatrix}
 \end{equation}
 
-\noindent where $r_x, r_y,$ and $r_z$ represent the spatial resolution in the $x, y,$ and $z$ axes, respectively and $c_x, c_y,$ and $c_z$ represent the location of the origin in voxels. To convert the image from a 3D volume to a 4D sequence, we add a row and a column to this matrix so that it now has the structure:
+\noindent where $r_x, r_y,$ and $r_z$ represent the spatial resolution in the $x, y,$ and $z$ axes, respectively and $c_x, c_y,$ and $c_z$ represent the location of the origin in voxels. 
+
+\clearpage 
+
+To convert the image from a 3D volume to a 4D sequence, we add a row and a column to this matrix so that it now has the structure:
 
 \begin{equation}
 \begin{bmatrix}

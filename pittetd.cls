@@ -607,15 +607,25 @@
 \let\l@figure\l@table
 \newcommand*\l@equation{\@dottedtoclin{1}{1.5em}{\@floatl}}
 
-    \newcommand\preface{%
+\newcommand\preface{%
     \clearpage\@prefacemessage
      
-    \typeout{Preface}%
+    \typeout{Dedication}%
     \phantomsection
-    \addcontentsline{toc}{chapter}{\bfseries Preface}
+    \addcontentsline{toc}{chapter}{\bfseries Dedication}
     {}
     \par\vspace{1.5\@singleline}
     \@enable{conv}{the first chapter}%
+    \@afterheading}
+\newcommand\acknowledgements{%
+    \clearpage\@prefacemessage
+     
+    \typeout{Acknowledgements}%
+    \phantomsection
+    \addcontentsline{toc}{chapter}{\bfseries Acknowledgements}
+    {}
+    \par\vspace{1.5\@singleline}
+    \@enable{conv}{the first and a half chapter}%
     \@afterheading}
 \newcommand\preliminarychapter[1]{%
     \clearpage 

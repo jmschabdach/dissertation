@@ -142,9 +142,10 @@ Several steps are used to determine the number of clusters in the graph. First, 
 
 \begin{figure}
 \centering
-\includegraphics[width=.75\textwidth]{4/spectral_clustering_limitation.png}
+\includegraphics[width=.8\textwidth]{4/spectral_clustering_limitation.png}
 \caption{(a) Two different distributions, a 2D Gaussian density and a thin horizontal rectangle are difficult to separate (b) due to their overlap and the penalties built into the cost function of the spectral clustering algorithm. From \cite{Nadler2007}.}
 \label{ch4:fig:spect-clust-lim-01}
+\vspace{-20pt}
 \end{figure}
 
 The limitations of spectral clustering are strongly related to the process of remapping the data to a lower-dimensional space.  When reducing the number of features used to represent a data set, information about that data set is inherently lost. The missing information can make separating classes in the lower dimensional data significantly more difficult, if not impossible. Consider the following two cases: a case where two classes overlap and a case where three classes are unevenly represented in the data.
@@ -155,20 +156,23 @@ Uneven distributions of data classes can severely impact spectral clustering res
 
 \subsection{Agglomerative Clustering}
 
-\begin{figure}
-\centering
-\includegraphics[width=.5\textwidth]{4/clustermap-example.png}
-\caption{An example of agglomerative clustering on the Iris data set plotted using \textbf{seaborn}'s \textbf{clustermap} function.}
-\label{ch4:fig:agg}
-\end{figure}
-
 Agglomerative clustering is a specific type of hierarchical clustering that builds a tree of similarities between data samples from the ``bottom up'' \cite{Ward1963}. The data samples in agglomerative clustering are also viewed as distinct points in $n$-dimensional space, but the number of groups to identify is not specified. 
 
 First, the distance from every data sample to every other data sample is calculated. The two data points that are closest together in terms of a similarity metric are combined into a single cluster. In the relationship tree representing the similarities between all data samples, a node is created and the joined data points are connected to that node. That node or cluster is treated as an intermediate data sample. The distance from the new ``data sample'' to every other data sample is calculated, and the two closest data samples are again combined into another intermediate sample. A node representing the new cluster is added to the relationship tree and the data sample or samples merged into the cluster are connected to the node. The process of combining data points into clusters based on similarity to other data points terminates when all data points and clusters have been combined. 
 
 The results of agglomerative clustering can be interpreted by traversing the relationship tree. The relationship tree recorded the history of which nodes were merged into which clusters at each stage. Due to the nature of agglomerative clustering, these stages can be viewed as distinct levels in the tree. The granularity of the clusters can be explored beginning at the final node (the root) of the tree. At the top level, there is only one cluster, but at the second to last level of the tree, there will be two clusters; at the third level, there will be three clusters, and so on. How each cluster grew can reveal information about the relationships between the data samples within that cluster.
 
+\begin{figure}
+\centering
+\includegraphics[width=.55\textwidth]{4/clustermap-example.png}
+\caption{An example of agglomerative clustering on the Iris data set plotted using \textbf{seaborn}'s \textbf{clustermap} function.}
+\label{ch4:fig:agg}
+\vspace{-30pt}
+\end{figure}
+
 Agglomerative clustering also lends itself well to visualization via heatmap. The heatmap allows the researcher to see the distribution of feature values across the dataset and across visually prominent clusters. The Python library \textbf{seaborn} has a function called \textbf{clustermap}, which both performs agglomerative clustering and shows the resulting trees in a structured heatmap. An example of agglomerative clustering from the \textbf{seaborn} documentation in which the clustering was applied to the Iris data set can be seen in  Figure \ref{ch4:fig:agg} \cite{Waskom2018}. Each column represents a feature and each row represents a single sample. The colorbar in the top left of the figure shows that lighter colors in each cell represent higher values. The dendrogram along the top of the heatmap shows the distance between each feature. The dendrogram along the left of the heatmap shows the distance between each data sample and the data sample most similar to it. The column immediately to the right of this dendrogram shows the known class (species) for each data sample. The class labels in conjunction with the dendrogram of the data samples show the distinct groups present in the data which were identified using agglomerative clustering. 
+
+\clearpage
 
 \subsection{Visualizing Clustering Results} 
 
